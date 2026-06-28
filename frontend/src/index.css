@@ -1,0 +1,105 @@
+@import url("https://use.typekit.net/placeholder.css");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Futura PT — 42 official typography */
+/* Em produção: substituir pelo link Adobe Typekit real */
+@font-face {
+  font-family: "Futura PT";
+  font-weight: 300;
+  font-style: normal;
+  src: local("Futura PT Light"), local("FuturaPT-Light");
+}
+@font-face {
+  font-family: "Futura PT";
+  font-weight: 400;
+  font-style: normal;
+  src: local("Futura PT Book"), local("FuturaPT-Book");
+}
+@font-face {
+  font-family: "Futura PT";
+  font-weight: 700;
+  font-style: normal;
+  src: local("Futura PT Heavy"), local("FuturaPT-Heavy");
+}
+
+:root {
+  --color-black: #1b1b1b;
+  --color-white: #ffffff;
+  --color-navy: #173d7a;
+  --color-near-black: #202026;
+  --color-dark-gray: #29292e;
+  --color-mid-gray: #5b5b60;
+  --color-light-gray: #e3e3e3;
+  --color-teal: #00babc;
+  --color-cg-blue: #04809f;
+  --color-green: #2dd57a;
+  --color-pink: #ec3391;
+  --color-purple: #7300ff;
+}
+
+* {
+  border-radius: 0 !important;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Futura PT", ui-sans-serif, system-ui, sans-serif;
+  background-color: var(--color-near-black);
+  color: var(--color-white);
+  margin: 0;
+  min-height: 100vh;
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.08) 1px,
+    transparent 1px
+  );
+  background-size: 28px 28px;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: var(--color-teal);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-green);
+}
+
+button {
+  border-radius: 0;
+  font-family: inherit;
+}
+
+code {
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  background-color: var(--color-dark-gray);
+  padding: 2px 4px;
+}
+
+pre {
+  background-color: var(--color-dark-gray);
+  padding: 12px 16px;
+  overflow-x: auto;
+  border-radius: 0;
+}

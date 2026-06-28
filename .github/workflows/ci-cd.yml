@@ -1,0 +1,108 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-test:
+    name: Build & Test
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: chat
+          POSTGRES_PASSWORD: chatpass
+          POSTGRES_DB: chat_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Go 1.25
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.25'
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Go build
+        run: go build ./...
+
+      - name: Go vet
+        run: go vet ./...
+
+      - name: Go test
+        run: go test ./...
+        env:
+          DATABASE_URL: postgres://chat:chatpass@localhost:5432/chat_test?sslmode=disable
+          JWT_SECRET: ci-test-secret-not-used-in-prod
+
+      - name: Frontend build
+        working-directory: frontend
+        run: |
+          npm ci
+          npm run build
+
+  deploy:
+    name: Deploy to EC2
+    runs-on: ubuntu-latest
+    needs: build-test
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Bitwarden CLI
+        run: npm install -g @bitwarden/cli
+
+      - name: Login to Bitwarden and export secrets
+        env:
+          BW_CLIENTID: ${{ secrets.BW_CLIENTID }}
+          BW_CLIENTSECRET: ${{ secrets.BW_CLIENTSECRET }}
+          BW_PASSWORD: ${{ secrets.BW_PASSWORD }}
+        run: |
+          export BW_SESSION=$(bw login --apikey --raw)
+          export BW_SESSION=$(bw unlock --passwordenv BW_PASSWORD --raw)
+
+          # Recupera secrets do vault e escreve no .env remoto via SSH
+          DATABASE_URL=$(bw get item "42chat-database-url" --session "$BW_SESSION" | jq -r '.login.password')
+          JWT_SECRET=$(bw get item "42chat-jwt-secret" --session "$BW_SESSION" | jq -r '.login.password')
+          FORTYTWO_CLIENT_ID=$(bw get item "42chat-fortytwo-client-id" --session "$BW_SESSION" | jq -r '.login.username')
+          FORTYTWO_CLIENT_SECRET=$(bw get item "42chat-fortytwo-client-secret" --session "$BW_SESSION" | jq -r '.login.password')
+
+          # Escreve .env no servidor via SSH — nunca persiste no runner
+          ssh -o StrictHostKeyChecking=no deploy@${{ secrets.EC2_HOST }} "cat > /app/42chat/.env << 'ENVEOF'
+          DATABASE_URL=${DATABASE_URL}
+          JWT_SECRET=${JWT_SECRET}
+          FORTYTWO_CLIENT_ID=${FORTYTWO_CLIENT_ID}
+          FORTYTWO_CLIENT_SECRET=${FORTYTWO_CLIENT_SECRET}
+          ENVEOF"
+
+      - name: Deploy via SSH
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          EC2_HOST: ${{ secrets.EC2_HOST }}
+        run: |
+          echo "$DEPLOY_KEY" > /tmp/deploy_key
+          chmod 600 /tmp/deploy_key
+          ssh -i /tmp/deploy_key -o StrictHostKeyChecking=no deploy@$EC2_HOST \
+            "cd /app/42chat && bash scripts/deploy.sh"
+          rm -f /tmp/deploy_key
