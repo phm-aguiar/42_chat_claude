@@ -1,0 +1,282 @@
+{
+  "version": 1,
+  "last_updated": "2026-06-28T02:38:41Z",
+  "sources": {
+    "/home/zeenyt__/Projetos/42_chat_claude/specs/BACKLOG.md": {
+      "ingested_at": "2026-06-28T02:38:41Z",
+      "size_bytes": 6439,
+      "modified_at": "2026-06-18T00:00:00Z",
+      "content_hash": "sha256:5df16ca33026c25e95d2a7c0ac6a2e095349c9f48009f1452fce339b9470ba90",
+      "source_type": "document",
+      "project": "42_chat",
+      "pages_created": [],
+      "pages_updated": ["projects/42_chat/42_chat.md"]
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/specs/features/SECURITY_BACKLOG.md": {
+      "ingested_at": "2026-06-28T02:38:41Z",
+      "size_bytes": 2550,
+      "modified_at": "2026-06-17T00:00:00Z",
+      "content_hash": "sha256:a90c8d50a8d05303f21807d8cb83e9fff840e4a1daac3ec2ed1d47411bb384ce",
+      "source_type": "document",
+      "project": "42_chat",
+      "pages_created": ["projects/42_chat/features/security-backlog.md"],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/specs/features/100-42chat-core/spec.md": {
+      "ingested_at": "2026-06-28T02:38:41Z",
+      "size_bytes": 10919,
+      "modified_at": "2026-06-17T00:00:00Z",
+      "content_hash": "sha256:f945f87c0c56a58cd06206ad4fd9f036f865d5bcb15fbe89c66dd9616770126f",
+      "source_type": "document",
+      "project": "42_chat",
+      "pages_created": [],
+      "pages_updated": ["projects/42_chat/features/feature-100-42-chat-core.md"]
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/specs/features/100-42chat-core/plan.md": {
+      "ingested_at": "2026-06-28T02:38:41Z",
+      "size_bytes": 6749,
+      "modified_at": "2026-06-17T00:00:00Z",
+      "content_hash": "sha256:badc450e367abf1b238d49f80fb4486124f3cd0bef2a02720f0602a35b3fb6c3",
+      "source_type": "document",
+      "project": "42_chat",
+      "pages_created": [],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/specs/features/100-42chat-core/tasks.md": {
+      "ingested_at": "2026-06-28T02:38:41Z",
+      "size_bytes": 8100,
+      "modified_at": "2026-06-17T00:00:00Z",
+      "content_hash": "sha256:c56b65b0fa826668302f9b0fc358a12b1423350ec628fefc62b4a69fa15546b3",
+      "source_type": "document",
+      "project": "42_chat",
+      "pages_created": [],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/specs/features/100-42chat-core/acceptance/chat.feature": {
+      "ingested_at": "2026-06-28T02:38:41Z",
+      "size_bytes": 4660,
+      "modified_at": "2026-06-12T00:00:00Z",
+      "content_hash": "sha256:5659df0f92cf27753c76195d4327486d8506555418874c5e82bab0fc3521d2f8",
+      "source_type": "document",
+      "project": "42_chat",
+      "pages_created": [],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/specs/features/101-assinatura-participacao/spec.md": {
+      "ingested_at": "2026-06-28T02:38:41Z",
+      "size_bytes": 5949,
+      "modified_at": "2026-06-17T00:00:00Z",
+      "content_hash": "sha256:f629e2aa6bd25fc05d3cea501ef9514a5adc570c9cc7fe5cce38e72136471659",
+      "source_type": "document",
+      "project": "42_chat",
+      "pages_created": [],
+      "pages_updated": ["projects/42_chat/features/feature-101-assinatura-participacao.md"]
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/specs/features/101-assinatura-participacao/plan.md": {
+      "ingested_at": "2026-06-28T02:38:41Z",
+      "size_bytes": 5869,
+      "modified_at": "2026-06-17T00:00:00Z",
+      "content_hash": "sha256:2dd858feb08a2123080c24708492a4492f687026a847bc08b9ec1e9872e37771",
+      "source_type": "document",
+      "project": "42_chat",
+      "pages_created": [],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/specs/features/101-assinatura-participacao/tasks.md": {
+      "ingested_at": "2026-06-28T02:38:41Z",
+      "size_bytes": 4417,
+      "modified_at": "2026-06-17T00:00:00Z",
+      "content_hash": "sha256:fc251c5f381e332512114e004ede6cae5b45dfa976e54b56df55c41f4b9e58c5",
+      "source_type": "document",
+      "project": "42_chat",
+      "pages_created": [],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/specs/features/101-assinatura-participacao/acceptance/user-signature.feature": {
+      "ingested_at": "2026-06-28T02:38:41Z",
+      "size_bytes": 12111,
+      "modified_at": "2026-06-15T00:00:00Z",
+      "content_hash": "sha256:81f149ece134a67ef2d29f434eca7c220d566235c4aa1609b4de203863c29f04",
+      "source_type": "document",
+      "project": "42_chat",
+      "pages_created": [],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/specs/features/102-42-forum/spec.md": {
+      "ingested_at": "2026-06-28T02:38:41Z",
+      "size_bytes": 13862,
+      "modified_at": "2026-06-26T00:00:00Z",
+      "content_hash": "sha256:74753eac83d07320fe8f04ff3c0682685aa98b03477ad719f6bf88244a847f27",
+      "source_type": "document",
+      "project": "42_chat",
+      "pages_created": [],
+      "pages_updated": ["projects/42_chat/features/feature-102-forum.md"]
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/specs/features/102-42-forum/plan.md": {
+      "ingested_at": "2026-06-28T02:38:41Z",
+      "size_bytes": 15576,
+      "modified_at": "2026-06-26T00:00:00Z",
+      "content_hash": "sha256:d34b788c4d92ea311651c154ff8af4ef4e62d429a52ea47d2902fb210e4ec1ee",
+      "source_type": "document",
+      "project": "42_chat",
+      "pages_created": [],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/specs/features/102-42-forum/tasks.md": {
+      "ingested_at": "2026-06-28T02:38:41Z",
+      "size_bytes": 12623,
+      "modified_at": "2026-06-26T00:00:00Z",
+      "content_hash": "sha256:d4351a24e1b8a13ab23a27e2df7c1174715b76f37f472baf90abddd10ca75ea2",
+      "source_type": "document",
+      "project": "42_chat",
+      "pages_created": [],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/specs/features/102-42-forum/acceptance/forum.feature": {
+      "ingested_at": "2026-06-28T02:38:41Z",
+      "size_bytes": 7828,
+      "modified_at": "2026-06-26T00:00:00Z",
+      "content_hash": "sha256:db18cb05a0772bbfc0f028ef904860a5a3e099ea938a3f6d51745fd0252097e4",
+      "source_type": "document",
+      "project": "42_chat",
+      "pages_created": [],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/specs/features/102-42-forum/metrics.md": {
+      "ingested_at": "2026-06-28T02:38:41Z",
+      "size_bytes": 4491,
+      "modified_at": "2026-06-26T00:00:00Z",
+      "content_hash": "sha256:569b91d1dd6a30d4bbc74a4c46ed3fb6825959d5a258c849d5f975421f154a15",
+      "source_type": "document",
+      "project": "42_chat",
+      "pages_created": [],
+      "pages_updated": ["projects/42_chat/features/feature-102-forum.md"]
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/.claude/skills/create-skill/SKILL.md": {
+      "ingested_at": "2026-06-28T02:38:41Z",
+      "size_bytes": 4797,
+      "modified_at": "2026-06-27T00:00:00Z",
+      "content_hash": "sha256:59bb3ab2df2697a8df92ba8b5918c25d6741706bbf790d2d2cf38e0604e58640",
+      "source_type": "document",
+      "project": "42_chat",
+      "pages_created": [],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/.claude/skills/wiki-capture/SKILL.md": {
+      "ingested_at": "2026-06-28T02:38:41Z",
+      "size_bytes": 9862,
+      "modified_at": "2026-06-27T00:00:00Z",
+      "content_hash": "sha256:7149103d42852c88fc95a6fee3bec3ec53bd2da3daabdb70a9b0822310971952",
+      "source_type": "document",
+      "project": "42_chat",
+      "pages_created": [],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/.claude/skills/wiki-cross-link/SKILL.md": {
+      "ingested_at": "2026-06-28T02:38:41Z",
+      "size_bytes": 8809,
+      "modified_at": "2026-06-27T00:00:00Z",
+      "content_hash": "sha256:fc9280089a8dd633e27c255b1712737d29c9162d613b739df23a58069559bf00",
+      "source_type": "document",
+      "project": "42_chat",
+      "pages_created": [],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/.claude/skills/wiki-meta/SKILL.md": {
+      "ingested_at": "2026-06-28T02:38:41Z",
+      "size_bytes": 13109,
+      "modified_at": "2026-06-27T00:00:00Z",
+      "content_hash": "sha256:656d16948c9cc7d840472e4b13660efc7fa323d8776245991050f18e3909e898",
+      "source_type": "document",
+      "project": "42_chat",
+      "pages_created": [],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/.claude/skills/wiki-query/SKILL.md": {
+      "ingested_at": "2026-06-28T02:38:41Z",
+      "size_bytes": 12433,
+      "modified_at": "2026-06-27T00:00:00Z",
+      "content_hash": "sha256:dc307f07db5c0a490a947cfc4c6c85fa9b1bc99d80e135017c32094ab27991d9",
+      "source_type": "document",
+      "project": "42_chat",
+      "pages_created": [],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/.claude/skills/wiki-status/SKILL.md": {
+      "ingested_at": "2026-06-28T02:38:41Z",
+      "size_bytes": 15568,
+      "modified_at": "2026-06-27T00:00:00Z",
+      "content_hash": "sha256:0949f41111f19ba75e3e3d2e889a05e0446d54ce80fc29b29752a701f5238315",
+      "source_type": "document",
+      "project": "42_chat",
+      "pages_created": [],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/.claude/skills/wiki/SKILL.md": {
+      "ingested_at": "2026-06-28T02:38:41Z",
+      "size_bytes": 14919,
+      "modified_at": "2026-06-27T00:00:00Z",
+      "content_hash": "sha256:6f5fea61511d373d02fa73def8c0536fbc6d851c4b186be69bf5091be37620d2",
+      "source_type": "document",
+      "project": "42_chat",
+      "pages_created": [],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/.claude/projects/-home-zeenyt---Projetos-42-chat-claude/11c5e42b-3471-4712-976b-5cdfec40cab9.jsonl": {
+      "ingested_at": "2026-06-28T02:38:41Z",
+      "size_bytes": 2122322,
+      "modified_at": "2026-06-27T00:00:00Z",
+      "content_hash": null,
+      "source_type": "claude_conversation",
+      "project": "42_chat",
+      "pages_created": [
+        "journal/2026-06-14-sessao-qa-skills-42chat.md",
+        "journal/2026-06-14-readfile-truncation-pitfall.md",
+        "journal/2026-06-17-brainstorm-feature-101.md",
+        "journal/2026-06-18-sessao-feat100-oauth.md",
+        "journal/digest-2026-06-15.md",
+        "journal/digest-2026-06-21.md"
+      ],
+      "pages_updated": [
+        "projects/42_chat/features/feature-100-42-chat-core.md",
+        "projects/42_chat/features/feature-101-assinatura-participacao.md",
+        "projects/42_chat/features/feature-102-forum.md"
+      ],
+      "note": "Large (2.1MB, 362 lines). Key journal entries already captured. Pending: deep summary mode ingest."
+    },
+    "/home/zeenyt__/.claude/projects/-home-zeenyt---Projetos-42-chat-claude/fb7755da-cfc2-46a3-b008-b4b0d4212c8e.jsonl": {
+      "ingested_at": "2026-06-28T02:38:41Z",
+      "size_bytes": 690065,
+      "modified_at": "2026-06-27T00:00:00Z",
+      "content_hash": null,
+      "source_type": "claude_conversation",
+      "project": "42_chat",
+      "pages_created": [
+        "journal/2026-06-27-wiki-maintenance.md",
+        "synthesis/consolidation-2026-06-27.md"
+      ],
+      "pages_updated": [
+        "projects/42_chat/42_chat.md",
+        "projects/42_chat/features/feature-102-forum.md",
+        "projects/42_chat/features/security-backlog.md"
+      ],
+      "note": "Current session (wiki-status + wiki-lint + wiki-ingest 2026-06-27). Re-ingest when session completes."
+    }
+  },
+  "projects": {
+    "42_chat": {
+      "source_path": "/home/zeenyt__/.claude/projects/-home-zeenyt---Projetos-42-chat-claude",
+      "vault_path": "projects/42_chat",
+      "last_ingested": "2026-06-28T02:38:41Z",
+      "conversations_ingested": 2,
+      "conversations_total": 2,
+      "memory_files_ingested": 0
+    }
+  },
+  "stats": {
+    "total_sources_ingested": 23,
+    "total_pages": 336,
+    "total_projects": 1,
+    "last_full_rebuild": null
+  }
+}

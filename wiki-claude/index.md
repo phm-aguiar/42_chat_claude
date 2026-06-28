@@ -1,0 +1,352 @@
+# Wiki Index
+
+> **2026-06-27** · 334 páginas · 7 categorias
+
+## concepts (6)
+
+- [[concepts/obsidian-flow|Fluxo Obsidian — Integração com o Framework]] — Como o subsistema wiki/Obsidian se integra ao framework SDD: quem inicia cada operação, quando ela é disparada, e como o ciclo de vida do vault (ingest → cross-link → lint → query) se encaixa no pipeline de desenvolvimento.
+- [[concepts/onboarding|Onboarding — Começando com o Framework SDD]] — Guia passo a passo para iniciar um projeto do zero com o framework SDD autônomo. Cobre init repo, brainstorm, spec, plan, tasks e execução com orchestrator.
+- [[concepts/sdd|Spec-Driven Development (SDD)]] — Metodologia onde specs são a fonte primária; código deriva delas.
+- [[concepts/sdd-workflow|SDD Workflow — Pipeline Completo]] — Pipeline completo do Spec-Driven Development: brainstorm → spec → plan → tasks (DAG) → coordenação direta (sessão principal como Lead LATTE) → agentes (Dev/QA). O orquestrador separado foi deprecado em 2026-06-26 — a sessão principal coordena diretamente via ferramenta `Agent`.
+- [[concepts/vault-taxonomy|Vault Taxonomy]]
+- [[concepts/wiki-model|Wiki Model — Knowledge Management do Framework]] — O framework adota o modelo LLM Wiki (Karpathy) de 3 camadas: raw sources → wiki compilado → schema. Explica por que compilar conhecimento é superior a recuperar, e como o vault Obsidian versionado elimina amnésia cross-sessão.
+
+## entities (9)
+
+- [[entities/chi|Chi (HTTP Router)]] — Chi é o roteador HTTP Go usado no 42 Chat — roteamento idiomático com middleware stacking, grupos de rotas autenticadas, e compatibilidade total com net/http.
+- [[entities/client|Client (WebSocket Client)]] — Client representa uma conexão WebSocket ativa — identifica o usuário autenticado, mantém um canal de saída e executa goroutines de leitura (readPump) e escrita (writePump).
+- [[entities/hub|Hub (WebSocket Hub)]] — Hub é o gerenciador central de conexões WebSocket do 42 Chat — registra, desconecta e faz broadcast de mensagens para todos os clients conectados.
+- [[entities/index|Entities — Glossário do 42 Chat]] — Índice do glossário de entidades e conceitos do 42 Chat Core — Hub, Client, Message, User, JWT, OAuth2, WebSocket e Chi.
+- [[entities/jwt|JWT (JSON Web Token)]] — JWTManager gerencia a geração e validação de tokens JWT internos do 42 Chat — algoritmo HS256, expiração de 12 horas, claims com UserID e Login do usuário autenticado.
+- [[entities/message|Message (Modelo de Mensagem)]] — Message é o modelo de dados de uma mensagem no chat — ID UUID v4, conteúdo com limite de 5000 caracteres, soft delete via DeletedAt, e o payload WSMessage usado na comunicação WebSocket.
+- [[entities/oauth2|OAuth2 (Autenticação 42)]] — OAuth2 implementa o fluxo authorization code da API 42 — troca o código de autorização por access_token, busca dados do usuário em /v2/me e faz upsert no PostgreSQL.
+- [[entities/user|User (Modelo de Usuário)]] — User é o modelo de dados de um aluno da 42 autenticado no chat — ID fixo da API 42, login único, dados de perfil (image_url, host, level) sincronizados via OAuth2 e upserted no PostgreSQL.
+- [[entities/websocket|WebSocket (Protocolo)]] — WebSocket é o protocolo de comunicação full-duplex em tempo real do 42 Chat — upgrade HTTP → WS, mensagens JSON, ping/pong keepalive, implementado com a biblioteca gorilla/websocket.
+
+## journal (7)
+
+- [[journal/2026-06-14-readfile-truncation-pitfall|read_file truncation causes incomplete document consolidation]] — Arquivos 50K chars são truncados pelo read_file sem aviso explícito, causando consolidação incompleta. Verificar total_lines vs file_size antes de processar.
+- [[journal/2026-06-14-sessao-qa-skills-42chat|Sessão 2026-06-14 — Feature 007 QA + Skills + Feature 100 42 Chat]] — Sessão de 14/jun: finalização do agent-qa, criação de 7 skills QA, normalização de 41 skills, skill-forge atualizado, spec/plan/tasks da feature 100 (42 Chat Core) refinados com dados da wiki, taxonomia do vault documentada.
+- [[journal/2026-06-17-brainstorm-feature-101|Brainstorm Feature 101 — Assinatura de Participação]]
+- [[journal/2026-06-18-sessao-feat100-oauth|Sessão 18/jun — Feature 100 execução, OAuth2 42, credenciais]] — Execução da feature 100 (42 Chat MVP) com agent-orchestrator fase a fase, debug do fluxo OAuth2 42 (redirect_uri, StrictMode, shell env), regra anti-hardcoded-credentials no constitution, .env.example limpo.
+- [[journal/2026-06-27-wiki-maintenance|2026-06-27 — Wiki Maintenance (Lint + Consolidate + Ingest)]] — Sessão de manutenção do wiki: wiki-status revelou 522K tokens e manifest ausente; wiki-lint --consolidate aplicou 59 correções; wiki-ingest inicializou manifest e ingeriu specs.
+- [[journal/digest-2026-06-15|Wiki Digest — 9 a 15 de Junho de 2026]] — Weekly knowledge digest: 88 páginas construídas. Base de QA completa (9 referências interligadas), framework SDD documentado, relatório 42 Chat split em 10 páginas. Vault auditado — zero orphans, zero broken links, zero duplicatas.
+- [[journal/digest-2026-06-21|Digest 2026-06-21 — Wiki Ingest Massiva + Gap Fill]] — A wiki do 42_chat cresceu de 130 para 361 páginas em um dia. 159 raw files ingeridos, 10 gaps de stack preenchidos, glossário populado, 7 ADRs criados.
+
+## projects (20)
+
+- [[projects/42_chat/42_chat|42_chat — Framework SDD Autônomo]] — Framework SDD autônomo com agentes IA e humanos in loop. Pipeline: brainstorm → spec → plan → tasks (DAG) → sessão principal coordena → subagentes (Dev/QA). Aplicação 42_chat é o smoke-test real.
+- [[projects/42_chat/agents/agent-onboard|onboard — Agente de Inicialização SDD]] — Agente que inicializa projetos no framework SDD: estrutura, stack, brainstorm.
+- [[projects/42_chat/features/feature-001-start-repo|001: Estrutura do Repositório]] — Inicialização do repo 42_chat: estrutura SDD, CI/CD, templates base.
+- [[projects/42_chat/features/feature-002-sdd-templates|002: Templates Canônicos SDD]] — Define os 4 templates canônicos SDD: spec.md, plan.md, tasks.md, AGENTS.md + llms.txt.
+- [[projects/42_chat/features/feature-003-forge-skill|003: Forjar Nova Skill]] — Skill forge-new-skill para criar skills claude Agent com scaffold, template e validação.
+- [[projects/42_chat/features/feature-004-sdd-tasks-dag|004: Tasks com DAG]] — Upgrade do sdd-generate-tasks: formato DAG com dependências, paralelismo e isolamento de arquivos.
+- [[projects/42_chat/features/feature-005-agent-orchestrator|005: Agent Orchestrator — Lição Aprendida]] — Feature que implementou o agente orquestrador (hoje absorvido pela coordenação direta da sessão principal). Mantida como registro arquitetural.
+- [[projects/42_chat/features/feature-006-agent-dev|006: Agent Dev]] — Persona implementadora do framework SDD. Braço executor spawnado pelo orchestrator como subagente leaf. Skills plugáveis por stack.
+- [[projects/42_chat/features/feature-007-agent-qa|007: Agent QA]] — Guardiao da qualidade do framework SDD. Spawnado pelo orchestrator como subagente leaf. Ciclo: le spec, escreve Gherkin, executa testes, lint, cobertura, reporta DONE/REJECTED/BLOCKED.
+- [[projects/42_chat/features/feature-100-42-chat-core|Feature 100 — 42 Chat Core (MVP)]]
+- [[projects/42_chat/features/feature-101-assinatura-participacao|Feature 101 — Assinatura de Participação]]
+- [[projects/42_chat/features/feature-102-forum|Feature 102 — 42 Forum]]
+- [[projects/42_chat/features/security-backlog|Security Backlog — 42 Chat]] — Backlog de hardening do nginx e da aplicação 42 Chat: SEC-001 a SEC-007 (rate limiting, TLS, WAF, JWT gateway, fail2ban, scanning CI, CSP).
+- [[projects/42_chat/skills/sdd-brainstorm|sdd-brainstorm]] — Skill SDD que conduz entrevista interativa via AskUserQuestion para gerar spec.md
+- [[projects/42_chat/skills/sdd-generate-plan|sdd-generate-plan]] — Skill SDD que gera plan.md com decisões arquiteturais (ADR) a partir do spec.md
+- [[projects/42_chat/skills/sdd-generate-tasks|sdd-generate-tasks]] — Skill SDD v2.0.0 que gera tasks.md com DAG (dependências, paralelismo, isolamento de arquivos)
+- [[projects/42_Framework/42_Framework|42 Framework]] — Meta-framework SDD com pipeline de especificação, wiki como memória semântica e orquestração multi-agente baseada em LATTE coordination graphs.
+- [[projects/42_Framework/features/001-latte-coordination|001: LATTE Coordination]] — Orquestração dinâmica com coordination graph, operadores LATTE, heartbeat monitoring e métricas de coordenação.
+- [[projects/42_Framework/features/002-experiential-memory|002: Wiki Experiential Memory]] — Memória experiencial com indexação semântica de chunks da wiki, retrieval contextual, hint scoring com feedback loop, e distillation periódica. Inspirado no Experiential Memory do A-MapReduce.
+- [[projects/42_Framework/features/003-hybrid-retrieval|003: Hybrid Retrieval & Normalization]] — Pesquisa híbrida (BM25 + cosine), normalização de frontmatter (34 docs) e thresholds adaptativos. Baseado no relatório Otimização de Obsidian para IA.
+
+## references (241)
+
+- [[references/10_purpose-why|Brand Purpose]] — Brand Purpose: framework e metodologia de referência.
+- [[references/20_positioning|Brand Positioning]] — Brand Positioning: framework e metodologia de referência.
+- [[references/30_audience-niche|Brand Audience & Niche]] — Brand Audience & Niche: framework e metodologia de referência.
+- [[references/40_personality-archetype|Brand Personality & Archetype]] — Brand Personality & Archetype: framework e metodologia de referência.
+- [[references/42-api-endpoints|42 Intra API v2 — Endpoints Reference]] — Catálogo de endpoints da API Intra 42 v2: 96 recursos, 739 endpoints. Organizado por relevância para o 42 Chat com indicadores de acesso (público/restrito).
+- [[references/42-api-specification|42 Intra API v2 — Specification]] — Guia de uso da API Intra 42 v2: OAuth2, escopos, paginação, filtros, ordenação, rate limiting (2 req/s, 1200 req/h) e token info.
+- [[references/42-chat-architecture-diagram|42 Chat — Architecture Diagram]] — Diagrama Mermaid da arquitetura completa do 42 Chat: fluxo de autenticação, WebSocket hub, microfrontends, e infraestrutura AWS.
+- [[references/42-chat-design-system|42 Chat — Design System]] — Sistema de design brutalista/cyberpunk para o chat da 42: paleta preto/branco com neon (amarelo #D4ED31, ciano #00E5FF, magenta #FF007A, azul #304FFE), tipografia geométrica (Montserrat/Poppins/Gotham), border-radius zero, e filtros CSS para fotos de perfil. Alinhado ao 42 Graphic Charter.
+- [[references/42-chat-engineering-requirements|42 Chat — Engineering Requirements]] — Requisitos críticos de engenharia: concorrência segura em Go, graceful shutdown, tuning de file descriptors no Linux, caching contra rate limits da API 42, e observabilidade com Prometheus.
+- [[references/42-chat-platform-architecture|42 Chat — Platform Architecture]] — Stack tecnológica completa da plataforma de chat P2P para a 42 SP: Go + WebSockets + PostgreSQL no backend, React + Vite + Module Federation no frontend, e infraestrutura Docker + AWS.
+- [[references/42-chat-research-report|42 Chat — Relatório de Arquitetura e Viabilidade]] — Relatório de arquitetura e viabilidade da plataforma de chat P2P para a 42 SP. Stack: Go, WebSocket, PostgreSQL, React, Vite, AWS EC2.
+- [[references/42-chat-sec1-fundamentacao|42 Chat — Fundamentação e Contexto Operacional no Ecossistema 42]] — Seção 1/9 do relatório de arquitetura e viabilidade do 42 Chat. Fundamentação e Contexto Operacional no Ecossistema 42.
+- [[references/42-chat-sec2-backend-concorrencia|42 Chat — Arquitetura de Backend e Gestão de Concorrência Extrema]] — Seção 2/9 do relatório de arquitetura e viabilidade do 42 Chat. Arquitetura de Backend e Gestão de Concorrência Extrema.
+- [[references/42-chat-sec3-graceful-shutdown|42 Chat — Desligamento Gracioso (Graceful Shutdown) e Prevenção de Perda de Dados]] — Seção 3/9 do relatório de arquitetura e viabilidade do 42 Chat. Desligamento Gracioso (Graceful Shutdown) e Prevenção de Perda de Dados.
+- [[references/42-chat-sec4-infra-tuning|42 Chat — Infraestrutura, Tuning Extremo do SO e Gerenciamento de Descritores de Arquivo]] — Seção 4/9 do relatório de arquitetura e viabilidade do 42 Chat. Infraestrutura, Tuning Extremo do SO e Gerenciamento de Descritores de Arquivo.
+- [[references/42-chat-sec5-api-42-rate-limits|42 Chat — Integração com a API da 42, Estratégia de Autenticação e Prevenção de Rate Limits]] — Seção 5/9 do relatório de arquitetura e viabilidade do 42 Chat. Integração com a API da 42, Estratégia de Autenticação e Prevenção de Rate Limits.
+- [[references/42-chat-sec6-campus-locations|42 Chat — Mapeamento de Campus e Consumo Otimizado do Endpoint de Locations]] — Seção 6/9 do relatório de arquitetura e viabilidade do 42 Chat. Mapeamento de Campus e Consumo Otimizado do Endpoint de Locations.
+- [[references/42-chat-sec7-microfrontends|42 Chat — Arquitetura de Microfrontends e Gerenciamento Global de Estado]] — Seção 7/9 do relatório de arquitetura e viabilidade do 42 Chat. Arquitetura de Microfrontends e Gerenciamento Global de Estado.
+- [[references/42-chat-sec8-matchmaking-p2p|42 Chat — Lógica de Algoritmos P2P: Matchmaking (Evals) e Salas Efêmeras]] — Seção 8/9 do relatório de arquitetura e viabilidade do 42 Chat. Lógica de Algoritmos P2P: Matchmaking (Evals) e Salas Efêmeras.
+- [[references/42-chat-sec9-observabilidade-bdd|42 Chat — Observabilidade Estrutural e Engenharia de Software BDD]] — Seção 9/9 do relatório de arquitetura e viabilidade do 42 Chat. Observabilidade Estrutural e Engenharia de Software BDD.
+- [[references/42-graphic-charter-software|42 Graphic Charter — Software & UI Reference]] — Destilado da Graphic Charter 42 focado em desenvolvimento de software: cores exatas (hex), tipografia, regras de logotipo, UI elements e favicon. Corta branding físico, redes sociais, fotografia e vídeo.
+- [[references/42-oauth2-flow|OAuth2 42 — Fluxo Completo]] — Implementação do Authorization Code Flow da API 42 no 42 Chat — token exchange, upsert de usuário, DEV_MODE bypass e pitfalls de rate limit / expiração.
+- [[references/50_voice-tone|Brand Voice & Tone]] — Brand Voice & Tone: framework e metodologia de referência.
+- [[references/60_narrative-story|Brand Narrative & Story]] — Brand Narrative & Story: framework e metodologia de referência.
+- [[references/70_founder-tension|Brand Founder vs Organization]] — Brand Founder vs Organization: framework e metodologia de referência.
+- [[references/90_SYNTHESIS|Brand Synthesis]] — Brand Synthesis: framework e metodologia de referência.
+- [[references/adr/adr-001-budget-tracking|ADR-001: Budget Tracking]]
+- [[references/adr/adr-002-timeout-enforcement|ADR-002: Timeout Enforcement]]
+- [[references/adr/adr-003-failure-propagation|ADR-003: Failure Propagation]]
+- [[references/adr/adr-004-verify-deterministic|ADR-004: Verify Deterministic]]
+- [[references/adr/adr-005-summarization-strategy|ADR-005: Summarization Strategy]]
+- [[references/adr/adr-006-merge-strategy|ADR-006: Merge Strategy]]
+- [[references/adr/adr-007-tool-ceiling|ADR-007: Tool Ceiling]]
+- [[references/adr-template|ADR Template]] — Template para Architecture Decision Records (ADR) — registro de decisões arquiteturais.
+- [[references/agentops-observability-platform|AgentOps — Observability Platform para AI Agents]]
+- [[references/ai-brag-document|AI Brag Document]] — AI Brag Document: template para documentar conquistas e impacto do trabalho com IA.
+- [[references/architecture-patterns|Architecture Patterns]] — Catálogo comparativo de padrões de arquitetura: monolith, microservices, event-driven, CQRS.
+- [[references/auth-integration|Integração de Auth — JWT + Chi + WebSocket]] — Arquitetura de autenticação do 42 Chat em 3 camadas — OAuth2 42 → JWT interno → WebSocket upgrade. Middleware Chi, claims, contexto e fluxo ponta a ponta.
+- [[references/bdd-specification-process|BDD Specification Process]] — Processo completo de especificação BDD com Gherkin: fluxo do Gherkin Expert (7 etapas), design de cenários, estruturação de acceptance criteria (happy path → erro → borda), domain modeling, tri-path PromptWriter (English vs Gherkin vs TLA+), evidência empírica (+26% Gherkin sobre English), anti-padrões e templates.
+- [[references/claude-code/agent-teams|Claude Code — Agent Teams (orquestração de companheiros)]] — Documentação Claude Code v2.1.178+ sobre equipes de agentes — orquestração de múltiplos companheiros Claude Code com lista de tarefas compartilhada, mensagens diretas e modos in-process / split-pane.
+- [[references/claude-code/agent-view|Claude Code — Agent View (UI de múltiplas sessões)]] — Documentação Claude Code v2.1.139+ (preview) sobre agent view — TUI fullscreen via claude agents para despachar e gerenciar muitas sessões background, com supervisor process, worktrees isolados e atalhos de teclado.
+- [[references/claude-code/claude-skills|Claude Code — Skills (SKILL.md, frontmatter, invocação)]] — Documentação Claude Code sobre skills — criação de SKILL.md, frontmatter completo, escopos (pessoal/projeto/plugin/enterprise), invocação (user/claude), execução em subagent, share e troubleshooting. Padrão aberto Agent Skills (agentskills.io).
+- [[references/code-review-template|Code Review Template]] — Template para code review focado em riscos de backend e incidentes.
+- [[references/cognitive-bias-inventory|Cognitive Bias Inventory]] — Inventário estruturado de vieses cognitivos para detecção durante reasoning e challenge passes.
+- [[references/cost-tracking-analysis|Análise de Custo de Tokens — claude + 42_Framework]]
+- [[references/cucumber/10-minute-tutorial|10-Minute Tutorial]]
+- [[references/cucumber/api-automation|API Automation]]
+- [[references/cucumber-basics|Cucumber & BDD — Referência Completa]] — Síntese completa dos fundamentos de Cucumber, Gherkin, step definitions (JS/TS/Java/Ruby), hooks, World context, data tables, doc strings, Page Object pattern, boas práticas e anti-patterns para testes BDD.
+- [[references/cucumber/browser-automation|Browser Automation]]
+- [[references/cucumber/checking-assertions|Checking Assertions]]
+- [[references/cucumber/configuration|Configuration]]
+- [[references/cucumber/continuous-integration|Continuous Integration]]
+- [[references/cucumber/cucumber-api-reference|Cucumber API Reference]]
+- [[references/cucumber/cucumber-expressions|Cucumber Expressions]]
+- [[references/cucumber/discovery-workshop|Discovery Workshop]]
+- [[references/cucumber/environment-variables|Environment Variables]]
+- [[references/cucumber/example-mapping|Example Mapping]]
+- [[references/cucumber/gocuke|Gocuke — Gherkin-based BDD Testing for Go]]
+- [[references/cucumber/history-of-bdd|History of BDD]]
+- [[references/cucumber/index|Cucumber & BDD — Reference Index]]
+- [[references/cucumber/introduction|Introduction to Cucumber]]
+- [[references/cucumber/java-tooling|Java Tooling for Cucumber]]
+- [[references/cucumber/mocking-and-stubbing|Mocking and Stubbing]]
+- [[references/cucumber/myths-about-bdd|Myths About BDD]]
+- [[references/cucumber/parallel-execution|Parallel Execution]]
+- [[references/cucumber/state-management|State Management]]
+- [[references/cucumber/step-definitions|Step Definitions]]
+- [[references/cucumber/step-organization|Step Organization]]
+- [[references/cucumber/testable-architecture|Testable Architecture]]
+- [[references/cucumber/upgrading|Upgrading Cucumber]]
+- [[references/cucumber/user-story|User Story]]
+- [[references/cucumber/who-does-what|Who Does What in BDD]]
+- [[references/database-selection|Database Selection]] — Guia para seleção de banco de dados: tipos, trade-offs e critérios de decisão.
+- [[references/dialectic-synthesis|Dialectic Synthesis]] — Síntese dialética hegeliana com steel manning para construir contra-argumentos sólidos.
+- [[references/docker-compose|Docker & Compose no 42 Chat]] — Estrutura Docker do 42 Chat Core — multistage build, docker-compose, health checks, variáveis de ambiente e padrões dev vs prod.
+- [[references/evidence-audit|Evidence Audit]] — Metodologia de auditoria de evidências: falsificacionismo e avaliação de qualidade de claims.
+- [[references/gherkin-best-practices|Gherkin — Boas Práticas]] — Guia completo de boas práticas, anti-patterns, estilo declarativo vs imperativo, e dicas de revisão para escrever cenários Gherkin claros, manteníveis e orientados a comportamento.
+- [[references/gherkin-examples|Gherkin Examples]] — Exemplos reais de feature files Gherkin: busca de produtos, carrinho de compras, login, saque bancário, validação de senha, controle de acesso. Inclui comparações lado a lado: declarativo vs imperativo, behavior-focused vs UI-specific, focused vs multiple behaviors, meaningful vs generic data.
+- [[references/gherkin-syntax|Sintaxe Gherkin — Referência Completa]] — Guia de referência completo da sintaxe Gherkin para BDD (Behavior-Driven Development). Abrange estrutura de feature files, keywords, step arguments, Scenario Outline, internacionalização, convenções de nomenclatura, organização de diretórios e quick reference.
+- [[references/go-cache|Go Cache]] — Go Cache: padrão de implementação Go para cache.
+- [[references/go-chi-handler|Go Chi Handler]] — Go Chi Handler: padrão de implementação Go para chi handler.
+- [[references/go-chi-router|Go Chi Router]] — Go Chi Router: padrão de implementação Go para chi router.
+- [[references/go-code-review|Go Code Review]] — Go Code Review: boas práticas e regras de estilo Go destiladas de Go Wiki CodeReviewComments, Uber Style Guide.
+- [[references/go-concurrency|Go Concurrency]] — Go Concurrency: boas práticas e regras de estilo Go destiladas de Effective Go, Google Style Guide, Uber Style Guide.
+- [[references/go-context|Go Context]] — Go Context: boas práticas e regras de estilo Go destiladas de Go Wiki CodeReviewComments.
+- [[references/go-control-flow|Go Control Flow]] — Go Control Flow: boas práticas e regras de estilo Go destiladas de Effective Go, Google Style Guide.
+- [[references/go-data-structures|Go Data Structures]] — Go Data Structures: boas práticas e regras de estilo Go destiladas de Effective Go, Google Style Guide, Uber Style Guide, Go Wiki CodeReviewComments.
+- [[references/go-declarations|Go Declarations]] — Go Declarations: boas práticas e regras de estilo Go destiladas de Google Style Guide, Uber Style Guide.
+- [[references/go-defensive|Go Defensive]] — Go Defensive: boas práticas e regras de estilo Go destiladas de Effective Go, Uber Style Guide, Go Wiki CodeReviewComments.
+- [[references/go-documentation|Go Documentation]] — Go Documentation: boas práticas e regras de estilo Go destiladas de Google Style Guide.
+- [[references/go/effective-go|Effective Go]] — Effective Go — o guia canônico da linguagem Go, cobrindo formatação, nomes, estruturas de controle, funções, dados, métodos, interfaces, concorrência e erros.
+- [[references/go-enum|Go Enum]] — Go Enum: padrão de implementação Go para enum.
+- [[references/go-error-handling|Go Error Handling]] — Go Error Handling: boas práticas e regras de estilo Go destiladas de Google Style Guide, Uber Style Guide.
+- [[references/go-error|Go Error]] — Go Error: padrão de implementação Go para error.
+- [[references/go-functional-options|Go Functional Options]] — Go Functional Options: boas práticas e regras de estilo Go destiladas de Uber Style Guide.
+- [[references/go-functions|Go Functions]] — Go Functions: boas práticas e regras de estilo Go destiladas de Effective Go, Google Style Guide, Uber Style Guide.
+- [[references/go-generics|Go Generics]] — Go Generics: boas práticas e regras de estilo Go destiladas de Google Style Guide.
+- [[references/go/go-code-review-rules|Go Code Review Rules — Uber Style Guide (59 Regras)]] — Consolidação das 59 regras do Uber Go Style Guide (tradução PT-BR) com exemplos Ruim/Bom. Baseado no guia original de Prashant Varanasi e Simon Newton.
+- [[references/go/goimports|goimports — Go Import Manager]] — Command goimports updates your Go import lines, adding missing ones and removing unreferenced ones. Also formats code in the same style as gofmt.
+- [[references/go-gorm-model|Go Gorm Model]] — Go Gorm Model: padrão de implementação Go para gorm model.
+- [[references/go/go-wiki-code-review|Go Wiki: Code Review Comments]] — Go Wiki CodeReviewComments — checklist oficial da comunidade Go com comentários comuns feitos durante revisões de código.
+- [[references/go-integration-tests|Go Integration Tests]] — Go Integration Tests: padrão de implementação Go para integration tests.
+- [[references/go-interfaces|Go Interfaces]] — Go Interfaces: boas práticas e regras de estilo Go destiladas de Effective Go, Google Style Guide, Uber Style Guide.
+- [[references/go-jwt-api-reference|Go JWT API Reference (v5.3.1)]] — Referência completa da API golang-jwt v5: Token, Claims, Parser, Validator, SigningMethod, ParserOptions, erros, e sub-pacotes request/test.
+- [[references/go-jwt|Go JWT (golang-jwt v5)]] — Biblioteca Go para JSON Web Tokens (RFC 7519). Suporta HMAC, RSA, ECDSA, Ed25519. v5 traz Claims refatorado e ParserOptions.
+- [[references/go-linting|Go Linting]] — Go Linting: boas práticas e regras de estilo Go destiladas de Uber Style Guide.
+- [[references/go-logging|Go Logging]] — Go Logging: boas práticas e regras de estilo Go destiladas de Google Style Guide, Uber Style Guide.
+- [[references/go-mapper|Go Mapper]] — Go Mapper: padrão de implementação Go para mapper.
+- [[references/go-modular-architecture|Go Modular Architecture]] — Go Modular Architecture: padrão de arquitetura modular para aplicações Go com separação de camadas.
+- [[references/go-naming|Go Naming]] — Go Naming: boas práticas e regras de estilo Go destiladas de Google Style Guide, Uber Style Guide.
+- [[references/go-packages|Go Packages]] — Go Packages: boas práticas e regras de estilo Go destiladas de Google Style Guide, Uber Style Guide, Go Wiki CodeReviewComments.
+- [[references/go-performance|Go Performance]] — Go Performance: boas práticas e regras de estilo Go destiladas de Uber Style Guide, Google Style Guide, Go Wiki CodeReviewComments.
+- [[references/go-repository|Go Repository]] — Go Repository: padrão de implementação Go para repository.
+- [[references/go-service|Go Service]] — Go Service: padrão de implementação Go para service.
+- [[references/go-style-core|Go Style Core]] — Go Style Core: boas práticas e regras de estilo Go destiladas de Effective Go, Google Style Guide, Uber Style Guide, Go Wiki CodeReviewComments.
+- [[references/go-style-guide|Go Style Guide Reference]] — Catálogo de 20 tópicos de estilo e boas práticas Go destilados dos guias oficiais (Google, Uber, Effective Go, CodeReviewComments).
+- [[references/go-testing|Go Testing]] — Go Testing: boas práticas e regras de estilo Go destiladas de Google Style Guide, Uber Style Guide.
+- [[references/go-unit-tests|Go Unit Tests]] — Go Unit Tests: padrão de implementação Go para unit tests.
+- [[references/go-usecase|Go Usecase]] — Go Usecase: padrão de implementação Go para usecase.
+- [[references/go-validator|Go Validator]] — Go Validator: padrão de implementação Go para validator.
+- [[references/go-websocket-client|Go Websocket Client]] — Go Websocket Client: padrões e boas práticas para WebSocket em Go com gorilla/websocket. Fontes: gorilla/websocket docs, gorilla/websocket examples.
+- [[references/go-websocket-core|Go WebSocket Core]] — Go WebSocket Core: padrões e boas práticas para WebSocket em Go com gorilla/websocket. Fontes: gorilla/websocket official docs, websocket.org Go guide, gorilla/websocket GitHub.
+- [[references/go-websocket-hub|Go Websocket Hub]] — Go Websocket Hub: padrões e boas práticas para WebSocket em Go com gorilla/websocket. Fontes: gorilla/websocket examples, gorilla/websocket chat example, websocket.org Go guide.
+- [[references/go-websocket-server|Go Websocket Server]] — Go Websocket Server: padrões e boas práticas para WebSocket em Go com gorilla/websocket. Fontes: gorilla/websocket docs, Go net/http docs, websocket.org.
+- [[references/go-websocket-testing|Go Websocket Testing]] — Go Websocket Testing: padrões e boas práticas para WebSocket em Go com gorilla/websocket. Fontes: gorilla/websocket docs, Go testing docs.
+- [[references/implementation-notes-template|Implementation Notes Template]] — Template para notas de implementação: task, abordagem, decisões, rollback.
+- [[references/integration-testing-docker|Integration Testing with Docker]] — Smoke tests, Docker test lifecycle, WebSocket testing with gorilla/websocket, table-driven patterns, and CI/CD integration — based on real 42_chat patterns.
+- [[references/jschan-config-templates|jschan Configuration Templates]]
+- [[references/mdx/extending-mdx|Estendendo MDX]] — Documentação oficial sobre como estender MDX com plugins — remark, rehype e recma plugins para transformar conteúdo em diferentes estágios da compilação.
+- [[references/mdx/getting-started|Getting Started com MDX]]
+- [[references/mdx/troubleshooting-mdx|Troubleshooting MDX]] — Documentação oficial de troubleshooting MDX — problemas comuns de integração, uso e escrita: ESM, erros de parsing JSX, expressões, interleaving e migração v1→v2.
+- [[references/mdx/using-mdx|Usando MDX]] — Documentação oficial sobre como usar arquivos MDX — passar props, componentes, layouts e usar o MDXProvider para context-based component passing.
+- [[references/mdx/what-is-mdx|What is MDX?]] — Documentação oficial do MDX — formato que combina Markdown com JSX, permitindo usar componentes, expressões JavaScript e import/export ESM dentro de conteúdo markdown.
+- [[references/mode-selection-guide|Mode Selection Guide]] — Guia para selecionar o modo de reasoning adequado (minimal, low, medium, high, max).
+- [[references/nfr-checklist|NFR Checklist]] — Checklist de Non-Functional Requirements: performance, segurança, escalabilidade, observabilidade.
+- [[references/oauth2-42-pitfalls|OAuth2 42 Debugging Pitfalls]] — 3 pitfalls comuns ao integrar OAuth2 da 42 Intra: redirect_uri divergente, shell env vars sobrescrevendo .env no Docker, e React StrictMode double-invocando token exchange.
+- [[references/observability|Observabilidade em Produção — Go + Chi + Datadog]]
+- [[references/papers/Agentic-AI-in-Production|Agentic AI in Production — Tool-Calling, Planning, Recovery]] — 6 sistemas agentic em produção. 23 falhas depuradas, 4 padrões de falha (malformed tool calls, infinite loops, error cascades, context overflow). Tool design com schemas tight (14% → 2.1% falha), planning loops com hard limits em código, error recovery tipado, e observabilidade com session traces.
+- [[references/papers/A-MapReduce|A-MapReduce — Executing Wide Search via Agentic MapReduce]]
+- [[references/papers/Building-AI-Agents-Architecture|Building AI Agents — Architecture, Trade-offs, and What Weve Learned]] — Decisões de arquitetura em agentes AI de produção. LangChain abandonado após 3 projetos — abstração custa mais que conveniência. Claude 3.5 Sonnet como default, tool design como decisão mais subestimada, e eval infra antes do agente. 3 erros comuns cometidos e corrigidos.
+- [[references/papers/LangGraph-in-Production|LangGraph in Production — StateGraph, Checkpointing e Human-in-the-Loop]]
+- [[references/papers/LangGraph-vs-LangChain|LangGraph vs LangChain: Which We Deploy in Production (2026)]] — 8 de 12 projetos começaram LangChain, 4 migraram pra LangGraph. Decision matrix: quando cada um, padrões de produção, e quando custom loop é superior. Valida LATTE como custom loop.
+- [[references/papers/LATTE|LATTE — Language Agent Teams for Task Evolution]]
+- [[references/papers/Multi-Agent-Systems-in-Production|Multi-Agent AI Systems in Production (2026)]] — 8 projetos multi-agent em produção. 3 padrões de orquestração (pipeline, supervisor, parallel fan-out), failure propagation, cost explosion, e quando NÃO usar multi-agent. Fonte dos gaps 1-7 da Feature 005.
+- [[references/papers/Obsidian-Otimizacao-IA|Otimização de Obsidian para IA]]
+- [[references/playwright-bdd/add-fixtures|Add fixtures]]
+- [[references/playwright-bdd/allure-reporter|Allure Reporter]]
+- [[references/playwright-bdd/api|API Reference]]
+- [[references/playwright-bdd/authentication|Authentication]]
+- [[references/playwright-bdd/bdd-fixtures|BDD fixtures]]
+- [[references/playwright-bdd/cli|CLI]]
+- [[references/playwright-bdd/configuration|Configuration — Overview]]
+- [[references/playwright-bdd/cucumber-reporters|Cucumber Reporters]]
+- [[references/playwright-bdd/cucumber-style|Cucumber-style]]
+- [[references/playwright-bdd/customize-examples-title|Customize examples title]]
+- [[references/playwright-bdd/data-tables|Data tables]]
+- [[references/playwright-bdd/decorators|Decorators]]
+- [[references/playwright-bdd/doc-strings|Doc strings]]
+- [[references/playwright-bdd/esm|ESM]]
+- [[references/playwright-bdd/fix-with-ai|Fix with AI]]
+- [[references/playwright-bdd/getting-started|Overview — Getting Started]]
+- [[references/playwright-bdd/hooks-fixtures|Fixtures]]
+- [[references/playwright-bdd/index|Playwright-BDD — Reference Index]]
+- [[references/playwright-bdd/installation|Installation]]
+- [[references/playwright-bdd/introduction|Playwright-BDD documentation]]
+- [[references/playwright-bdd/keywords-matching|Keywords matching]]
+- [[references/playwright-bdd/localization|Localization]]
+- [[references/playwright-bdd|Playwright BDD — Referência Completa]] — Referência completa do Playwright BDD: instalação, defineBddConfig, projetos múltiplos, step definitions com createBdd, parâmetros ({string}/{int}/{float}), regex, custom types, fixtures, Page Object Model, data tables, doc strings, tags especiais, execução e troubleshooting.
+- [[references/playwright-bdd/migration-v9|Migration to v9]]
+- [[references/playwright-bdd/options|Options]]
+- [[references/playwright-bdd/passing-data-between-scenarios|Passing data between scenarios]]
+- [[references/playwright-bdd/passing-data-between-steps|Passing data between steps]]
+- [[references/playwright-bdd/playwright-reporters|Playwright Reporters]]
+- [[references/playwright-bdd/playwright-style|Playwright-style]]
+- [[references/playwright-bdd/projects|Projects]]
+- [[references/playwright-bdd/reusing-step-fn|Re-using step function]]
+- [[references/playwright-bdd/running-hook-once|Running hook once]]
+- [[references/playwright-bdd/scenario-hooks|Scenario hooks]]
+- [[references/playwright-bdd/scoped-step-definitions|Scoped step definitions]]
+- [[references/playwright-bdd/snippets|Snippets]]
+- [[references/playwright-bdd/special-tags|Special tags]]
+- [[references/playwright-bdd/step-hooks|Step hooks]]
+- [[references/playwright-bdd/tags-from-path|Tags from path]]
+- [[references/playwright-bdd/worker-hooks|Worker hooks]]
+- [[references/playwright-bdd/write-first-test|Write first BDD test]]
+- [[references/playwright-bdd/writing-features|Writing features — Overview]]
+- [[references/playwright-bdd/writing-steps|Writing steps — Overview]]
+- [[references/postgresql|PostgreSQL no 42 Chat]] — Padrões de uso do PostgreSQL no 42 Chat Core — connection pool, migrations, queries parametrizadas, schema design e escolha lib/pq.
+- [[references/prd-template|PRD Template]] — Template de Product Requirements Document: overview, objetivos, requisitos, milestones.
+- [[references/pre-mortem-analysis|Pre-Mortem Analysis]] — Metodologia pre-mortem (Gary Klein) com second-order thinking para antecipar falhas.
+- [[references/pr-template|PR Template]] — Template de Pull Request: descrição, changeset, risco, deploy notes, rollback.
+- [[references/qa-overview|QA & BDD no Framework SDD]] — Visão geral da estratégia de Quality Assurance no framework SDD, integrando BDD, TDD e o agente QA (feature 007) para garantir qualidade desde a especificação até a execução. Este documento mapeia o ecossistema de referências de QA, define quando cada ferramenta se aplica e orienta o uso das skills do agent-qa.
+- [[references/react-vite-asset-handling|React + Vite Asset Handling]] — 4 regras HIGH de asset handling React+Vite: otimização de imagens (WebP/AVIF, lazy loading), SVG como React components com SVGR, fontes self-hosted com font-display: swap, e public/ vs import.
+- [[references/react-vite-build-optimization|React + Vite Build Optimization]] — 7 regras CRITICAL de build do React+Vite: manual chunks, minification (OXC/Terser), modern target, sourcemaps, tree shaking, compression (gzip+Brotli) e asset hashing.
+- [[references/react-vite-code-splitting|React + Vite Code Splitting]] — 5 regras CRITICAL de code splitting React+Vite: route-based lazy loading (50-80% menor), Suspense boundaries estratégicos, dynamic imports para libs pesadas, lazy de componentes não-críticos e prefetch hints.
+- [[references/react-vite-development|React + Vite Development]] — 3 regras HIGH de dev React+Vite: dependency pre-bundling (2-5x faster cold start), estrutura de componentes para Fast Refresh e configuração de HMR (Docker/WSL/polling).
+- [[references/react-vite-environment-config|React + Vite Environment & Bundle Analysis]] — 4 regras MEDIUM de env config + bundle analysis React+Vite: prefixo VITE_ para segurança, mode-specific env files (.env.development/.production/staging), proteção de secrets e bundle visualizer com rollup-plugin-visualizer.
+- [[references/react-vite-performance|React + Vite Performance Rules]] — Guia de otimização de performance para apps React com Vite — 23 regras em 6 categorias cobrindo build, code splitting, dev, assets, env e bundle analysis.
+- [[references/recipe-step-executor|Recipe Step Executor — Executor de Workflows Multi-Step]] — Implementação de referência (Python) de um executor de passos de receita com suporte a condições, dependências (DAG), retry com backoff exponencial, timeout, captura de output via templates e delegação de sub-recipes. Cobertura de testes completa com 6 features e interações cross-feature.
+- [[references/red-team-adversarial|Red Team Adversarial]] — Pensamento adversarial e red teaming para encontrar fraquezas antes dos adversários.
+- [[references/sdd-dsa-series|Spec-Driven Development — Série DSA Academy]]
+- [[references/socratic-questioning|Socratic Questioning]] — Framework de questionamento socrático para expor premissas e aprofundar entendimento.
+- [[references/style-guide|Documentation Style Guide]] — Documentation Style Guide: framework e metodologia de referência.
+- [[references/system-design|System Design Guide]] — Guia de system design: abordagem estruturada para projetar sistemas distribuídos.
+- [[references/tasks-template|Tasks Template]] — Template de tasks.md: lista de tarefas com DAG para o pipeline SDD.
+- [[references/task-template|Task Template]] — Template de task atômica: papel, dependências, paralelizável, arquivos, verificação.
+- [[references/tdd-anti-patterns|TDD Anti-Patterns — Catálogo de Referência]] — Catálogo dos 8 anti-patterns mais comuns em TDD com exemplos em Python/pytest: The Liar, Excessive Setup, The Giant, The Mockery, The Inspector, The Slow Poke, The Generous Leftovers, The Free Ride. Cada anti-pattern inclui problema, exemplo ruim, diagnóstico e solução.
+- [[references/tdd-first-principles|TDD FIRST Principles & AAA Pattern]] — Princípios FIRST (Fast, Isolated, Repeatable, Self-Validating, Timely) para escrita de testes eficazes e o padrão AAA (Arrange-Act-Assert) para organização de testes limpos e legíveis.
+- [[references/tdd-methodology|Metodologia TDD — Test-Driven Development]] — Referência completa sobre a metodologia TDD: ciclo Red-Green-Refactor-Commit, princípios FIRST, padrão AAA (Arrange-Act-Assert), nomenclatura e organização de testes, e os 8 anti-patterns mais comuns com exemplos práticos em Python/pytest.
+- [[references/techspec-template|Tech Spec Template]] — Template de especificação técnica: problema, proposta, trade-offs, implementação.
+- [[references/toolkits/github/forbidden-patterns|Forbidden Patterns]]
+- [[references/toolkits/github/tier-system|Tier System]]
+- [[references/toolkits/obsidian/CALLOUTS|Callouts]]
+- [[references/toolkits/obsidian/EMBEDS|Embeds]]
+- [[references/toolkits/obsidian/EXAMPLES|Examples]]
+- [[references/toolkits/obsidian/FUNCTIONS_REFERENCE|Functions Reference]]
+- [[references/toolkits/obsidian/PROPERTIES|Properties]]
+- [[references/toolkits/qa/anti-patterns|Anti Patterns]]
+- [[references/toolkits/qa/best-practices|Best Practices]]
+- [[references/toolkits/qa/edge-cases|Edge Cases]]
+- [[references/toolkits/qa/syntax|Syntax]]
+- [[references/toolkits/qa/table-driven|Table Driven]]
+- [[references/toolkits/sdd/architecture-patterns|Architecture Patterns]]
+- [[references/toolkits/sdd/canonical-templates|Canonical Templates]]
+- [[references/toolkits/sdd/content-quality|Content Quality]]
+- [[references/toolkits/sdd/coordination-graph-template|Coordination Graph Template]]
+- [[references/toolkits/sdd/interview-dimensions|Interview Dimensions]]
+- [[references/toolkits/sdd/sdd-workflow-agents-md|Sdd Workflow Agents Md]]
+- [[references/toolkits/sdd/spec-template|Spec Template]]
+- [[references/toolkits/sdd/task-rules|Task Rules]]
+- [[references/toolkits/sdd/tech-template|Tech Template]]
+- [[references/toolkits/wiki/experiential-memory|Wiki Experiential Memory — Features 002 & 003]] — Documentação completa das Features 002 e 003: memória experiencial com indexação semântica de chunks da wiki, retrieval contextual (cosine + BM25 híbrido), hint scoring com feedback loop, distillation periódica, e normalização de frontmatter. Inspirado no Experiential Memory do A-MapReduce.
+- [[references/toolkits/wiki/ingest-prompts|Ingest Prompts]]
+- [[references/toolkits/wiki/karpathy-pattern|Karpathy Pattern]]
+- [[references/toolkits/wiki/RAW-FORMAT|Raw Format]] — <1–2 sentences, ≤200 chars — what is this finding about?
+- [[references/toolkits/wiki/url-sources|Url Sources]] — Project wiki for <project-name. Created automatically via URL ingest.
+- [[references/vite-environment-api|Vite Environment API]] — API de múltiplos ambientes do Vite 6+: configuração de runtimes client/server/edge com herança de config e custom environment providers.
+- [[references/vite-reference|Vite Reference]] — Referência consolidada do Vite: configuração (vite.config.ts), features (glob import, HMR API, asset queries), plugin API (hooks, virtual modules) e build/SSR (library mode, JS API, multi-page).
+- [[references/vite-rolldown-migration|Vite Rolldown Migration]] — Guia de migração Vite 7 → 8: Rolldown substitui esbuild+Rollup, Oxc substitui esbuild transformer, rollupOptions → rolldownOptions, esbuild → oxc.
+- [[references/websocket-production|WebSocket Production — Ping/Pong, Reconnect, Scaling & Rate Limiting]] — Padrões de produção para WebSocket no 42 Chat — keepalive com ping/pong, estratégias de reconexão client-side, scaling multi-instância via Redis pub/sub, persistência de mensagens com soft delete e cursor pagination, rate limiting e hardening de segurança.
+
+## synthesis (8)
+
+- [[synthesis/consolidation-2026-06-27|Consolidation Report 2026-06-27]] — Auto-generated consolidation report from wiki-lint --consolidate run on 2026-06-27. Fixed lifecycle values, tag formatting, broken links, and orphan cross-references.
+- [[synthesis/go-tooling-ecosystem|Go Tooling Ecosystem]] — O ecossistema de tooling Go como um gradiente de disciplinas — do automático (gofmt) ao manual (code review com thinking tools). Como linting, estilo e revisão formam camadas complementares de qualidade.
+- [[synthesis/oauth2×jwt|OAuth2 × JWT]] — A dupla de autenticação do 42 Chat: OAuth2 externo (API 42) para identidade e JWT interno para sessão. Duas camadas com responsabilidades distintas que, juntas, formam a espinha dorsal de segurança do sistema.
+- [[synthesis/playwright-bdd×cucumber|Playwright-BDD × Cucumber]] — O que emerge da interseção entre Playwright-BDD e Cucumber tradicional: duas filosofias de BDD que se complementam em camadas — Cucumber para discovery e especificação, Playwright-BDD para execução em browser real.
+- [[synthesis/sdd-go|SDD × Go]] — Como o Spec-Driven Development se aplica a projetos Go: spec-first com padrões idiomáticos, testes como cidadãos de primeira classe, e o pipeline SDD como garantia de qualidade.
+- [[synthesis/thinking-architecture|Thinking × Architecture]] — Como aplicar ferramentas de reasoning (socrático, adversarial, pre-mortem) nas decisões de arquitetura: ADRs mais robustos e designs que sobrevivem ao escrutínio.
+- [[synthesis/thinking-go|Thinking × Go]] — Como aplicar ferramentas de reasoning (socrático, bias inventory, pre-mortem) no ciclo de desenvolvimento Go: code review, design decisions, debugging.
+- [[synthesis/websocket×chi|WebSocket × Chi]] — A interseção entre o protocolo WebSocket (full-duplex, stateful) e o roteador Chi (HTTP, stateless): como o 42 Chat resolve o impedance mismatch entre dois paradigmas de rede que coexistem no mesmo servidor.
+
+## tools (37)
+
+- [[tools/golangci-lint/Architecture|Architecture]]
+- [[tools/golangci-lint/bodyclose|bodyclose — HTTP Response Body Checker]] — bodyclose — static analysis tool which checks whether res.Body is correctly closed in Go HTTP clients.
+- [[tools/golangci-lint/Configuration|Configuration]]
+- [[tools/golangci-lint/Debugging|Debugging]]
+- [[tools/golangci-lint/exhaustive|exhaustive — Enum Switch Exhaustiveness Checker]] — exhaustive checks exhaustiveness of enum switch statements in Go source code. Ensures all iota constants are covered.
+- [[tools/golangci-lint/False Positives 1|False Positives]]
+- [[tools/golangci-lint/False Positives|False Positives]]
+- [[tools/golangci-lint/gocyclo|gocyclo — Cyclomatic Complexity Calculator]] — Gocyclo calculates cyclomatic complexities of functions in Go source code. Identifies code needing refactoring.
+- [[tools/golangci-lint/goleak package - go.uber.org_goleak|goleak package - go.uber.org/goleak]]
+- [[tools/golangci-lint/gosec|gosec — Go Security Checker]] — gosec inspects source code for security problems by scanning the Go AST and SSA code representation. Includes pattern-based rules, SSA analysis, and taint analysis.
+- [[tools/golangci-lint/guide.golangci.yml at master|guide/.golangci.yml at master]]
+- [[tools/golangci-lint/index|golangci-lint]]
+- [[tools/golangci-lint/ineffassign|ineffassign — Ineffectual Assignment Detector]] — Detect ineffectual assignments in Go code. An assignment is ineffectual if the variable assigned is not thereafter used.
+- [[tools/golangci-lint/Install|Install]]
+- [[tools/golangci-lint/Integrations|Integrations]]
+- [[tools/golangci-lint/linters/depguard|depguard]]
+- [[tools/golangci-lint/linters/gocritic|gocritic]]
+- [[tools/golangci-lint/linters/gosec|gosec]]
+- [[tools/golangci-lint/linters/gosimple|gosimple]]
+- [[tools/golangci-lint/linters/govet|govet]]
+- [[tools/golangci-lint/linters/_index|Linters — Índice]]
+- [[tools/golangci-lint/linters/overview|Linters]]
+- [[tools/golangci-lint/linters/revive|revive]]
+- [[tools/golangci-lint/linters/sloglint|sloglint]]
+- [[tools/golangci-lint/linters/staticcheck|staticcheck]]
+- [[tools/golangci-lint/linters/stylecheck|stylecheck]]
+- [[tools/golangci-lint/linters/tagliatelle|tagliatelle]]
+- [[tools/golangci-lint/linters/testifylint|testifylint]]
+- [[tools/golangci-lint/linters/varnamelen|varnamelen]]
+- [[tools/golangci-lint/linters/wsl|wsl]]
+- [[tools/golangci-lint/misspell|misspell — Spell Checker for Source Code]] — Correct commonly misspelled English words in source files — fast, parallel spell checker for Go, text, and markdown.
+- [[tools/golangci-lint/New linters|New linters]]
+- [[tools/golangci-lint/Quick Start|Quick Start]]
+- [[tools/golangci-lint/Website architecture|Website architecture]]
+- [[tools/jschan/installation|jschan — Guia de Instalação]]
+- [[tools/jschan/operations|jschan — Guia de Operações]]
+- [[tools/jschan/overview|jschan — Anonymous Imageboard Engine]]
+

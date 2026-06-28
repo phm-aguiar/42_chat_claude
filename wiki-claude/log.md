@@ -1,0 +1,10 @@
+- [2026-06-27T00:00:00Z] LINT issues_found=301 orphans=140 broken_links=54 stale=0 contradictions=0 prov_issues=1 missing_summary=128 fragmented_clusters=1 visibility_issues=0 promotion_candidates=0 synthesis_gaps=1 relationship_issues=0 lifecycle_issues=29
+- [2026-06-27T00:00:00Z] LINT_CONSOLIDATE links_fixed=9 orphans_rescued=8 lifecycle_updates=29 tier_demotions=0 tag_fixes=15 contradiction_callouts=0 confidence_fixes=1 report=synthesis/consolidation-2026-06-27.md
+- [2026-06-28T02:38:41Z] INGEST source="specs/BACKLOG.md" pages_updated=1 pages_created=0 mode=full
+- [2026-06-28T02:38:41Z] INGEST source="specs/features/SECURITY_BACKLOG.md" pages_updated=0 pages_created=1 mode=full
+- [2026-06-28T02:38:41Z] INGEST source="specs/features/102-42-forum/metrics.md" pages_updated=1 pages_created=0 mode=full
+- [2026-06-28T02:38:41Z] INGEST source="specs/features/100,101,102 (plan,tasks,acceptance)" pages_updated=2 pages_created=0 mode=full
+- [2026-06-28T02:38:41Z] INGEST source=".claude/skills/*.md (16 files)" pages_updated=0 pages_created=0 mode=full manifest_registered=16
+- [2026-06-28T02:38:41Z] INGEST source="11c5e42b.jsonl (claude_conversation 2.1MB)" pages_updated=3 pages_created=6 mode=full note="journals from prior sessions already captured"
+- [2026-06-28T02:38:41Z] INGEST source="fb7755da.jsonl (current session)" pages_updated=3 pages_created=2 mode=full
+- [2026-06-28T02:38:41Z] INDEX_REBUILD pages=334 categories=7

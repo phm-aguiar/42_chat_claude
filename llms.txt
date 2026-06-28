@@ -1,0 +1,101 @@
+# llms.txt — 42 Chat + Forum
+
+Entry point de navegação para agentes LLM. Leia este arquivo no onboarding para localizar specs, wiki e referências.
+
+## Guias Operacionais
+
+- `AGENTS.md` — Workflow SDD, skills, gatilhos, git conventions
+- `CLAUDE.md` — Stack, estrutura de código, API, convenções do projeto
+- `.github/memory/constitution.md` — Regras incontornáveis (portões de qualidade, restrições)
+- `.github/memory/tech.md` — Stack tecnológica homologada e versões
+
+## Specs (SDD)
+
+### Features implementadas
+
+- `specs/features/100-42chat-core/` — Chat core: WebSocket, OAuth2, PostgreSQL, JWT
+  - `spec.md`, `plan.md`, `tasks.md`
+- `specs/features/101-assinatura-participacao/` — UserSignature + stats de participação
+  - `spec.md`, `plan.md`, `tasks.md`
+- `specs/features/102-42-forum/` — Fórum completo: boards, threads, posts, MDX, moderação
+  - `spec.md`, `plan.md`, `tasks.md`, `metrics.md`
+
+### Backlog
+
+- `specs/BACKLOG.md` — Features planejadas não iniciadas
+- `specs/features/SECURITY_BACKLOG.md` — Issues de segurança pendentes
+
+## Wiki (`wiki-claude/`)
+
+260+ páginas de conhecimento compilado sobre o projeto, framework SDD e stack técnica.
+
+### Entry points
+
+- `wiki-claude/index.md` — Índice completo do vault por categoria
+- `wiki-claude/hot.md` — Páginas em atualização frequente
+- `wiki-claude/_insights.md` — Análise de grafo: hubs, bridges, tag cohesion
+
+### Projeto 42 Chat
+
+- `wiki-claude/projects/42_chat/42_chat.md` — Visão geral do projeto
+- `wiki-claude/projects/42_chat/features/` — Páginas por feature (100–102 + framework)
+- `wiki-claude/projects/42_chat/skills/` — Skills SDD: brainstorm, generate-plan, generate-tasks
+
+### Projeto 42 Framework (SDD + LATTE + Wiki)
+
+- `wiki-claude/projects/42_Framework/42_Framework.md` — Visão geral do framework
+- `wiki-claude/projects/42_Framework/features/001-latte-coordination.md` — LATTE: coordenação dinâmica
+- `wiki-claude/projects/42_Framework/features/002-experiential-memory.md` — Memória experiencial híbrida
+- `wiki-claude/projects/42_Framework/features/003-hybrid-retrieval.md` — BM25 + cosine search
+
+### Conceitos
+
+- `wiki-claude/concepts/sdd.md` — Spec-Driven Development: pipeline e princípios
+- `wiki-claude/concepts/sdd-workflow.md` — Fluxo detalhado: brainstorm → tasks → coordenação
+- `wiki-claude/concepts/wiki-model.md` — Padrão LLM Wiki (Karpathy): 3 camadas
+
+### Entidades técnicas
+
+- `wiki-claude/entities/` — Chi, WebSocket, JWT, OAuth2, Hub, User, Message, Client
+
+### Referências
+
+- `wiki-claude/references/` — Posicionamento, audiência, personalidade do produto 42 Chat
+- `wiki-claude/references/toolkits/` — Toolkits SDD, wiki, agent patterns
+
+### Sínteses
+
+- `wiki-claude/synthesis/` — Cross-cutting analysis: Go+WebSocket, SDD+Go, etc.
+
+## Skills (`.claude/skills/`)
+
+### SDD Pipeline
+
+- `.claude/skills/sdd/SKILL.md` — Dispatcher 8 modos
+- `.claude/skills/sdd-brainstorm/SKILL.md` — Brainstorm → spec.md
+- `.claude/skills/sdd-generate-plan/SKILL.md` — spec.md → plan.md
+- `.claude/skills/sdd-generate-tasks/SKILL.md` — plan.md → tasks.md (DAG + LATTE)
+- `.claude/skills/sdd-validate/SKILL.md` — Auditoria PASS/FAIL/WARN
+- `.claude/skills/sdd-explore-tech/SKILL.md` — Detecta stack → tech.md
+- `.claude/skills/sdd-init-repo/SKILL.md` — Inicializa estrutura SDD
+- `.claude/skills/sdd-refactor-artifact/SKILL.md` — Normaliza artefatos
+
+### Wiki
+
+- `.claude/skills/wiki/SKILL.md` — Toolkit completo (8 modos)
+- `.claude/skills/wiki/experiential_memory/` — Índice híbrido BM25 + embeddings
+- `.claude/skills/wiki-meta/SKILL.md` — Fundamentos: templates, provenance, lifecycle
+
+### LATTE Coordination
+
+- `.claude/skills/sdd/latte_coordination/` — Orchestrator, dispatcher, metrics, heartbeat
+  - `orchestrator.py` — Lead operator
+  - `dispatcher.py` — Task dispatch
+  - `metrics.py` — Compute_coordination_metrics
+  - `tests/` — 84 testes de integração
+
+## Índice Semântico (Experiential Memory)
+
+O índice `~/.claude/wiki_index.db` é o cache SQLite de chunks + embeddings da wiki.
+Reconstruir: `python3 .claude/skills/wiki/experiential_memory/cli_index.py --full`
+Consultar: `python3 .claude/skills/wiki/experiential_memory/cli_query.py "<query>"`

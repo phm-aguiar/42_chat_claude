@@ -1,0 +1,38 @@
+# Secrets
+.env
+.env.local
+.env.*.local
+
+# Wiki index (reconstruível com cli_index.py --full)
+~/.claude/wiki_index.db
+*.bak
+
+# Go
+bin/
+dist/
+vendor/
+
+# Node / Frontend
+node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Docker
+postgres-data/
+
+# Editor
+.DS_Store
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Duplicatas locais (versão canônica em .claude/skills/wiki/experiential_memory/)
+experiential_memory/
+llm_wiki/
+
+# Temp / cache
+tmp/
+__pycache__/
+*.pyc
+*.pyo

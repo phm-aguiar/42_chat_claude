@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(awk -F: '{print $1}')",
+      "Bash(xargs ls)",
+      "Bash(mkdir -p /home/zeenyt__/Projetos/42_chat_claude/.claude/skills/sdd)",
+      "Bash(mkdir -p /home/zeenyt__/Projetos/42_chat_claude/.claude/skills/sdd-brainstorm/assets)",
+      "Bash(mkdir -p /home/zeenyt__/Projetos/42_chat_claude/.claude/skills/sdd-generate-plan/assets)",
+      "Bash(mkdir -p /home/zeenyt__/Projetos/42_chat_claude/.claude/skills/sdd-generate-tasks/assets)",
+      "Bash(mkdir -p /home/zeenyt__/Projetos/42_chat_claude/.claude/skills/sdd-explore-tech/assets)",
+      "Bash(cp /home/zeenyt__/Projetos/42_chat_claude/skills-sdd/brainstorm/assets/spec-template.md /home/zeenyt__/Projetos/42_chat_claude/.claude/skills/sdd-brainstorm/assets/)",
+      "Bash(cp /home/zeenyt__/Projetos/42_chat_claude/skills-sdd/brainstorm/references/interview-dimensions.md /home/zeenyt__/Projetos/42_chat_claude/.claude/skills/sdd-brainstorm/assets/)",
+      "Bash(cp /home/zeenyt__/Projetos/42_chat_claude/skills-sdd/explore_tech/assets/tech-template.md /home/zeenyt__/Projetos/42_chat_claude/.claude/skills/sdd-explore-tech/assets/)",
+      "Bash(cp /home/zeenyt__/Projetos/42_chat_claude/skills-sdd/generate_plan/references/architecture-patterns.md /home/zeenyt__/Projetos/42_chat_claude/.claude/skills/sdd-generate-plan/assets/)",
+      "Bash(cp /home/zeenyt__/Projetos/42_chat_claude/skills-sdd/generate_tasks/references/task-rules.md /home/zeenyt__/Projetos/42_chat_claude/.claude/skills/sdd-generate-tasks/assets/)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\('node:', d.get\\('engines',{}\\).get\\('node','—'\\)\\); deps=d.get\\('dependencies',{}\\); [print\\(f'{k}: {v}'\\) for k in ['react','vite','tailwindcss','zustand'] if \\(v:=deps.get\\(k\\)\\)]\")",
+      "Bash(python3 .claude/skills/wiki/experiential_memory/cli_index.py --help)",
+      "Bash(python3 *)",
+      "Bash(go build *)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(git -C /home/zeenyt__/Projetos/42_chat_claude status)",
+      "Bash(git init *)",
+      "Bash(git add *)"
+    ]
+  }
+}
