@@ -1,9 +1,12 @@
 import { useEffect, useRef } from 'react';
 import type { Message } from '@/lib/api';
-import { UserAvatar } from './UserAvatar';
 
 interface MessageListProps {
   messages: Message[];
+}
+
+function formatTime(iso: string): string {
+  return new Date(iso).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
 }
 
 export function MessageList({ messages }: MessageListProps) {
@@ -13,35 +16,95 @@ export function MessageList({ messages }: MessageListProps) {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages.length]);
 
-  if (messages.length === 0) {
-    return (
-      <div className="flex-1 flex items-center justify-center text-[#29292E]">
-        Nenhuma mensagem ainda
-      </div>
-    );
-  }
-
   return (
-    <div className="flex-1 overflow-y-auto p-4 space-y-3">
+    <div
+      style={{
+        flex: 1,
+        overflowY: 'auto',
+        padding: '16px 0',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '2px',
+      }}
+    >
+      {messages.length === 0 && (
+        <div
+          style={{
+            flex: 1,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: '#29292E',
+            fontSize: '11px',
+            letterSpacing: '0.15em',
+            textTransform: 'uppercase',
+          }}
+        >
+          Nenhuma mensagem ainda
+        </div>
+      )}
+
       {messages.map((msg) => (
-        <div key={msg.id} className="flex gap-3 items-start">
-          <UserAvatar login={msg.login} imageUrl={msg.image_url} />
-          <div className="flex-1 min-w-0">
-            <div className="flex items-baseline gap-2">
-              <span className="text-[#00BABC] text-sm font-bold uppercase">
+        <div
+          key={msg.id}
+          style={{
+            display: 'flex',
+            alignItems: 'flex-start',
+            gap: '10px',
+            padding: '4px 20px',
+            transition: 'background 0.1s',
+          }}
+          onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.02)')}
+          onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
+        >
+          {/* Avatar */}
+          <img
+            src={msg.image_url || '/assets/default-avatar.png'}
+            alt={msg.login}
+            onError={(e) => { (e.currentTarget as HTMLImageElement).src = '/assets/default-avatar.png'; }}
+            style={{
+              width: '28px',
+              height: '28px',
+              flexShrink: 0,
+              objectFit: 'cover',
+              filter: 'grayscale(30%)',
+              marginTop: '2px',
+            }}
+          />
+
+          {/* Content */}
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginBottom: '2px' }}>
+              <span
+                style={{
+                  color: '#00BABC',
+                  fontSize: '11px',
+                  fontWeight: 700,
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                }}
+              >
                 {msg.login}
               </span>
-              <span className="text-[#29292E] text-xs">
-                {new Date(msg.created_at).toLocaleTimeString('pt-BR', {
-                  hour: '2-digit',
-                  minute: '2-digit',
-                })}
+              <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: '10px' }}>
+                {formatTime(msg.created_at)}
               </span>
             </div>
-            <p className="text-[#FFFFFF] text-sm break-words">{msg.content}</p>
+            <p
+              style={{
+                color: 'rgba(255,255,255,0.85)',
+                fontSize: '13px',
+                lineHeight: '1.5',
+                margin: 0,
+                wordBreak: 'break-word',
+              }}
+            >
+              {msg.content}
+            </p>
           </div>
         </div>
       ))}
+
       <div ref={bottomRef} />
     </div>
   );

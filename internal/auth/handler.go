@@ -34,7 +34,8 @@ func (h *Handler) Callback(w http.ResponseWriter, r *http.Request) {
 
 	accessToken, err := exchangeCode(code)
 	if err != nil {
-		http.Error(w, `{"error":"falha no OAuth2","code":"OAUTH2_ERROR"}`, http.StatusBadGateway)
+		msg, _ := json.Marshal(map[string]string{"error": err.Error(), "code": "OAUTH2_ERROR"})
+		http.Error(w, string(msg), http.StatusBadGateway)
 		return
 	}
 
@@ -117,17 +118,19 @@ func exchangeCode(code string) (string, error) {
 	if err != nil {
 		return "", fmt.Errorf("token request: %w", err)
 	}
-	defer resp.Body.Close()
+	defer resp.Body.Close() //nolint
 
 	var result struct {
-		AccessToken string `json:"access_token"`
-		Error       string `json:"error"`
+		AccessToken      string `json:"access_token"`
+		Error            string `json:"error"`
+		ErrorDescription string `json:"error_description"`
 	}
-	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
-		return "", fmt.Errorf("decode token: %w", err)
+	body, _ := io.ReadAll(resp.Body)
+	if err := json.Unmarshal(body, &result); err != nil {
+		return "", fmt.Errorf("decode token response: %w — body: %s", err, body)
 	}
 	if result.Error != "" {
-		return "", fmt.Errorf("oauth2 error: %s", result.Error)
+		return "", fmt.Errorf("42 oauth2: %s — %s", result.Error, result.ErrorDescription)
 	}
 	return result.AccessToken, nil
 }

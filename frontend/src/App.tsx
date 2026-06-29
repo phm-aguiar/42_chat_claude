@@ -7,7 +7,8 @@ import { ChatPage } from "@/pages/Chat";
 function App() {
   const path = window.location.pathname;
 
-  if (path.startsWith("/callback")) {
+  const params = new URLSearchParams(window.location.search);
+  if (path.startsWith("/callback") || params.has("code")) {
     return <CallbackPage />;
   }
 

@@ -1,6 +1,7 @@
 package chat
 
 import (
+	"context"
 	"database/sql"
 	"encoding/json"
 	"net/http"
@@ -132,7 +133,6 @@ func (h *Handler) ServeWS(w http.ResponseWriter, r *http.Request) {
 	go client.WritePump()
 	go func() {
 		defer func() {
-			// Broadcast de saída
 			leaveMsg, _ := json.Marshal(map[string]string{
 				"type":    "leave",
 				"login":   claims.Login,
@@ -140,7 +140,10 @@ func (h *Handler) ServeWS(w http.ResponseWriter, r *http.Request) {
 			})
 			h.Hub.Broadcast(leaveMsg)
 		}()
-		client.ReadPump(r.Context())
+		// context.Background: r.Context() é cancelado quando ServeWS retorna,
+		// o que encerraria readPump imediatamente. A vida do WS é gerenciada
+		// pelo próprio conn — hub.Shutdown() fecha via writePump no graceful shutdown.
+		client.ReadPump(context.Background())
 	}()
 }
 

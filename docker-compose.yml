@@ -32,7 +32,7 @@ services:
       JWT_SECRET: ${JWT_SECRET}
       FORTYTWO_CLIENT_ID: ${FORTYTWO_CLIENT_ID}
       FORTYTWO_CLIENT_SECRET: ${FORTYTWO_CLIENT_SECRET}
-      FORTYTWO_REDIRECT_URI: ${FORTYTWO_REDIRECT_URI:-http://localhost:5173}
+      FORTYTWO_REDIRECT_URI: ${FORTYTWO_REDIRECT_URI:-http://localhost:9999}
       FORTYTWO_API_URL: ${FORTYTWO_API_URL:-https://api.intra.42.fr}
       DEV_MODE: ${DEV_MODE:-false}
       DEV_USER: ${DEV_USER:-marvin}
@@ -45,6 +45,11 @@ services:
     build:
       context: .
       dockerfile: nginx/Dockerfile
+      args:
+        VITE_42_CLIENT_ID: ${VITE_42_CLIENT_ID:-}
+        VITE_42_REDIRECT_URI: ${VITE_42_REDIRECT_URI:-http://localhost:9999}
+        VITE_DEV_MODE: ${VITE_DEV_MODE:-false}
+        VITE_API_URL: ${VITE_API_URL:-}
     restart: unless-stopped
     depends_on:
       - server

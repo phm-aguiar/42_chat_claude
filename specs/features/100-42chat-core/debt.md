@@ -207,3 +207,68 @@ WebSocket /ws 401 — useWebSocket aborta
 - Submeter para review na intra
 
 **Prioridade:** baixa — não bloqueia o MVP. É dívida de quando o projeto for pra produção.
+
+---
+
+## DT-007 — Sidebar de usuários online mostra apenas histórico recente, não presença real
+
+**Origem:** o `Hub` (`internal/ws/hub.go`) mantém `map[*Client]bool` mas não armazena o `login` do usuário por client. Não há endpoint para listar quem está conectado agora.
+
+**Sintoma:** a sidebar "Online" exibe logins extraídos das últimas 50 mensagens como proxy — não reflete presença real. Um usuário que está conectado mas não enviou mensagens não aparece. Um usuário que enviou mensagens mas desconectou ainda aparece.
+
+**Correção esperada:**
+1. Adicionar `login string` ao `Client` struct em `internal/ws/client.go`
+2. Passar o login no `ServeWS` ao criar o client: `ws.NewClient(h.Hub, conn, claims.Login)`
+3. Expor `hub.OnlineUsers() []string` que itera `clients` com RLock e retorna logins
+4. Adicionar endpoint `GET /api/online` que retorna a lista
+5. Frontend: buscar `/api/online` ao conectar e atualizar via eventos `join`/`leave` do WS
+6. Zustand: adicionar `onlineUsers: string[]` ao chatStore
+
+**Prioridade:** média — funcionalidade visível e prometida na spec, mas não bloqueia o chat.
+
+---
+
+## DT-008 — WebSocket desconectava imediatamente após upgrade (r.Context() cancelado)
+
+**Origem:** `internal/chat/handler.go` — `ServeWS` lançava goroutines e retornava imediatamente. Ao retornar, `r.Context()` era cancelado pelo `net/http`, e `readPump` tinha `select { case <-ctx.Done(): return }` que disparava antes da primeira mensagem.
+
+**Sintoma:** WS conectava (101) e desconectava em < 300ms em loop — `useWebSocket` entrava em backoff constante. Nenhuma mensagem era enviada ou recebida.
+
+**Correção aplicada:** `client.ReadPump(r.Context())` → `client.ReadPump(context.Background())`. O ciclo de vida da conexão é gerenciado pelo `conn` e pelo `hub.Shutdown()`, não pelo contexto HTTP.
+
+**Status:** ✅ corrigido.
+
+---
+
+## DT-009 — Botão "Enviar" não enviava mensagens (consequência do DT-008)
+
+**Origem:** o botão chamava `onSend(content)` → `window.dispatchEvent(chat:send)` → `useWebSocket` tentava `ws.send()`, mas `ws.readyState` nunca era `OPEN` porque o WS desconectava imediatamente (DT-008).
+
+**Sintoma:** clicar em "Enviar" ou pressionar Enter não produzia nenhum efeito visível. Nenhuma mensagem aparecia na lista.
+
+**Correção aplicada:** fix do DT-008 resolve este item. Com WS estável, o envio funciona.
+
+**Status:** ✅ corrigido junto com DT-008.
+
+---
+
+## DT-010 — UI de chat sem aparência de chat: cores ruins, layout inadequado
+
+**Origem:** implementação inicial focou em estrutura funcional sem refinamento visual. Componentes usavam classes Tailwind genéricas sem coesão, o layout não tinha sidebar de usuários, e as cores 42 não eram aplicadas com contraste adequado.
+
+**Sintomas observados:**
+- Sem sidebar de usuários online
+- Status de conexão pouco visível
+- Botão "Enviar" sem feedback visual de estado (disabled vs. active)
+- Área de mensagens sem densidade adequada para um chat
+- Input sem indicação de foco
+- Cores 42 aplicadas de forma inconsistente
+
+**Correção aplicada (2026-06-29):** redesign completo dos componentes de chat:
+- `Chat.tsx`: layout com header + sidebar + área principal + input
+- `OnlineSidebar.tsx`: sidebar com lista de logins recentes + indicador verde ●
+- `MessageList.tsx`: mensagens densas com avatar, login em teal uppercase, timestamp sutil
+- `MessageInput.tsx`: textarea com foco teal + botão com estado visual correto
+- Todas as cores via inline styles com paleta 42 explícita (sem Tailwind para evitar purge)
+
+**Status:** ✅ corrigido. Sidebar ainda usa proxy de histórico (ver DT-007 para presença real).
