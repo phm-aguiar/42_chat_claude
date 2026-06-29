@@ -2,159 +2,186 @@
 
 ## Metadados
 - **ID:** 100
-- **Status:** draft
+- **Status:** revisão
 - **Aprovado:** true
 - **Autor:** phm-aguiar
-- **Data:** 2026-06-14
+- **Data original:** 2026-06-14
+- **Revisão:** 2026-06-29 — reescrita após validação pós-implementação (ver debt.md)
 - **Stack:** Go, React, PostgreSQL, Docker
-- **Referências:** [[references/42-chat-platform-architecture]], [[references/42-chat-design-system]], [[references/42-chat-engineering-requirements]], [[references/42-chat-architecture-diagram]], [[references/42-graphic-charter-software]]
+- **Referências:** [[references/42-chat-platform-architecture]], [[references/42-graphic-charter-software]]
 
 ## Propósito
-> Chat em tempo real para a 42 São Paulo (~300 alunos simultâneos), substituindo
-> Slack/Discord com integração nativa à API da 42. MVP focado: login OAuth2 42,
-> WebSocket, sala única "general", mensagens persistidas, Design System oficial 42.
+
+Chat em tempo real para a 42 São Paulo (~300 alunos simultâneos), substituindo
+Slack/Discord com integração nativa à API da 42. MVP focado: login OAuth2 42,
+WebSocket, sala única "general", mensagens persistidas.
 
 O campus perdeu o Discord e os alunos têm dificuldade com o Slack. O 42 Chat
 resolve isso com uma plataforma leve, integrada à intra da 42, que facilita a
 comunicação P2P — essencial para avaliações, pair programming e grupos de estudo.
 
+## Por que a spec foi reescrita
+
+A versão original (2026-06-14) estava aprovada e gerou 18 tasks implementadas.
+Após validação no browser, identificamos que **o produto não era utilizável**:
+sem página de login, sem roteamento por token, sem logout. A spec não especificou
+esses fluxos frontais e as tasks geradas nunca os cobriram.
+
+Esta revisão corrige o escopo com base nos itens DT-004 e DT-005 do debt.md.
+
+---
+
 ## Escopo
 
 ### Dentro do escopo (MVP)
-- **Autenticação:** Login exclusivo via OAuth2 da 42. JWT interno (12h) para sessão
-- **Chat em tempo real:** WebSocket (gorilla/websocket) com sala única "general"
-- **Persistência:** PostgreSQL para usuários (com `current_host`) e mensagens
-- **Cache anti-rate-limit:** 3 camadas — JWT (evita revalidação), cache PostgreSQL no primeiro login, ingestão batch para mapeamento
-- **Frontend:** React + Vite + Tailwind + Shadcn/ui. Design System oficial 42 ([[references/42-graphic-charter-software]])
-- **Deploy:** Docker Compose (Go + PostgreSQL). Alvo: AWS EC2 t2.micro
-- **API REST:** Rotas para histórico de mensagens, status do usuário, métricas
-- **Graceful shutdown:** Interceptação SIGINT/SIGTERM, drenar Hub, flush buffer → PostgreSQL
-- **Observabilidade:** `/metrics` com goroutines, memória, DB.Stats(), conexões WS
-- **Segurança:** JWT no middleware, CORS, rate limit. Credenciais via env vars. NUNCA hardcode secrets.
-- **Dev Mode:** `DEV_MODE=true` habilita `/api/auth/dev/login?login=marvin` para testes sem OAuth2 real.
-- **Redirect URI configurável:** `FORTYTWO_REDIRECT_URI` e `VITE_42_REDIRECT_URI` unificam o redirect entre frontend, backend e app 42 Intra.
-- **Docker Compose integrado:** PostgreSQL + server com variáveis do `.env`, healthcheck, migration automática.
+
+**Autenticação (ponta a ponta):**
+- Página de Login com botão "Entrar com a 42" → redireciona para OAuth2 da 42
+- Callback `/api/auth/42/callback`: troca code → access token → busca `/v2/me` → upsert usuário → gera JWT → retorna `{ token, user }`
+- Frontend salva JWT no `localStorage` e redireciona para `/chat`
+- **Dev Login:** botão visível apenas com `VITE_DEV_MODE=true` → chama `GET /api/auth/dev/login?login=marvin` → salva token → entra no chat
+- Logout: limpa `localStorage`, fecha WebSocket, redireciona para `/`
+
+**Roteamento frontend:**
+- `/` → se token válido: redireciona para `/chat`; se não: exibe `<LoginPage />`
+- `/chat` → exige token; sem token redireciona para `/`
+
+**Chat em tempo real:**
+- WebSocket autenticado (token via query param `?token=<jwt>`)
+- Sala única "general" — broadcast para todos os conectados
+- Histórico: últimas 50 mensagens via `GET /api/messages` ao entrar
+- Envio: textarea + Enter (sem Shift) → WS broadcast → persiste PostgreSQL
+- Recebimento: mensagens de outros aparecem em tempo real
+- Reconexão: backoff exponencial [1s, 2s, 4s, 8s, 16s] com indicador visual
+
+**Persistência:**
+- PostgreSQL para usuários e mensagens
+- Soft delete em mensagens (`deleted_at`), nunca hard delete
+- Expurgo LGPD: hard DELETE de mensagens > 6 meses via cron 24h (Art. 15)
+
+**Observabilidade:**
+- `GET /metrics` → JSON com `goroutines`, `db_open_connections`, `ws_active_clients`
+
+**Infra:**
+- Docker Compose: PostgreSQL 16 + server Go + nginx (frontend + proxy)
+- Migrations automáticas no startup
+- Graceful shutdown: SIGINT/SIGTERM → `hub.Shutdown` → 500ms → `srv.Shutdown(10s)` → `db.Close`
 
 ### Fora do escopo (features futuras)
-- **Matchmaking de avaliação** (/eval) — Feature 101 (algoritmo documentado em engineering-requirements)
-- **Fórum tech** (boards → threads → posts, MDX, moderação) — Feature 102 (usa `/api/forum/*`, mesmo PostgreSQL, mesmo JWT middleware)
-- **TUI cliente terminal** (Bubbletea) — Feature 103
-- **Painel admin Bocal** (moderação, kill switch) — Feature 104
-- **Salas múltiplas** (públicas, privadas, pair programming) — Feature 105
-- **Mensagens diretas (DM)** — Feature 106
-- **Salas efêmeras** (/pair) — Feature 107 (janela de tolerância WiFi 5min, GC automático)
+- **Matchmaking de avaliação** (/eval) — Feature 101
+- **Fórum tech** (boards → threads → posts) — Feature 102
+- **TUI terminal** — Feature 103
+- **Painel admin** — Feature 104
+- **Salas múltiplas / DMs** — Features 105–107
+- **Cache 3 camadas anti-rate-limit 42 API** — complexidade desnecessária no MVP; retry simples é suficiente
+
+---
 
 ## Comportamento Esperado
 
-### Cenário Principal (Happy Path)
-1. Aluno acessa https://chat.42sp.org.br
-2. Redirecionado para OAuth2 da 42 (authorize endpoint)
-3. Autoriza → callback para o backend com authorization code
-4. Backend troca code por token (POST /oauth/token)
-5. Backend busca dados do aluno (GET /v2/me) e upsert no PostgreSQL (id, login, image_url, current_host, level)
-6. Backend gera JWT interno (12h) e retorna pro frontend
-7. Frontend armazena JWT (Zustand) e conecta WebSocket com token
-8. Aluno vê a sala "general" com histórico recente (últimas 50 mensagens via REST)
-9. Envia mensagem → WebSocket → broadcast para todos conectados → persiste PostgreSQL
-10. Recebe mensagens de outros alunos em tempo real
-11. Logout/desconexão → WebSocket fecha, JWT expira
+### Cenário 1: Primeiro acesso (OAuth2)
 
-### Cenário: Reconexão
-1. Aluno perde conexão (wi-fi do campus)
-2. Frontend detecta WebSocket close e tenta reconectar com backoff exponencial
-3. Reconecta → recebe mensagens perdidas (timestamp > última recebida)
-4. UI mostra indicador "reconectando..."
+1. Aluno acessa `http://localhost:9999` (ou domínio de produção)
+2. Não tem token → vê `<LoginPage />` com botão "Entrar com a 42"
+3. Clica → frontend redireciona para `https://api.intra.42.fr/oauth/authorize?client_id=...&redirect_uri=...`
+4. Aluno autoriza na intra → 42 redireciona para `FORTYTWO_REDIRECT_URI/callback?code=<code>`
+5. Frontend extrai `code` da URL → chama `GET /api/auth/42/callback?code=<code>`
+6. Backend: troca code por access_token → GET `/v2/me` → upsert user no PostgreSQL → gera JWT 12h → retorna `{ token, user }`
+7. Frontend salva `token` no `localStorage` → navega para `/chat`
+8. `<ChatPage />` carrega → `fetchHistory()` → `GET /api/messages?limit=50` (com `Authorization: Bearer <token>`)
+9. `useWebSocket` conecta → `ws://host/ws?token=<token>` → recebe mensagens em tempo real
 
-### Cenário: Token expirado
-1. JWT expira durante sessão
-2. Próxima requisição REST retorna 401
-3. Frontend redireciona para login OAuth2
-4. Se ainda tiver cookie de sessão na 42, login é transparente (sem re-autenticação)
+### Cenário 2: Dev login (DEV_MODE=true)
 
-### Cenário: Rate limit da API 42
-1. Múltiplos alunos logam simultaneamente
-2. Cache 3 camadas: JWT 12h (sem revalidação), perfil em PostgreSQL (1 chamada por aluno), ingestão batch (30s)
-3. Se API 42 retornar 429, backend usa cache e agenda retry
+1. `LoginPage` exibe botão adicional "Dev Login (marvin)"
+2. Clica → `GET /api/auth/dev/login?login=marvin`
+3. Backend: upsert user de dev (ID fictício estável) → JWT → retorna token
+4. Frontend: salva token → navega para `/chat`
+5. Chat funcional sem OAuth2 real
+
+### Cenário 3: Retorno com token válido
+
+1. Aluno acessa `/` com token válido no `localStorage`
+2. Frontend valida token (decode local, checa `exp`) → redireciona para `/chat`
+3. Chat carrega sem novo login
+
+### Cenário 4: Token expirado
+
+1. Aluno acessa com token expirado (exp < now)
+2. Frontend detecta na checagem local → limpa `localStorage` → exibe `<LoginPage />`
+3. Alternativa: `GET /api/messages` retorna 401 → frontend limpa token → redireciona
+
+### Cenário 5: Reconexão WebSocket
+
+1. Aluno perde conexão (Wi-Fi do campus)
+2. `useWebSocket` detecta `onclose` → aguarda delay [1s, 2s, 4s, 8s, 16s] → tenta reconectar
+3. UI mostra "○ reconectando..." durante o processo
+4. Ao reconectar: `fetchHistory(lastTimestamp)` para carregar mensagens perdidas
+
+### Cenário 6: Logout
+
+1. Aluno clica em "Sair"
+2. Frontend remove token do `localStorage`
+3. WebSocket fecha (cleanup do hook)
+4. Redireciona para `/` → `<LoginPage />`
+
+---
 
 ## Edge Cases
-- **300 conexões simultâneas:** Tuning Linux: fs.file-max=100000, ulimit -n 65535
-- **Race condition no Hub:** Modelo híbrido — sync.RWMutex no mapa de clients, send chan como buffer de saída
-- **Load balancer timeout:** Ping/Pong a cada 30s (read deadline 60s)
-- **Graceful shutdown:** Sinal → parar accept → notificar clientes → flush buffer → fechar DB pool
-- **Aluno sem foto:** Placeholder com iniciais em círculo, fundo dot grid, borda cor de acento
-- **Mensagem muito longa:** Limite de 5000 caracteres (CHECK constraint no PostgreSQL)
-- **Conexão duplicada:** Mesmo aluno em múltiplas abas — cada aba = um client WebSocket independente
-- **Logs de auditoria:** Toda mensagem tem user_id + timestamp. Soft delete (deleted_at), nunca hard delete
-- **PostgreSQL tuning (1GB RAM):** shared_buffers=256MB, effective_cache_size=512MB, work_mem=16MB, max_connections=100
+
+- **300 conexões simultâneas:** Hub com RWMutex + send chan buffer 256. PostgreSQL tuning: shared_buffers=256MB, max_connections=100
+- **Rate limit WS:** token bucket 10 msg/s por client; desconexão após 3 violações
+- **Mensagem muito longa:** limite 5000 chars (CHECK constraint + maxLength no input)
+- **Conexão duplicada:** mesma conta em múltiplas abas = múltiplos clients independentes (comportamento esperado)
+- **Aluno sem foto:** fallback para `/assets/default-avatar.png` via `onError` no `<UserAvatar />`
+- **Token inválido no WS:** backend valida JWT no upgrade; rejeita com 401 antes do handshake
+- **Graceful shutdown:** clientes recebem `{"type":"system","content":"shutdown"}` → fecha WS → servidor desliga em < 10s
+
+---
 
 ## Constraints
-- **Escala:** Máximo 300 conexões simultâneas (campus presencial)
-- **Infra:** AWS EC2 t2.micro (1 vCPU, 1 GB RAM). Go + PostgreSQL no mesmo host
-- **Latência:** Mensagens em < 500ms (WebSocket local ao campus)
-- **Segurança:** OAuth2 42 obrigatório. JWT 12h. HTTPS (Let's Encrypt). Credenciais via env vars
-- **Privacidade:** Retenção de mensagens por 6 meses (LGPD). Cron job de expurgo
-- **Estilo visual:** Design System oficial 42 — [[references/42-graphic-charter-software]] + [[references/42-chat-design-system]]
-- **Cores primárias:** Black `#1B1B1B`, White `#FFFFFF` (identidade binária 42 — logotipo só preto ou branco)
-- **UI Colors:** Dark Navy `#173D7A`, Near Black `#202026`, Dark Gray `#29292E`, 42 Teal `#00BABC`, CG Blue `#04809F`, Green `#2DD57A`, Pink `#EC3391`
-- **Tipografia:** Futura PT (Light 300, Book 400, Heavy 700 + obliques). Fallback: `ui-sans-serif`
-- **border-radius: 0** em todos os componentes. Flat design, cantos secos
-- **Dot grid background:** `radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px)`
-- **Avatar:** grayscale(100%) contrast(120%), borda 2px cor de acento, fundo dot grid
 
-## Critérios de Sucesso
-- [ ] Login OAuth2 42 funcional (happy path + token expirado)
-- [ ] WebSocket conecta e recebe mensagens em tempo real
-- [ ] Mensagens persistidas no PostgreSQL e recuperadas no histórico
-- [ ] Frontend renderiza com Design System oficial 42 (Futura PT, paleta [[references/42-graphic-charter-software]], dot grid, avatares estilizados)
-- [ ] Graceful shutdown: servidor desliga sem corromper mensagens
-- [ ] Rate limit da API 42 tratado com cache 3 camadas
-- [ ] Docker Compose sobe ambiente completo (go + postgres)
-- [ ] 300 conexões simultâneas sem crash (teste de carga)
-- [ ] Métricas expostas em /metrics (goroutines, DB stats, conexões WS)
-- [ ] Mensagens expurgadas após 6 meses (cron job)
-- [ ] Deploy funcional em EC2 t2.micro
+- **Escala:** 300 conexões simultâneas (campus presencial)
+- **Infra:** AWS EC2 t2.micro (1 vCPU, 1 GB RAM). Go + PostgreSQL no mesmo host
+- **Latência:** mensagens em < 500ms p95 (teste k6)
+- **Segurança:** OAuth2 42 obrigatório em produção. JWT HS256 12h. Credenciais via env vars. NUNCA hardcode secrets
+- **Privacidade:** retenção 6 meses (LGPD Art. 15). Cron expurgo 24h
+- **Design:** border-radius: 0, paleta 42 (#1B1B1B, #00BABC, #173D7A, #2DD57A, #EC3391), dot grid background
+- **Fonte:** Futura PT com fallback `ui-sans-serif, system-ui` (ver DT-006 — fonte paga)
+- **Sem ORM:** apenas `lib/pq` com SQL direto
+
+---
+
+## Critérios de Sucesso (11 itens — todos obrigatórios para fechar MVP)
+
+| # | Critério | Como testar |
+|---|----------|-------------|
+| 1 | Login OAuth2 42 funcional | Abrir browser → clicar "Entrar com a 42" → autorizar → chegar no chat |
+| 2 | Dev login funcional | `DEV_MODE=true` → clicar "Dev Login" → chegar no chat como marvin |
+| 3 | Histórico carrega | Entrar no chat → ver últimas 50 mensagens do banco |
+| 4 | Envio de mensagem | Digitar + Enter → mensagem aparece para o remetente |
+| 5 | Recebimento em tempo real | Abrir 2 abas → enviar em uma → aparecer na outra sem F5 |
+| 6 | Status de conexão | UI mostra "● online" conectado, "○ reconectando..." ao perder rede |
+| 7 | Reconexão automática | Desligar servidor → religar → cliente reconecta e carrega mensagens perdidas |
+| 8 | Scroll automático | Mensagem nova → lista scrolla para o final automaticamente |
+| 9 | Logout funcional | Clicar "Sair" → voltar para LoginPage → WebSocket encerrado |
+| 10 | Histórico paginado | `GET /api/messages?before=<timestamp>&limit=50` retorna 200 com array |
+| 11 | Teste de carga k6 | 300 VUs WebSocket, rampa 30s, sustentado 60s, p95 < 500ms, zero erros WS |
+
+---
 
 ## Stack Tecnológica
 
 | Camada | Tecnologia | Justificativa |
 |---|---|---|
-| Linguagem | Go | Alta concorrência, baixo consumo de RAM |
-| WebSocket | gorilla/websocket | Padrão ouro, ping/pong nativo |
-| Roteamento | Chi | Minimalista, interface padrão Go |
-| Banco | PostgreSQL (Docker) | Relacionamentos, auditoria, integridade transacional |
-| Autenticação | OAuth2 42 + JWT (12h) | Integração nativa, sem gestão de senhas |
-| Frontend | React + Vite | Build rápido, Module Federation futuro |
-| Estilo | Tailwind + Shadcn/ui | Componentes copy-paste, customizáveis (rounded-none) |
-| Estado | Zustand | Simples, singleton no Module Federation |
-| Container | Docker Compose | Ambiente reproduzível, .env integrado |
-| Infra | AWS EC2 t2.micro | Free tier, suficiente pra 300 alunos |
+| Backend | Go 1.25, Chi, gorilla/websocket, lib/pq | Alta concorrência, baixo RAM, sem ORM |
+| Banco | PostgreSQL 16 (Docker) | Integridade transacional, soft delete, migrations SQL |
+| Auth | OAuth2 42 Intra + JWT HS256 12h | Integração nativa, sem gestão de senhas |
+| Frontend | React 18, Vite, Tailwind, Zustand | Build rápido, estado simples |
+| Infra | Docker Compose, nginx | Ambiente reproduzível, SPA + proxy no mesmo host |
 | CI/CD | GitHub Actions + Bitwarden CLI | Deploy com injeção segura de credenciais |
 
-## Variáveis de Ambiente
-
-| Variável | Obrigatória | Default | Descrição |
-|---|---|---|---|
-| `PORT` | Não | `8080` | Porta do servidor HTTP |
-| `DATABASE_URL` | Não | `postgres://chat:***@localhost:5432/chat?sslmode=disable` | Conexão PostgreSQL |
-| `JWT_SECRET` | Sim (prod) | `change-me-in-production` | Chave HS256 para JWT |
-| `FORTYTWO_CLIENT_ID` | Sim (prod) | — | Client ID do app 42 Intra |
-| `FORTYTWO_CLIENT_SECRET` |  Sim (prod) | — | Client Secret do app 42 Intra |
-| `FORTYTWO_REDIRECT_URI` | Não | `http://localhost:5173` | Redirect URI (deve bater com app 42) |
-| `FORTYTWO_API_URL` | Não | `https://api.intra.42.fr` | Base URL da API 42 |
-| `DEV_MODE` | Não | `false` | Habilita `/api/auth/dev/login` |
-| `DEV_USER` | Não | `marvin` | Login padrão do dev login |
-| `POSTGRES_USER` | Não | `chat` | Usuário PostgreSQL (Docker) |
-| `POSTGRES_PASSWORD` | Não | `banana42` | Senha PostgreSQL (Docker) |
-| `POSTGRES_DB` | Não | `chat` | Nome do banco (Docker) |
-
-### Frontend (Vite — prefixo `VITE_`)
-
-| Variável | Default | Descrição |
-|---|---|---|
-| `VITE_DEV_MODE` | `false` | Mostra botão "Dev Login" |
-| `VITE_API_URL` | (vazio) | URL base da API (vazio = proxy Vite) |
-| `VITE_42_CLIENT_ID` | `dev-client-id` | Client ID para link OAuth2 |
-| `VITE_42_REDIRECT_URI` | `http://localhost:5173` | Redirect URI (deve bater com `FORTYTWO_REDIRECT_URI`) |
+---
 
 ## Modelagem de Dados (MVP)
 
@@ -162,9 +189,9 @@ comunicação P2P — essencial para avaliações, pair programming e grupos de 
 | Coluna | Tipo | Descrição |
 |---|---|---|
 | id | INT PK | ID da API 42 |
-| login | VARCHAR(50) UNIQUE | Login da intra (ex: marvin) |
+| login | VARCHAR(50) UNIQUE | Login da intra |
 | image_url | TEXT | URL da foto de perfil |
-| current_host | VARCHAR(20) | Localização no campus (ex: e1z2m4) |
+| current_host | VARCHAR(20) | Localização no campus |
 | level | NUMERIC(4,2) | Nível na intra |
 | created_at | TIMESTAMP | — |
 
@@ -173,22 +200,46 @@ comunicação P2P — essencial para avaliações, pair programming e grupos de 
 |---|---|---|
 | id | UUID PK | gen_random_uuid() |
 | user_id | INT FK → users | Autor |
-| content | TEXT | Máx 5000 chars (CHECK constraint) |
-| created_at | TIMESTAMP | Indexado |
-| deleted_at | TIMESTAMP | Soft delete (auditoria) |
+| content | TEXT CHECK (≤5000 chars) | Conteúdo |
+| created_at | TIMESTAMP | Indexado DESC para paginação |
+| deleted_at | TIMESTAMP | Soft delete — NUNCA hard delete |
 
-## Abordagem Escolhida
-> **Backend Go monolítico + Frontend React.** Go serve REST API e WebSocket Hub
-> no mesmo processo. Chi para rotas, gorilla/websocket para upgrade. PostgreSQL
-> persiste usuários e mensagens com soft delete. Cache 3 camadas anti-rate-limit.
-> Modelo híbrido de concorrência: sync.RWMutex no mapa + send chan como buffer.
-> Frontend React + Vite + Tailwind + Shadcn/ui com Design System oficial 42 documentado
-> em [[references/42-graphic-charter-software]] + [[references/42-chat-design-system]]. Deploy via Docker Compose + GitHub Actions.
+---
 
-### Alternativas Consideradas
-| Abordagem | Trade-off | Por que não |
-|-----------|-----------|-------------|
-| Channels puros no Hub | Go idiomático | Round-trip via goroutine por mensagem adiciona latência |
-| Mutex exclusivo no Hub | Simples | Bloqueia leituras simultâneas, estrangulamento em broadcast |
-| SQLite ao invés de PostgreSQL | Zero infra de banco | Sem concorrência real, sem soft delete nativo |
-| Next.js ao invés de Vite | Mais features | Overengineering. Vite é mais leve e rápido |
+## Variáveis de Ambiente Obrigatórias
+
+| Variável | Prod | Dev | Descrição |
+|---|---|---|---|
+| `JWT_SECRET` | obrigatória | qualquer string | Chave HS256 |
+| `FORTYTWO_CLIENT_ID` | obrigatória | — | Client ID app 42 |
+| `FORTYTWO_CLIENT_SECRET` | obrigatória | — | Client Secret |
+| `FORTYTWO_REDIRECT_URI` | obrigatória | `http://localhost:9999` | Deve bater com app 42 |
+| `DATABASE_URL` | obrigatória | `postgres://chat:banana42@postgres:5432/chat?sslmode=disable` | Hostname = serviço Docker |
+| `DEV_MODE` | `false` | `true` | Habilita dev login |
+| `VITE_DEV_MODE` | `false` | `true` | Exibe botão dev login no frontend |
+| `VITE_42_CLIENT_ID` | obrigatória | — | Para montar URL OAuth no frontend |
+| `VITE_42_REDIRECT_URI` | obrigatória | `http://localhost:9999` | Deve bater com `FORTYTWO_REDIRECT_URI` |
+
+---
+
+## O que já está implementado (pós-revisão)
+
+| Componente | Status | Notas |
+|---|---|---|
+| Backend: auth handler (OAuth2 callback + dev login) | ✅ | `internal/auth/handler.go` |
+| Backend: JWT geração/validação + middleware | ✅ | `internal/auth/jwt.go`, `middleware.go` |
+| Backend: WebSocket Hub + Client + rate limiter | ✅ | `internal/ws/` |
+| Backend: mensagens (save, get, soft delete) | ✅ | `internal/db/queries/messages.go` |
+| Backend: chat REST handlers + metrics | ✅ | `internal/chat/handler.go` |
+| Backend: graceful shutdown + cron LGPD | ✅ | `cmd/server/main.go` |
+| Frontend: Design System 42 (DS42) | ✅ | `index.css`, `tailwind.config.ts` |
+| Frontend: chatStore Zustand | ✅ | `stores/chatStore.ts` |
+| Frontend: componentes chat (List, Input, Avatar) | ✅ | `components/chat/` |
+| Frontend: useWebSocket + backoff | ✅ | `hooks/useWebSocket.ts` |
+| Infra: Docker Compose + nginx + migrations | ✅ | Dockerfile, docker-compose.yml |
+| CI/CD: GitHub Actions + Bitwarden + deploy.sh | ✅ | `.github/workflows/ci-cd.yml` |
+| **Frontend: LoginPage** | ❌ | **Falta — DT-004** |
+| **Frontend: roteamento por token (App.tsx)** | ❌ | **Falta — DT-004** |
+| **Frontend: logout** | ❌ | **Falta — DT-004** |
+| **Frontend: callback handler** | ❌ | **Falta — DT-004** |
+| **Teste de carga k6 executado** | ❌ | **Arquivo existe, não foi executado** |

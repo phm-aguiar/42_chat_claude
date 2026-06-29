@@ -1,10 +1,20 @@
 import "./index.css";
-import { useWebSocket } from "@/hooks/useWebSocket";
+import { getValidToken } from "@/lib/auth";
+import { CallbackPage } from "@/pages/CallbackPage";
+import { LoginPage } from "@/pages/LoginPage";
 import { ChatPage } from "@/pages/Chat";
 
 function App() {
-  // Initialize WebSocket connection with exponential backoff
-  useWebSocket();
+  const path = window.location.pathname;
+
+  if (path.startsWith("/callback")) {
+    return <CallbackPage />;
+  }
+
+  const token = getValidToken();
+  if (!token) {
+    return <LoginPage />;
+  }
 
   return <ChatPage />;
 }
