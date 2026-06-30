@@ -20,7 +20,23 @@
       "Bash(echo \"EXIT: $?\")",
       "Bash(git -C /home/zeenyt__/Projetos/42_chat_claude status)",
       "Bash(git init *)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git branch *)",
+      "Bash(git commit *)",
+      "Bash(go mod *)",
+      "Bash(go vet *)",
+      "Bash(docker compose *)",
+      "Bash(mkdir -p frontend)",
+      "Bash(npm create *)",
+      "Bash(npm install *)",
+      "Bash(npx tailwindcss *)",
+      "Bash(npx -y tailwindcss@latest init -p)",
+      "Bash(go get *)",
+      "Bash(npm run *)",
+      "Bash(grep \"WHERE created_at < \\\\$1 AND deleted_at IS NULL ORDER BY created_at DESC LIMIT\" /home/zeenyt__/Projetos/42_chat_claude/internal/db/queries/messages.go)",
+      "Bash(grep -E \"WHERE m\\\\.created_at < \\\\\\\\\\\\$1\" /home/zeenyt__/Projetos/42_chat_claude/internal/db/queries/messages.go)",
+      "Bash(grep -E \"LIMIT \\\\\\\\\\\\$2\" /home/zeenyt__/Projetos/42_chat_claude/internal/db/queries/messages.go)",
+      "Bash(chmod +x *)"
     ]
   }
 }

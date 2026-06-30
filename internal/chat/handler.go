@@ -118,7 +118,7 @@ func (h *Handler) ServeWS(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	client := ws.NewClient(h.Hub, conn)
+	client := ws.NewClient(h.Hub, conn, claims.UserID, claims.Login, h.DB)
 	h.Hub.Register(client)
 
 	// Broadcast de entrada

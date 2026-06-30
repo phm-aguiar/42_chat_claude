@@ -2,8 +2,12 @@ package ws
 
 import (
 	"context"
+	"database/sql"
+	"encoding/json"
 	"log"
 	"time"
+
+	"42chat/internal/db/queries"
 
 	"github.com/gorilla/websocket"
 	"golang.org/x/time/rate"
@@ -23,15 +27,21 @@ type Client struct {
 	send       chan []byte // buffer 256
 	limiter    *rate.Limiter
 	violations int
+	userID     int
+	login      string
+	db         *sql.DB
 }
 
 // NewClient cria um client com rate limiter: 10 msgs/s, burst 10 (ADR-008).
-func NewClient(hub *Hub, conn *websocket.Conn) *Client {
+func NewClient(hub *Hub, conn *websocket.Conn, userID int, login string, db *sql.DB) *Client {
 	return &Client{
 		hub:     hub,
 		conn:    conn,
 		send:    make(chan []byte, 256),
 		limiter: rate.NewLimiter(10, 10),
+		userID:  userID,
+		login:   login,
+		db:      db,
 	}
 }
 
@@ -57,7 +67,7 @@ func (c *Client) readPump(ctx context.Context) {
 		default:
 		}
 
-		_, msg, err := c.conn.ReadMessage()
+		_, raw, err := c.conn.ReadMessage()
 		if err != nil {
 			if websocket.IsUnexpectedCloseError(err, websocket.CloseGoingAway, websocket.CloseAbnormalClosure) {
 				log.Printf("ws read error: %v", err)
@@ -74,7 +84,23 @@ func (c *Client) readPump(ctx context.Context) {
 			continue
 		}
 
-		c.hub.broadcast <- msg
+		// Parseia e persiste — apenas mensagens de chat chegam aqui
+		var incoming struct {
+			Type    string `json:"type"`
+			Content string `json:"content"`
+		}
+		if err := json.Unmarshal(raw, &incoming); err != nil || incoming.Type != "message" || incoming.Content == "" {
+			continue
+		}
+
+		msg, err := queries.SaveMessage(c.db, c.userID, incoming.Content)
+		if err != nil {
+			log.Printf("ws save message: %v", err)
+			continue
+		}
+
+		enriched, _ := json.Marshal(msg)
+		c.hub.broadcast <- enriched
 	}
 }
 
