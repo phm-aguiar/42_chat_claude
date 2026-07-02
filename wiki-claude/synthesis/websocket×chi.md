@@ -116,7 +116,7 @@ o WebSocket. Este padrão tem implicações importantes:
 - [[entities/chi|Chi]] — Roteador HTTP
 - [[entities/hub|Hub]] — Gerenciador de conexões WebSocket
 - [[entities/client|Client]] — Conexão WebSocket individual
-- [[references/websocket-production|WebSocket Production]] — Ping/pong, scaling, rate limiting
-- [[references/auth-integration|Auth Integration]] — Arquitetura de 3 camadas
-- [[references/go-chi-router|Go Chi Router]] — Padrões de roteamento
-- [[references/integration-testing-docker|Integration Testing with Docker]] — Testes end-to-end com WebSocket
+- WebSocket Production — Ping/pong, scaling, rate limiting
+- Auth Integration — Arquitetura de 3 camadas
+- Go Chi Router — Padrões de roteamento
+- Integration Testing with Docker — Testes end-to-end com WebSocket

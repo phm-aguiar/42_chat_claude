@@ -31,26 +31,26 @@ base_confidence: 0.5
 
 ## Índice
 
-1. [[#Instalação]]
-2. [[#Configuração Básica com defineBddConfig]]
-3. [[#Opções de Configuração]]
-4. [[#Múltiplos Feature Sets com Projects]]
-5. [[#Integração com Playwright Config Completa]]
-6. [[#Step Definitions com createBdd]]
-7. [[#Parâmetros]]
-8. [[#Regex em Steps]]
-9. [[#Custom Parameter Types]]
-10. [[#Fixtures Customizadas]]
-11. [[#Page Object Model (POM)]]
-12. [[#Decorator-Based Steps]]
-13. [[#Data Tables]]
-14. [[#Doc Strings]]
-15. [[#Compartilhamento de Estado entre Steps]]
-16. [[#Tags Especiais]]
-17. [[#Execução]]
-18. [[#Export de Steps]]
-19. [[#Troubleshooting]]
-20. [[#Boas Práticas]]
+1. #Instalação
+2. #Configuração Básica com defineBddConfig
+3. #Opções de Configuração
+4. #Múltiplos Feature Sets com Projects
+5. #Integração com Playwright Config Completa
+6. #Step Definitions com createBdd
+7. #Parâmetros
+8. #Regex em Steps
+9. #Custom Parameter Types
+10. #Fixtures Customizadas
+11. #Page Object Model (POM)
+12. #Decorator-Based Steps
+13. #Data Tables
+14. #Doc Strings
+15. #Compartilhamento de Estado entre Steps
+16. #Tags Especiais
+17. #Execução
+18. #Export de Steps
+19. #Troubleshooting
+20. #Boas Práticas
 
 ---
 base_confidence: 0.5
@@ -993,8 +993,8 @@ base_confidence: 0.5
 
 ## Ver Também
 
-- [[references/gherkin-syntax|Gherkin Syntax]] — Sintaxe usada nos testes
-- [[references/gherkin-best-practices|Gherkin Best Practices]] — Boas práticas para cenários E2E
-- [[references/cucumber-basics|Cucumber Basics]] — Framework BDD clássico (alternativa)
-- [[references/qa-overview|QA Overview]] — Estratégia de QA no framework SDD
+- Gherkin Syntax — Sintaxe usada nos testes
+- Gherkin Best Practices — Boas práticas para cenários E2E
+- Cucumber Basics — Framework BDD clássico (alternativa)
+- QA Overview — Estratégia de QA no framework SDD
 - [[synthesis/playwright-bdd×cucumber|Playwright BDD × Cucumber]] — Quando usar cada ferramenta e como se complementam

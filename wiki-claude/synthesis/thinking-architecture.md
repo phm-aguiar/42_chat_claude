@@ -27,7 +27,7 @@ tier: core
 ## The Connection
 
 Decisões de arquitetura são exercícios de reasoning sob incerteza. Cada ADR
-([[references/adr-template|ADR Template]]) é uma hipótese sobre o futuro do
+(ADR Template) é uma hipótese sobre o futuro do
 sistema. As ferramentas de thinking — socrático, adversarial, pre-mortem —
 são o método científico aplicado a essas hipóteses. ^[inferred]
 
@@ -40,11 +40,11 @@ Cada ferramenta de thinking mapeia para uma fase da decisão arquitetural:
 
 | Ferramenta | Fase da Decisão | Pergunta-chave |
 |---|---|---|
-| [[references/[[socratic-questioning]]|Socratic Questioning]] | Exploração do problema | "Quais premissas estamos assumindo?" |
-| [[references/dialectic-synthesis|Dialectic Synthesis]] | Avaliação de alternativas | "Qual é o argumento mais forte contra nossa escolha?" |
-| [[references/pre-mortem-analysis|Pre-Mortem]] | Validação do design | "Daqui a 6 meses, por que isso falhou?" |
-| [[references/[[red-team-adversarial]]|Red Team]] | Stress-test de segurança | "Como um adversário quebraria isso?" |
-| [[references/cognitive-bias-inventory|Bias Inventory]] | Revisão do ADR | "Quais vieses estão distorcendo essa decisão?" |
+| references/[[socratic-questioning|Socratic Questioning]] | Exploração do problema | "Quais premissas estamos assumindo?" |
+| Dialectic Synthesis | Avaliação de alternativas | "Qual é o argumento mais forte contra nossa escolha?" |
+| Pre-Mortem | Validação do design | "Daqui a 6 meses, por que isso falhou?" |
+| references/[[red-team-adversarial|Red Team]] | Stress-test de segurança | "Como um adversário quebraria isso?" |
+| Bias Inventory | Revisão do ADR | "Quais vieses estão distorcendo essa decisão?" |
 
 ## Cross-cutting Insight
 
@@ -57,19 +57,19 @@ O segundo é uma anotação de intenção. ^[inferred]
 de arquitetura, decisão de make-vs-buy), execute o ciclo completo:
 
 1. **Escreva o rascunho do ADR** (contexto, decisão, alternativas).
-2. **Passe o [[references/[[socratic-questioning]]|Socratic Questioning]]** —
+2. **Passe o references/[[socratic-questioning|Socratic Questioning]]** —
    documento as respostas como "Premissas validadas" no ADR.
-3. **Execute um [[references/pre-mortem-analysis|Pre-Mortem]]** —
+3. **Execute um Pre-Mortem** —
    documente os riscos identificados como "Mitigações" no ADR.
-4. **Se for security-critical, rode o [[references/[[red-team-adversarial]]|Red Team]]**.
-5. **Revise o ADR final com o [[references/cognitive-bias-inventory|Bias Inventory]]**.
+4. **Se for security-critical, rode o references/[[red-team-adversarial|Red Team]]**.
+5. **Revise o ADR final com o Bias Inventory**.
 
 ## Tensions and Trade-offs
 
 - **Custo de tempo:** O ciclo completo pode levar horas. Reserve para decisões
   Type 1 (irreversíveis). Decisões Type 2 (reversíveis) podem pular o pre-mortem. ^[inferred]
 - **Overthinking:** Aplicar todas as 5 ferramentas em toda decisão leva à
-  paralisia analítica. Use o [[references/mode-selection-guide|Mode Selection Guide]]
+  paralisia analítica. Use o Mode Selection Guide
   para calibrar a profundidade.
 
 ## Open Questions
@@ -80,11 +80,11 @@ de arquitetura, decisão de make-vs-buy), execute o ciclo completo:
 
 ## Related
 
-- [[references/adr-template|ADR Template]]
-- [[references/[[system-design]]|System Design Guide]]
-- [[references/[[socratic-questioning]]|Socratic Questioning]]
-- [[references/pre-mortem-analysis|Pre-Mortem Analysis]]
-- [[references/[[red-team-adversarial]]|Red Team Adversarial]]
-- [[references/dialectic-synthesis|Dialectic Synthesis]]
-- [[references/cognitive-bias-inventory|Cognitive Bias Inventory]]
-- [[references/mode-selection-guide|Mode Selection Guide]]
+- ADR Template
+- references/[[system-design|System Design Guide]]
+- references/[[socratic-questioning|Socratic Questioning]]
+- Pre-Mortem Analysis
+- references/[[red-team-adversarial|Red Team Adversarial]]
+- Dialectic Synthesis
+- Cognitive Bias Inventory
+- Mode Selection Guide

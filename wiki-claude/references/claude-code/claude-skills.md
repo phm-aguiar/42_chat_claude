@@ -259,7 +259,7 @@ Quando você ou Claude invoca, `SKILL.md` renderizado entra na conversa como men
 - Skills reanexadas compartilham orçamento combinado de **25.000 tokens**.
 - Claude Code preenche começando da mais recente → skills mais antigas podem ser descartadas inteiramente após compactação.
 
-> **Skill parece parar de influenciar comportamento após primeira resposta?** O conteúdo geralmente ainda está lá, o modelo está escolhendo outras tools. Fortaleça `description`+instruções, ou use [[hooks|hooks]] pra comportamento determinístico. Se grande ou várias outras invocadas, re-invoque após compactação.
+> **Skill parece parar de influenciar comportamento após primeira resposta?** O conteúdo geralmente ainda está lá, o modelo está escolhendo outras tools. Fortaleça `description`+instruções, ou use hooks pra comportamento determinístico. Se grande ou várias outras invocadas, re-invoque após compactação.
 
 ## Pré-Aprovar Tools
 
@@ -529,4 +529,4 @@ Pra liberar budget:
 
 - [[agent-teams]] — orquestração com múltiplos companheiros
 - [[agent-view]] — UI de gestão (`claude agents`)
-- [[skill-management|claude skill management]] — skills no framework claude seguem padrão Agent Skills
+- claude skill management — skills no framework claude seguem padrão Agent Skills

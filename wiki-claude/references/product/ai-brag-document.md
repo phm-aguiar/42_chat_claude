@@ -234,9 +234,9 @@ Before finishing, ensure:
 
 ## Ver Também
 
-- [[skills/architecture-designer|Architecture Designer]] — Design de sistemas
-- [[skills/docs-writer|Docs Writer]] — Documentação de impacto
-- [[skills/benchmark|Benchmark]] — Medição de performance e progresso
-- [[references/go-style-guide|Go Style Guide]] — Catálogo completo
+- Architecture Designer — Design de sistemas
+- Docs Writer — Documentação de impacto
+- Benchmark — Medição de performance e progresso
+- Go Style Guide — Catálogo completo
 
 - [[go-style-guide|Go Style Guide]] — Catálogo completo

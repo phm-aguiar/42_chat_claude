@@ -7,7 +7,7 @@ created: 2026-06-20
 rag_score: 0.5
 source: "https://www.kalviumlabs.ai/blog/langgraph-vs-langchain-production/"
 authors: "Anil Gulecha (Kalvium Labs, ex-HackerRank, ex-Google)"
-feature: "[[projects/42_Framework/features/005-latte-hardening|Feature 005: LATTE Hardening]]"
+feature: "Feature 005: LATTE Hardening"
 base_confidence: 0.9
 provenance:
   extracted: 0.85
@@ -73,4 +73,4 @@ Mas o paper é claro: *"Only migrate if the current system is actively causing p
 - [[references/papers/LangGraph-in-Production|LangGraph in Production]] — checkpointing, state pruning
 - [[references/papers/LATTE|LATTE]] — coordination graph (nossa implementação)
 - [[projects/42_Framework/features/001-latte-coordination|Feature 001]] — LATTE custom loop
-- [[projects/42_Framework/features/005-latte-hardening|Feature 005]] — hardening do LATTE
+- Feature 005 — hardening do LATTE

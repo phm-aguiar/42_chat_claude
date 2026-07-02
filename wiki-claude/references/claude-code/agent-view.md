@@ -450,4 +450,4 @@ Deletar sessão em agent view remove worktree. `claude rm` mantém worktree com 
 
 - [[agent-teams]] — equipes de agentes (companheiros se mensagemando diretamente)
 - [[claude-skills]] — sistema de skills + invocação
-- [[kanban-orchestrator]] — equivalente conceitual em claude Agent (LATTE)
+- kanban-orchestrator — equivalente conceitual em claude Agent (LATTE)

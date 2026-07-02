@@ -147,6 +147,6 @@ graph TB
 
 ## Ver Também
 
-- [[references/42-chat-platform-architecture|42 Chat Platform Architecture]] — Documentação completa da stack
-- [[references/42-chat-engineering-requirements|42 Chat Engineering Requirements]] — Requisitos de engenharia
-- [[references/42-chat-design-system|42 Chat Design System]] — Sistema visual
+- 42 Chat Platform Architecture — Documentação completa da stack
+- 42 Chat Engineering Requirements — Requisitos de engenharia
+- 42 Chat Design System — Sistema visual

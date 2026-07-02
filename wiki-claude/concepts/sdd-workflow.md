@@ -216,7 +216,7 @@ O arquivo contém:
 - **Snapshot do grafo:** tasks, estados finais, dependências resolvidas
 - **Métricas de execução:** rounds utilizados, timeouts, retries, tempo total
 - **Rastreabilidade:** qual agente executou cada task, com timestamps
-- **Template de referência:** [[references/toolkits/sdd/coordination-graph-template]] (T023)
+- **Template de referência:** references/toolkits/sdd/coordination-graph-template (T023)
 
 > **Nota:** O template `coordination-graph-template.md` será criado na T023 e
 > define o schema exato do `coordination-graph.md`. Consulte-o para o formato
@@ -256,7 +256,7 @@ Feature 006 implementada — 6/6 tasks concluídas
 
 ## Relacionado
 
-- [[skills/sdd|sdd toolkit]] — Pipeline SDD consolidado
+- sdd toolkit — Pipeline SDD consolidado
 - [[concepts/sdd|SDD]] — Metodologia Spec-Driven Development
 - [[concepts/obsidian-flow|Fluxo Obsidian]] — Integração wiki ↔ pipeline
 - [[concepts/onboarding|Onboarding]] — Como começar
@@ -264,7 +264,7 @@ Feature 006 implementada — 6/6 tasks concluídas
 - [[concepts/onboarding|Onboarding]] — Como começar um projeto do zero
 - [[concepts/sdd|SDD]] — Regras arquiteturais
 - [[concepts/sdd|SDD]] — Stack homologada
-- [[concepts/coordination-graph|Coordination Graph]] — G_final gerado pelo modo LATTE
-- [[references/toolkits/sdd/coordination-graph-template|Template Coordination Graph]] — Schema do coordination-graph.md (T023)
-- [[projects/42_chat/features/feature-001-latte-coordination|Feature 001 — LATTE Coordination]] — Feature que implementa o modo LATTE
+- Coordination Graph — G_final gerado pelo modo LATTE
+- Template Coordination Graph — Schema do coordination-graph.md (T023)
+- Feature 001 — LATTE Coordination — Feature que implementa o modo LATTE
 - [[projects/42_chat/features/feature-006-agent-dev|Feature 006]] — Exemplo real usado neste documento

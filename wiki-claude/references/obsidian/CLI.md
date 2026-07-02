@@ -302,7 +302,7 @@ Restart terminal after registration for PATH changes to take effect.
 
 ## Related Pages
 
-- [[references/toolkits/obsidian/[[EMBEDS]]]] — Embed syntax reference
-- [[references/toolkits/obsidian/PROPERTIES]] — Properties/YAML frontmatter
-- [[references/toolkits/obsidian/[[CALLOUTS]]]] — Callout syntax
-- [[wiki-meta/wiki-architecture]] — Wiki structure and conventions
+- references/toolkits/obsidian/[[EMBEDS]] — Embed syntax reference
+- references/toolkits/obsidian/PROPERTIES — Properties/YAML frontmatter
+- references/toolkits/obsidian/[[CALLOUTS]] — Callout syntax
+- wiki-meta/wiki-architecture — Wiki structure and conventions

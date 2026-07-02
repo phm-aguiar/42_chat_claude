@@ -32,8 +32,8 @@ lifecycle: draft
 20|| Diretório | Função | Exemplo |
 21||---|---|---|
 22|| `concepts/` | Padrões, metodologia, arquitetura de conhecimento | [[concepts/sdd|SDD]], [[concepts/wiki-model|wiki-model]], [[concepts/onboarding|onboarding]] |
-23|| `references/` | Documentação técnica destilada de fontes externas | [[references/42-chat-design-system|Design System]], [[references/gherkin-syntax|Gherkin Syntax]], [[references/tdd-methodology|TDD]] |
-24|| `skills/` | Documentação das skills claude (procedural, how-to) | [[skills/wiki-ingest|wiki-ingest]], [[skills/gherkin-scenarios|gherkin-scenarios]], [[skills/doc-extract|doc-extract]] |
+23|| `references/` | Documentação técnica destilada de fontes externas | Design System, Gherkin Syntax, TDD |
+24|| `skills/` | Documentação das skills claude (procedural, how-to) | wiki-ingest, gherkin-scenarios, doc-extract |
 25|| `projects/` | Conhecimento escopo por projeto (`projects/<nome>/`) | [[projects/42_chat/42_chat|42_chat]], `features/`, `agents/`, `skills/` |
 26|| `_raw/` | Fontes brutas históricas (originais não-destilados) | `pesquisa.md`, `qafiles/` originais, descrições de imagens |
 27|| `journal/` | Sessões capturadas e registros cronológicos | `wiki-capture` por data, `digest-YYYY-MM-DD.md` |
@@ -53,11 +53,11 @@ lifecycle: draft
 41|
 42|- [[concepts/wiki-model|Wiki Model]] — Modelo de 3 camadas (sources → wiki → schema)
 43|- [[concepts/obsidian-flow|Fluxo Obsidian]] — Ciclo de vida do vault
-44|- [[skills/wiki-setup|wiki-setup]] — Inicialização do vault
+44|- wiki-setup — Inicialização do vault
 45|
 
 ## Relacionado
 
-- [[skills/brain|brain toolkit]] — Opera sobre esta taxonomia
+- brain toolkit — Opera sobre esta taxonomia
 - [[concepts/wiki-model|Wiki Model]] — Por que 3 camadas
 - [[concepts/obsidian-flow|Fluxo Obsidian]] — Como a taxonomia é usada no pipeline

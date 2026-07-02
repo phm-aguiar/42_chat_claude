@@ -120,4 +120,4 @@ Artigo do Kalvium Labs documentando a jornada de arquitetura em sistemas de AI a
 - [[references/papers/Agentic-AI-in-Production|Agentic AI in Production]] — tool-calling design, error recovery, observability
 - [[references/papers/Multi-Agent-Systems-in-Production|Multi-Agent Systems in Production]] — quando single agent não basta, cost explosion
 - [[references/papers/LangGraph-in-Production|LangGraph in Production]] — state management, checkpointing, human-in-the-loop
-- [[projects/42_Framework/features/005-latte-hardening|Feature 005: LATTE Hardening]] — tool schema hardening, error taxonomy
+- Feature 005: LATTE Hardening — tool schema hardening, error taxonomy

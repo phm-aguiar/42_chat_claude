@@ -69,7 +69,7 @@ import rehypeKatex from 'rehype-katex'
 await compile(file, {remarkPlugins: [remarkGfm]})
 
 // Plugin com options:
-await compile(file, {remarkPlugins: [[remarkGfm, {singleTilde: false}]]})
+await compile(file, {remarkPlugins: remarkGfm, {singleTilde: false}})
 
 // remark + rehype:
 await compile(file, {rehypePlugins: [rehypeKatex], remarkPlugins: [remarkMath]})
@@ -84,6 +84,6 @@ ler a [Arquitetura do `@mdx-js/mdx`](https://mdxjs.com/packages/mdx/#architectur
 ## Relacionado
 
 - [[references/mdx/what-is-mdx|O que é MDX?]]
-- [[references/mdx/getting-started|Getting Started com MDX]]
+- Getting Started com MDX
 - [[references/mdx/using-mdx|Usando MDX]]
 - [[references/mdx/troubleshooting-mdx|Troubleshooting MDX]]

@@ -3,7 +3,7 @@ base_confidence: 0.5
 title: "Wiki Model — Knowledge Management do Framework"
 category: concepts
 tags: ["arquitetura", "knowledge-management", "tools", "wiki"]
-aliases: [modelo-wiki, [[skills/wiki-llm-wiki|llm-wiki]]]
+aliases: [modelo-wiki, llm-wiki]
 sources: []
 summary: "O framework adota o modelo LLM Wiki (Karpathy) de 3 camadas: raw sources → wiki compilado → schema. Explica por que compilar conhecimento é superior a recuperar, e como o vault Obsidian versionado elimina amnésia cross-sessão."
 lifecycle: draft
@@ -42,7 +42,7 @@ são plugáveis, que o contrato é DONE/FAIL/BLOCKED. Não precisa re-derivar na
 
 ## As 3 Camadas
 
-O modelo é baseado no [LLM Wiki](https://github.com/karpathy/[[skills/wiki-llm-wiki|llm-wiki]]) de Andrej Karpathy:
+O modelo é baseado no [LLM Wiki](https://github.com/karpathy/llm-wiki) de Andrej Karpathy:
 
 ```
 Layer 1: Raw Sources (imutável)
@@ -59,7 +59,7 @@ São a "fonte da verdade" — nunca modificados pelo sistema wiki.
 ### Layer 2: Wiki Compilado
 O vault Obsidian (`wiki/`) versionado no repo. Cada página tem:
 - Frontmatter YAML (title, category, tags, sources, timestamps)
-- `[[skills/obsidian-markdown|wikilinks]]` conectando conceitos relacionados
+- `wikilinks` conectando conceitos relacionados
 - Provenance: cada claim rastreável a uma source
 
 ### Layer 3: Schema
@@ -78,7 +78,7 @@ O agente não precisa re-descobrir que "skills são trilhos, não jaulas" — es
 
 ### 2. Rastreabilidade
 Toda decisão arquitetural (ADR) está linkada à feature que a motivou.
-`[[skills/obsidian-markdown|wikilinks]]` formam um grafo navegável de decisões.
+`wikilinks` formam um grafo navegável de decisões.
 
 ### 3. Onboarding zero-atrito
 Um novo colaborador abre `wiki/index.md` e navega:
@@ -111,10 +111,10 @@ O fluxo é disparado pelo **agente principal** (o que está conversando com o hu
 
 ## Relacionado
 
-- [[skills/brain|brain toolkit]] — Toolkit consolidado wiki/obsidian/docs
+- brain toolkit — Toolkit consolidado wiki/obsidian/docs
 - [[concepts/vault-taxonomy|Vault Taxonomy]] — Estrutura canônica de diretórios
 - [[concepts/obsidian-flow|Fluxo Obsidian]] — Integração wiki ↔ pipeline
-- [[references/toolkits/wiki/[[karpathy-pattern]]|Karpathy Pattern]] — Fundação teórica
+- references/toolkits/wiki/[[karpathy-pattern|Karpathy Pattern]] — Fundação teórica
 
 - [[concepts/obsidian-flow|Fluxo Obsidian]] — Como o subsistema wiki opera no dia a dia
 - [[concepts/sdd|SDD]] — Regra do vault fiel

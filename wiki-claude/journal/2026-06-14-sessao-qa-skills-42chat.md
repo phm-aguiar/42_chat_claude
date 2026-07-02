@@ -44,7 +44,7 @@ lifecycle_changed: "2026-06-14"
 
 5. **Feature 100 refinada com wiki:** 4 referências wiki (platform-architecture, design-system, engineering-requirements, architecture-diagram) alimentaram spec/plan/tasks. Cores exatas, modelo híbrido RWMutex+channels, tuning PostgreSQL, cache 3 camadas
 
-6. **Taxonomia do vault documentada:** concepts/[[vault-[[taxonomy]]]].md explica função de cada diretório (concepts, references, skills, projects, _raw, journal, synthesis, entities)
+6. **Taxonomia do vault documentada:** concepts/vault-[[taxonomy]].md explica função de cada diretório (concepts, references, skills, projects, _raw, journal, synthesis, entities)
 
 ## Decisões Feitas
 
@@ -65,9 +65,9 @@ lifecycle_changed: "2026-06-14"
 - [[projects/42_chat/features/feature-007-agent-qa|Feature 007]] — Agent QA implementado
 - gherkin-scenarios — Skill de cenários Gherkin
 - go-unit-tests — Skill de testes unitários Go
-- [[concepts/[[vault-[[taxonomy]]]]]] — Taxonomia do vault
-- [[references/42-chat/42-chat-platform-architecture.md]] — Arquitetura do 42 Chat
-- [[references/42-chat-design-system]] — Design system do 42 Chat
+- concepts/[[vault-[[taxonomy]]]] — Taxonomia do vault
+- references/42-chat/42-chat-platform-architecture.md — Arquitetura do 42 Chat
+- references/42-chat-design-system — Design system do 42 Chat
 ## Skills Referenciadas
 
 - local-test-runner|local-test-runner]] — Execução de testes e cobertura
@@ -79,4 +79,4 @@ lifecycle_changed: "2026-06-14"
 - cucumber-[[step-definitions]]|cucumber-[[step-definitions]]]] — Step definitions para Cucumber/Godog
 - bdd-spec-process|bdd-spec-process]] — Processo de especificação BDD
 
-> Related: [[journal/[[digest-2026-06-15]]|Digest 2026-06-15]]
+> Related: journal/[[digest-2026-06-15|Digest 2026-06-15]]

@@ -24,7 +24,7 @@ O **Hub** é o componente central que gerencia todas as conexões WebSocket ativ
 
 ## No Projeto
 
-No 42 Chat, o Hub é instanciado em [`cmd/server/main.go`](../../cmd/server/main.go) durante a inicialização do servidor:
+No 42 Chat, o Hub é instanciado em `cmd/server/main.go` durante a inicialização do servidor:
 
 ```go
 hub := ws.NewHub(queries)
@@ -44,8 +44,8 @@ Ele é injetado no [`Handler`](client.md) WebSocket, que o utiliza para:
 
 | Arquivo | Descrição |
 |---------|-----------|
-| [`internal/ws/hub.go`](../../internal/ws/hub.go) | Implementação do Hub (196 linhas) |
-| [`internal/ws/hub_test.go`](../../internal/ws/hub_test.go) | Testes unitários do Hub |
+| `internal/ws/hub.go` | Implementação do Hub (196 linhas) |
+| `internal/ws/hub_test.go` | Testes unitários do Hub |
 
 ## Relacionado
 

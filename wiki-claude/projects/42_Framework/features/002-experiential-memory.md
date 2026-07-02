@@ -27,7 +27,7 @@ lifecycle: draft
 
 | Artefato | Status | Link |
 |---|---|---|
-| Spec | ✅ Aprovado | [spec.md](../../../../specs/features/002-experiential-memory/spec.md) |
+| Spec | ✅ Aprovado | spec.md |
 | Plan (ADRs) | ✅ Pronto | [plan.md](../../../../specs/features/002-experiential-memory/plan.md) |
 | Tasks (DAG) | ✅ Pronto | [tasks.md](../../../../specs/features/002-experiential-memory/tasks.md) |
 
@@ -225,7 +225,7 @@ lifecycle: draft
 
 - Paper A-MapReduce: [[references/papers/A-MapReduce|A-MapReduce — Executing Wide Search via Agentic MapReduce]]
 - Paper LATTE: [[references/papers/LATTE|LATTE — Language Agent Teams for Task Evolution]]
-- Feature 001: [specs/features/001-latte-coordination/](../../../../specs/features/001-latte-coordination/spec.md) — dependência para feedback loop
+- Feature 001: specs/features/001-latte-coordination/ — dependência para feedback loop
 - [[concepts/sdd|SDD]] — Metodologia
 - [[concepts/obsidian-flow|Fluxo Obsidian]] — Integração wiki ↔ pipeline
-- [[skills/brain|brain toolkit]] — wiki-query, wiki-ingest, wiki-synthesize, wiki-dedup
+- brain toolkit — wiki-query, wiki-ingest, wiki-synthesize, wiki-dedup

@@ -157,7 +157,7 @@ A seção `Coordenação (LATTE)` no relatório do `sdd-validate` inclui:
 
 **Benchmark:** -55% LLM calls, -50% rounds em cenário de stress com 5 tasks + 1 timeout.
 
-Ver: [[projects/42_Framework/features/005-latte-hardening|Feature 005: LATTE Hardening]]
+Ver: Feature 005: LATTE Hardening
 
 ## Modo Legacy
 
@@ -166,11 +166,11 @@ Tasks.md sem `graph-operators: enabled` → orchestrator trata como DAG estátic
 ## Relacionado
 
 - **Paper:** [[references/papers/LATTE|LATTE — Language Agent Teams for Task Evolution]]
-- [[specs/features/001-latte-coordination/spec|Spec]]
-- [[specs/features/001-latte-coordination/plan|Plan]]
-- [[specs/features/001-latte-coordination/tasks|Tasks]]
+- Spec
+- Plan
+- Tasks
 - [[concepts/sdd|SDD]] — Metodologia
 - [[concepts/sdd-workflow|SDD Workflow]] — Pipeline com modo LATTE
-- [[skills/sdd-generate-tasks|sdd-generate-tasks]] — Gerador do G₀ com graph-operators
-- [[skills/agent-run|agent-run]] — Orquestrador com heartbeat + operadores
+- sdd-generate-tasks — Gerador do G₀ com graph-operators
+- agent-run — Orquestrador com heartbeat + operadores
 - [[projects/42_Framework/42_Framework]] — Meta-framework

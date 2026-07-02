@@ -46,7 +46,7 @@ updated: 2026-06-18
 
 ## Referências
 
-- [[references/42-[[api]]-specification|42 API Specification]]
-- [[references/42-chat-platform-architecture|42 Chat [[Architecture]]]]
-- [[references/react-vite-development|React + Vite Development]]
+- references/42-[[api-specification|42 API Specification]]
+- 42 Chat [[Architecture]]
+- React + Vite Development
 - [[concepts/sdd|SDD]]

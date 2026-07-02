@@ -26,7 +26,7 @@ lifecycle: draft
 
 ### Inicialização
 
-Em [`cmd/server/main.go`](../../cmd/server/main.go), o router é criado e configurado com middleware global:
+Em `cmd/server/main.go`, o router é criado e configurado com middleware global:
 
 ```go
 r := chi.NewRouter()
@@ -79,8 +79,8 @@ O middleware extrai o [`JWT`](jwt.md) do header `Authorization: Bearer <token>`,
 
 | Arquivo | Descrição |
 |---------|-----------|
-| [`cmd/server/main.go`](../../cmd/server/main.go) | Inicialização do router Chi com todas as rotas |
-| [`internal/auth/middleware.go`](../../internal/auth/middleware.go) | Middleware JWT aplicado via chi.Group |
+| `cmd/server/main.go` | Inicialização do router Chi com todas as rotas |
+| `internal/auth/middleware.go` | Middleware JWT aplicado via chi.Group |
 
 ## Relacionado
 

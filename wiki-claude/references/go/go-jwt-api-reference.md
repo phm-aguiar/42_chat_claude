@@ -344,6 +344,6 @@ func MakeSampleToken(c jwt.Claims, method jwt.SigningMethod, key any) string
 
 ## Ver Também
 
-- [[references/go-jwt|Go JWT Overview]] — Guia de uso com exemplos e migration v4→v5
-- [[references/go-error-handling|Go Error Handling]] — `errors.Is` para erros sentinela do JWT
-- [[references/42-api-specification|42 API Specification]] — OAuth2 Bearer tokens
+- Go JWT Overview — Guia de uso com exemplos e migration v4→v5
+- Go Error Handling — `errors.Is` para erros sentinela do JWT
+- 42 API Specification — OAuth2 Bearer tokens

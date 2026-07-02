@@ -73,6 +73,6 @@ useEffect(() => {
 
 ## Relacionado
 
-- [[references/42-api-specification|42 API Specification]]
-- [[references/react-vite-environment-config|React + Vite Environment Config]]
+- 42 API Specification
+- React + Vite Environment Config
 - [[journal/2026-06-18-sessao-feat100-oauth|Sessão 18/jun — Feature 100 + OAuth2]]

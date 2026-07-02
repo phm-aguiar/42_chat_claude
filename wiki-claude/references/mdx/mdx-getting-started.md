@@ -98,4 +98,4 @@ escreverem MDX. Use `<iframe>` com `sandbox`, Docker ou `vm2` para Node.js.
 - [[references/mdx/what-is-mdx|O que é MDX?]]
 - [[references/mdx/using-mdx|Usando MDX]]
 - [[references/mdx/extending-mdx|Estendendo MDX]]
-- [[references/mdx/[[troubleshooting-mdx]]|Troubleshooting MDX]]
+- references/mdx/[[troubleshooting-mdx|Troubleshooting MDX]]

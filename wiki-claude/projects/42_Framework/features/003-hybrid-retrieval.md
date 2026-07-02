@@ -67,6 +67,6 @@ Substitui thresholds fixos por valores adaptativos contextuais:
 - [[projects/42_Framework/features/002-experiential-memory|Feature 002]] — Wiki Experiential Memory (dependência)
 - [[projects/42_Framework/features/001-latte-coordination|Feature 001]] — LATTE Coordination
 - [[projects/42_Framework/42_Framework|42 Framework]] — Meta-framework
-- [[specs/features/003-hybrid-retrieval/spec|Spec]]
-- [[specs/features/003-hybrid-retrieval/plan|Plan]]
-- [[specs/features/003-hybrid-retrieval/tasks|Tasks]]
+- Spec
+- Plan
+- Tasks

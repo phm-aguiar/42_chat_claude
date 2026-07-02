@@ -108,6 +108,6 @@ Providers aninhados fazem merge. Para merge customizado, passe função.
 ## Relacionado
 
 - [[references/mdx/what-is-mdx|O que é MDX?]]
-- [[references/mdx/getting-started|Getting Started com MDX]]
-- [[references/mdx/[[extending-mdx]]|Estendendo MDX]]
+- Getting Started com MDX
+- references/mdx/[[extending-mdx|Estendendo MDX]]
 - [[references/mdx/troubleshooting-mdx|Troubleshooting MDX]]

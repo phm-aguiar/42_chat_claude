@@ -205,10 +205,10 @@ Then write the body (same for both modes):
 
 - `## Overview` — 2–4 sentence summary of what the page covers
 - `## Key Points` — bulleted list of main claims/findings, with provenance markers
-- `## Concepts` — wikilinks to related concept pages (`[[concepts/...]]`); create minimal stubs for important ones that don't exist yet
-- `## Entities` — wikilinks to entity pages (`[[entities/...]]`) for people, tools, orgs mentioned
+- `## Concepts` — wikilinks to related concept pages (`concepts/...`); create minimal stubs for important ones that don't exist yet
+- `## Entities` — wikilinks to entity pages (`entities/...`) for people, tools, orgs mentioned
 - `## Open Questions` — questions the source raises (omit section if none)
-- `## Related` — wikilinks to any existing wiki pages this connects to; in project mode, always include a link back to `[[projects/<project-name>/<project-name>]]`
+- `## Related` — wikilinks to any existing wiki pages this connects to; in project mode, always include a link back to `projects/<project-name>/<project-name>`
 
 Apply `visibility/internal` or `visibility/pii` tags if the content warrants them. When in doubt, omit.
 
@@ -218,7 +218,7 @@ Apply `visibility/internal` or `visibility/pii` tags if the content warrants the
 
 Skip this step entirely if in project mode.
 
-After writing the page, scan every `[[wikilink]]` you placed. For each linked page:
+After writing the page, scan every `wikilink` you placed. For each linked page:
 1. Check if it lives under `projects/<project-name>/`
 2. Check if it has a `project:` frontmatter field
 3. If either is true, increment that project's affinity score
@@ -240,7 +240,7 @@ Read the project overview at `projects/<project-name>/<project-name>.md`. If the
 ```markdown
 ## References
 
-- [[projects/<project-name>/references/<slug>]] — <one-line summary>
+- projects/<project-name>/references/<slug> — <one-line summary>
 ```
 
 If a `## References` section already exists, append to it. Update the `updated` timestamp in frontmatter.

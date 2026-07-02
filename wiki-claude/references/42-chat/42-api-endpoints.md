@@ -277,7 +277,7 @@ Recursos de administração — acesso restrito a apps com escopos adequados.
 
 ## Ver Também
 
-- [[references/42-api-specification|42 API Specification]] — Guia de uso: auth, paginação, rate limits
-- [[references/42-chat-sec5-api-42-rate-limits|42 Chat — Sec 5: API 42 & Rate Limits]] — Estratégia de rate limiting
-- [[references/42-chat-platform-architecture|42 Chat Platform Architecture]] — Stack do chat
-- [[references/42-chat-engineering-requirements|42 Chat Engineering Requirements]] — Requisitos de engenharia
+- 42 API Specification — Guia de uso: auth, paginação, rate limits
+- 42 Chat — Sec 5: API 42 & Rate Limits — Estratégia de rate limiting
+- 42 Chat Platform Architecture — Stack do chat
+- 42 Chat Engineering Requirements — Requisitos de engenharia

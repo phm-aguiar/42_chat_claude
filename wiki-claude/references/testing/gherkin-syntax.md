@@ -557,6 +557,6 @@ base_confidence: 0.5
 
 ## Ver Também
 
-- [[references/gherkin-best-practices|Gherkin Best Practices]] — Como escrever cenários de qualidade
-- [[references/gherkin-examples|Gherkin Examples]] — Exemplos prontos para consulta
-- [[references/bdd-specification-process|BDD Spec Process]] — Fluxo completo do Gherkin Expert
+- Gherkin Best Practices — Como escrever cenários de qualidade
+- Gherkin Examples — Exemplos prontos para consulta
+- BDD Spec Process — Fluxo completo do Gherkin Expert

@@ -63,11 +63,11 @@ Implementado como **[[projects/42_Framework/features/001-latte-coordination|Feat
 ## Relacionado
 
 - [[projects/42_Framework/features/001-latte-coordination|Feature 001]] — implementação no 42_Framework
-- [[projects/42_Framework/features/[[002-experiential-memory]]|Feature 002]] — usa métricas LATTE como utility signal
+- projects/42_Framework/features/[[002-experiential-memory|Feature 002]] — usa métricas LATTE como utility signal
 - [[references/papers/A-MapReduce|A-MapReduce]] — memória experiencial cross-task
 - [[references/papers/LangGraph-in-Production|LangGraph in Production]] — checkpointing e state pruning
 - [[concepts/sdd|SDD]] — metodologia base
 - [[concepts/sdd-workflow|SDD Workflow]] — pipeline com modo LATTE
-- [[skills/agent-run|agent-run]] — orquestrador com heartbeat e operadores
-- [[skills/sdd-generate-tasks|sdd-generate-tasks]] — gerador do G₀ com graph-operators
-- [[skills/sdd-validate|sdd-validate]] — métricas de coordenação LATTE
+- agent-run — orquestrador com heartbeat e operadores
+- sdd-generate-tasks — gerador do G₀ com graph-operators
+- sdd-validate — métricas de coordenação LATTE

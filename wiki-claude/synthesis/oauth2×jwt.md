@@ -106,6 +106,6 @@ O `oauth2.ExchangeCode` é um façade que traduz identidade externa (42) para id
 - [[entities/user|User]] — Modelo populado pelo OAuth2, carregado nas claims JWT
 - [[entities/chi|Chi]] — Router onde o middleware JWT é aplicado
 - [[entities/websocket|WebSocket]] — Upgrade autenticado via JWT
-- [[references/auth-integration|Auth Integration]] — Arquitetura das 3 camadas
-- [[references/42-oauth2-flow|42 OAuth2 Flow]] — Fluxo específico da API 42
-- [[references/oauth2-42-pitfalls|OAuth2 42 Pitfalls]] — Armadilhas comuns
+- Auth Integration — Arquitetura das 3 camadas
+- 42 OAuth2 Flow — Fluxo específico da API 42
+- OAuth2 42 Pitfalls — Armadilhas comuns

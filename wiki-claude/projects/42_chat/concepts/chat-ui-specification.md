@@ -16,7 +16,7 @@ provenance:
 relationships:
   - target: "[[projects/42_chat/42_chat]]"
     type: related_to
-  - target: "[[references/42-graphic-charter-software]]"
+  - target: "references/42-graphic-charter-software"
     type: related_to
 created: "2026-06-30T22:30:00Z"
 updated: "2026-06-30T22:30:00Z"
@@ -164,4 +164,4 @@ Para que o agente de QA valide a interface dinamicamente, ele deve focar nos seg
 
 - Fonte: Documento `funcionalidade-chat.md` (referência ao MSN Messenger v7.5/v8.5)
 - [[projects/42_chat/42_chat]] — Projeto 42_chat
-- [[references/42-graphic-charter-software]] — Paleta de cores e identidade visual da 42
+- references/42-graphic-charter-software — Paleta de cores e identidade visual da 42

@@ -372,7 +372,7 @@ substituindo o tema brutalista custom da Feature 100.
 | Fase 6 | T022–T025 | QA: smoke test, unitários, borda, BDD (.feature) |
 | Fase 7 | T026–T027 | Wiki (esta página) + métricas LATTE |
 
-> Ver [[specs/features/102-42-forum/tasks]] para o DAG completo com
+> Ver specs/features/102-42-forum/tasks para o DAG completo com
 > dependências e paralelismo.
 
 ## Métricas LATTE (Execução Real)
@@ -426,7 +426,7 @@ Todos os 5 overwrites ocorreram na **Fase 6 (QA / smoke test)**:
 - [[projects/42_chat/features/feature-101-assinatura-participacao|Feature 101 — Assinatura de Participação]] — Identidade real consistente
 - [[projects/42_chat/features/feature-004-sdd-tasks-dag|Feature 004 — Tasks DAG]] — Formato DAG usado no tasks.md
 - [[sdd]] — Metodologia SDD
-- [[specs/features/102-42-forum/spec]] — Spec completa
-- [[specs/features/102-42-forum/plan]] — Plano de implementação
-- [[specs/features/102-42-forum/tasks]] — DAG de 27 tasks
-- [[specs/features/102-42-forum/acceptance/forum.feature]] — 22 cenários BDD
+- specs/features/102-42-forum/spec — Spec completa
+- specs/features/102-42-forum/plan — Plano de implementação
+- specs/features/102-42-forum/tasks — DAG de 27 tasks
+- specs/features/102-42-forum/acceptance/forum.feature — 22 cenários BDD

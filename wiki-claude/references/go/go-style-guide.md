@@ -192,4 +192,4 @@ O [Uber Go Style Guide](https://github.com/uber-go/guide) está disponível em m
 - [[go-style-core]] — Princípios centrais
 - [[go-naming]] — Convenções de nomes
 - [[go-error-handling]] — Tratamento de erros
-- [[references/go-enum|Go Enum]]
+- Go Enum

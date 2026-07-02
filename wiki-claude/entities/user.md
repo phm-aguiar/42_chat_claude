@@ -26,7 +26,7 @@ lifecycle: draft
 
 ### Criação/Atualização (Upsert)
 
-O User é criado ou atualizado durante o callback OAuth2 em [`cmd/server/main.go`](../../cmd/server/main.go):
+O User é criado ou atualizado durante o callback OAuth2 em `cmd/server/main.go`:
 
 ```go
 user, err := oauth2.ExchangeCode(code)
@@ -58,9 +58,9 @@ O login é tratado como identificador único no protocolo — usado como chave d
 
 | Arquivo | Descrição |
 |---------|-----------|
-| [`internal/model/user.go`](../../internal/model/user.go) | Definição da struct User (14 linhas) |
-| [`internal/auth/oauth.go`](../../internal/auth/oauth.go) | Lógica de ExchangeCode que popula User |
-| [`internal/db/queries.go`](../../internal/db/queries.go) | UpsertUser e queries relacionadas |
+| `internal/model/user.go` | Definição da struct User (14 linhas) |
+| `internal/auth/oauth.go` | Lógica de ExchangeCode que popula User |
+| `internal/db/queries.go` | UpsertUser e queries relacionadas |
 
 ## Relacionado
 

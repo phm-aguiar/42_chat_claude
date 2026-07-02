@@ -184,7 +184,7 @@ O diretório `wiki/references/` contém seis páginas que formam a base de conhe
 
 ## Como as Skills do Agent-QA Usarão Essas Referências
 
-O **agent-qa** ([spec 007](specs/features/007-agent-qa/spec.md)) é um agente claude com persona fixa e **skills de teste plugáveis por stack**, injetadas pelo orchestrator. As referências em `wiki/references/` servem como fonte canônica de conhecimento para essas skills:
+O **agent-qa** (spec 007) é um agente claude com persona fixa e **skills de teste plugáveis por stack**, injetadas pelo orchestrator. As referências em `wiki/references/` servem como fonte canônica de conhecimento para essas skills:
 
 ### Skill 1: `gherkin-scenarios` (futura)
 
@@ -268,7 +268,7 @@ O **agent-qa** ([spec 007](specs/features/007-agent-qa/spec.md)) é um agente cl
 
 5. **Criar dashboard de qualidade**
    - Métricas: cobertura por pacote, taxa de aprovação, tempo médio de validação.
-   - Usar [[skills/wiki-dashboard|wiki-dashboard]] para visualizar.
+   - Usar wiki-dashboard para visualizar.
 
 6. **Expandir as referências**
    - Adicionar guias por stack (ex: `go-test-guide.md`, `jest-config.md`).
@@ -278,7 +278,7 @@ O **agent-qa** ([spec 007](specs/features/007-agent-qa/spec.md)) é um agente cl
 
 7. **Automatizar a evolução das referências**
    - Quando uma skill for atualizada, as referências devem ser revisadas automaticamente via `wiki-ingest`.
-   - Usar [[skills/wiki-query|wiki-query]] para verificar consistência entre skills e referências.
+   - Usar wiki-query para verificar consistência entre skills e referências.
 
 8. **QA como gate de release**
    - O agent-qa deve ser o último gate antes de um release, validando regressão completa.
@@ -287,7 +287,7 @@ O **agent-qa** ([spec 007](specs/features/007-agent-qa/spec.md)) é um agente cl
 
 ## Notas Técnicas
 
-- **Todas as referências** em `wiki/references/` estão no formato [[skills/obsidian-markdown|wikilinks]] do Obsidian e são interligadas.
+- **Todas as referências** em `wiki/references/` estão no formato wikilinks do Obsidian e são interligadas.
 - O agent-qa **nunca infere** comportamento ambíguo — reporta BLOCKED.
 - Skills são **trilhos, não jaulas**: se a skill não cobre, QA reporta BLOCKED, não improvisa.
 - O agent-qa **não tem acesso web** — apenas terminal + file. As referências do vault são o conhecimento máximo disponível.
@@ -310,11 +310,11 @@ O **agent-qa** ([spec 007](specs/features/007-agent-qa/spec.md)) é um agente cl
 
 ## Ver Também
 
-- [[references/bdd-specification-process|BDD Specification Process]] — Metodologia e fluxo completo
-- [[references/gherkin-syntax|Gherkin Syntax]] — Sintaxe de referência
-- [[references/gherkin-best-practices|Gherkin Best Practices]] — Boas práticas e anti-patterns
-- [[references/gherkin-examples|Gherkin Examples]] — Exemplos reais
-- [[references/cucumber-basics|Cucumber Basics]] — Step definitions e hooks
-- [[references/playwright-bdd|Playwright BDD]] — Testes E2E com browser
-- [[references/tdd-methodology|TDD Methodology]] — Red-Green-Refactor e FIRST
-- [[references/recipe-step-executor|Recipe Step Executor]] — Executor de workflows Python
+- BDD Specification Process — Metodologia e fluxo completo
+- Gherkin Syntax — Sintaxe de referência
+- Gherkin Best Practices — Boas práticas e anti-patterns
+- Gherkin Examples — Exemplos reais
+- Cucumber Basics — Step definitions e hooks
+- Playwright BDD — Testes E2E com browser
+- TDD Methodology — Red-Green-Refactor e FIRST
+- Recipe Step Executor — Executor de workflows Python

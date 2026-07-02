@@ -69,15 +69,15 @@ func (m *JWTManager) ValidateToken(tokenStr string) (*Claims, error) {
 
 ### Middleware
 
-O `JWTMiddleware` (em [`internal/auth/middleware.go`](../../internal/auth/middleware.go)) extrai o token do header `Authorization`, valida, e injeta `UserID` e `Login` no contexto da request. Rotas autenticadas (`/api/messages`, `/api/users/*`) são protegidas por esse middleware via `chi.Group`.
+O `JWTMiddleware` (em `internal/auth/middleware.go`) extrai o token do header `Authorization`, valida, e injeta `UserID` e `Login` no contexto da request. Rotas autenticadas (`/api/messages`, `/api/users/*`) são protegidas por esse middleware via `chi.Group`.
 
 ## Arquivo(s)
 
 | Arquivo | Descrição |
 |---------|-----------|
-| [`internal/auth/jwt.go`](../../internal/auth/jwt.go) | JWTManager: GenerateToken e ValidateToken (63 linhas) |
-| [`internal/auth/jwt_test.go`](../../internal/auth/jwt_test.go) | Testes unitários de geração e validação |
-| [`internal/auth/middleware.go`](../../internal/auth/middleware.go) | Middleware HTTP que valida JWT nas requests |
+| `internal/auth/jwt.go` | JWTManager: GenerateToken e ValidateToken (63 linhas) |
+| `internal/auth/jwt_test.go` | Testes unitários de geração e validação |
+| `internal/auth/middleware.go` | Middleware HTTP que valida JWT nas requests |
 
 ## Síntese
 

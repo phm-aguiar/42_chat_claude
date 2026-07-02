@@ -15,17 +15,17 @@ lifecycle: draft
 ## Embed Notes
 
 ```markdown
-![[Note Name]]
-![[Note Name#Heading]]
-![[Note Name#^block-id]]
+!Note Name
+!Note Name#Heading
+!Note Name#^block-id
 ```
 
 ## Embed Images
 
 ```markdown
-![[image.png]]
-![[image.png|640x480]]    Width x Height
-![[image.png|300]]        Width only (maintains aspect ratio)
+!image.png
+!640x480    Width x Height
+!300        Width only (maintains aspect ratio)
 ```
 
 ## External Images
@@ -38,29 +38,29 @@ lifecycle: draft
 ## Embed Audio
 
 ```markdown
-![[audio.mp3]]
-![[audio.ogg]]
+!audio.mp3
+!audio.ogg
 ```
 
 ## Embed PDF
 
 ```markdown
-![[document.pdf]]
-![[document.pdf#page=3]]
-![[document.pdf#height=400]]
+!document.pdf
+!document.pdf#page=3
+!document.pdf#height=400
 ```
 
 ## Embed Bases
 
 ```markdown
-![[BaseFile.base]]
-![[BaseFile.base#View Name]]
+!BaseFile.base
+!BaseFile.base#View Name
 ```
 
 ## Embed Lists
 
 ```markdown
-![[Note#^list-id]]
+!Note#^list-id
 ```
 
 Where the list has a block ID:

@@ -43,6 +43,6 @@ Dessa maneira, transfere-se completamente a autoridade de gerenciamento de sess�
 
 ## Ver Também
 
-- [[references/42-chat-research-report|42 Chat Research Report]] — MoC do relatório completo
-- [[references/42-chat-platform-architecture|Platform Architecture]] — Visão arquitetural
-- [[references/42-chat-engineering-requirements|Engineering Requirements]] — Requisitos técnicos
+- 42 Chat Research Report — MoC do relatório completo
+- Platform Architecture — Visão arquitetural
+- Engineering Requirements — Requisitos técnicos

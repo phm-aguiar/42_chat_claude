@@ -167,6 +167,6 @@ Implemente `SigningMethod` + `RegisterSigningMethod` para métodos customizados.
 
 ## Ver Também
 
-- [[references/[[go-jwt-api-reference]]|Go JWT API Reference]] — API completa (tipos, funções, erros, ParserOptions)
-- [[references/[[42-api-specification]]|42 API Specification]] — OAuth2 e autenticação da API 42
-- [[references/go-error-handling|Go Error Handling]] — Padrão `errors.Is` usado nos erros do JWT
+- references/[[go-jwt-api-reference|Go JWT API Reference]] — API completa (tipos, funções, erros, ParserOptions)
+- references/[[42-api-specification|42 API Specification]] — OAuth2 e autenticação da API 42
+- Go Error Handling — Padrão `errors.Is` usado nos erros do JWT

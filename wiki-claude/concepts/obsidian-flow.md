@@ -50,7 +50,7 @@ Não é um agente separado — é um conjunto de skills que o agente principal i
 | -------------- | -------------------------- | -------------------------------------------------------------------------------- |
 | `wiki-capture` | Agente principal           | Após sessão importante (decisão arquitetural, feature complexa)                  |
 | `wiki-ingest`  | Agente principal           | Após feature implementada — destila spec/plan/tasks em página wiki               |
-| `cross-linker` | Agente principal           | Após múltiplas páginas novas — descobre `[[skills/obsidian-markdown|wikilinks]]` faltantes                |
+| `cross-linker` | Agente principal           | Após múltiplas páginas novas — descobre `wikilinks` faltantes                |
 | `wiki-lint`    | Agente principal (ou cron) | Periodicamente ou após mudanças estruturais — audita saúde                       |
 | `wiki-query`   | Agente principal           | Quando precisa buscar conhecimento compilado (ex: "o que já decidimos sobre X?") |
 | `wiki-status`  | Agente principal           | Para ver delta do vault (o que mudou desde última ingest)                        |
@@ -73,7 +73,7 @@ wiki-ingest → lê source (spec.md, plan.md, tasks.md)
 ### 3. Cross-link (após múltiplos ingests)
 ```
 cross-linker → escaneia vault por menções não-linkadas
-             → adiciona [[skills/obsidian-markdown|wikilinks]] onde faz sentido
+             → adiciona wikilinks onde faz sentido
              → sugere novas conexões
 ```
 
@@ -128,7 +128,7 @@ wiki-query → busca híbrida (lexical + vetorial)
 
 3. Agente principal invoca cross-linker:
    - Descobre que feature-006-agent-dev deve linkar para coordenação direta
-   - Adiciona [[skills/obsidian-markdown|wikilinks]] bidirecionais
+   - Adiciona wikilinks bidirecionais
 
 4. Agente principal invoca wiki-lint:
    - 18 broken links encontrados (renomeações, páginas faltantes)
@@ -147,7 +147,7 @@ As skills vivem em `.claude/skills/wiki/` e são invocadas via `skill_view()`:
 | `wiki-query` | Busca conhecimento compilado | Baixo (index-only) a Médio (full-read) |
 | `wiki-lint` | Audita saúde do vault | Médio (lê todas as páginas) |
 | `wiki-capture` | Salva conversa atual | Médio (processa transcrição) |
-| `wiki/cross-linker` | Descobre [[skills/obsidian-markdown|wikilinks]] faltantes | Médio (escaneia vault) |
+| `wiki/cross-linker` | Descobre wikilinks faltantes | Médio (escaneia vault) |
 | `wiki-status` | Delta do vault | Baixo (lê .manifest.json) |
 | `wiki-setup` | Inicializa vault | Alto (setup único) |
 | `obsidian/obsidian-markdown` | Sintaxe OFM | Baixo (referência) |
@@ -247,8 +247,8 @@ o vault wiki como memória experiencial do framework:
 
 ## Relacionado
 
-- [[skills/brain|brain toolkit]] — Implementa este fluxo
-- [[skills/sdd|sdd toolkit]] — Pipeline que aciona a wiki
+- brain toolkit — Implementa este fluxo
+- sdd toolkit — Pipeline que aciona a wiki
 - [[concepts/wiki-model|Wiki Model]] — O modelo de 3 camadas
 - [[concepts/vault-taxonomy|Vault Taxonomy]] — Estrutura do vault
 

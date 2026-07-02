@@ -580,16 +580,16 @@ base_confidence: 0.5
 
 ## Princípios FIRST e Padrão AAA
 
-> **Movido para:** [[references/tdd-first-principles|TDD FIRST Principles & AAA Pattern]] — Consulte a página dedicada para o detalhamento completo dos princípios FIRST (Fast, Isolated, Repeatable, Self-Validating, Timely) e do padrão Arrange-Act-Assert com exemplos em Python/pytest.
+> **Movido para:** TDD FIRST Principles & AAA Pattern — Consulte a página dedicada para o detalhamento completo dos princípios FIRST (Fast, Isolated, Repeatable, Self-Validating, Timely) e do padrão Arrange-Act-Assert com exemplos em Python/pytest.
 
 ## Anti-Patterns de TDD
 
-> **Movido para:** [[references/tdd-anti-patterns|TDD Anti-Patterns]] — Consulte o catálogo completo dos 8 anti-patterns: The Liar, Excessive Setup, The Giant, The Mockery, The Inspector, The Slow Poke, The Generous Leftovers, e The Free Ride. Cada entrada inclui problema, exemplo ruim, diagnóstico e solução com código Python/pytest.
+> **Movido para:** TDD Anti-Patterns — Consulte o catálogo completo dos 8 anti-patterns: The Liar, Excessive Setup, The Giant, The Mockery, The Inspector, The Slow Poke, The Generous Leftovers, e The Free Ride. Cada entrada inclui problema, exemplo ruim, diagnóstico e solução com código Python/pytest.
 
 ## Ver Também
 
-- [[references/tdd-first-principles|TDD FIRST Principles & AAA Pattern]] — Princípios e organização de testes
-- [[references/tdd-anti-patterns|TDD Anti-Patterns]] — Catálogo de anti-patterns
-- [[references/bdd-specification-process|BDD Spec Process]] — BDD complementa TDD
-- [[references/qa-overview|QA Overview]] — Estratégia de QA no framework SDD
-- [[references/recipe-step-executor|Recipe Step Executor]] — Executor de workflows com TDD
+- TDD FIRST Principles & AAA Pattern — Princípios e organização de testes
+- TDD Anti-Patterns — Catálogo de anti-patterns
+- BDD Spec Process — BDD complementa TDD
+- QA Overview — Estratégia de QA no framework SDD
+- Recipe Step Executor — Executor de workflows com TDD

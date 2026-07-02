@@ -136,5 +136,5 @@ docs/
 ## Ver Também
 
 - [[synthesis/thinking-architecture|Thinking × Architecture]] — ADRs com reasoning tools
-- [[references/system-design|System Design Guide]]
-- [[references/techspec-template|Tech Spec Template]]
+- System Design Guide
+- Tech Spec Template

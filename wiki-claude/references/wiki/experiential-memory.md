@@ -1090,4 +1090,4 @@ lifecycle: draft
 - **Feature doc:** `wiki/projects/42_Framework/features/002-experiential-memory.md`
 - **Dependência pip:** `rank-bm25` — BM25 lexical scoring para modo híbrido
 - **Conceitos:** [[concepts/sdd|SDD]], [[concepts/obsidian-flow|Fluxo Obsidian]]
-- **Toolkits:** [[skills/brain|brain toolkit]] — wiki-query, wiki-ingest, wiki-synthesize, wiki-dedup
+- **Toolkits:** brain toolkit — wiki-query, wiki-ingest, wiki-synthesize, wiki-dedup

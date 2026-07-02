@@ -49,7 +49,7 @@ lifecycle: draft
 | Date | `date: 2024-01-15` |
 | Date & Time | `due: 2024-01-15T14:30:00` |
 | List | `tags: [one, two]` or YAML list |
-| Links | `related: "[[Other Note]]"` |
+| Links | `related: "Other Note"` |
 
 ## Default Properties
 

@@ -65,4 +65,4 @@ Adiado — consolidar features 001+002 primeiro com feature real (003 de domíni
 - [[projects/42_Framework/features/002-experiential-memory|Feature 002]] — Wiki Experiential Memory
 - [[concepts/sdd-workflow|SDD Workflow]] — pipeline com agentes stateful
 - [[concepts/sdd|SDD]] — metodologia base
-- [[skills/agent-run|agent-run]] — runtime alvo para checkpointing
+- agent-run — runtime alvo para checkpointing

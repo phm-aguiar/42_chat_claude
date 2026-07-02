@@ -86,7 +86,7 @@ diferentes de blocos distintos.
 
 ## Relacionado
 
-- [[references/mdx/getting-started|Getting Started com MDX]]
+- Getting Started com MDX
 - [[references/mdx/using-mdx|Usando MDX]]
 - [[references/mdx/extending-mdx|Estendendo MDX]]
 - [[references/mdx/troubleshooting-mdx|Troubleshooting MDX]]

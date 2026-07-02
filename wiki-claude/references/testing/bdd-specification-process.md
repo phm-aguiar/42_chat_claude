@@ -548,8 +548,8 @@ base_confidence: 0.5
 
 ## Ver Também
 
-- [[references/gherkin-syntax|Gherkin Syntax]] — Referência sintática
-- [[references/gherkin-best-practices|Gherkin Best Practices]] — Anti-padrões e boas práticas
-- [[references/gherkin-examples|Gherkin Examples]] — Exemplos de cenários bem escritos
-- [[references/cucumber-basics|Cucumber Basics]] — Automação dos cenários
-- [[references/tdd-methodology|TDD Methodology]] — Complemento: BDD define o que, TDD define como
+- Gherkin Syntax — Referência sintática
+- Gherkin Best Practices — Anti-padrões e boas práticas
+- Gherkin Examples — Exemplos de cenários bem escritos
+- Cucumber Basics — Automação dos cenários
+- TDD Methodology — Complemento: BDD define o que, TDD define como

@@ -127,7 +127,7 @@ GET /v2/users?sort=kind,-login
 
 ## Ver Também
 
-- [[references/42-api-endpoints|42 API Endpoints]] — Catálogo completo de endpoints (96 recursos, 739 endpoints)
-- [[references/42-chat-sec5-api-42-rate-limits|42 Chat — Sec 5: API 42 & Rate Limits]] — Estratégia de rate limiting no 42 Chat
-- [[references/42-chat-platform-architecture|42 Chat Platform Architecture]] — Stack do chat
-- [[references/go-jwt|Go JWT]] — Biblioteca Go para tokens JWT
+- 42 API Endpoints — Catálogo completo de endpoints (96 recursos, 739 endpoints)
+- 42 Chat — Sec 5: API 42 & Rate Limits — Estratégia de rate limiting no 42 Chat
+- 42 Chat Platform Architecture — Stack do chat
+- Go JWT — Biblioteca Go para tokens JWT

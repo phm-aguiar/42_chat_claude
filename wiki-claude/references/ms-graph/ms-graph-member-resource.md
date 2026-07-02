@@ -112,7 +112,7 @@ For shared channels (`membershipType: shared`), manage which teams can access th
 
 ## Related Pages
 
-- [[Chat]]
-- [[Channel]]
-- [[chatMessage]]
-- [[Apps/Tabs]]
+- Chat
+- Channel
+- chatMessage
+- Apps/Tabs

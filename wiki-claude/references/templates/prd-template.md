@@ -80,4 +80,4 @@ Implementation details will be covered in the Technical Specification.]
 
 ## Related
 
-- [[references/prd-product-requirements-document|PRD Guide]] — Como escrever Product Requirements Documents (artigo de referência)
+- PRD Guide — Como escrever Product Requirements Documents (artigo de referência)

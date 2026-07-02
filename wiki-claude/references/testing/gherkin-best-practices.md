@@ -673,6 +673,6 @@ base_confidence: 0.5
 
 ## Ver Também
 
-- [[references/gherkin-syntax|Gherkin Syntax]] — Referência completa da sintaxe
-- [[references/gherkin-examples|Gherkin Examples]] — Exemplos que aplicam as boas práticas
-- [[references/bdd-specification-process|BDD Spec Process]] — Anti-padrões e design de cenários
+- Gherkin Syntax — Referência completa da sintaxe
+- Gherkin Examples — Exemplos que aplicam as boas práticas
+- BDD Spec Process — Anti-padrões e design de cenários

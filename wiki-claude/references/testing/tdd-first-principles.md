@@ -380,6 +380,6 @@ Use comentários de seção (`# ARRANGE`, `# ACT`, `# ASSERT`) para tornar a est
 
 ## Ver Também
 
-- [[references/tdd-methodology|TDD Methodology]] — Ciclo Red-Green-Refactor
-- [[references/tdd-anti-patterns|TDD Anti-Patterns]] — Catálogo de anti-patterns
-- [[references/qa-overview|QA Overview]] — Onde TDD se encaixa na estratégia SDD
+- TDD Methodology — Ciclo Red-Green-Refactor
+- TDD Anti-Patterns — Catálogo de anti-patterns
+- QA Overview — Onde TDD se encaixa na estratégia SDD

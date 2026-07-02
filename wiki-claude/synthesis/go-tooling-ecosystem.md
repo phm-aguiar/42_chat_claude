@@ -1,7 +1,7 @@
 ---
 title: "Go Tooling Ecosystem"
 category: synthesis
-tags: ["[[effective-go", "go", "golangci-lint"]], code-review, synthesis]
+tags: ["effective-go", "go", "golangci-lint", code-review, synthesis]
 sources:
   - "tools/golangci-lint/index.md"
   - "references/go-style-guide.md"
@@ -50,7 +50,7 @@ julga. O que o review tradicional ignora, as thinking tools interrogam. ^[inferr
 ## Onde se Encontram
 
 ### Camada 1: Formatação Automática
-- **[[references/go/[[effective-go]]#formatting|gofmt]]**: "Let the machine take care of formatting"
+- **references/go/[[effective-go#formatting|gofmt]]**: "Let the machine take care of formatting"
 - Cobertura: 100% do código. Zero decisões humanas. Resolve o bike-shedding permanente.
 
 ### Camada 2: Análise Estática
@@ -60,15 +60,15 @@ julga. O que o review tradicional ignora, as thinking tools interrogam. ^[inferr
 - Cobertura: bugs, anti-patterns, segurança, performance. Regras objetivas e automatizáveis.
 
 ### Camada 3: Style Guide
-- **[[references/go-style-guide|Go Style Guide]]**: 20 tópicos dos guias Google, Uber, Effective Go
-- **[[references/go/[[effective-go]]|Effective Go]]**: Documento canônico (2009), cobre naming, interfaces,
+- **Go Style Guide**: 20 tópicos dos guias Google, Uber, Effective Go
+- **references/go/[[effective-go|Effective Go]]**: Documento canônico (2009), cobre naming, interfaces,
   concorrência, erros
 - **[[references/go/go-code-review-rules|Code Review Rules]]**: 59 regras do Uber Go Style Guide
 - Cobertura: decisões de design que linters não capturam (quando usar interface vs struct,
   como nomear, organização de pacotes)
 
 ### Camada 4: Code Review
-- **[[references/go-code-review|Go Code Review]]**: Checklist sistemática para revisão humana
+- **Go Code Review**: Checklist sistemática para revisão humana
 - Cobertura: contexto de negócio, intenção, trade-offs que ferramentas não entendem
 
 ### Camada 5: Thinking Tools
@@ -126,9 +126,9 @@ ter checklist de code review mas marcar tudo sem ler. ^[inferred]
 - [[tools/golangci-lint/gosec|gosec]] — Linter de segurança
 - [[tools/golangci-lint/gocyclo|gocyclo]] — Complexidade ciclomática
 - [[tools/golangci-lint/bodyclose|bodyclose]] — HTTP body close
-- [[references/go-style-guide|Go Style Guide]] — 20 tópicos de estilo
-- [[references/go/[[effective-go]]|Effective Go]] — Guia canônico
+- Go Style Guide — 20 tópicos de estilo
+- references/go/[[effective-go|Effective Go]] — Guia canônico
 - [[references/go/go-code-review-rules|Code Review Rules]] — 59 regras Uber
-- [[references/go-code-review|Go Code Review]] — Checklist de revisão
+- Go Code Review — Checklist de revisão
 - [[synthesis/thinking-go|Thinking × Go]] — Thinking tools em code review Go
-- [[references/go-linting|Go Linting Guide]] — Configuração de golangci-lint
+- Go Linting Guide — Configuração de golangci-lint

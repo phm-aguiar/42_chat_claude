@@ -79,6 +79,6 @@ O `metrics.md` tinha dados de execução real não capturados na wiki:
 
 ## Relacionado
 
-- [[synthesis/[[consolidation-2026-06-27]]|Consolidation Report 2026-06-27]] — Relatório detalhado do lint
-- [[[[projects]]/42_chat/features/[[feature-102-forum]]|Feature 102 — Forum]] — Página atualizada com métricas LATTE
-- [[[[projects]]/42_chat/features/security-backlog|Security Backlog]] — Nova página criada
+- synthesis/[[consolidation-2026-06-27|Consolidation Report 2026-06-27]] — Relatório detalhado do lint
+- [[projects/42_chat/features/[[feature-102-forum]]|Feature 102 — Forum]] — Página atualizada com métricas LATTE
+- [[projects/42_chat/features/security-backlog|Security Backlog]] — Nova página criada

@@ -64,8 +64,8 @@ A goroutine `writePump` é responsável por:
 
 | Arquivo | Descrição |
 |---------|-----------|
-| [`internal/ws/handler.go`](../../internal/ws/handler.go) | Handler com readPump, writePump e upgrade HTTP→WS (186 linhas) |
-| [`internal/ws/handler_test.go`](../../internal/ws/handler_test.go) | Testes de integração do handler |
+| `internal/ws/handler.go` | Handler com readPump, writePump e upgrade HTTP→WS (186 linhas) |
+| `internal/ws/handler_test.go` | Testes de integração do handler |
 
 ## Relacionado
 

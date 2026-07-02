@@ -127,7 +127,7 @@ Chats and channels support installed apps (`teamsAppInstallation`), tabs (`teams
 
 ## Related Pages
 
-- `[[Chat — Microsoft Graph]]`
-- `[[Channel — Microsoft Graph]]`
-- `[[chatMessage — Microsoft Graph]]`
-- `[[ConversationMember — Microsoft Graph]]`
+- `Chat — Microsoft Graph`
+- `Channel — Microsoft Graph`
+- `chatMessage — Microsoft Graph`
+- `ConversationMember — Microsoft Graph`

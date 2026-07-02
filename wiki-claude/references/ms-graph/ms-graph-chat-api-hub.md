@@ -25,11 +25,11 @@ This hub indexes the consolidated Microsoft Graph API reference pages for Teams 
 
 | Resource | Page | Key Operations |
 |----------|------|----------------|
-| **Chat** | `[[references/[[ms-graph-chat-resource]]\|Chat Resource]]` | Create/List/Get/Update/Delete chat, `chatType` (oneOnOne/group/meeting), removeAllAccessForUser, user-app chat |
-| **Channel** | `[[references/ms-graph-channel-resource\|Channel Resource]]` | Create/List/Get/Update/Delete channel, `membershipType` (standard/private/shared), migration, archive/unarchive, email provisioning |
-| **chatMessage** | `[[references/ms-graph-chat-message-resource\|chatMessage Resource]]` | Send/List/Get messages, replies, reactions, mentions, soft delete, delta API, pagination |
-| **Members** | `[[references/ms-graph-member-resource\|conversationMember Resource]]` | Add/Remove/List/Get members in chats and channels, roles (owner/guest), sharedWithChannelTeamInfo |
-| **Apps/Tabs/Pinned** | `[[references/ms-graph-apps-tabs-resource\|Apps, Tabs & Pinned Messages]]` | Install/Upgrade/Remove apps (teamsApp), add/remove tabs (teamsTab), pin/unpin messages |
+| **Chat** | `references/[[ms-graph-chat-resource\|Chat Resource]]` | Create/List/Get/Update/Delete chat, `chatType` (oneOnOne/group/meeting), removeAllAccessForUser, user-app chat |
+| **Channel** | `Channel Resource` | Create/List/Get/Update/Delete channel, `membershipType` (standard/private/shared), migration, archive/unarchive, email provisioning |
+| **chatMessage** | `chatMessage Resource` | Send/List/Get messages, replies, reactions, mentions, soft delete, delta API, pagination |
+| **Members** | `conversationMember Resource` | Add/Remove/List/Get members in chats and channels, roles (owner/guest), sharedWithChannelTeamInfo |
+| **Apps/Tabs/Pinned** | `Apps, Tabs & Pinned Messages` | Install/Upgrade/Remove apps (teamsApp), add/remove tabs (teamsTab), pin/unpin messages |
 
 ---
 
@@ -77,9 +77,9 @@ This hub indexes the consolidated Microsoft Graph API reference pages for Teams 
 
 ## Related Wiki Sections
 
-- `[[projects/42_chat/features/feature-103-ms-graph-messaging\|Feature 103 — Expansão de Mensageria]]` — uses these API patterns
-- `[[references/42-api-endpoints\|42 Intra API v2 — Endpoints Reference]]` — separate API (42 Intra, not MS Graph)
-- `[[references/websocket-production\|WebSocket Production]]` — real-time layer for 42 Chat
+- `Feature 103 — Expansão de Mensageria` — uses these API patterns
+- `42 Intra API v2 — Endpoints Reference` — separate API (42 Intra, not MS Graph)
+- `WebSocket Production` — real-time layer for 42 Chat
 
 ---
 

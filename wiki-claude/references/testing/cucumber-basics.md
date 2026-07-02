@@ -16,7 +16,7 @@ lifecycle_changed: "2026-06-15"
 lifecycle_reason: "auto-promoted by wiki-lint: well-established reference page"
 sources:
   - "wiki/_raw/qa/cucumber/cucumber-fundamentals.md"
-  - "wiki/_raw/qa/cucumber/[[skills/cucumber-step-definitions|cucumber-step-definitions]].md"
+  - "wiki/_raw/qa/cucumber/cucumber-step-definitions.md"
   - "wiki/_raw/qa/cucumber/cucumber-best-practices.md"
 ---
 base_confidence: 0.5
@@ -860,8 +860,8 @@ base_confidence: 0.5
 
 ## Ver Também
 
-- [[references/gherkin-syntax|Gherkin Syntax]] — A linguagem que o Cucumber executa
-- [[references/gherkin-best-practices|Gherkin Best Practices]] — Boas práticas para step definitions
-- [[references/playwright-bdd|Playwright BDD]] — Alternativa integrada ao Playwright
-- [[references/bdd-specification-process|BDD Spec Process]] — Onde Cucumber se encaixa no pipeline
+- Gherkin Syntax — A linguagem que o Cucumber executa
+- Gherkin Best Practices — Boas práticas para step definitions
+- Playwright BDD — Alternativa integrada ao Playwright
+- BDD Spec Process — Onde Cucumber se encaixa no pipeline
 - [[synthesis/playwright-bdd×cucumber|Playwright BDD × Cucumber]] — Síntese comparativa de ambas as ferramentas

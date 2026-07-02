@@ -112,10 +112,10 @@ Backlog de hardening nginx: [[projects/42_chat/features/security-backlog|Securit
 
 ## Referências da Aplicação
 
-- [[references/42-chat-platform-architecture|Platform Architecture]] — Stack Go/React/PostgreSQL/Docker/AWS
-- [[references/42-chat-design-system|Design System]] — Identidade visual 42 Graphic Charter
-- [[references/42-chat-engineering-requirements|Engineering Requirements]] — Concorrência, tuning, graceful shutdown
-- [[references/42-chat-architecture-diagram|Architecture Diagram]] — Diagramas Mermaid (auth, hub, deploy)
+- Platform Architecture — Stack Go/React/PostgreSQL/Docker/AWS
+- Design System — Identidade visual 42 Graphic Charter
+- Engineering Requirements — Concorrência, tuning, graceful shutdown
+- Architecture Diagram — Diagramas Mermaid (auth, hub, deploy)
 - [[projects/42_chat/concepts/chat-ui-specification|UI Specification — Estilo MSN Messenger]] — Especificação de interface com lista de contatos, janela de conversa e comportamentos interativos
 
 ## Repositório

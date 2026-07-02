@@ -100,5 +100,5 @@ A [[projects/42_chat/features/feature-007-agent-qa|feature 009 (agent-pentester)
 ## Relacionado
 
 - [[projects/42_chat/42_chat|42_chat Project]] — Contexto do projeto
-- [[references/42-chat-platform-architecture|Platform Architecture]] — Onde o nginx se encaixa
-- [[references/42-chat-engineering-requirements|Engineering Requirements]] — NFRs de segurança
+- Platform Architecture — Onde o nginx se encaixa
+- Engineering Requirements — NFRs de segurança

@@ -72,7 +72,7 @@ Implementado como **[[projects/42_Framework/features/002-experiential-memory|Fea
 - [[references/papers/LATTE|LATTE]] — coordination graph dinâmico (dependência para feedback loop)
 - [[references/papers/LangGraph-in-Production|LangGraph in Production]] — checkpointing e state pruning
 - [[concepts/obsidian-flow|Fluxo Obsidian]] — integração wiki ↔ pipeline
-- [[skills/wiki-query|wiki-query]] — retrieval semântico (modo --semantic)
-- [[skills/sdd-generate-tasks|sdd-generate-tasks]] — consome hints no prompt do G₀
-- [[skills/sdd-validate|sdd-validate]] — métricas que alimentam o feedback loop
-- [[skills/brain|brain toolkit]] — wiki-query, wiki-ingest, wiki-distill
+- wiki-query — retrieval semântico (modo --semantic)
+- sdd-generate-tasks — consome hints no prompt do G₀
+- sdd-validate — métricas que alimentam o feedback loop
+- brain toolkit — wiki-query, wiki-ingest, wiki-distill

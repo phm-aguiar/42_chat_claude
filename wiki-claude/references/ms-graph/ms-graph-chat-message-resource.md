@@ -151,7 +151,7 @@ The Delta API (/chats/getAllMessages?delta) allows applications to query for new
 ```
 
 ## Related Pages
-- [[Chat]]
-- [[Channel]]
-- [[Member]]
-- [[Apps/Tabs]]
+- Chat
+- Channel
+- Member
+- Apps/Tabs

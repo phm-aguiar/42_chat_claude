@@ -74,9 +74,9 @@ Quando `DEV_MODE=true`, o endpoint `/api/auth/dev/login` contorna o fluxo OAuth2
 
 | Arquivo | Descrição |
 |---------|-----------|
-| [`internal/auth/oauth.go`](../../internal/auth/oauth.go) | Implementação do fluxo OAuth2 (144 linhas) |
-| [`internal/auth/dev_login.go`](../../internal/auth/dev_login.go) | Bypass de OAuth2 para dev local |
-| [`cmd/server/main.go`](../../cmd/server/main.go) | Callback `/api/auth/42/callback` |
+| `internal/auth/oauth.go` | Implementação do fluxo OAuth2 (144 linhas) |
+| `internal/auth/dev_login.go` | Bypass de OAuth2 para dev local |
+| `cmd/server/main.go` | Callback `/api/auth/42/callback` |
 
 ## Relacionado
 
@@ -86,4 +86,4 @@ Quando `DEV_MODE=true`, o endpoint `/api/auth/dev/login` contorna o fluxo OAuth2
 - [[client]] — Resultado do fluxo
 - [[hub]] — Destino após auth
 - [[websocket]] — Upgrade após token
-- [[synthesis/[[oauth2×jwt]]|OAuth2 × JWT]] — Síntese do fluxo completo auth→token interno
+- synthesis/[[oauth2×jwt|OAuth2 × JWT]] — Síntese do fluxo completo auth→token interno

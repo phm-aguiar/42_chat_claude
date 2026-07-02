@@ -37,9 +37,9 @@ wiki (memória semântica)
 
 | Feature | Status | Descrição |
 |---|---|---|
-| [[projects/42_Framework/features/001-latte-coordination\|001: LATTE Coordination]] | ✅ Implemented | Orquestração dinâmica com coordination graph, operadores LATTE, heartbeat e métricas |
-| [[projects/42_Framework/features/002-experiential-memory\|002: Experiential Memory]] | 📋 Specified | Memória semântica via wiki, embeddings, hints e feedback loop |
-| [[projects/42_Framework/features/003-hybrid-retrieval\|003: Hybrid Retrieval & Normalization]] | ✅ Implemented | Pesquisa híbrida (BM25 + cosine), normalização de frontmatter e thresholds adaptativos |
+| 001: LATTE Coordination | ✅ Implemented | Orquestração dinâmica com coordination graph, operadores LATTE, heartbeat e métricas |
+| 002: Experiential Memory | 📋 Specified | Memória semântica via wiki, embeddings, hints e feedback loop |
+| 003: Hybrid Retrieval & Normalization | ✅ Implemented | Pesquisa híbrida (BM25 + cosine), normalização de frontmatter e thresholds adaptativos |
 
 ## Papers Analisados
 
@@ -48,14 +48,14 @@ Papers acadêmicos que fundamentam as decisões arquiteturais do 42 Framework:
 
 ## Skills
 
-- [[skills/sdd-validate\|sdd-validate]] — Validação de specs SDD
-- [[skills/sdd-generate-tasks\|sdd-generate-tasks]] — Geração de DAG de tarefas
-- [[skills/agent-run\|agent-run]] — Execução de agentes com coordenação
+- sdd-validate — Validação de specs SDD
+- sdd-generate-tasks — Geração de DAG de tarefas
+- agent-run — Execução de agentes com coordenação
 - `.claude/skills/sdd/latte-coordination/` — LATTE coordination (core)
 
 ## Conceitos
 
-- [[concepts/sdd-workflow\|SDD Workflow]] — Fluxo completo de especificação → implementação
+- SDD Workflow — Fluxo completo de especificação → implementação
 
 ## Próximos Passos
 

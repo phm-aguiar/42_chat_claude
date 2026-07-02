@@ -7,7 +7,7 @@ created: 2026-06-20
 rag_score: 0.5
 source: "https://www.kalviumlabs.ai/blog/multi-agent-ai-systems-when-one-agent-isnt-enough/"
 authors: "Anil Gulecha (Kalvium Labs, ex-HackerRank, ex-Google)"
-feature: "[[projects/42_Framework/features/005-latte-hardening|Feature 005: LATTE Hardening]]"
+feature: "Feature 005: LATTE Hardening"
 base_confidence: 0.95
 provenance:
   extracted: 0.9
@@ -101,4 +101,4 @@ Teste antes de splitar: "Can a single agent with all tools and a good system pro
 - [[references/papers/LangGraph-in-Production|LangGraph in Production]] — state pruning, checkpointing
 - [[references/papers/LATTE|LATTE]] — coordination graph (referência principal)
 - [[projects/42_Framework/features/001-latte-coordination|Feature 001]] — alvo dos gaps
-- [[projects/42_Framework/features/005-latte-hardening|Feature 005]] — implementação dos gaps 1-7
+- Feature 005 — implementação dos gaps 1-7

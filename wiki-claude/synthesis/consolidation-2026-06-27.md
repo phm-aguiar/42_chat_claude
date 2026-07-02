@@ -28,17 +28,17 @@ base_confidence: 0.5
 ## Broken Link Fixes
 
 ### Corrected paths (1)
-- `journal/digest-2026-06-21.md:57` — `[[adr/ADR-001]]` → `[[references/adr/adr-001-budget-tracking|ADR-001]]`
+- `journal/digest-2026-06-21.md:57` — `adr/ADR-001` → `[[references/adr/adr-001-budget-tracking|ADR-001]]`
 
 ### Converted to plain text (skills/* — no skills/ dir in vault)
-- `journal/[[2026-06-14-sessao-qa-skills-42chat]].md` — 9 `[[skills/*]]` links → plain text
-- `journal/[[2026-06-17-brainstorm-feature-101]].md` — 2 `[[skills/sdd-brainstorm]]` → plain text
-- `references/[[sdd-dsa-series]].md` — 3 `[[skills/sdd-*]]` → plain text
-- `[[_insights]].md` — 4 `[[skills/*]]` → plain text
+- `journal/[[2026-06-14-sessao-qa-skills-42chat]].md` — 9 `skills/*` links → plain text
+- `journal/[[2026-06-17-brainstorm-feature-101]].md` — 2 `skills/sdd-brainstorm` → plain text
+- `references/[[sdd-dsa-series]].md` — 3 `skills/sdd-*` → plain text
+- `[[_insights]].md` — 4 `skills/*` → plain text
 
 ### Could not fix (no match, left as plain text by sed):
-- `[[concepts/coordination-graph]]` — no such page exists
-- `[[projects/[[42_Framework]]/features/005-latte-hardening]]` — feature never created
+- `concepts/coordination-graph` — no such page exists
+- `projects/[[42_Framework/features/005-latte-hardening]]` — feature never created
 
 ## Cross-References Added (orphan rescue)
 

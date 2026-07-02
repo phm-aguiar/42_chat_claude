@@ -293,6 +293,6 @@ Aplicação cliente decomposta em 3 módulos via Module Federation (Vite):
 
 ## Ver Também
 
-- [[references/42-chat-platform-architecture|42 Chat Platform Architecture]] — Stack e arquitetura
-- [[references/42-chat-design-system|42 Chat Design System]] — Sistema visual
-- [[references/42-chat-architecture-diagram|42 Chat Architecture Diagram]] — Diagrama Mermaid
+- 42 Chat Platform Architecture — Stack e arquitetura
+- 42 Chat Design System — Sistema visual
+- 42 Chat Architecture Diagram — Diagrama Mermaid

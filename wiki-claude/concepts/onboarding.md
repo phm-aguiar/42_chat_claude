@@ -2,7 +2,7 @@
 base_confidence: 0.5
 title: "Onboarding — Começando com o Framework SDD"
 category: concepts
-tags: ["[[onboarding", "methodology"]], tutorial, iniciante]
+tags: ["onboarding", "methodology", tutorial, iniciante]
 aliases: [getting-started, como-comecar]
 sources: []
 summary: "Guia passo a passo para iniciar um projeto do zero com o framework SDD autônomo. Cobre init repo, brainstorm, spec, plan, tasks e execução com orchestrator."
@@ -172,9 +172,9 @@ sdd-validate
 
 ## Relacionado
 
-- [[skills/sdd|sdd toolkit]] — Pipeline SDD (brainstorm → plan → tasks)
+- sdd toolkit — Pipeline SDD (brainstorm → plan → tasks)
 - [[concepts/sdd|SDD]] — Metodologia Spec-Driven Development
-- [[skills/brain|brain toolkit]] — Wiki como memória de longo prazo
+- brain toolkit — Wiki como memória de longo prazo
 - [[concepts/sdd-workflow|SDD Workflow]] — Exemplo real de pipeline
 
 - [[concepts/sdd-workflow|SDD Workflow]] — Pipeline completo explicado em detalhes

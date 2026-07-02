@@ -31,7 +31,7 @@ tier: core
 
 Componente `UserSignature` reutilizável exibido inline abaixo de cada mensagem no chat,
 mostrando avatar, login, tier de participação e total de mensagens. O campo `active_rooms`
-retorna 1 se o usuário tem ≥1 mensagem, senão 0 — até a [[Feature 103]] adicionar salas
+retorna 1 se o usuário tem ≥1 mensagem, senão 0 — até a Feature 103 adicionar salas
 múltiplas (campo então refletirá `COUNT(DISTINCT chat_id)`). Stats são computados via query
 agregada em tempo real e atualizam via WebSocket com debounce de 2s.
 
@@ -84,7 +84,7 @@ agregada em tempo real e atualizam via WebSocket com debounce de 2s.
 { "error": "usuário não encontrado", "code": "USER_NOT_FOUND" }
 ```
 
-**Nota:** `active_rooms` retorna 0 ou 1 até a [[Feature 103]] adicionar multiplas salas. Após a Feature 103, será `COUNT(DISTINCT chat_id)` sem mudança no contrato JSON.
+**Nota:** `active_rooms` retorna 0 ou 1 até a Feature 103 adicionar multiplas salas. Após a Feature 103, será `COUNT(DISTINCT chat_id)` sem mudança no contrato JSON.
 
 ## Evento WebSocket
 
@@ -169,7 +169,7 @@ invalida o cache local do autor e re-fetcha `GET /api/users/{id}/stats` para atu
 
 ### ADR-101.4 — `active_rooms` degrada para 0/1 até a Feature 103
 
-**Contexto:** A migration 001 não tem coluna `room_id`/`chat_id` em `messages` — existe apenas a sala "general". O conceito de múltiplas salas só nasce na [[Feature 103]].
+**Contexto:** A migration 001 não tem coluna `room_id`/`chat_id` em `messages` — existe apenas a sala "general". O conceito de múltiplas salas só nasce na Feature 103.
 
 **Decisão:** Enquanto `messages` não tiver `chat_id`, `active_rooms` retorna 1 para quem tem ≥1 mensagem e 0 para quem tem 0. Após Feature 103 adicionar `chat_id`, a query vira `COUNT(DISTINCT chat_id)` sem mudança de contrato.
 
@@ -206,7 +206,7 @@ invalida o cache local do autor e re-fetcha `GET /api/users/{id}/stats` para atu
 
 ## Relacionado
 
-- [[Feature 100]] — 42 Chat Core. Dependência: tabela `messages`, WebSocket hub, JWT middleware.
-- [[Feature 102]] — Fórum. Consome UserSignature para exibir autor de posts.
-- [[Feature 103]] — Chats tipados. Quando adicionar `messages.chat_id`, ativa `active_rooms` real.
+- Feature 100 — 42 Chat Core. Dependência: tabela `messages`, WebSocket hub, JWT middleware.
+- Feature 102 — Fórum. Consome UserSignature para exibir autor de posts.
+- Feature 103 — Chats tipados. Quando adicionar `messages.chat_id`, ativa `active_rooms` real.
 - [[journal/2026-06-17-brainstorm-feature-101]] — Sessão de brainstorm

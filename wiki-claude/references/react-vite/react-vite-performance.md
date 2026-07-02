@@ -47,44 +47,44 @@ Guia completo de otimização de performance para aplicações React com Vite. 2
 
 ### 1. Build Optimization (CRITICAL)
 
-- [[references/[[react-vite-build-optimization]]#manual-chunks|Manual Chunks]] — Separação de vendors para caching ótimo
-- [[references/[[react-vite-build-optimization]]#minification|Minification]] — OXC (default) ou Terser para compressão máxima
-- [[references/[[react-vite-build-optimization]]#modern-target|Modern Target]] — `baseline-widely-available` ou `esnext` para bundles menores
-- [[references/[[react-vite-build-optimization]]#sourcemaps|Sourcemaps]] — Configuração por ambiente com integração Sentry
-- [[references/[[react-vite-build-optimization]]#tree-shaking|Tree Shaking]] — Eliminação de dead code com ESM e named exports
-- [[references/[[react-vite-build-optimization]]#compression|Compression]] — Gzip + Brotli pre-compressed no build
-- [[references/[[react-vite-build-optimization]]#asset-hashing|Asset Hashing]] — Content-based hashing para cache busting
+- references/[[react-vite-build-optimization#manual-chunks|Manual Chunks]] — Separação de vendors para caching ótimo
+- references/[[react-vite-build-optimization#minification|Minification]] — OXC (default) ou Terser para compressão máxima
+- references/[[react-vite-build-optimization#modern-target|Modern Target]] — `baseline-widely-available` ou `esnext` para bundles menores
+- references/[[react-vite-build-optimization#sourcemaps|Sourcemaps]] — Configuração por ambiente com integração Sentry
+- references/[[react-vite-build-optimization#tree-shaking|Tree Shaking]] — Eliminação de dead code com ESM e named exports
+- references/[[react-vite-build-optimization#compression|Compression]] — Gzip + Brotli pre-compressed no build
+- references/[[react-vite-build-optimization#asset-hashing|Asset Hashing]] — Content-based hashing para cache busting
 
 ### 2. Code Splitting (CRITICAL)
 
-- [[references/[[react-vite-code-splitting]]#route-lazy|Route Lazy]] — `React.lazy()` para rotas (50-80% menor)
-- [[references/[[react-vite-code-splitting]]#suspense-boundaries|Suspense Boundaries]] — Posicionamento estratégico para carregamento progressivo
-- [[references/[[react-vite-code-splitting]]#dynamic-imports|Dynamic Imports]] — Bibliotecas pesadas sob demanda (30-50% menor)
-- [[references/[[react-vite-code-splitting]]#component-lazy|Component Lazy]] — Modais e drawers lazy (20-40% menor)
-- [[references/[[react-vite-code-splitting]]#prefetch-hints|Prefetch Hints]] — Prefetch em hover/idle/viewport
+- references/[[react-vite-code-splitting#route-lazy|Route Lazy]] — `React.lazy()` para rotas (50-80% menor)
+- references/[[react-vite-code-splitting#suspense-boundaries|Suspense Boundaries]] — Posicionamento estratégico para carregamento progressivo
+- references/[[react-vite-code-splitting#dynamic-imports|Dynamic Imports]] — Bibliotecas pesadas sob demanda (30-50% menor)
+- references/[[react-vite-code-splitting#component-lazy|Component Lazy]] — Modais e drawers lazy (20-40% menor)
+- references/[[react-vite-code-splitting#prefetch-hints|Prefetch Hints]] — Prefetch em hover/idle/viewport
 
 ### 3. Development (HIGH)
 
-- [[references/react-vite-development#dependency-prebundling|Dependency Pre-bundling]] — `optimizeDeps` (2-5x faster cold start)
-- [[references/react-vite-development#fast-refresh|Fast Refresh]] — Estrutura de componentes compatível
-- [[references/react-vite-development#hmr-config|HMR Config]] — WebSocket, Docker/WSL, polling
+- Dependency Pre-bundling — `optimizeDeps` (2-5x faster cold start)
+- Fast Refresh — Estrutura de componentes compatível
+- HMR Config — WebSocket, Docker/WSL, polling
 
 ### 4. Asset Handling (HIGH)
 
-- [[references/[[react-vite-asset-handling]]#image-optimization|Image Optimization]] — WebP/AVIF, lazy loading, dimensões explícitas
-- [[references/[[react-vite-asset-handling]]#svg-components|SVG Components]] — SVGR para styling CSS e `currentColor`
-- [[references/[[react-vite-asset-handling]]#fonts|Font Loading]] — Self-hosted, `font-display: swap`, subset
-- [[references/[[react-vite-asset-handling]]#public-dir|Public Dir vs Import]] — Quando usar cada um
+- references/[[react-vite-asset-handling#image-optimization|Image Optimization]] — WebP/AVIF, lazy loading, dimensões explícitas
+- references/[[react-vite-asset-handling#svg-components|SVG Components]] — SVGR para styling CSS e `currentColor`
+- references/[[react-vite-asset-handling#fonts|Font Loading]] — Self-hosted, `font-display: swap`, subset
+- references/[[react-vite-asset-handling#public-dir|Public Dir vs Import]] — Quando usar cada um
 
 ### 5. Environment Config (MEDIUM)
 
-- [[references/react-vite-environment-config#vite-prefix|VITE_ Prefix]] — Segurança: só `VITE_` chega ao client
-- [[references/react-vite-environment-config#modes|Mode Files]] — `.env.development`, `.env.production`, `--mode staging`
-- [[references/react-vite-environment-config#sensitive-data|Sensitive Data]] — Secrets nunca no client
+- VITE_ Prefix — Segurança: só `VITE_` chega ao client
+- Mode Files — `.env.development`, `.env.production`, `--mode staging`
+- Sensitive Data — Secrets nunca no client
 
 ### 6. Bundle Analysis (MEDIUM)
 
-- [[references/react-vite-environment-config#bundle-visualizer|Bundle Visualizer]] — `rollup-plugin-visualizer` com treemap interativo
+- Bundle Visualizer — `rollup-plugin-visualizer` com treemap interativo
 
 ## Configuração Recomendada
 
@@ -126,8 +126,8 @@ export default defineConfig({
 
 ## Outras Referências Vite
 
-- [[references/vite-reference|Vite Reference]] — Config, features, plugins, build/SSR
-- [[references/vite-environment-api|Vite Environment API]] — Multi-environment (Vite 6+)
-- [[references/vite-rolldown-migration|Vite Rolldown Migration]] — Migração Vite 7 → 8
+- Vite Reference — Config, features, plugins, build/SSR
+- Vite Environment API — Multi-environment (Vite 6+)
+- Vite Rolldown Migration — Migração Vite 7 → 8
 
 

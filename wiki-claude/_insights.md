@@ -22,16 +22,16 @@ Vault: 185 pages | Sources ingested: 148 | Token footprint: ~256K
 
 | Page | Incoming | Outgoing | Note |
 |---|---|---|---|
-| [[references/go-style-guide|Go Style Guide]] | 42 | 40 | connector hub — central Go knowledge hub |
+| Go Style Guide | 42 | 40 | connector hub — central Go knowledge hub |
 | wiki-query|wiki-query]] | 41 | 4 | sink hub — muitas páginas linkam pra cá |
-| [[references/go-error-handling|Go Error Handling]] | 19 | 6 | connector hub |
-| [[references/42-chat-platform-architecture|42 Chat Platform Architecture]] | 17 | 1 | sink hub |
-| [[references/42-chat-engineering-requirements|42 Chat Engineering Requirements]] | 15 | 1 | sink hub |
-| [[references/go-naming|Go Naming]] | 12 | 6 | connector hub |
+| Go Error Handling | 19 | 6 | connector hub |
+| 42 Chat Platform Architecture | 17 | 1 | sink hub |
+| 42 Chat Engineering Requirements | 15 | 1 | sink hub |
+| Go Naming | 12 | 6 | connector hub |
 | skill-forge|skill-forge]] | 11 | 3 | |
 | wiki-ingest|wiki-ingest]] | 11 | 5 | |
 | agent-run|agent-run]] | 11 | 3 | |
-| [[concepts/[[obsidian-flow]]|Fluxo Obsidian]] | 11 | 5 | |
+| concepts/[[obsidian-flow|Fluxo Obsidian]] | 11 | 5 | |
 
 ## Tag Cluster Cohesion
 
@@ -53,26 +53,26 @@ Vault: 185 pages | Sources ingested: 148 | Token footprint: ~256K
 
 | Connection | Score | Reason |
 |---|---|---|
-| [[synthesis/[[sdd-go]]|SDD×Go]] → [[references/go-style-guide|Go Style Guide]] | 5 | cross-category (synthesis→references), ^[ambiguous] |
-| [[synthesis/[[sdd-go]]|SDD×Go]] → [[references/go-modular-architecture|Go Modular Architecture]] | 5 | cross-category, ^[ambiguous] |
-| [[synthesis/[[sdd-go]]|SDD×Go]] → [[references/go-testing|Go Testing]] | 5 | cross-category, ^[ambiguous] |
-| [[synthesis/[[sdd-go]]|SDD×Go]] → [[concepts/[[sdd-workflow]]|SDD Workflow]] | 5 | cross-category (synthesis→concepts), ^[ambiguous] |
-| [[synthesis/[[sdd-go]]|SDD×Go]] → [[references/go-error-handling|Go Error Handling]] | 5 | cross-category, ^[ambiguous] |
-| [[synthesis/thinking-architecture|Thinking×Architecture]] → [[references/[[adr-template]]|ADR Template]] | 4 | cross-category, ^[inferred] |
-| [[synthesis/thinking-architecture|Thinking×Architecture]] → [[references/red-team-adversarial|Red Team Adversarial]] | 4 | cross-category, ^[inferred] |
-| [[synthesis/[[thinking-go]]|Thinking×Go]] → [[references/mode-selection-guide|Mode Selection Guide]] | 4 | cross-category, ^[inferred] |
+| synthesis/[[sdd-go|SDD×Go]] → Go Style Guide | 5 | cross-category (synthesis→references), ^[ambiguous] |
+| synthesis/[[sdd-go|SDD×Go]] → Go Modular Architecture | 5 | cross-category, ^[ambiguous] |
+| synthesis/[[sdd-go|SDD×Go]] → Go Testing | 5 | cross-category, ^[ambiguous] |
+| synthesis/[[sdd-go|SDD×Go]] → concepts/[[sdd-workflow|SDD Workflow]] | 5 | cross-category (synthesis→concepts), ^[ambiguous] |
+| synthesis/[[sdd-go|SDD×Go]] → Go Error Handling | 5 | cross-category, ^[ambiguous] |
+| [[synthesis/thinking-architecture|Thinking×Architecture]] → references/[[adr-template|ADR Template]] | 4 | cross-category, ^[inferred] |
+| [[synthesis/thinking-architecture|Thinking×Architecture]] → Red Team Adversarial | 4 | cross-category, ^[inferred] |
+| synthesis/[[thinking-go|Thinking×Go]] → Mode Selection Guide | 4 | cross-category, ^[inferred] |
 
 ## Orphan-Adjacent (dead-ends near hubs)
 
-- [[journal/[[2026-06-14-readfile-truncation-pitfall]]]] — linked from 1 hub ([[concepts/[[obsidian-flow]]|Fluxo Obsidian]]), 0 outbound links
+- journal/[[2026-06-14-readfile-truncation-pitfall]] — linked from 1 hub (concepts/[[obsidian-flow|Fluxo Obsidian]]), 0 outbound links
 
 ## Tier Suggestions
 
-↑ core    [[references/go-style-guide|Go Style Guide]] — 42 incoming, currently tier=supporting
+↑ core    Go Style Guide — 42 incoming, currently tier=supporting
 ↑ core    wiki-query|wiki-query]] — 41 incoming, currently tier=supporting
-↑ core    [[references/go-error-handling|Go Error Handling]] — 19 incoming, currently unset
-↑ core    [[references/42-chat-platform-architecture|42 Chat Platform Architecture]] — 17 incoming, currently unset
-↑ core    [[references/42-chat-engineering-requirements|42 Chat Engineering Requirements]] — 15 incoming, currently unset
+↑ core    Go Error Handling — 19 incoming, currently unset
+↑ core    42 Chat Platform Architecture — 17 incoming, currently unset
+↑ core    42 Chat Engineering Requirements — 15 incoming, currently unset
 
 ## Questions Worth Asking
 

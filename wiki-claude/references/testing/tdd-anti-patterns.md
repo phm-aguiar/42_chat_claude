@@ -416,6 +416,6 @@ def test_validator_rejects_empty_orders():
 
 ## Ver Também
 
-- [[references/tdd-methodology|TDD Methodology]] — Visão geral e ciclo Red-Green-Refactor
-- [[references/tdd-first-principles|TDD FIRST Principles]] — Princípios e padrão AAA
-- [[references/bdd-specification-process|BDD Spec Process]] — BDD complementa TDD
+- TDD Methodology — Visão geral e ciclo Red-Green-Refactor
+- TDD FIRST Principles — Princípios e padrão AAA
+- BDD Spec Process — BDD complementa TDD

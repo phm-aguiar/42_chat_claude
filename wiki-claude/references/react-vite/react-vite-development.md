@@ -149,5 +149,5 @@ if (import.meta.hot) {
 
 ---
 
-← Back to [[references/react-vite-performance|React + Vite Performance MoC]]
+← Back to React + Vite Performance MoC
 

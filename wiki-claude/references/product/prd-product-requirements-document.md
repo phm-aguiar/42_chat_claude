@@ -14,9 +14,9 @@ provenance:
   inferred: 0.15
   ambiguous: 0.05
 relationships:
-  - target: "[[references/prd-template]]"
+  - target: "references/prd-template"
     type: related_to
-  - target: "[[references/techspec-template]]"
+  - target: "references/techspec-template"
     type: related_to
   - target: "[[concepts/sdd]]"
     type: related_to
@@ -108,6 +108,6 @@ Sob a ótica ágil, o PRD pode ser construído em formatos mais simples e até m
 ## Referências
 
 - **Fonte:** [Tiago Rodrigo — UX Collective Brasil (Medium)](https://brasil.uxdesign.cc/documento-de-requisitos-de-produto-prd-o-que-%C3%A9-e-como-fazer-um-d86d03c23e8c), 2021
-- [[references/prd-template]] — Template de PRD usado no framework SDD
-- [[references/techspec-template]] — Template de especificação técnica (complementar ao PRD)
+- references/prd-template — Template de PRD usado no framework SDD
+- references/techspec-template — Template de especificação técnica (complementar ao PRD)
 - [[concepts/sdd]] — Metodologia Spec-Driven Development, onde PRDs são a entrada do pipeline

@@ -264,5 +264,5 @@ tmux kill-session -t <session-name>
 
 - [[claude-skills]] — sistema de skills (complementar; estrutura de invocação e frontmatter)
 - [[agent-view]] — UI para gerenciar múltiplas sessões (`claude agents`)
-- [[kanban-orchestrator]] — como orquestração funciona no framework claude (analogia direta)
-- [[latte-protocol]] — protocolo LATTE para coordenação de agent teams
+- kanban-orchestrator — como orquestração funciona no framework claude (analogia direta)
+- latte-protocol — protocolo LATTE para coordenação de agent teams

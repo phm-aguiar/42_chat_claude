@@ -97,6 +97,6 @@ Os arquivos originais estavam em `wiki/_raw/qa/code/` e foram promovidos para es
 
 ## Ver Também
 
-- [[references/tdd-methodology|TDD Methodology]] — O executor foi construído com TDD
-- [[references/bdd-specification-process|BDD Spec Process]] — Especificações Gherkin guiaram os testes
-- [[references/qa-overview|QA Overview]] — Onde o executor se encaixa no pipeline SDD
+- TDD Methodology — O executor foi construído com TDD
+- BDD Spec Process — Especificações Gherkin guiaram os testes
+- QA Overview — Onde o executor se encaixa no pipeline SDD

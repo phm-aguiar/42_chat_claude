@@ -179,5 +179,5 @@ const src = flags[`./assets/flags/${code}.svg`]
 
 ---
 
-← Back to [[references/react-vite-performance|React + Vite Performance MoC]]
+← Back to React + Vite Performance MoC
 

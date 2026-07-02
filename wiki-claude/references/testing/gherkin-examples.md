@@ -366,6 +366,6 @@ base_confidence: 0.5
 
 ## Ver Também
 
-- [[references/gherkin-syntax|Gherkin Syntax]] — Sintaxe usada nos exemplos
-- [[references/gherkin-best-practices|Gherkin Best Practices]] — Práticas ilustradas nos exemplos
-- [[references/cucumber-basics|Cucumber Basics]] — Como automatizar estes cenários
+- Gherkin Syntax — Sintaxe usada nos exemplos
+- Gherkin Best Practices — Práticas ilustradas nos exemplos
+- Cucumber Basics — Como automatizar estes cenários

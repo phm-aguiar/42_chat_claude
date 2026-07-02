@@ -173,5 +173,5 @@ Watch for language that hides assumptions. When you hear these, probe immediatel
 ## Ver Também
 
 - [[synthesis/thinking-architecture|Thinking × Architecture]] — Socrático aplicado a ADRs
-- [[references/dialectic-synthesis|Dialectic Synthesis]]
-- [[references/cognitive-bias-inventory|Cognitive Bias Inventory]]
+- Dialectic Synthesis
+- Cognitive Bias Inventory

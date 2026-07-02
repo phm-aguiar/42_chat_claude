@@ -51,7 +51,7 @@ lifecycle: draft
 
 | Arquivo | Descrição |
 |---------|-----------|
-| [`internal/model/message.go`](../../internal/model/message.go) | Definição das structs Message e WSMessage (29 linhas) |
+| `internal/model/message.go` | Definição das structs Message e WSMessage (29 linhas) |
 
 ## Relacionado
 

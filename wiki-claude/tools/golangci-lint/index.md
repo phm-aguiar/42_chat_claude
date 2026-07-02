@@ -18,23 +18,23 @@ Fast Go linters runner. Documentação ingerida do site oficial e repositórios 
 
 ## Getting Started
 
-- [[[Quick Start]]](Quick%20Start.md) — Como executar o golangci-lint
+- [Quick Start](Quick%20Start.md) — Como executar o golangci-lint
 - [Install](Install.md) — Instalação para CI, local, Docker, e package managers
-- [[[Integrations]]]([[Integrations]].md) — Integração com editores (VS Code, Vim, Emacs, GoLand) e CI
+- [Integrations]([[Integrations]].md) — Integração com editores (VS Code, Vim, Emacs, GoLand) e CI
 
 ## Configuração & Uso
 
-- [[[Configuration]]]([[Configuration]].md) — Configuração completa: linters, issues, output, run, severity
+- [Configuration]([[Configuration]].md) — Configuração completa: linters, issues, output, run, severity
 - [Linters](Linters.md) — Lista completa de linters suportados com opções de configuração
 - [False Positives](False%20Positives.md) — Como lidar com falsos positivos e exclusões
-- [[[False Positives 1]]](False%20Positives%201.md) — (Duplicado) Falsos positivos e exclusões
-- [[[Debugging]]]([[Debugging]].md) — Debug com `-v` e `GL_DEBUG`
+- [False Positives 1](False%20Positives%201.md) — (Duplicado) Falsos positivos e exclusões
+- [Debugging]([[Debugging]].md) — Debug com `-v` e `GL_DEBUG`
 
 ## Contribuindo
 
 - [Architecture](Architecture.md) — Arquitetura interna: init, load, run, postprocess, print
-- [[[New linters]]](New%20linters.md) — Como adicionar linters públicos ou privados
-- [[[Website architecture]]](Website%20architecture.md) — Gatsby, MDX, estrutura do site
+- [New linters](New%20linters.md) — Como adicionar linters públicos ou privados
+- [Website architecture](Website%20architecture.md) — Gatsby, MDX, estrutura do site
 
 ## Referências Externas
 

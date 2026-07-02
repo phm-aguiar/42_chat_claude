@@ -109,7 +109,7 @@ A **channel** is a collection of conversations and messaging endpoints that belo
 
 ## Related Pages
 
-- [[Chat]]
-- [[chatMessage]]
-- [[Member]]
-- [[Apps-Tabs]]
+- Chat
+- chatMessage
+- Member
+- Apps-Tabs

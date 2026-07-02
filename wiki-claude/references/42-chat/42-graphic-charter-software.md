@@ -17,7 +17,7 @@ provenance:
 
 # 42 Graphic Charter — Software & UI Reference
 
-> Destilado da [[42 Graphic Charter]] completo. Só o que interessa pra montar software.
+> Destilado da 42 Graphic Charter completo. Só o que interessa pra montar software.
 
 ## Cores Primárias (Primary)
 
@@ -135,9 +135,9 @@ Logo preto sobre fundo circular branco. Manter integridade para acessibilidade, 
 - Motion Graphics Charter
 - Labels "Member of 42", "Startup Club", "Alumni"
 
-Se precisar de algo da lista acima, consulte o [[42-graphic-charter-full|documento completo]].
+Se precisar de algo da lista acima, consulte o documento completo.
 
 ## References
 
 - Fonte: 42 Graphic Charter August 2024 (documento completo de 49 páginas)
-- [[42-chat-design-system|42 Chat Design System]] — aplicação concreta dessas cores num projeto
+- 42 Chat Design System — aplicação concreta dessas cores num projeto
