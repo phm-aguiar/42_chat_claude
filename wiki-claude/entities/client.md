@@ -1,4 +1,6 @@
 ---
+base_confidence: 0.5
+lifecycle: draft
 title: "Client (WebSocket Client)"
 tags: [entity, glossary]
 aliases: [WebSocket Client, ws.Client, readPump, writePump]
@@ -11,6 +13,8 @@ provenance:
   inferred: 0.05
   ambiguous: 0.00
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 # Client (WebSocket Client)
 

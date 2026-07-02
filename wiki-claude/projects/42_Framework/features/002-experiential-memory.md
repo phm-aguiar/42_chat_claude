@@ -1,4 +1,6 @@
 ---
+base_confidence: 0.5
+lifecycle: draft
 title: "002: Wiki Experiential Memory"
 status: specified
 created: "2026-06-19"
@@ -12,6 +14,8 @@ tags:
   - sdd
 summary: "Memória experiencial com indexação semântica de chunks da wiki, retrieval contextual, hint scoring com feedback loop, e distillation periódica. Inspirado no Experiential Memory do A-MapReduce."
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 # 002: Wiki Experiential Memory — Memória Experiencial com Indexação Semântica
 
@@ -28,6 +32,8 @@ summary: "Memória experiencial com indexação semântica de chunks da wiki, re
 | Tasks (DAG) | ✅ Pronto | [tasks.md](../../../../specs/features/002-experiential-memory/tasks.md) |
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Resumo do Paper A-MapReduce e Aplicação
 
@@ -61,6 +67,8 @@ A Feature 002 transpõe o padrão de *experiential memory* do A-MapReduce para o
 | **Cross-task pattern reuse** | Hints de features bem-sucedidas ganham peso; features problemáticas perdem. Scores persistem entre sessões |
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Milestones
 
@@ -89,6 +97,8 @@ Comando periódico (`wiki-distill`) que clusteriza chunks similares (KMeans), re
 **Tasks:** T013–T016 (Fase 2: M2.4)
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Critérios de Sucesso
 
@@ -103,6 +113,8 @@ Comando periódico (`wiki-distill`) que clusteriza chunks similares (KMeans), re
 | 7 | **Query speed** | N/A | Retrieval top-5 < 1s | `time claude wiki query --semantic "..."` |
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Dependência: Feature 001 (LATTE)
 
@@ -117,6 +129,8 @@ Essas métricas são convertidas em *utility signal* que atualiza os scores dos 
 **Sem a Feature 001**, os milestones M2.1, M2.2 e M2.4 funcionam independentemente. Apenas o feedback loop (M2.3) fica inoperante — scores permanecem neutros (0.5) e o sistema opera como retrieval semântico puro, ainda útil mas sem o ciclo de melhoria contínua.
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Modelo de Embedding: `all-MiniLM-L6-v2`
 
@@ -140,6 +154,8 @@ Além disso, o modelo é **fixo** — trocar requer re-indexação completa, o q
 **ADR completo:** Ver [plan.md — ADR-001](../../../../specs/features/002-experiential-memory/plan.md#adr-001-all-MiniLM-L6-v2-como-modelo-de-embedding).
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Arquitetura Resumida
 
@@ -172,6 +188,8 @@ reindex()                      → limpa índice e re-indexa do zero (idempotent
 ```
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Constraints
 
@@ -183,6 +201,8 @@ reindex()                      → limpa índice e re-indexa do zero (idempotent
 6. **Cold start resiliente:** Scores neutros (0.5), sistema funciona como retrieval sem feedback até acumular 3+ features.
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Tasks (Resumo do DAG)
 
@@ -198,6 +218,8 @@ reindex()                      → limpa índice e re-indexa do zero (idempotent
 DAG completo em [tasks.md](../../../../specs/features/002-experiential-memory/tasks.md).
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Relacionado
 

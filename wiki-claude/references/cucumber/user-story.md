@@ -1,4 +1,6 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
 title: "User Story"
 category: references
 tags:
@@ -11,6 +13,8 @@ updated: "2026-06-21"
 lifecycle: draft
 lifecycle_reason: "ingested from _raw/ Cucumber/BDD clippings"
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
 A *User story* is a small piece of valuable functionality used for planning and prioritising work on an agile team.
 
 A good *User story* should:

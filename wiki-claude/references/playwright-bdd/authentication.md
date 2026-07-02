@@ -1,4 +1,7 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "Authentication"
 tags:
   - playwright-bdd
@@ -9,6 +12,9 @@ created: 2026-06-21
 rag_score: 0.5
 source: "https://vitalets.github.io/playwright-bdd/#/guides/authentication"
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 ## Authentication
 
@@ -102,6 +108,9 @@ export const { Given, When, Then } = createBdd(test);
 > See the full working example: [examples/auth](https://github.com/vitalets/playwright-bdd/tree/main/examples/auth)
 
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 ## Dynamic authentication in steps
 

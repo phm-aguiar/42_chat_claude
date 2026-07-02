@@ -1,4 +1,6 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
 title: "Introduction to Cucumber"
 category: references
 tags:
@@ -11,6 +13,8 @@ updated: "2026-06-21"
 lifecycle: draft
 lifecycle_reason: "ingested from _raw/ Cucumber/BDD clippings"
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
 Cucumber is a tool that supports [Behaviour-Driven Development (BDD)](https://cucumber.io/docs/bdd/). If you're new to Behaviour-Driven Development read our [BDD introduction](https://cucumber.io/docs/bdd/) first.
 
 ## What is Cucumber?

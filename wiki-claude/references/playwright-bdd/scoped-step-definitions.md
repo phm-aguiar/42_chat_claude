@@ -1,4 +1,7 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "Scoped step definitions"
 tags:
   - playwright-bdd
@@ -9,6 +12,9 @@ created: 2026-06-21
 rag_score: 0.5
 source: "https://vitalets.github.io/playwright-bdd/#/writing-steps/scoped"
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 By default, step definitions are global and [not bound to a particular feature](https://cucumber.io/docs/guides/anti-patterns/#feature-coupled-step-definitions). Although it follows Cucumber design, in large projects it can be tricky to keep steps unique for all possible domains.
 

@@ -1,4 +1,5 @@
 ---
+base_confidence: 0.5
 title: "BDD Specification Process"
 category: references
 tags:
@@ -28,6 +29,7 @@ sources:
   - "wiki/_raw/qa/bdd-spec/prompt-writer.md"
   - "wiki/_raw/qa/bdd-spec/use_gherkin_expert.md"
 ---
+base_confidence: 0.5
 
 # Processo de Especificação BDD com Gherkin
 ## O que é BDD?
@@ -72,6 +74,7 @@ Feature: Login do Usuário
 Use minúsculas com underscores: `user_authentication.feature`, `shopping_cart_checkout.feature` — exceto quando o ecossistema do projeto ditar outra regra.
 
 ---
+base_confidence: 0.5
 
 ## Quando Usar (e Quando NÃO Usar)
 
@@ -100,6 +103,7 @@ Use minúsculas com underscores: `user_authentication.feature`, `shopping_cart_c
 > **Nota:** Gherkin é uma ferramenta, não uma regra. Use julgamento. Quando em dúvida, comece com inglês natural. Atualize para especificação formal apenas se a complexidade justificar.
 
 ---
+base_confidence: 0.5
 
 ## Fluxo do Gherkin Expert
 
@@ -142,6 +146,7 @@ O fluxo completo de trabalho do agente Gherkin Expert segue estas etapas:
 - Atualize a documentação de referência
 
 ---
+base_confidence: 0.5
 
 ## Princípios de Design de Cenários
 
@@ -215,6 +220,7 @@ Scenario Outline: Frete calculado por faixa de CEP
 ```
 
 ---
+base_confidence: 0.5
 
 ## Estruturação de Acceptance Criteria
 
@@ -261,6 +267,7 @@ Feature: Transferência Bancária
 > **Regra de ouro:** Se você só tem cenários de caminho feliz, você não terminou. Cada `When` deve ter pelo menos um cenário onde ele **falha**.
 
 ---
+base_confidence: 0.5
 
 ## Domain Modeling Através de Cenários
 
@@ -292,6 +299,7 @@ Feature: Cancelamento de Assinatura
 **Benefício:** O vocabulário compartilhado entre cenários revela a linguagem ubíqua do domínio e pode alimentar diretamente o glossário do projeto e os agregados no design do software.
 
 ---
+base_confidence: 0.5
 
 ## Evidência Empírica
 
@@ -315,6 +323,7 @@ Experimento controlado (N=3 consenso de agentes, tarefa de executor de passos de
 **Fonte:** `experiments/hive_mind/gherkin_v2_recipe_executor/` (Issue #3939 do roadmap de integração de especificações formais)
 
 ---
+base_confidence: 0.5
 
 ## Tabela Comparativa: Gherkin vs. English vs. TLA+
 
@@ -364,6 +373,7 @@ Experimento controlado (N=3 consenso de agentes, tarefa de executor de passos de
 - Quando em dúvida, comece com **English**. Atualize se provar insuficiente.
 
 ---
+base_confidence: 0.5
 
 ## Anti-Padrões Comuns
 
@@ -409,6 +419,7 @@ Scenario: Login após cadastro
 ```
 
 ---
+base_confidence: 0.5
 
 ## Template de Feature File
 
@@ -445,6 +456,7 @@ Feature: [Descrição curta da funcionalidade]
 ```
 
 ---
+base_confidence: 0.5
 
 ## Tri-Path Judgment System (PromptWriter)
 
@@ -528,6 +540,7 @@ O prompt-writer segue uma sequência mandatória antes de gerar qualquer prompt:
 - Issue #3939: Roadmap de integração de especificações formais
 
 ---
+base_confidence: 0.5
 
 ## Resumo em Uma Linha
 

@@ -1,4 +1,7 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "Re-using step function"
 tags:
   - playwright-bdd
@@ -8,6 +11,9 @@ created: 2026-06-21
 rag_score: 0.5
 source: "https://vitalets.github.io/playwright-bdd/#/writing-steps/reusing-step-fn"
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 It is possible to re-use a step function in other steps to share common functionality. Save the return value of `Given() / When() / Then()` and invoke it in other steps. Note that you should pass all required fixtures in the first argument.
 

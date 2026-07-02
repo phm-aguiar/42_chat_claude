@@ -1,4 +1,7 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "goleak package - go.uber.org/goleak"
 source: "https://pkg.go.dev/go.uber.org/goleak"
 author:
@@ -8,6 +11,9 @@ rag_score: 0.5
 description: "Package goleak is a Goroutine leak detector."
 tags: [golangci-lint, testing, goroutines]
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 ## README
 
 ### goleak

@@ -1,4 +1,6 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
 title: "Mocking and Stubbing"
 category: references
 tags:
@@ -11,6 +13,8 @@ updated: "2026-06-21"
 lifecycle: draft
 lifecycle_reason: "ingested from _raw/ Cucumber/BDD clippings"
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
 Mocking is usually discouraged when using Cucumber; ideally you would exercise as much of your stack as possible. There are cases when using mocking can come in handy. For example, if your system depends on a third party. If you have a dependency on an external system, we recommend using [stubs instead of mocks](https://martinfowler.com/articles/mocksArentStubs.html). You **can** set up mocks with expectations in your [step definitions](https://cucumber.io/docs/cucumber/step-definitions).
 
 ## Java

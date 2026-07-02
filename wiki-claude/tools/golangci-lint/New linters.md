@@ -1,4 +1,7 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "New linters"
 source: "https://golangci.github.io/legacy-v1-doc/contributing/new-linters/"
 author:
@@ -8,6 +11,9 @@ rag_score: 0.5
 description: "Fast Go linters runner golangci-lint."
 tags: [golangci-lint, contributing]
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 ## Table of Contents
 
 ## How to write a linter

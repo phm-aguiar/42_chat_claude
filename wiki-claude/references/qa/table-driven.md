@@ -1,9 +1,15 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "Table Driven"
 tags: [qa, reference]
 created: 2026-06-20
 rag_score: 0.4867
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 # Table-Driven Tests em Go
 
 ## Por que table-driven?

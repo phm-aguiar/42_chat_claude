@@ -1,4 +1,7 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "Customize examples title"
 tags:
   - playwright-bdd
@@ -9,6 +12,9 @@ created: 2026-06-21
 rag_score: 0.5
 source: "https://vitalets.github.io/playwright-bdd/#/writing-features/customize-examples-title"
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 By default, each example row from a `Scenario Outline` is converted into a test with the title `Example #{index}`. This can be unreliable for reporters that keep track of test history because, with every insertion or deletion of rows, test titles will shift.
 

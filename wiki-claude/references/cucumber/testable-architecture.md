@@ -1,4 +1,6 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
 title: "Testable Architecture"
 category: references
 tags:
@@ -11,6 +13,8 @@ updated: "2026-06-21"
 lifecycle: draft
 lifecycle_reason: "ingested from _raw/ Cucumber/BDD clippings"
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
 Automated tests and executable specifications can only work with software that has a testable architecture. A testable architecture enables fast and reliable tests that are easy to write, execute and maintain.
 
 ## Fast feedback

@@ -1,4 +1,5 @@
 ---
+base_confidence: 0.5
 title: "007: Agent QA"
 category: projects
 tags: [sdd, agent, qa, qualidade, teste]
@@ -10,6 +11,7 @@ sources:
   - repo:specs/features/007-agent-qa/spec.md
 lifecycle: verified
 ---
+base_confidence: 0.5
 
 # Feature 007: Agent QA
 

@@ -1,10 +1,16 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "golangci-lint"
 description: "Documentação do golangci-lint — fast Go linters runner"
 created: 2026-06-21
 rag_score: 0.5
 tags: [golangci-lint, go, linting, index]
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 # golangci-lint
 

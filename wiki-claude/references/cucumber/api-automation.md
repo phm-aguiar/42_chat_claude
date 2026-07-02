@@ -1,4 +1,6 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
 title: "API Automation"
 category: references
 tags:
@@ -11,6 +13,8 @@ updated: "2026-06-21"
 lifecycle: draft
 lifecycle_reason: "ingested from _raw/ Cucumber/BDD clippings"
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
 Cucumber is not an API automation tool, but it works well with other API automation tools.
 
 Using API's for your automation, can make your tests faster and less flaky than going through the UI. In general, API's change less frequently than the UI; keeping your automation up to date for longer.

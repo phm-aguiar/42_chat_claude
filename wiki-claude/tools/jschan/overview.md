@@ -1,4 +1,7 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "jschan — Anonymous Imageboard Engine"
 category: tools
 tags: [jschan, imageboard, forum, mongodb, redis, nginx, nodejs]
@@ -7,6 +10,9 @@ rag_score: 0.5
 author: phm-aguiar
 aliases: ["jschan engine", "imageboard software"]
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 # jschan — Anonymous Imageboard Engine
 

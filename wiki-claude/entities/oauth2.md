@@ -1,4 +1,6 @@
 ---
+base_confidence: 0.5
+lifecycle: draft
 title: "OAuth2 (Autenticação 42)"
 tags: [entity, glossary]
 aliases: [auth.OAuth2, OAuth 2.0, 42 OAuth, authorization code flow]
@@ -11,6 +13,8 @@ provenance:
   inferred: 0.05
   ambiguous: 0.00
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 # OAuth2 (Autenticação 42)
 

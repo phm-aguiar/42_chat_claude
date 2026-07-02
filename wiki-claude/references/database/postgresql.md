@@ -1,4 +1,6 @@
 ---
+base_confidence: 0.5
+lifecycle: draft
 title: "PostgreSQL no 42 Chat"
 tags: [postgresql, go, database]
 created: 2026-06-21
@@ -10,12 +12,16 @@ provenance:
   inferred: 0.05
   ambiguous: 0.00
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 # PostgreSQL no 42 Chat Core
 
 Referência prática de como o PostgreSQL é usado no projeto **42 Chat Core** — do pool de conexões ao schema, passando por migrations e patterns de queries.
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Connection Pool
 
@@ -61,6 +67,8 @@ func (p *Postgres) Stats() sql.DBStats {
 Expõe `sql.DBStats` (open, idle, in-use, wait duration, etc.) para o endpoint `/metrics`.
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Migrations
 
@@ -127,6 +135,8 @@ CREATE TABLE IF NOT EXISTS messages (
 O `idx_messages_active` é um **índice parcial** — cobre apenas mensagens não-deletadas. Isso reduz o tamanho do índice e acelera a query principal de listagem (`SelectRecentMessages`), que sempre filtra por `WHERE m.deleted_at IS NULL`.
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Query Patterns
 
@@ -213,6 +223,8 @@ q.db.QueryRow(query, login).Scan(&u.ID, &u.Login, &u.ImageURL, &u.CurrentHost, &
 Busca por `login` (campo com `UNIQUE`) — útil para lookup sem ter o ID 42.
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Schema Design — Decisões
 
@@ -228,6 +240,8 @@ Busca por `login` (campo com `UNIQUE`) — útil para lookup sem ter o ID 42.
 | `TIMESTAMPTZ` (com timezone) | Consistência entre servidores em fusos diferentes       |
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## lib/pq vs pgx
 
@@ -246,6 +260,8 @@ O projeto usa **`github.com/lib/pq`** (v1.12.3), não `pgx`.
 **Atenção**: lib/pq entrou em modo archive. Para projetos novos, considere `pgx/v5` com `stdlib` adapter se quiser manter `database/sql`.
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Pitfalls
 

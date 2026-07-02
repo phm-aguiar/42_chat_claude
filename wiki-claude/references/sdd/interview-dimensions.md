@@ -1,9 +1,15 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "Interview Dimensions"
 tags: [sdd, reference]
 created: 2026-06-20
 rag_score: 0.4833
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 # Dimensões da Entrevista Interativa
 
 Este documento define as dimensões que a skill `sdd-brainstorm` deve cobrir durante
@@ -20,6 +26,9 @@ e critérios de "pronto" para saber quando avançar.
 - **Critério de pronto:** cada dimensão lista o que constitui "insumo suficiente".
 
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 ## 1. Propósito (Purpose)
 
@@ -38,6 +47,9 @@ e critérios de "pronto" para saber quando avançar.
 porque [motivo Z]" em 2 frases.
 
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 ## 2. Escopo (Scope)
 
@@ -55,6 +67,9 @@ porque [motivo Z]" em 2 frases.
 menos 1 item explícito.
 
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 ## 3. Comportamento Esperado (Happy Path)
 
@@ -72,6 +87,9 @@ menos 1 item explícito.
 Mínimo 3 passos para features não triviais.
 
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 ## 4. Cenários Alternativos e Edge Cases
 
@@ -90,6 +108,9 @@ Mínimo 3 passos para features não triviais.
 definido para cada um.
 
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 ## 5. Constraints (Restrições)
 
@@ -108,6 +129,9 @@ definido para cada um.
 registre "Nenhuma constraint além das definidas em constitution.md".
 
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 ## 6. Critérios de Sucesso (Success Criteria)
 
@@ -126,6 +150,9 @@ Se o usuário não souber, sugira critérios padrão: "testes passam",
 "cenário principal funciona fim a fim".
 
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 ## 7. Trade-offs e Abordagens (opcional, se houver escolha técnica)
 
@@ -139,6 +166,9 @@ Se o usuário não souber, sugira critérios padrão: "testes passam",
 no Passo 4.
 
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 ## Atalhos e Flexibilidade
 

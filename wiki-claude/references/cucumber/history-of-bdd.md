@@ -1,4 +1,6 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
 title: "History of BDD"
 category: references
 tags:
@@ -11,6 +13,8 @@ updated: "2026-06-21"
 lifecycle: draft
 lifecycle_reason: "ingested from _raw/ Cucumber/BDD clippings"
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
 Behavior-driven development was pioneered by [Daniel Terhorst-North](https://dannorth.net/) back in the early 00s, as he explained in a 2006 article called [Introducing BDD](http://dannorth.net/introducing-bdd/). It grew from a response to test-driven development (TDD), as a way to help programmers on new agile teams "get straight to the good stuff" of knowing how to approach testing and coding, and minimize misunderstandings. BDD has evolved into both analysis and automated testing at the acceptance level. [Liz Keogh](https://lizkeogh.com/), another BDD pioneer, started writing and speaking about it extensively beginning in 2004.
 
 ## Early tools supporting BDD

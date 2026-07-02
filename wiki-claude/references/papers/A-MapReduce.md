@@ -1,4 +1,7 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "A-MapReduce — Executing Wide Search via Agentic MapReduce"
 tags: [paper, multi-agent, mapreduce, memory, retrieval, cross-task, sdd]
 status: analyzed
@@ -8,6 +11,9 @@ source: "https://arxiv.org/html/2602.01331v1"
 authors: "Chen et al., 2026"
 feature: "[[projects/42_Framework/features/002-experiential-memory|Feature 002: Wiki Experiential Memory]]"
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 # A-MapReduce — Executing Wide Search via Agentic MapReduce
 

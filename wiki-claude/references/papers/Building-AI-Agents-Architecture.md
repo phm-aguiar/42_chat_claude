@@ -1,4 +1,5 @@
 ---
+lifecycle: draft
 title: "Building AI Agents — Architecture, Trade-offs, and What We've Learned"
 tags: [paper, ai-agents, architecture, langchain, tool-design, model-selection, evaluation, production-patterns]
 status: analyzed
@@ -13,6 +14,7 @@ provenance:
   ambiguous: 0.05
 summary: "Decisões de arquitetura em agentes AI de produção. LangChain abandonado após 3 projetos — abstração custa mais que conveniência. Claude 3.5 Sonnet como default, tool design como decisão mais subestimada, e eval infra antes do agente. 3 erros comuns cometidos e corrigidos."
 ---
+lifecycle: draft
 
 # Building AI Agents: Architecture, Trade-offs, and What We've Learned
 

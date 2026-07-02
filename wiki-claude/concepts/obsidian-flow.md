@@ -1,4 +1,5 @@
 ---
+base_confidence: 0.5
 title: "Fluxo Obsidian — Integração com o Framework"
 category: concepts
 tags: [obsidian, wiki, fluxo, integracao]
@@ -10,6 +11,7 @@ created: "2026-06-13"
 rag_score: 0.4867
 updated: "2026-06-13"
 ---
+base_confidence: 0.5
 
 # Fluxo Obsidian — Integração com o Framework
 

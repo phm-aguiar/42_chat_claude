@@ -1,9 +1,15 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "Task Rules"
 tags: [sdd, reference]
 created: 2026-06-20
 rag_score: 0.4831
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 # Regras de Geração de Tarefas com DAG (tasks.md)
 
 Referência para `sdd-generate-tasks` v2.0.0. Contém regras de atomicidade, formato DAG,

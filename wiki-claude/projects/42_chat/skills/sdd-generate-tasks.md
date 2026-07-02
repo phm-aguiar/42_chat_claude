@@ -1,4 +1,5 @@
 ---
+base_confidence: 0.5
 title: "sdd-generate-tasks"
 category: projects
 tags: [sdd, skill, tasks, DAG, execution]
@@ -9,6 +10,7 @@ created: "2026-06-13"
 rag_score: 0.4875
 updated: "2026-06-13"
 ---
+base_confidence: 0.5
 
 # sdd-generate-tasks
 

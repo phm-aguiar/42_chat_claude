@@ -1,4 +1,7 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "LangGraph in Production — StateGraph, Checkpointing e Human-in-the-Loop"
 tags: [paper, langgraph, stateful-agents, checkpointing, human-in-the-loop, production-patterns]
 status: analyzed
@@ -8,6 +11,9 @@ source: "https://www.kalviumlabs.ai/blog/langgraph-in-production-stateful-multi-
 authors: "Anil Gulecha (Kalvium Labs, ex-HackerRank, ex-Google)"
 feature: "nenhuma ainda — candidato a Feature 003"
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 # LangGraph in Production
 

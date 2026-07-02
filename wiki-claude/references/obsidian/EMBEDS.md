@@ -1,9 +1,15 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "Embeds"
 tags: [obsidian, reference]
 created: 2026-06-20
 rag_score: 0.484
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 # Embeds Reference
 
 ## Embed Notes

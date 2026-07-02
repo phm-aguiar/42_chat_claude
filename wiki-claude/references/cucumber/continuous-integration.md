@@ -1,4 +1,6 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
 title: "Continuous Integration"
 category: references
 tags:
@@ -11,6 +13,8 @@ updated: "2026-06-21"
 lifecycle: draft
 lifecycle_reason: "ingested from _raw/ Cucumber/BDD clippings"
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
 Using Cucumber in a [Continuous Integration](https://martinfowler.com/articles/continuousIntegration.html) (CI) environment is relatively straightforward.
 
 The `cucumber` executable will exit with an [exit status](https://en.wikipedia.org/wiki/Exit_status) different from `0` if one or more scenarios are failing. This is all your CI server needs to know.

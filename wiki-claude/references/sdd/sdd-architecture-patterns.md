@@ -1,9 +1,15 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "Architecture Patterns"
 tags: [sdd, reference]
 created: 2026-06-20
 rag_score: 0.4857
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 # Padrões de Arquitetura para ADR
 
 Referência para o `sdd-generate-plan`. Absorvido de `software-architecture-design` (AI-Agents-public).

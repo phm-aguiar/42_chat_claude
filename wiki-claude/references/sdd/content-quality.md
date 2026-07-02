@@ -1,9 +1,15 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "Content Quality"
 tags: [sdd, reference]
 created: 2026-06-20
 rag_score: 0.5238
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 # Métricas de Qualidade de Conteúdo
 
 Referência para o `sdd-validate`. Absorvido de `documentation-metrics.md` + `qa-docs-coverage` (AI-Agents-public).

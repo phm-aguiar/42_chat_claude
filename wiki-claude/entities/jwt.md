@@ -1,4 +1,6 @@
 ---
+base_confidence: 0.5
+lifecycle: draft
 title: "JWT (JSON Web Token)"
 tags: [entity, glossary]
 aliases: [auth.JWTManager, token JWT, JSON Web Token, HS256]
@@ -11,6 +13,8 @@ provenance:
   inferred: 0.05
   ambiguous: 0.00
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 # JWT (JSON Web Token)
 

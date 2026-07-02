@@ -1,4 +1,6 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
 title: "Discovery Workshop"
 category: references
 tags:
@@ -11,6 +13,8 @@ updated: "2026-06-21"
 lifecycle: draft
 lifecycle_reason: "ingested from _raw/ Cucumber/BDD clippings"
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
 ## What is a discovery workshop?
 
 A discovery workshop is a conversation where technical and business people collaborate to explore, discover and agree as much as they can about the desired behaviour for a [User Story](https://cucumber.io/docs/terms/user-story/).

@@ -1,9 +1,15 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "Vault Taxonomy"
 tags: [concept]
 created: 2026-06-20
 rag_score: 0.49
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 1|---
 2|title: "Vault Taxonomy"
 3|category: concepts

@@ -1,4 +1,6 @@
 ---
+base_confidence: 0.5
+lifecycle: draft
 title: "Docker & Compose no 42 Chat"
 tags: [docker, devops, go]
 created: 2026-06-21
@@ -10,12 +12,16 @@ provenance:
   inferred: 0.02
   ambiguous: 0.00
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 # Docker & Compose no 42 Chat Core
 
 Referência da infraestrutura Docker do projeto — do `Dockerfile` multistage ao `docker-compose.yml` com PostgreSQL integrado.
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Multistage Build
 
@@ -76,6 +82,8 @@ ENTRYPOINT ["/server"]
 - Final: **~15 MB** (Alpine + binário estático de ~8 MB + certs + tzdata)
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## docker-compose.yml — Estrutura
 
@@ -163,6 +171,8 @@ server:
 | `${VAR:-default}`                 | Todas as env vars têm fallback seguro             |
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Dev vs Prod
 
@@ -196,6 +206,8 @@ FORTYTWO_CLIENT_SECRET=<real-client-secret>
 - OAuth2 configurado com credenciais reais da API 42.
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Health Checks
 
@@ -218,6 +230,8 @@ healthcheck:
 O server **não tem healthcheck explícito no compose**, mas o `NewPostgres()` faz `db.Ping()` no startup — se o banco não responder, o container crasha e o `restart: unless-stopped` tenta de novo.
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## env -u KEY Pattern
 
@@ -265,6 +279,8 @@ cp .env.example .env   # se .env.example existir
 4. **Sem `env_file` directive** — usa o `.env` automático do compose, mais simples.
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Rede e Volumes
 
@@ -301,6 +317,8 @@ volumes:
 - **`:z`** — SELinux label compartilhado (necessário em Fedora/RHEL/CentOS com SELinux enforcing).
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Comandos do dia a dia
 

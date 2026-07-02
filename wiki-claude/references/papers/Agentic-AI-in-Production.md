@@ -1,4 +1,5 @@
 ---
+lifecycle: draft
 title: "Agentic AI in Production — Tool-Calling, Planning, Recovery"
 tags: [paper, agentic-ai, tool-calling, planning, error-recovery, observability, production-patterns]
 status: analyzed
@@ -13,6 +14,7 @@ provenance:
   ambiguous: 0.05
 summary: "6 sistemas agentic em produção. 23 falhas depuradas, 4 padrões de falha (malformed tool calls, infinite loops, error cascades, context overflow). Tool design com schemas tight (14% → 2.1% falha), planning loops com hard limits em código, error recovery tipado, e observabilidade com session traces."
 ---
+lifecycle: draft
 
 # Agentic AI in Production: Tool-Calling, Planning, Recovery
 

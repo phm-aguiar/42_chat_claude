@@ -1,4 +1,6 @@
 ---
+base_confidence: 0.5
+lifecycle: draft
 title: "Integration Testing with Docker"
 tags: [testing, docker, integration]
 created: 2026-06-21
@@ -6,12 +8,16 @@ rag_score: 0.5
 category: references
 summary: Smoke tests, Docker test lifecycle, WebSocket testing with gorilla/websocket, table-driven patterns, and CI/CD integration — based on real 42_chat patterns.
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 # Integration Testing with Docker
 
 How the 42_chat project tests end-to-end flows — from in-memory smoke tests to full server integration with PostgreSQL, WebSocket clients, and graceful shutdown.
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Smoke Tests
 
@@ -148,6 +154,8 @@ if !ready {
 ```
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Docker Test Lifecycle
 
@@ -245,6 +253,8 @@ defer func() {
 This approach avoids Docker entirely — just needs a running PostgreSQL (local or container). The test binary is built and cleaned up within the test function.
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Test Database
 
@@ -414,6 +424,8 @@ func testQueries(t *testing.T) *db.Queries {
 ```
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## WebSocket Testing
 
@@ -615,6 +627,8 @@ func TestWSHandlerMissingToken(t *testing.T) {
 ```
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Table-Driven Tests
 
@@ -686,6 +700,8 @@ for _, tt := range tests {
 | **No boilerplate** | Same setup logic used for all cases |
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Hub Unit Testing (In-Memory)
 
@@ -793,6 +809,8 @@ func TestHubBroadcastConcurrent(t *testing.T) {
 ```
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## CI/CD Integration
 
@@ -931,6 +949,8 @@ func TestWSHandlerPongResetsDeadline(t *testing.T) {
 ```
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Test File Inventory
 
@@ -950,6 +970,8 @@ func TestWSHandlerPongResetsDeadline(t *testing.T) {
 | `internal/config/config_test.go` | Unit | None |
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Key Principles
 

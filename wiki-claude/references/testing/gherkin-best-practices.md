@@ -1,4 +1,5 @@
 ---
+base_confidence: 0.5
 title: "Gherkin — Boas Práticas"
 category: references
 tags:
@@ -20,12 +21,14 @@ sources:
   - "wiki/_raw/qa/gherkin-practices/anti-patterns.md"
   - "wiki/_raw/qa/gherkin-practices/Best Practices improving existing scenarios.md"
 ---
+base_confidence: 0.5
 
 # Gherkin — Boas Práticas
 
 > *Escreva cenários que qualquer pessoa do negócio consiga ler. Gherkin é especificação por exemplo — a clareza vem primeiro.*
 
 ---
+base_confidence: 0.5
 
 ## Índice
 
@@ -57,6 +60,7 @@ sources:
 6. [Checklist Rápido](#6-checklist-rápido)
 
 ---
+base_confidence: 0.5
 
 ## 1. Uma Regra de Ouro
 
@@ -83,6 +87,7 @@ Then o produto deve aparecer como "Fora de estoque" na página do catálogo
 > A Regra de Ouro do Gherkin é simples: **trate os outros leitores como você gostaria de ser tratado.** Crie arquivos de feature que todos consigam compreender facilmente.
 
 ---
+base_confidence: 0.5
 
 ## 2. Boas Práticas Essenciais
 
@@ -118,6 +123,7 @@ Scenario: Cliente remove um item do carrinho
 ```
 
 ---
+base_confidence: 0.5
 
 ### 3 a 5 Passos por Cenário
 
@@ -132,6 +138,7 @@ A média ideal: **1-2 `Given`, 1 `When`, 1-2 `Then`.** Se um cenário precisa de
 | Asserções de outro cenário | Mover para o cenário correto |
 
 ---
+base_confidence: 0.5
 
 ### Nomes Descritivos
 
@@ -156,6 +163,7 @@ Scenario: Gerente de depósito não pode excluir uma localização que contém e
 > **Padrão recomendado:** `[Ator] [ação/condição] [resultado]`
 
 ---
+base_confidence: 0.5
 
 ### Background para Configuração Compartilhada
 
@@ -179,6 +187,7 @@ Scenario: Membro renova um empréstimo que vence amanhã
 > Mantenha o `Background` curto — idealmente **abaixo de 4 passos**. Se precisar de um background longo, talvez o arquivo de feature esteja cobrindo áreas demais.
 
 ---
+base_confidence: 0.5
 
 ### Scenario Outline para Variações de Dados
 
@@ -200,6 +209,7 @@ Scenario Outline: Faixa de desconto é aplicada com base no valor do carrinho
 > ⚠️ Evite usar `Scenario Outline` apenas para variar dados de teste quando os valores **não representam regras de negócio distintas**. Use-o quando as variações testam casos significativamente diferentes.
 
 ---
+base_confidence: 0.5
 
 ### Rules para Agrupar Cenários Relacionados
 
@@ -226,6 +236,7 @@ Feature: Devolução de itens
 ```
 
 ---
+base_confidence: 0.5
 
 ### Tags com Propósito
 
@@ -242,6 +253,7 @@ Tags ajudam a organizar e filtrar execuções de teste. Use-as de forma consiste
 > Siga as convenções de tagging já existentes no projeto. Se não houver, estabeleça-as cedo e documente-as.
 
 ---
+base_confidence: 0.5
 
 ### Then Observa Resultados, Não Internos
 
@@ -266,6 +278,7 @@ Then o carrinho do cliente deve estar vazio
 > Se você precisa verificar estado interno, considere se essa verificação pertence a um **teste unitário** em vez de um cenário Gherkin.
 
 ---
+base_confidence: 0.5
 
 ## 3. Anti-Patterns Comuns
 
@@ -289,6 +302,7 @@ And ele deve ver um resumo de confirmação
 ```
 
 ---
+base_confidence: 0.5
 
 ### Cenários Dependentes
 
@@ -318,6 +332,7 @@ Scenario: Vendedor edita o preço de um anúncio existente
 > Cada cenário deve configurar **suas próprias pré-condições** nos passos `Given`.
 
 ---
+base_confidence: 0.5
 
 ### Testar Implementação, Não Comportamento
 
@@ -342,6 +357,7 @@ Scenario: Título de produto atualizado aparece nos resultados de busca
 ```
 
 ---
+base_confidence: 0.5
 
 ### Passos Vagos
 
@@ -364,6 +380,7 @@ Then ele deve ver "Sua conta precisa estar em situação regular para publicar a
 > Nomeie passos para descrever um **estado ou ação específica e observável**. Evite "a coisa", "ele", "o estado", "funciona corretamente".
 
 ---
+base_confidence: 0.5
 
 ### Passos em Excesso
 
@@ -390,6 +407,7 @@ Scenario: Cliente completa o onboarding
 ✅ **Melhor:** Divida em cenários focados, cada um cobrindo um estágio do fluxo. Use `Background` para setup compartilhado. Use `Scenario Outline` se a mesma validação se aplica a múltiplos campos.
 
 ---
+base_confidence: 0.5
 
 ### Misturar Setup e Ação no Given/When
 
@@ -414,6 +432,7 @@ Scenario: Cliente vê histórico de reservas após fazer uma reserva
 > `Given` **configura o estado**. `When` **descreve a única ação** sendo testada.
 
 ---
+base_confidence: 0.5
 
 ### Arquivos de Feature Sobrecarregados
 
@@ -430,6 +449,7 @@ Scenario: Cliente vê histórico de reservas após fazer uma reserva
 > É comum ver **5 a 20 cenários por Feature**. Acima de 20, considere dividir.
 
 ---
+base_confidence: 0.5
 
 ### Given com Asserções (Assertion-Heavy Given)
 
@@ -453,6 +473,7 @@ Then o ingresso deve ser emitido
 > Mantenha o `Given` focado: descreva o **estado do mundo no início do cenário**, não asserções sobre ele.
 
 ---
+base_confidence: 0.5
 
 ### Perspectiva Inconsistente
 
@@ -475,6 +496,7 @@ Then o novo usuário recebe um e-mail de boas-vindas
 > Escolha **terceira pessoa com nomes concretos** (Alice, José, etc.) e seja consistente.
 
 ---
+base_confidence: 0.5
 
 ### Dados Genéricos ou sem Significado
 
@@ -497,6 +519,7 @@ Then o total do carrinho é R$ 159,98
 ```
 
 ---
+base_confidence: 0.5
 
 ### Futuro em Vez de Presente
 
@@ -513,6 +536,7 @@ Then a mensagem de confirmação **é** exibida
 ```
 
 ---
+base_confidence: 0.5
 
 ### Acoplamento com UI
 
@@ -538,6 +562,7 @@ Scenario: Usuário filtra produtos por preço
 ```
 
 ---
+base_confidence: 0.5
 
 ## 4. Estilo Declarativo vs Imperativo
 
@@ -575,6 +600,7 @@ Scenario: Usuário faz login com sucesso
 > **Pergunte-se:** Este cenário descreve o comportamento esperado ou os detalhes de como ele é implementado? Se a resposta for "detalhes de implementação", reescreva.
 
 ---
+base_confidence: 0.5
 
 ## 5. Dicas de Revisão
 
@@ -619,6 +645,7 @@ Ao revisar cenários Gherkin — seus ou de outras pessoas — use estas pergunt
 - [ ] Um iniciante no projeto entenderia o valor de negócio do cenário?
 
 ---
+base_confidence: 0.5
 
 ## 6. Checklist Rápido
 
@@ -640,6 +667,7 @@ Ao revisar cenários Gherkin — seus ou de outras pessoas — use estas pergunt
 ```
 
 ---
+base_confidence: 0.5
 
 > **Lembre-se:** BDD é uma prática de **colaboração** primeiro. Escreva cenários **com** as partes interessadas do negócio, não **para** elas. Trate seus arquivos `.feature` como **documentação viva** — mantenha-os atualizados conforme o sistema evolui.
 

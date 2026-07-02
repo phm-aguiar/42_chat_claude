@@ -1,4 +1,5 @@
 ---
+lifecycle: draft
 title: "Multi-Agent AI Systems in Production (2026)"
 tags: [paper, multi-agent, orchestration, failure-propagation, budget, timeout, production-patterns]
 status: analyzed
@@ -14,6 +15,7 @@ provenance:
   ambiguous: 0.05
 summary: "8 projetos multi-agent em produção. 3 padrões de orquestração (pipeline, supervisor, parallel fan-out), failure propagation, cost explosion, e quando NÃO usar multi-agent. Fonte dos gaps 1-7 da Feature 005."
 ---
+lifecycle: draft
 
 # Multi-Agent AI Systems: When One Agent Isn't Enough
 

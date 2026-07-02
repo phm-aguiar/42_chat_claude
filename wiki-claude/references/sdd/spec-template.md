@@ -1,9 +1,15 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "Spec Template"
 tags: [sdd, reference]
 created: 2026-06-20
 rag_score: 0.4833
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 # Spec: {{FEATURE_NAME}}
 
 ## Metadados

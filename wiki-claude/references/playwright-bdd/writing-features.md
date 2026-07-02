@@ -1,4 +1,7 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "Writing features — Overview"
 tags:
   - playwright-bdd
@@ -8,6 +11,9 @@ created: 2026-06-21
 rag_score: 0.5
 source: "https://vitalets.github.io/playwright-bdd/#/writing-features/index"
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 ## Writing features
 

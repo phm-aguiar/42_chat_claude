@@ -1,4 +1,5 @@
 ---
+base_confidence: 0.5
 title: "Onboarding — Começando com o Framework SDD"
 category: concepts
 tags: [sdd, onboarding, tutorial, iniciante]
@@ -10,6 +11,7 @@ created: "2026-06-13"
 rag_score: 0.484
 updated: "2026-06-13"
 ---
+base_confidence: 0.5
 
 # Onboarding — Começando com o Framework SDD
 

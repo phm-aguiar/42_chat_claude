@@ -1,4 +1,5 @@
 ---
+base_confidence: 0.5
 title: "Cucumber & BDD — Referência Completa"
 summary: "Síntese completa dos fundamentos de Cucumber, Gherkin, step definitions (JS/TS/Java/Ruby), hooks, World context, data tables, doc strings, Page Object pattern, boas práticas e anti-patterns para testes BDD."
 tags:
@@ -18,6 +19,7 @@ sources:
   - "wiki/_raw/qa/cucumber/[[skills/cucumber-step-definitions|cucumber-step-definitions]].md"
   - "wiki/_raw/qa/cucumber/cucumber-best-practices.md"
 ---
+base_confidence: 0.5
 
 # Cucumber & BDD — Referência Completa
 
@@ -36,6 +38,7 @@ BDD é uma metodologia ágil que incentiva colaboração entre desenvolvedores, 
 - **Automação**: Cenários são testes automatizados
 
 ---
+base_confidence: 0.5
 
 ### Gherkin — Sintaxe
 
@@ -74,6 +77,7 @@ Feature: Autenticação de Usuário
 ```
 
 ---
+base_confidence: 0.5
 
 ### Scenario Outlines
 
@@ -94,6 +98,7 @@ Scenario Outline: Login com diferentes tipos de usuário
 ```
 
 ---
+base_confidence: 0.5
 
 ### Tags
 
@@ -129,6 +134,7 @@ cucumber --tags "@smoke or @critical"
 ```
 
 ---
+base_confidence: 0.5
 
 ## Step Definitions
 
@@ -199,6 +205,7 @@ end
 ```
 
 ---
+base_confidence: 0.5
 
 ### Steps Parametrizados
 
@@ -235,6 +242,7 @@ When('eu seleciono a opção {word}', async function (option) {
 ```
 
 ---
+base_confidence: 0.5
 
 ### Expressões Regulares
 
@@ -254,6 +262,7 @@ Then(/^eu devo ver (?:uma|um) mensagem de (sucesso|erro)$/, async function (type
 ```
 
 ---
+base_confidence: 0.5
 
 ### Data Tables
 
@@ -303,6 +312,7 @@ When('eu preencho o formulário:', async function (dataTable) {
 ```
 
 ---
+base_confidence: 0.5
 
 ### Doc Strings
 
@@ -331,6 +341,7 @@ When('eu envio uma mensagem:', async function (messageText) {
 ```
 
 ---
+base_confidence: 0.5
 
 ## World Context
 
@@ -370,6 +381,7 @@ When('eu adiciono um item ao carrinho', async function () {
 > **Boa prática:** Compartilhe estado através do World, **nunca** via variáveis globais.
 
 ---
+base_confidence: 0.5
 
 ## Hooks
 
@@ -406,6 +418,7 @@ AfterAll(async function () {
 ```
 
 ---
+base_confidence: 0.5
 
 ## Page Object Pattern
 
@@ -449,6 +462,7 @@ When('eu insiro {string} e {string}', async function (username, password) {
 ```
 
 ---
+base_confidence: 0.5
 
 ## Helpers
 
@@ -475,6 +489,7 @@ Then('eu devo ver o dashboard', async function () {
 ```
 
 ---
+base_confidence: 0.5
 
 ## Data Management com Factories
 
@@ -520,6 +535,7 @@ Given('que registro um novo usuário', async function () {
 > **Evite IDs hardcoded:** `Given usuário "12345" existe` → prefira `Given um usuário "john@example.com" existe`.
 
 ---
+base_confidence: 0.5
 
 ## Organização de Diretórios
 
@@ -552,6 +568,7 @@ support/
 ```
 
 ---
+base_confidence: 0.5
 
 ## Boas Práticas de Step Definitions
 
@@ -628,6 +645,7 @@ When('eu aguardo o carregamento', async function () {
 ```
 
 ---
+base_confidence: 0.5
 
 ## Anti-Patterns
 
@@ -728,6 +746,7 @@ Scenario: Ver pedido
 ```
 
 ---
+base_confidence: 0.5
 
 ## Boas Práticas de Cenários Gherkin
 
@@ -795,6 +814,7 @@ And eu prossigo para o checkout
 ```
 
 ---
+base_confidence: 0.5
 
 ## Testing Pyramid
 
@@ -820,6 +840,7 @@ Use Cucumber adequadamente dentro da sua estratégia de testes:
 > **Importante:** Não tente testar tudo com Cucumber. Use-o para testes de aceitação de alto valor que documentam comportamento de negócio.
 
 ---
+base_confidence: 0.5
 
 ## Resumo Rápido de Boas Práticas
 

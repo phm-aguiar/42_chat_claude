@@ -1,4 +1,6 @@
 ---
+base_confidence: 0.5
+lifecycle: draft
 title: "Message (Modelo de Mensagem)"
 tags: [entity, glossary]
 aliases: [model.Message, WSMessage, mensagem, chat message]
@@ -11,6 +13,8 @@ provenance:
   inferred: 0.05
   ambiguous: 0.00
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 # Message (Modelo de Mensagem)
 

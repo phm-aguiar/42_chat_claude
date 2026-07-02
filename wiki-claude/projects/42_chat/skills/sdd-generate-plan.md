@@ -1,4 +1,5 @@
 ---
+base_confidence: 0.5
 title: "sdd-generate-plan"
 category: projects
 tags: [sdd, skill, plan, architecture, ADR]
@@ -9,6 +10,7 @@ created: "2026-06-13"
 rag_score: 0.4833
 updated: "2026-06-13"
 ---
+base_confidence: 0.5
 
 # sdd-generate-plan
 

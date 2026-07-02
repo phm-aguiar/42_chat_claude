@@ -1,4 +1,6 @@
 ---
+base_confidence: 0.5
+lifecycle: draft
 title: "OAuth2 42 — Fluxo Completo"
 tags: 
 - oauth2 
@@ -14,12 +16,16 @@ provenance:
   inferred: 0.04
   ambiguous: 0.00
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 # OAuth2 42 — Fluxo Completo
 
 Referência da integração OAuth2 com a API da 42 — do redirect à persistência do usuário, com bypass para desenvolvimento local.
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Arquitetura
 
@@ -42,6 +48,8 @@ type OAuth2 struct {
 ```
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Endpoints da API 42
 
@@ -100,6 +108,8 @@ type userResponse struct {
 ```
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Authorization Code Flow — Passo a Passo
 
@@ -197,6 +207,8 @@ user := &model.User{
 ```
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Token Exchange — Detalhes
 
@@ -225,6 +237,8 @@ client: &http.Client{Timeout: 10 * time.Second}
 Isso cobre tanto a chamada a `/oauth/token` quanto a `/v2/me`. Se qualquer uma das chamadas exceder 10s, um erro de rede é retornado.
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Callback HTTP — O Ponto de Entrada
 
@@ -256,6 +270,8 @@ A resposta entregue ao frontend:
 ```
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Refresh de Token
 
@@ -264,6 +280,8 @@ A resposta entregue ao frontend:
 O JWT interno do 42 Chat, por outro lado, tem expiração de **12 horas** (ver [auth-integration.md](auth-integration.md)). Enquanto o JWT for válido, a conexão WebSocket permanece ativa sem necessidade de re-autenticação 42.
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## DEV_MODE Bypass
 
@@ -314,6 +332,8 @@ user := &model.User{
 > **Segurança:** O endpoint `/api/auth/dev/login` **só é registrado** se `DEV_MODE=true`. Em produção, a rota simplesmente não existe.
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Configuração
 
@@ -330,6 +350,8 @@ Todas as variáveis de ambiente relevantes (`internal/config/config.go`):
 **Validação:** Em produção, `FORTYTWO_CLIENT_ID` e `FORTYTWO_CLIENT_SECRET` vazios causam erro fatal. Em dev (detectado via `JWT_SECRET == "dev-secret-change-in-production"`), credenciais vazias são toleradas.
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Pitfalls & Rate Limits
 
@@ -363,6 +385,8 @@ A `redirect_uri` enviada no `POST /oauth/token` deve ser **exatamente igual** à
 O middleware CORS (`cmd/server/main.go:157-169`) permite qualquer origem (`Access-Control-Allow-Origin: *`). Isso é seguro apenas para dev local — em produção, restrinja à origem do frontend.
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Fluxo Alternativo: Erro de OAuth
 
@@ -377,6 +401,8 @@ Server  → verifica code == ""
 O frontend deve tratar HTTP 400 e redirecionar para login novamente.
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Dependências
 

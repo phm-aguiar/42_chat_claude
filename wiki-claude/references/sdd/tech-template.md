@@ -1,9 +1,15 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "Tech Template"
 tags: [sdd, reference]
 created: 2026-06-20
 rag_score: 0.4844
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 # Stack Tecnológica
 
 > Preenchido automaticamente pela skill `sdd-explore-tech` em {{date}}.

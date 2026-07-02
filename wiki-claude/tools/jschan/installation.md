@@ -1,4 +1,7 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "jschan — Guia de Instalação"
 category: tools
 tags: [jschan, installation, mongodb, redis, nginx, nodejs, pm2]
@@ -7,6 +10,9 @@ rag_score: 0.5
 author: phm-aguiar
 aliases: ["instalar jschan", "jschan setup"]
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 # jschan — Guia de Instalação
 

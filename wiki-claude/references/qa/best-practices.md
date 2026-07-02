@@ -1,9 +1,15 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "Best Practices"
 tags: [qa, reference]
 created: 2026-06-20
 rag_score: 0.4844
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 # Gherkin Best Practices
 
 ## 1. Cenarios focados

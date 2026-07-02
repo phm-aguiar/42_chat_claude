@@ -1,9 +1,15 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "Forbidden Patterns"
 tags: [github, reference]
 created: 2026-06-20
 rag_score: 0.484
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 # Padrões Proibidos em Commits
 
 Referência para o `git-conventional-commit`. Absorvido de `dev-git-commit-message` (AI-Agents-public).

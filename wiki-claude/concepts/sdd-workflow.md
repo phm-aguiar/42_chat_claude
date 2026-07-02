@@ -1,4 +1,5 @@
 ---
+base_confidence: 0.5
 title: "SDD Workflow — Pipeline Completo"
 category: concepts
 tags: [sdd, workflow, pipeline, tutorial]
@@ -10,6 +11,7 @@ created: "2026-06-13"
 rag_score: 0.4878
 updated: "2026-06-19"
 ---
+base_confidence: 0.5
 
 # SDD Workflow — Pipeline Completo
 

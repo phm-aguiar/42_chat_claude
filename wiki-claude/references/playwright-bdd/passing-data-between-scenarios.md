@@ -1,4 +1,7 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "Passing data between scenarios"
 tags:
   - playwright-bdd
@@ -8,6 +11,9 @@ created: 2026-06-21
 rag_score: 0.5
 source: "https://vitalets.github.io/playwright-bdd/#/writing-steps/passing-data-between-scenarios"
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 Please note that serial mode **is not recommended** by the Playwright team
 

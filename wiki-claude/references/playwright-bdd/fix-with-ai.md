@@ -1,4 +1,7 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "Fix with AI"
 tags:
   - playwright-bdd
@@ -9,6 +12,9 @@ created: 2026-06-21
 rag_score: 0.5
 source: "https://vitalets.github.io/playwright-bdd/#/guides/fix-with-ai"
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 Playwright-BDD **v8.1.0** introduced a new feature called **Fix with AI**. It helps you quickly fix failing tests with AI suggestions.
 

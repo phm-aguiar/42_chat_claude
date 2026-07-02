@@ -1,4 +1,7 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "Integrations"
 source: "https://golangci.github.io/legacy-v1-doc/welcome/integrations/"
 author:
@@ -8,6 +11,9 @@ rag_score: 0.5
 description: "Fast Go linters runner golangci-lint."
 tags: [golangci-lint, integrations]
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 ## Table of Contents
 
 ## Editor Integration

@@ -1,4 +1,5 @@
 ---
+base_confidence: 0.5
 title: "Spec-Driven Development — Série DSA Academy"
 category: references
 tags:
@@ -22,6 +23,7 @@ sources:
   - https://blog.dsacademy.com.br/spec-driven-development-a-nova-arquitetura-de-engenharia-de-software-na-era-dos-agentes-de-ia-parte-1/
   - https://blog.dsacademy.com.br/spec-driven-development-a-nova-arquitetura-de-engenharia-de-software-na-era-dos-agentes-de-ia-parte-2/
 ---
+base_confidence: 0.5
 
 # Spec-Driven Development — Série DSA Academy
 
@@ -38,6 +40,7 @@ sources:
 - **Parte 5** — O Futuro do Desenvolvimento: A Redefinição do Papel do Engenheiro de Software
 
 ---
+base_confidence: 0.5
 
 ## Parte 1 — Sai o "Vibe Coding" Entra a Engenharia Guiada Por Intenção
 
@@ -106,6 +109,7 @@ trabalho, mas esse investimento se paga em menos idas e vindas, menos bugs,
 menos retrabalho — o conceito de **correção por construção**.
 
 ---
+base_confidence: 0.5
 
 ## Parte 2 — Anatomia de Uma Especificação Executável
 
@@ -164,6 +168,7 @@ Pedido vago: "Crie uma app de lista de tarefas"
    imutável para a fase de planejamento
 
 ---
+base_confidence: 0.5
 
 ## Relacionado
 

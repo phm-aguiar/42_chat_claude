@@ -1,4 +1,7 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "guide/.golangci.yml at master"
 source: "https://github.com/uber-go/guide/blob/master/.golangci.yml"
 author:
@@ -8,6 +11,9 @@ rag_score: 0.5
 description: "The Uber Go Style Guide. Contribute to uber-go/guide development by creating an account on GitHub."
 tags: [golangci-lint, uber, configuration]
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 [Open in github.dev](https://github.dev/) [Open in a new github.dev tab](https://github.dev/) [Open in codespace](https://github.com/codespaces/new/uber-go/guide/tree/master?resume=1)
 
 ## Files

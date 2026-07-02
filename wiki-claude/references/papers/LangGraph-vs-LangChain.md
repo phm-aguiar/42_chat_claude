@@ -1,4 +1,5 @@
 ---
+lifecycle: draft
 title: "LangGraph vs LangChain: Which We Deploy in Production (2026)"
 tags: [paper, langgraph, langchain, framework-comparison, production, decision-matrix]
 status: analyzed
@@ -14,6 +15,7 @@ provenance:
   ambiguous: 0.05
 summary: "8 de 12 projetos começaram LangChain, 4 migraram pra LangGraph. Decision matrix: quando cada um, padrões de produção, e quando custom loop é superior. Valida LATTE como custom loop."
 ---
+lifecycle: draft
 
 # LangGraph vs LangChain in Production
 

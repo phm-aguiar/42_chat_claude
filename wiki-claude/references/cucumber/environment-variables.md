@@ -1,4 +1,6 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
 title: "Environment Variables"
 category: references
 tags:
@@ -11,6 +13,8 @@ updated: "2026-06-21"
 lifecycle: draft
 lifecycle_reason: "ingested from _raw/ Cucumber/BDD clippings"
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
 Cucumber uses [environment variables](https://en.wikipedia.org/wiki/Environment_variable) to enable certain features, such as publishing [Cucumber Reports](https://reports.cucumber.io/).
 
 There are many different ways to define environment variables, depending on your environment. This guide describes how to define the `CUCUMBER_PUBLISH_TOKEN` environment variable with value `some-secret-token`.

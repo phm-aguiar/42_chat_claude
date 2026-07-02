@@ -1,4 +1,5 @@
 ---
+base_confidence: 0.5
 title: "Wiki Model — Knowledge Management do Framework"
 category: concepts
 tags: [wiki, obsidian, knowledge-management, arquitetura]
@@ -10,6 +11,7 @@ created: "2026-06-13"
 rag_score: 0.4829
 updated: "2026-06-13"
 ---
+base_confidence: 0.5
 
 # Wiki Model — Knowledge Management do Framework
 

@@ -1,4 +1,6 @@
 ---
+base_confidence: 0.5
+lifecycle: draft
 title: "WebSocket Production — Ping/Pong, Reconnect, Scaling & Rate Limiting"
 tags: [websocket, production, scaling, pingpong, reconnect, rate-limiting, security]
 created: 2026-06-21
@@ -10,12 +12,16 @@ provenance:
   inferred: 0.05
   ambiguous: 0.00
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 # WebSocket Production — Ping/Pong, Reconnect, Scaling & Rate Limiting
 
 Referência de padrões de produção para a camada WebSocket do 42 Chat. Baseado no código real em `internal/ws/handler.go`, `internal/ws/hub.go` e `internal/db/queries.go`.
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Constants Reference
 
@@ -33,6 +39,8 @@ Tabela consolidada de todas as constantes do subsistema WebSocket (`internal/ws/
 | debounce | `2s` | `hub.go:141` | Debounce para broadcast de `user_stats_changed` — múltiplas mudanças no mesmo user em 2s geram um único broadcast. |
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Ping/Pong Keepalive
 
@@ -124,6 +132,8 @@ O `writePump` detecta o canal fechado (`!ok` no `case message`) e encerra.
 - **Reaproveitamento de conexão** — quando a conexão cai, não há tentativa de reconexão no servidor. A responsabilidade é do client (ver seção Reconnection).
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Reconnection
 
@@ -213,6 +223,8 @@ async function getOrRefreshToken() {
 ```
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Scaling Multi-Instance
 
@@ -323,6 +335,8 @@ func (h *Hub) StartRedisSubscriber() {
 - Cada instância deve usar um Redis connection pool separado
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Message Persistence
 
@@ -426,6 +440,8 @@ if len(inbound.Content) > 5000 {
 ```
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Rate Limiting por Client
 
@@ -507,6 +523,8 @@ if !client.limiter.Allow() {
 | Conexões por user | 3 | Um user pode ter múltiplas abas, mas não dezenas |
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## CheckOrigin — Segurança do Upgrade
 
@@ -592,6 +610,8 @@ if err != nil {
 | `Sec-WebSocket-Protocol` | Via de token alternativa que não aparece em logs (opcional) |
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Resumo de Boas Práticas
 
@@ -617,6 +637,8 @@ if err != nil {
 - [ ] **Max connections** — limite global de conexões para evitar exaustão de file descriptors
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Dependências
 

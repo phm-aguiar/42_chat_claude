@@ -1,9 +1,15 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "Tier System"
 tags: [github, reference]
 created: 2026-06-20
 rag_score: 0.4643
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 # Tier System para Commits
 
 Referência para o `git-conventional-commit`. Absorvido de `dev-git-commit-message` (AI-Agents-public).

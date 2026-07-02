@@ -1,4 +1,7 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "Playwright-BDD — Reference Index"
 tags:
   - playwright-bdd
@@ -7,12 +10,18 @@ tags:
 created: 2026-06-21
 rag_score: 0.5
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 # Playwright-BDD Reference Index
 
 Comprehensive documentation reference for [Playwright-BDD](https://vitalets.github.io/playwright-bdd/), sourced from the official documentation. 40 pages covering all aspects of BDD testing with Playwright.
 
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 ## Introduction
 
@@ -82,6 +91,9 @@ Comprehensive documentation reference for [Playwright-BDD](https://vitalets.gith
 - [CLI](cli.md) — `bddgen test`, `bddgen export`, `bddgen env` commands
 
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 > **Source:** All pages derived from official [Playwright-BDD documentation](https://vitalets.github.io/playwright-bdd/).
 > **Generated:** 2026-06-21

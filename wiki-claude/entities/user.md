@@ -1,4 +1,6 @@
 ---
+base_confidence: 0.5
+lifecycle: draft
 title: "User (Modelo de Usuário)"
 tags: [entity, glossary]
 aliases: [model.User, usuário, 42 user, aluno 42]
@@ -11,6 +13,8 @@ provenance:
   inferred: 0.05
   ambiguous: 0.00
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 # User (Modelo de Usuário)
 

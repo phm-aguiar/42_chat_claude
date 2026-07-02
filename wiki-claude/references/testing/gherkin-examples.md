@@ -1,4 +1,5 @@
 ---
+base_confidence: 0.5
 title: "Gherkin Examples"
 category: references
 tags:
@@ -17,12 +18,14 @@ lifecycle_reason: "auto-promoted by wiki-lint: well-established reference page"
 sources:
   - "wiki/_raw/qa/gherkin-examples/Examples real-world examples gherkin.md"
 ---
+base_confidence: 0.5
 
 # Exemplos de Gherkin — Referência Completa
 
 > Exemplos reais e bem escritos de arquivos `.feature` em Gherkin, prontos para usar como templates ou consulta rápida.
 
 ---
+base_confidence: 0.5
 
 ## Índice
 
@@ -39,6 +42,7 @@ sources:
    - [Meaningful vs Generic Data](#meaningful-vs-generic-data)
 
 ---
+base_confidence: 0.5
 
 ## Product Search
 
@@ -90,6 +94,7 @@ Feature: Product Search
 - Cobertura de fluxo feliz, borda (sem resultados) e refinamento
 
 ---
+base_confidence: 0.5
 
 ## Shopping Cart Management
 
@@ -124,6 +129,7 @@ Feature: Shopping Cart Management
 - Cenários concisos e focados no comportamento desejado
 
 ---
+base_confidence: 0.5
 
 ## User Login
 
@@ -160,6 +166,7 @@ Feature: User Login
 - Descrição textual do propósito da *feature*
 
 ---
+base_confidence: 0.5
 
 ## Bank Account Withdrawals
 
@@ -188,6 +195,7 @@ Feature: Bank Account Withdrawals
 - Resultado financeiro claramente expresso e verificável
 
 ---
+base_confidence: 0.5
 
 ## Password Validation
 
@@ -214,6 +222,7 @@ Feature: Password Validation
 - Cenário único que testa todas as variações de validação
 
 ---
+base_confidence: 0.5
 
 ## Account Access Control
 
@@ -244,6 +253,7 @@ Feature: Account Access Control
 - Cenários curtos e diretos — cada um testa uma regra de negócio
 
 ---
+base_confidence: 0.5
 
 ## Comparações Lado a Lado
 
@@ -267,6 +277,7 @@ Feature: Account Access Control
 - Cenário mais resiliente a mudanças de interface
 
 ---
+base_confidence: 0.5
 
 ### UI-Specific vs Behavior-Focused
 
@@ -288,6 +299,7 @@ Feature: Account Access Control
 - Foco no resultado de negócio (produtos filtrados) vs interação técnica
 
 ---
+base_confidence: 0.5
 
 ### Focused vs Multiple Behaviors
 
@@ -312,6 +324,7 @@ Feature: Account Access Control
 - Legibilidade e manutenção significativamente melhores
 
 ---
+base_confidence: 0.5
 
 ### Meaningful vs Generic Data
 
@@ -331,6 +344,7 @@ Feature: Account Access Control
 - Dados genéricos tornam o cenário vago e difícil de depurar
 
 ---
+base_confidence: 0.5
 
 ## Boas Práticas Resumidas
 
@@ -346,6 +360,7 @@ Feature: Account Access Control
 | **Cenários parametrizados** | Use `Scenario Outline` com `Examples` para variações |
 
 ---
+base_confidence: 0.5
 
 *Fonte: `wiki/_raw/qa/gherkin-examples/Examples real-world examples gherkin.md` (fonte bruta já ingerida)*
 

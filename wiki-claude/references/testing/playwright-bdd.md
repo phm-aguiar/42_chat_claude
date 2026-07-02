@@ -1,4 +1,5 @@
 ---
+base_confidence: 0.5
 title: "Playwright BDD — Referência Completa"
 category: references
 tags:
@@ -19,12 +20,14 @@ sources:
   - "wiki/_raw/qa/playwright-bdd/playwright-bdd-configuration.md"
   - "wiki/_raw/qa/playwright-bdd/playwright-bdd-step-definitions.md"
 ---
+base_confidence: 0.5
 
 # Playwright BDD — Referência Completa
 
 Playwright BDD permite executar testes BDD em sintaxe Gherkin com Playwright Test. As *feature files* `.feature` são transformadas em arquivos de teste Playwright via `bddgen`.
 
 ---
+base_confidence: 0.5
 
 ## Índice
 
@@ -50,6 +53,7 @@ Playwright BDD permite executar testes BDD em sintaxe Gherkin com Playwright Tes
 20. [[#Boas Práticas]]
 
 ---
+base_confidence: 0.5
 
 ## Instalação
 
@@ -62,6 +66,7 @@ npm install -D playwright-bdd @playwright/test
 ```
 
 ---
+base_confidence: 0.5
 
 ## Configuração Básica com `defineBddConfig`
 
@@ -95,6 +100,7 @@ const testDir = defineBddConfig({
 ```
 
 ---
+base_confidence: 0.5
 
 ## Opções de Configuração
 
@@ -171,6 +177,7 @@ verbose: true,
 ```
 
 ---
+base_confidence: 0.5
 
 ## Múltiplos Feature Sets com Projects
 
@@ -205,6 +212,7 @@ export default defineConfig({
 ```
 
 ---
+base_confidence: 0.5
 
 ## Integração com Playwright Config Completa
 
@@ -257,6 +265,7 @@ export default defineConfig({
 ```
 
 ---
+base_confidence: 0.5
 
 ## Step Definitions com `createBdd()`
 
@@ -284,6 +293,7 @@ Then('I should see the dashboard', async ({ page }) => {
 Todos os **fixtures do Playwright** (`page`, `context`, `browserName`, `request`, etc.) estão disponíveis nos parâmetros do callback.
 
 ---
+base_confidence: 0.5
 
 ## Parâmetros
 
@@ -320,6 +330,7 @@ Given('I am on the {word} page', async ({ page }, pageName: string) => {
 ```
 
 ---
+base_confidence: 0.5
 
 ## Regex em Steps
 
@@ -343,6 +354,7 @@ When(/^I add (\d+) items to cart$/, async ({ page }, count: string) => {
 Grupos de captura na regex viram parâmetros do callback, na ordem em que aparecem.
 
 ---
+base_confidence: 0.5
 
 ## Custom Parameter Types
 
@@ -391,6 +403,7 @@ Then('dark mode is {boolean}', async ({ page }, enabled: boolean) => {
 ```
 
 ---
+base_confidence: 0.5
 
 ## Fixtures Customizadas
 
@@ -463,6 +476,7 @@ export const test = base.extend<{
 ```
 
 ---
+base_confidence: 0.5
 
 ## Page Object Model (POM)
 
@@ -549,6 +563,7 @@ Then('I should see the todo {string}', async ({ todoPage }, text: string) => {
 ```
 
 ---
+base_confidence: 0.5
 
 ## Decorator-Based Steps
 
@@ -599,6 +614,7 @@ class AuthenticatedSteps {
 ```
 
 ---
+base_confidence: 0.5
 
 ## Data Tables
 
@@ -673,6 +689,7 @@ When('I fill the form:', async ({ page }, table: DataTable) => {
 | `rowsHash()`    | Objeto chave-valor (2 colunas, 1ª é chave, 2ª valor) |
 
 ---
+base_confidence: 0.5
 
 ## Doc Strings
 
@@ -714,6 +731,7 @@ When('I send the API request:', async ({ request }, docString: string) => {
 ```
 
 ---
+base_confidence: 0.5
 
 ## Compartilhamento de Estado entre Steps
 
@@ -758,6 +776,7 @@ Then('I should see my items', async ({ page, world }) => {
 ```
 
 ---
+base_confidence: 0.5
 
 ## Tags Especiais
 
@@ -804,6 +823,7 @@ npx playwright test --grep "@smoke.*@critical"
 Tags em **Feature** são herdadas por todos os cenários dentro dela.
 
 ---
+base_confidence: 0.5
 
 ## Execução
 
@@ -842,6 +862,7 @@ npx playwright test --watch
 ```
 
 ---
+base_confidence: 0.5
 
 ## Export de Steps
 
@@ -854,6 +875,7 @@ npx bddgen export
 Útil para auditoria, referência da equipe e debugging de steps não encontrados.
 
 ---
+base_confidence: 0.5
 
 ## Troubleshooting
 
@@ -878,6 +900,7 @@ npx bddgen export
 4. Confira todos os imports nos arquivos de step.
 
 ---
+base_confidence: 0.5
 
 ## Estrutura de Diretórios Recomendada
 
@@ -913,6 +936,7 @@ project/
 ```
 
 ---
+base_confidence: 0.5
 
 ## Boas Práticas
 
@@ -943,6 +967,7 @@ Given('I am on a supported browser', async ({ browserName }) => {
 ```
 
 ---
+base_confidence: 0.5
 
 ## Referência Rápida — Gherkin Keywords
 
@@ -962,6 +987,7 @@ Given('I am on a supported browser', async ({ browserName }) => {
 | `|`         | Data table                          |
 
 ---
+base_confidence: 0.5
 
 > **Fonte:** Documentação oficial do [playwright-bdd](https://github.com/vitalets/playwright-bdd).
 

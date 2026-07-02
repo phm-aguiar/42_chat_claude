@@ -1,9 +1,15 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "claude Data Format"
 tags: [wiki, reference]
 created: 2026-06-20
 rag_score: 0.4844
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 # claude Agent — Data Format Reference
 
 Field-level notes for parsing `~/.claude/` artifacts during wiki ingest.
@@ -22,10 +28,16 @@ Optional YAML frontmatter, then prose body:
 
 ```markdown
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 tags: [python, async, debugging]
 created_at: 2026-03-10T14:22:00Z
 project: my-api
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 When using `asyncio.gather` with return_exceptions=True, failed tasks return the exception
 object rather than raising — check `isinstance(result, Exception)` on each item.
 ```

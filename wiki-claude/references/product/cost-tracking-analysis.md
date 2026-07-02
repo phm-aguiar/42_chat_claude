@@ -1,4 +1,5 @@
 ---
+base_confidence: 0.5
 title: Análise de Custo de Tokens — claude + 42_Framework
 tags:
   - cost-tracking
@@ -23,6 +24,7 @@ sources:
   - /home/zeenyt__/Projetos/42_Framework/.claude/skills/sdd/latte_coordination/orchestrator.py
   - https://github.com/AgentOps-AI/agentops
 ---
+base_confidence: 0.5
 
 # Análise de Custo de Tokens — claude + 42_Framework
 
@@ -76,6 +78,7 @@ A cada chamada LLM:
 Slash command `/usage` → breakdown detalhado.
 
 ---
+base_confidence: 0.5
 
 ## Descoberta 2: LATTE Tem Budget por Calls, Não por Custo Real
 
@@ -95,6 +98,7 @@ O 42_Framework (LATTE Hardening, Feature 005) tem:
 - Breakdown por modelo no G_final
 
 ---
+base_confidence: 0.5
 
 ## Descoberta 3: AgentOps Complementa com Self-Host Dashboard
 
@@ -115,6 +119,7 @@ AgentOps usa a biblioteca **tokencost** (`model_prices.json`) como fonte de pric
 o claude usa seu próprio sistema com múltiplas fontes (API cost, docs, override).
 
 ---
+base_confidence: 0.5
 
 ## Recomendação de Integração
 
@@ -195,6 +200,7 @@ G_final["cost_analysis"] = {
 ```
 
 ---
+base_confidence: 0.5
 
 ## Conclusão
 

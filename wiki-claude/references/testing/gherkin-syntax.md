@@ -1,4 +1,5 @@
 ---
+base_confidence: 0.5
 title: "Sintaxe Gherkin — Referência Completa"
 summary: "Guia de referência completo da sintaxe Gherkin para BDD (Behavior-Driven Development). Abrange estrutura de feature files, keywords, step arguments, Scenario Outline, internacionalização, convenções de nomenclatura, organização de diretórios e quick reference."
 tags:
@@ -20,10 +21,12 @@ sources:
   - "wiki/_raw/qa/gherkin-syntax/quick-reference-Gherkin.md"
   - "wiki/_raw/qa/gherkin-syntax/gherkin.md"
 ---
+base_confidence: 0.5
 
 # Sintaxe Gherkin — Referência Completa
 
 ---
+base_confidence: 0.5
 
 ## O que é Gherkin?
 
@@ -37,6 +40,7 @@ Gherkin é uma linguagem de domínio específico (DSL) para especificar o compor
 - **Internacionalizado**: suporta dezenas de idiomas com keywords localizadas
 
 ---
+base_confidence: 0.5
 
 ## Estrutura Básica de um Feature File
 
@@ -65,6 +69,7 @@ Feature: Título Curto da Feature
 ```
 
 ---
+base_confidence: 0.5
 
 ## Keyword Reference
 
@@ -98,6 +103,7 @@ Feature: Título Curto da Feature
 | `#` | Comentários (linha inteira apenas) | `# Isto é um comentário` |
 
 ---
+base_confidence: 0.5
 
 ## A Estrutura Given-When-Then
 
@@ -151,6 +157,7 @@ Then o usuário vê o dashboard
 ```
 
 ---
+base_confidence: 0.5
 
 ## A Seção Feature
 
@@ -182,6 +189,7 @@ Eu quero <uma funcionalidade>
 - Mantenha em alto nível — não descreva implementação
 
 ---
+base_confidence: 0.5
 
 ## Background — Setup Compartilhado
 
@@ -212,6 +220,7 @@ Feature: Saques em Conta Bancária
 - Torna os cenários mais focados no comportamento único
 
 ---
+base_confidence: 0.5
 
 ## Scenario Outline — Variações de Dados
 
@@ -240,6 +249,7 @@ Feature: Validação de Senha
 - Variações de dados são importantes para a especificação
 
 ---
+base_confidence: 0.5
 
 ## Rule — Agrupamento por Regra de Negócio (Gherkin 6+)
 
@@ -267,6 +277,7 @@ Feature: Controle de Acesso à Conta
 ```
 
 ---
+base_confidence: 0.5
 
 ## Step Arguments
 
@@ -299,6 +310,7 @@ When o usuário adiciona ao carrinho:
 ```
 
 ---
+base_confidence: 0.5
 
 ## Internacionalização (i18n)
 
@@ -333,6 +345,7 @@ Funcionalidade: Reserva de Mesa
 > Para a lista completa de idiomas suportados e traduções de keywords, consulte a [referência i18n do Cucumber](https://cucumber.io/docs/gherkin/languages/).
 
 ---
+base_confidence: 0.5
 
 ## Convenções de Nomenclatura de Arquivos
 
@@ -359,6 +372,7 @@ Convenção padrão: converter o nome da feature para **minúsculas** e substitu
 - Uma feature por arquivo — não combine features não relacionadas
 
 ---
+base_confidence: 0.5
 
 ## Organização de Diretórios
 
@@ -433,6 +447,7 @@ Funciona bem quando a aplicação tem contextos delimitados ou módulos de domí
 - O arquivo mais próximo já é grande o suficiente para que adicionar mais prejudicaria a legibilidade
 
 ---
+base_confidence: 0.5
 
 ## Quick Reference
 
@@ -527,10 +542,12 @@ Feature: [Nome da Feature]
 - Escrever cenários com mais de 10 passos
 
 ---
+base_confidence: 0.5
 
 > **Regra de Ouro:** Trate os outros leitores como você gostaria de ser tratado. Escreva cenários que qualquer pessoa do time — stakeholders de negócio, desenvolvedores, testadores — possa entender sem conhecimento técnico.
 
 ---
+base_confidence: 0.5
 
 ## Referências
 

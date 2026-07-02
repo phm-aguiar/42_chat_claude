@@ -1,4 +1,6 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
 title: "Who Does What in BDD"
 category: references
 tags:
@@ -11,6 +13,8 @@ updated: "2026-06-21"
 lifecycle: draft
 lifecycle_reason: "ingested from _raw/ Cucumber/BDD clippings"
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
 Who should be writing [Gherkin](https://cucumber.io/docs/gherkin/) documents, and who should write [step definitions](https://cucumber.io/docs/cucumber/step-definitions)?
 
 Product owners, business analysts, programmers and testers are often confused about who should take on what responsibilities.

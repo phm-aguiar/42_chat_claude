@@ -1,4 +1,6 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
 title: "Cucumber Expressions"
 category: references
 tags:
@@ -11,6 +13,8 @@ updated: "2026-06-21"
 lifecycle: draft
 lifecycle_reason: "ingested from _raw/ Cucumber/BDD clippings"
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
 ## Cucumber Expressions
 
 Cucumber Expressions is an alternative to [Regular Expressions](https://en.wikipedia.org/wiki/Regular_expression) with a more intuitive syntax.

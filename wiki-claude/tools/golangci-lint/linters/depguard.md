@@ -1,10 +1,16 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "depguard"
 tags: [golangci-lint, linters]
 created: 2026-06-21
 rag_score: 0.5
 part_of: "tools/golangci-lint/Linters.md"
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 # depguard
 

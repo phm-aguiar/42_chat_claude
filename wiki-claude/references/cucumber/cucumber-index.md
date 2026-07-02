@@ -1,4 +1,6 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
 title: "Cucumber & BDD — Reference Index"
 category: references
 tags:
@@ -12,6 +14,8 @@ updated: "2026-06-21"
 lifecycle: draft
 lifecycle_reason: "generated index for ingested Cucumber/BDD reference files"
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
 
 # Cucumber & BDD — Reference Index
 
@@ -20,6 +24,8 @@ lifecycle_reason: "generated index for ingested Cucumber/BDD reference files"
 **Total pages:** 25
 
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
 
 ## Getting Started
 
@@ -68,6 +74,8 @@ lifecycle_reason: "generated index for ingested Cucumber/BDD reference files"
 - [Gocuke](gocuke.md) — Gherkin-based BDD testing library for Go
 
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
 
 ## Related References
 

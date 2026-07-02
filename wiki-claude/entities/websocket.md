@@ -1,4 +1,6 @@
 ---
+base_confidence: 0.5
+lifecycle: draft
 title: "WebSocket (Protocolo)"
 tags: [entity, glossary]
 aliases: [WS, gorilla/websocket, real-time, Protocolo WebSocket, RFC 6455]
@@ -11,6 +13,8 @@ provenance:
   inferred: 0.10
   ambiguous: 0.00
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 # WebSocket (Protocolo)
 

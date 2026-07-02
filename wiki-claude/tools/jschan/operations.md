@@ -1,4 +1,7 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "jschan — Guia de Operações"
 category: tools
 tags: [jschan, operations, boards, crud, mongosh, mongodb]
@@ -7,6 +10,9 @@ rag_score: 0.5
 author: phm-aguiar
 aliases: ["operar jschan", "gerenciar boards jschan", "jschan CRUD"]
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 # jschan — Guia de Operações
 

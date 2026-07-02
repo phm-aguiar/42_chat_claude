@@ -1,4 +1,7 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "Migration to v9"
 tags:
   - playwright-bdd
@@ -9,6 +12,9 @@ created: 2026-06-21
 rag_score: 0.5
 source: "https://vitalets.github.io/playwright-bdd/#/guides/migration-v9"
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 Playwright-BDD **v9** upgrades the Cucumber ecosystem to the latest versions and removes several previously deprecated APIs. Most users will only need to update their Node.js version and remove one deprecated option.
 
@@ -131,6 +137,9 @@ This is transparent for most users. If you consume `@cucumber/messages` types di
 The `$step` BDD fixture now exposes the doc string media type as `docStringType`. This lets step definitions branch on the declared media type of a doc string. No action required — see [Doc strings: Using Media Types](#/writing-steps/doc-strings?id=using-media-types) for usage examples.
 
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 ## Thank you
 

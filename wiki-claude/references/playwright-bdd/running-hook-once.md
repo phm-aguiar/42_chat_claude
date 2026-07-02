@@ -1,4 +1,7 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "Running hook once"
 tags:
   - playwright-bdd
@@ -9,6 +12,9 @@ created: 2026-06-21
 rag_score: 0.5
 source: "https://vitalets.github.io/playwright-bdd/#/writing-steps/hooks/running-hook-once"
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 `BeforeAll` / `AfterAll` run **once per worker**, not once for the entire test run. This may not be what you want. For example, if you populate a database with test data, there's no need to repopulate it in every worker:
 

@@ -1,4 +1,6 @@
 ---
+base_confidence: 0.5
+lifecycle: draft
 title: "Wiki Experiential Memory — Features 002 & 003"
 created: "2026-06-19"
 rag_score: 0.5
@@ -18,12 +20,16 @@ based_on:
   - "LATTE: Language Agent Teams for Task Evolution"
 depends_on: "001-latte-coordination"
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 # Wiki Experiential Memory — Features 002 & 003
 
 > Transforma a wiki Obsidian de documentação estática em **memória experiencial viva**: indexação semântica de chunks, retrieval contextual (cosine-only + híbrido BM25+cosine), hint scoring automático com feedback loop, normalização de frontmatter, e distillation periódica. Inspirado no Experiential Memory do A-MapReduce (Chen et al., 2026).
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## 1. Arquitetura
 
@@ -88,6 +94,8 @@ wiki/*.md                          metrics.json (LATTE)
 ```
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## 2. API de Índice
 
@@ -455,6 +463,8 @@ for r in results:
 ```
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## 3. Modelo de Embedding: `all-MiniLM-L6-v2`
 
@@ -518,6 +528,8 @@ similarity = dot / (norm_a * norm_b)
 ```
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## 4. Integração com o Pipeline SDD
 
@@ -679,6 +691,8 @@ chunk = summarize_raw_doc("wiki/_raw/LATTE_Paper.md")
 ```
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## 5. Métricas e Thresholds
 
@@ -750,6 +764,8 @@ Feature 009: Chunk NÃO usado → decay: 0.57 - 0.01 = 0.56
 ```
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## 6. Exemplos de Uso
 
@@ -930,6 +946,8 @@ print(f"✅ Cobertura completa: {indexed_count} docs indexados.")
 ```
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## 7. Constraints e Edge Cases
 
@@ -958,6 +976,8 @@ print(f"✅ Cobertura completa: {indexed_count} docs indexados.")
 | 9 | **Encoding quebrado** | Documento com caracteres inválidos → chunk ignorado, warning logado, indexação continua. |
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## 8. ADRs (Architecture Decision Records)
 
@@ -974,6 +994,8 @@ print(f"✅ Cobertura completa: {indexed_count} docs indexados.")
 Plan completo em: `specs/features/002-experiential-memory/plan.md`
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## 9. Dependências
 
@@ -995,6 +1017,8 @@ A Feature 003 **depende** da Feature 002 para o índice semântico (SQLite + emb
 - `rank-bm25` (pip) — implementação BM25Okapi para scoring lexical
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## 10. Schema SQLite
 
@@ -1024,6 +1048,8 @@ CREATE INDEX IF NOT EXISTS idx_score ON chunks(score);
 **Embedding:** BLOB de 1536 bytes (384 × float32)
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## 11. Tasks (Resumo do DAG)
 
@@ -1047,6 +1073,8 @@ DAG completo em: `specs/features/002-experiential-memory/tasks.md`
 - **Dependência:** Feature 002 (índice + chunker)
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## 12. Relacionado
 

@@ -1,4 +1,5 @@
 ---
+base_confidence: 0.5
 title: "006: Agent Dev"
 category: projects
 tags: [sdd, agent, dev, implementacao]
@@ -10,6 +11,7 @@ sources:
   - repo:specs/features/006-agent-dev/spec.md
 lifecycle: verified
 ---
+base_confidence: 0.5
 
 # Feature 006: Agent Dev
 

@@ -1,9 +1,15 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: Observabilidade em Produção — Go + Chi + Datadog
 tags: [observability, monitoring, devops, go, datadog, health-check, logging, metrics]
 created: 2026-06-21
 rag_score: 0.5
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 # Observabilidade em Produção
 
@@ -11,6 +17,9 @@ Guia de padrões de observabilidade para o **42_chat** — aplicação Go com Ch
 deploy em AWS EC2, stack de monitoramento Datadog.
 
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 ## 1. Health Checks
 
@@ -121,6 +130,9 @@ r.Get("/api/health/live", func(w http.ResponseWriter, r *http.Request) {
 ```
 
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 ## 2. Logging Estruturado
 
@@ -259,6 +271,9 @@ func LoggerFromContext(ctx context.Context) *slog.Logger {
 - **Logs em loop tight**: usar `slog.LogAttrs` com rate-limiting se necessário
 
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 ## 3. Métricas
 
@@ -393,6 +408,9 @@ func HandleWebSocket(w http.ResponseWriter, r *http.Request) {
 ```
 
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 ## 4. Datadog Integration
 
@@ -570,6 +588,9 @@ Widgets recomendados para o dashboard de produção:
 | Uptime / Health      | `http_check` do endpoint `/api/health`   | Check Status |
 
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 ## 5. Graceful Shutdown — Métricas
 
@@ -637,6 +658,9 @@ statsdClient.Histogram("app.shutdown.duration_ms",
 ```
 
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 ## 6. Checklist de Produção
 
@@ -693,6 +717,9 @@ Antes de subir para AWS EC2, verificar:
 - [ ] Datadog Agent configurado como systemd service com auto-restart
 
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 ## Referências
 

@@ -1,4 +1,7 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "Configuration"
 source: "https://golangci.github.io/legacy-v1-doc/usage/configuration/"
 author:
@@ -8,6 +11,9 @@ rag_score: 0.5
 description: "Fast Go linters runner golangci-lint."
 tags: [golangci-lint, configuration]
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 ## Table of Contents
 
 The config file has lower priority than command-line options. If the same bool/string/int option is provided on the command-line and in the config file, the option from command-line will be used. Slice options (e.g. list of enabled/disabled linters) are combined from the command-line and config file.

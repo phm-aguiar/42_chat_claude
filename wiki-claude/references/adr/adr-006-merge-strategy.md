@@ -1,10 +1,16 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "ADR-006: Merge Strategy"
 tags: [adr, latte, hardening]
 status: accepted
 created: "2026-06-20"
 rag_score: 0.5
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 # ADR-006: Merge Strategy — Merge de resultados de agentes paralelos
 

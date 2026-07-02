@@ -1,4 +1,6 @@
 ---
+base_confidence: 0.5
+lifecycle: draft
 title: "Integração de Auth — JWT + Chi + WebSocket"
 tags: [auth, jwt, chi, websocket, integration]
 created: 2026-06-21
@@ -10,12 +12,16 @@ provenance:
   inferred: 0.03
   ambiguous: 0.00
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 # Integração de Auth — JWT + Chi + WebSocket
 
 Referência da arquitetura de autenticação do 42 Chat — como as três camadas (OAuth2 42, JWT interno, WebSocket) se conectam e como o token trafega do login até a conexão persistente.
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Arquitetura de Auth — 3 Camadas
 
@@ -38,6 +44,8 @@ Referência da arquitetura de autenticação do 42 Chat — como as três camada
 O fluxo completo: **OAuth2 42 autentica o usuário real → servidor emite JWT interno → JWT é usado para autenticar requisições HTTP (REST) e upgrade WebSocket.**
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Camada 1: OAuth2 → JWT (Orquestração)
 
@@ -62,6 +70,8 @@ wsHandler  := ws.NewHandler(hub, jwtManager, queries) // Camada 3
 As três camadas são injetadas via constructor — sem globais, sem singletons.
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Camada 2: JWT — Criação e Validação
 
@@ -144,6 +154,8 @@ A proteção contra algorithm confusion (tentar usar `alg: none` ou RSA com chav
 | `TestJWT_MalformedToken` | String `"not.a.jwt"` → erro |
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## JWT Claims & Context
 
@@ -181,6 +193,8 @@ func GetClaims(ctx context.Context) *Claims {
 Qualquer handler downstream pode chamar `auth.GetClaims(r.Context())` para obter `UserID` e `Login` do usuário autenticado — sem re-parse do token.
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Chi Middleware Chain
 
@@ -258,6 +272,8 @@ r.Group(func(r chi.Router) {
 A rota `/ws` **não** usa o `JWTMiddleware` — a validação é feita internamente no `ws.Handler.ServeHTTP()`.
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## WebSocket Upgrade com Token
 
@@ -353,6 +369,8 @@ Upgrade → Connect(Hub) → readPump (loop) + writePump (loop)
 ```
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Fluxo Completo: Login → Token → WS Connect
 
@@ -409,6 +427,8 @@ Upgrade → Connect(Hub) → readPump (loop) + writePump (loop)
 | 42 Chat JWT | 42 Chat Server | Browser/Client | 12h | Autenticar REST + WebSocket |
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Rotas e Auth — Tabela Resumo
 
@@ -423,6 +443,8 @@ Upgrade → Connect(Hub) → readPump (loop) + writePump (loop)
 | `/ws` | Validação interna: `?token=<jwt>` ou `Sec-WebSocket-Protocol` | GET (Upgrade) |
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Padrões de Segurança
 
@@ -469,6 +491,8 @@ CheckOrigin: func(r *http.Request) bool {
 ```
 
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 ## Dependências
 

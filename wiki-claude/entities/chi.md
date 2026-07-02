@@ -1,4 +1,6 @@
 ---
+base_confidence: 0.5
+lifecycle: draft
 title: "Chi (HTTP Router)"
 tags: [entity, glossary]
 aliases: [go-chi, chi/v5, router, HTTP router]
@@ -11,6 +13,8 @@ provenance:
   inferred: 0.05
   ambiguous: 0.00
 ---
+base_confidence: 0.5
+lifecycle: draft
 
 # Chi (HTTP Router)
 

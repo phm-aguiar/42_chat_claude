@@ -1,9 +1,15 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "Coordination Graph Template"
 tags: [sdd, reference]
 created: 2026-06-20
 rag_score: 0.4844
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 # Coordination Graph — Feature `{{FEATURE_ID}}`
 
 > **Gerado em:** {{DATE}}
@@ -14,6 +20,9 @@ rag_score: 0.4844
 > **Rounds executados:** {{TOTAL_ROUNDS}} / {{MAX_ROUNDS}} | **Taxa de conclusão:** {{COMPLETION_RATE}}%
 
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 ## 📋 Metadados
 
@@ -29,6 +38,9 @@ rag_score: 0.4844
 | `total_edges` | {{TOTAL_EDGES}} |
 
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 ## 📋 Tabela de Tasks
 
@@ -40,6 +52,9 @@ rag_score: 0.4844
 | *(fim da tabela)* | — | — | — | — |
 
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 ## 🌐 Grafo de Coordenação
 
@@ -67,6 +82,9 @@ rag_score: 0.4844
 - Cada nó aparece uma única vez (DAG, não árvore)
 
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 ## 📊 Métricas
 
@@ -104,6 +122,9 @@ rag_score: 0.4844
 | Taxa de conclusão | {{COMPLETION_RATE}}% | (done + verified) / total_nodes × 100 |
 
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 ## 📜 Histórico de Operações
 
@@ -128,6 +149,9 @@ rag_score: 0.4844
 {{/each}}
 
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 ## 📖 Legenda de Status (Referência Rápida)
 
@@ -139,6 +163,9 @@ rag_score: 0.4844
 - 🔍 **verified** — Task passou por verificação adicional de qualidade
 
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 *Template para `coordination-graph.md` — gerado pelo módulo `graph_persistence.py` do LATTE Coordination Engine.*
 *Referência: `wiki/references/toolkits/sdd/coordination-graph-template.md`*

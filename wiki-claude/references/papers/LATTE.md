@@ -1,4 +1,7 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "LATTE — Language Agent Teams for Task Evolution"
 tags: [paper, multi-agent, coordination, task-graph, heartbeat, sdd]
 status: implemented
@@ -8,6 +11,9 @@ source: "https://arxiv.org/html/2605.06320v1"
 authors: "Mieczkowski, Ku, Eisape, Arumugam, Matters, Collins, Sucholutsky, Griffiths (Princeton, Cambridge, MIT, NYU)"
 feature: "[[projects/42_Framework/features/001-latte-coordination|Feature 001: LATTE Coordination]]"
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 # LATTE — Language Agent Teams for Task Evolution
 

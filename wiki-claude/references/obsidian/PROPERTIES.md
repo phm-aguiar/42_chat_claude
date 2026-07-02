@@ -1,15 +1,24 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "Properties"
 tags: [obsidian, reference]
 created: 2026-06-20
 rag_score: 0.4867
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 # Properties (Frontmatter) Reference
 
 Properties use YAML frontmatter at the start of a note:
 
 ```yaml
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: My Note Title
 date: 2024-01-15
 tags:
@@ -25,6 +34,9 @@ rating: 4.5
 completed: false
 due: 2024-02-01T14:30:00
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 ```
 
 ## Property Types
@@ -60,8 +72,14 @@ In frontmatter:
 
 ```yaml
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 tags:
   - tag1
   - nested/tag2
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 ```

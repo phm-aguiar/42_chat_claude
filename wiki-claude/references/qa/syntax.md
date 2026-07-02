@@ -1,9 +1,15 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "Syntax"
 tags: [qa, reference]
 created: 2026-06-20
 rag_score: 0.488
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 # Gherkin Syntax Reference
 
 ## Palavras-chave

@@ -1,4 +1,5 @@
 ---
+base_confidence: 0.5
 title: "Spec-Driven Development (SDD)"
 category: concepts
 tags: [sdd, metodologia, pipeline]
@@ -11,6 +12,7 @@ lifecycle_changed: "2026-06-15"
 lifecycle_reason: "auto-promoted by wiki-lint: well-established reference page"
 sources: []
 ---
+base_confidence: 0.5
 
 # Spec-Driven Development (SDD)
 

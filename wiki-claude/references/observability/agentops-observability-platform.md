@@ -1,4 +1,5 @@
 ---
+base_confidence: 0.5
 title: AgentOps — Observability Platform para AI Agents
 tags:
   - agentops
@@ -19,6 +20,7 @@ sources:
   - https://github.com/AgentOps-AI/agentops
   - https://docs.agentops.ai/introduction
 ---
+base_confidence: 0.5
 
 # AgentOps — Observability Platform para AI Agents
 

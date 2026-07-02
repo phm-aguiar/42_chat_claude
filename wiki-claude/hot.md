@@ -1,7 +1,13 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: Hot Cache
 updated: "2026-07-01T23:30:00Z"
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 ## Recent Activity
 

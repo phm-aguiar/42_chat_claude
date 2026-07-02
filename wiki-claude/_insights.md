@@ -1,4 +1,5 @@
 ---
+base_confidence: 0.5
 title: Wiki Insights
 category: synthesis
 tags: [meta, insights, status]
@@ -11,6 +12,7 @@ created: "2026-06-17"
 rag_score: 0.4825
 updated: "2026-06-17"
 ---
+base_confidence: 0.5
 
 # Wiki Insights — 2026-06-17
 

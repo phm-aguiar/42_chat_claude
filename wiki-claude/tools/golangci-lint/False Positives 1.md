@@ -1,4 +1,7 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "False Positives"
 source: "https://golangci.github.io/legacy-v1-doc/usage/false-positives/"
 author:
@@ -8,6 +11,9 @@ rag_score: 0.5
 description: "Fast Go linters runner golangci-lint."
 tags: [golangci-lint, troubleshooting]
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 ## Table of Contents
 
 False positives are inevitable, but we did our best to reduce their count. For example, we have a default enabled set of [exclude patterns](https://golangci.github.io/legacy-v1-doc/usage/configuration#command-line-options).

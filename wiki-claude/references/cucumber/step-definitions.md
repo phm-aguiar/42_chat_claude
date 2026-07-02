@@ -1,4 +1,6 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
 title: "Step Definitions"
 category: references
 tags:
@@ -11,6 +13,8 @@ updated: "2026-06-21"
 lifecycle: draft
 lifecycle_reason: "ingested from _raw/ Cucumber/BDD clippings"
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
 A Step Definition is a method with an [expression](#expressions) that links it to one or more [Gherkin steps](https://cucumber.io/docs/gherkin/reference#steps). When Cucumber executes a [Gherkin step](https://cucumber.io/docs/gherkin/reference#steps) in a scenario, it will look for a matching *step definition* to execute.
 
 To illustrate how this works, look at the following Gherkin Scenario:

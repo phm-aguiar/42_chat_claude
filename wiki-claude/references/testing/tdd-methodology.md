@@ -1,4 +1,5 @@
 ---
+base_confidence: 0.5
 title: "Metodologia TDD — Test-Driven Development"
 summary: "Referência completa sobre a metodologia TDD: ciclo Red-Green-Refactor-Commit, princípios FIRST, padrão AAA (Arrange-Act-Assert), nomenclatura e organização de testes, e os 8 anti-patterns mais comuns com exemplos práticos em Python/pytest."
 tags: [tdd, testing, pytest, reference]
@@ -14,6 +15,7 @@ sources:
   - "wiki/_raw/qa/tdd/TDD Workflow Guide.md"
   - "wiki/_raw/qa/tdd/TDD Anti-Patterns Reference.md"
 ---
+base_confidence: 0.5
 
 # Metodologia TDD — Test-Driven Development
 
@@ -31,6 +33,7 @@ sources:
 7. [8 Anti-Patterns de TDD](#8-anti-patterns-de-tdd)
 
 ---
+base_confidence: 0.5
 
 
 ## O Ciclo Red-Green-Refactor-Commit
@@ -75,6 +78,7 @@ NameError: name 'sortArray' is not defined
 - O teste falha pelo motivo certo?
 
 ---
+base_confidence: 0.5
 
 ### 2. GREEN — Faça o Teste Passar
 
@@ -140,6 +144,7 @@ def get_greeting(name=None):
 - Estou pronto para refatorar?
 
 ---
+base_confidence: 0.5
 
 ### 3. REFACTOR — Melhore o Design
 
@@ -249,6 +254,7 @@ def calculate_sales_tax(price, quantity):
 - Meus testes estão tão limpos quanto meu código?
 
 ---
+base_confidence: 0.5
 
 ### 4. COMMIT — Salve Seu Progresso
 
@@ -304,6 +310,7 @@ Ambas são válidas. Escolha a que funciona para seu time.
 - O commit é pequeno o suficiente para ser revisado facilmente?
 
 ---
+base_confidence: 0.5
 
 
 ## Naming Conventions para Testes
@@ -382,6 +389,7 @@ class TestUserRegistration:
 - Evite nomes genéricos como `test_functionality`
 
 ---
+base_confidence: 0.5
 
 
 ## Organização de Testes
@@ -476,6 +484,7 @@ def test_register_user(user_repository):
 | `session` | Uma vez por sessão de teste | Configuração de ambiente |
 
 ---
+base_confidence: 0.5
 
 
 ## Quando Testar o Quê
@@ -537,6 +546,7 @@ def test_add_positive_and_negative():
 ```
 
 ---
+base_confidence: 0.5
 
 
 ## Resumo

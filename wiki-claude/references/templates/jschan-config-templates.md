@@ -1,4 +1,7 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "jschan Configuration Templates"
 category: references
 tags: [jschan, config, secrets, template, mongodb, redis]
@@ -8,6 +11,9 @@ author: phm-aguiar
 source: "jschan/configs/secrets.js.example + template.js.example"
 aliases: ["jschan config", "jschan template"]
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 
 # jschan Configuration Templates
 

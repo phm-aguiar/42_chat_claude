@@ -1,9 +1,15 @@
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 title: "Canonical Templates"
 tags: [sdd, reference]
 created: 2026-06-20
 rag_score: 0.4959
 ---
+summary: "Knowledge page - summary pending"
+base_confidence: 0.5
+lifecycle: draft
 # Estrutura Canônica dos Artefatos SDD
 
 > Extraído de `specs/features/002-sdd-templates/spec.md`. Atualizado com regras de atomicidade.
