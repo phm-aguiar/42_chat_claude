@@ -39,7 +39,10 @@
       "Bash(chmod +x *)",
       "Bash(npx tsc *)",
       "Bash(go test *)",
-      "Bash(grep -E \"\\\\.\\(md|go|tsx|ts|json\\)$\")"
+      "Bash(grep -E \"\\\\.\\(md|go|tsx|ts|json\\)$\")",
+      "Bash(cat)",
+      "Bash(bash /tmp/find_dups.sh)",
+      "Bash(bash /tmp/reorganize.sh)"
     ]
   }
 }
