@@ -42,7 +42,11 @@
       "Bash(grep -E \"\\\\.\\(md|go|tsx|ts|json\\)$\")",
       "Bash(cat)",
       "Bash(bash /tmp/find_dups.sh)",
-      "Bash(bash /tmp/reorganize.sh)"
+      "Bash(bash /tmp/reorganize.sh)",
+      "Bash(xargs -I {} sh -c 'echo \"$\\(basename {}\\): $\\(find {} -type f -name \"*.md\" | wc -l\\) arquivos\"')",
+      "Bash(obsidian version *)",
+      "Bash(./.claude/scripts/wiki-cli.py health *)",
+      "Bash(bash /tmp/test-wiki-cli.sh)"
     ]
   }
 }

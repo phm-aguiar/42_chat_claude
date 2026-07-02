@@ -13,3 +13,4 @@
 - [2026-06-30T22:35:00Z] INGEST source="_raw/Documento de requisitos de produto (PRD).md" pages_updated=0 pages_created=1 mode=raw project="42_chat"
 - [2026-06-30T22:40:00Z] RAW_PROMOTE total_raw_files=69 processed=3 skipped=66 pages_created=2 pages_updated=0
 - [2026-07-01T23:10:00Z] INGEST source="_raw/Obsidian-CLI.md" pages_updated=0 pages_created=1 mode=raw project="42_chat" target="references/toolkits/obsidian/CLI.md"
+- [2026-07-01T23:30:00Z] RAW_CLEANUP removed=66 processed=69 remaining=0 note="MS Graph clippings already ingested per manifest"
