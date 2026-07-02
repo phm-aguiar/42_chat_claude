@@ -66,7 +66,7 @@ lifecycle_changed: "2026-06-14"
 - gherkin-scenarios — Skill de cenários Gherkin
 - go-unit-tests — Skill de testes unitários Go
 - [[concepts/vault-taxonomy]] — Taxonomia do vault
-- [[references/42-chat-platform-architecture]] — Arquitetura do 42 Chat
+- [[references/42-chat/42-chat-platform-architecture.md]] — Arquitetura do 42 Chat
 - [[references/42-chat-design-system]] — Design system do 42 Chat
 ## Skills Referenciadas
 

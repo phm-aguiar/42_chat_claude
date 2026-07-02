@@ -43,8 +43,6 @@ wiki (memória semântica)
 
 Papers acadêmicos que fundamentam as decisões arquiteturais do 42 Framework:
 
-- [[_raw/ImprovingtheEfficiencyofLanguageAgentTeamswithAdaptiveTaskGraphs\|LATTE]] — *Improving the Efficiency of Language Agent Teams with Adaptive Task Graphs* — Base teórica para coordination graphs e operadores (Lead, Worker, Verify, Close, Dispatch).
-- [[_raw/A-MapReduce_ExecutingWideSearchviaAgenticMapReduce\|A-MapReduce]] — *A-MapReduce: Executing Wide Search via Agentic MapReduce* — Paradigma MapReduce aplicado a agentes, usado na decomposição de tarefas.
 
 ## Skills
 

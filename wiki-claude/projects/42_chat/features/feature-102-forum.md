@@ -152,7 +152,6 @@ O graphic charter oficial da 42 (Agosto 2024) substitui o tema brutalista
 custom da Feature 100. Cores exatas (`#1B1B1B`, `#00BABC`, `#202026`, etc.),
 tipografia Futura PT, `border-radius: 0` em todos os componentes. Tailwind
 configurado com `theme.extend.colors` mapeando as cores oficiais do arquivo
-[[_raw/42-graphic-charter-software]].
 
 **Rejeitado:** Herdar tema brutalista da Feature 100 (cores não-oficiais),
 Shadcn/ui com tema default (visual genérico).
@@ -329,7 +328,6 @@ Colunas adicionadas pela migration 002:
 ## Design System
 
 O fórum adota o **design system oficial da 42** conforme a
-[[_raw/42-graphic-charter-software|Graphic Charter (Agosto 2024)]],
 substituindo o tema brutalista custom da Feature 100.
 
 ### Cores oficiais
@@ -427,7 +425,6 @@ Todos os 5 overwrites ocorreram na **Fase 6 (QA / smoke test)**:
 - [[projects/42_chat/features/feature-100-42-chat-core|Feature 100 — 42 Chat Core]] — Dependência: auth JWT, PostgreSQL, Docker
 - [[projects/42_chat/features/feature-101-assinatura-participacao|Feature 101 — Assinatura de Participação]] — Identidade real consistente
 - [[projects/42_chat/features/feature-004-sdd-tasks-dag|Feature 004 — Tasks DAG]] — Formato DAG usado no tasks.md
-- [[_raw/42-graphic-charter-software|42 Graphic Charter — Software & UI]] — Design system oficial
 - [[sdd]] — Metodologia SDD
 - [[specs/features/102-42-forum/spec]] — Spec completa
 - [[specs/features/102-42-forum/plan]] — Plano de implementação

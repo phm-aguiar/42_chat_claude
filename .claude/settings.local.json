@@ -46,7 +46,13 @@
       "Bash(xargs -I {} sh -c 'echo \"$\\(basename {}\\): $\\(find {} -type f -name \"*.md\" | wc -l\\) arquivos\"')",
       "Bash(obsidian version *)",
       "Bash(./.claude/scripts/wiki-cli.py health *)",
-      "Bash(bash /tmp/test-wiki-cli.sh)"
+      "Bash(bash /tmp/test-wiki-cli.sh)",
+      "Bash(bash /tmp/vault-audit.sh)",
+      "Skill(wiki-lint)",
+      "Bash(bash /tmp/consolidate-dryrun.sh)",
+      "Bash(bash /tmp/consolidate-fix.sh)",
+      "Bash(obsidian vault=wiki-claude unresolved --total)",
+      "Bash(obsidian vault=wiki-claude orphans --total)"
     ]
   }
 }
