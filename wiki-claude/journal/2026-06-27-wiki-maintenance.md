@@ -3,7 +3,7 @@ title: "2026-06-27 — Wiki Maintenance (Lint + Consolidate + Ingest)"
 category: journal
 tags: [wiki, maintenance, lint, ingest]
 sources:
-  - ~/.claude/projects/-home-zeenyt---Projetos-42-chat-claude/fb7755da-cfc2-46a3-b008-b4b0d4212c8e.jsonl
+  - ~/.claude/[[projects]]/-home-zeenyt---Projetos-42-chat-claude/fb7755da-cfc2-46a3-b008-b4b0d4212c8e.jsonl
 summary: "Sessão de manutenção do wiki: wiki-status revelou 522K tokens e manifest ausente; wiki-lint --consolidate aplicou 59 correções; wiki-ingest inicializou manifest e ingeriu specs."
 provenance:
   extracted: 0.85
@@ -57,9 +57,9 @@ Sessão de manutenção preventiva do wiki. Sequência: `/wiki-status` → `/wik
 
 | Fonte | Tipo | Resultado |
 |---|---|---|
-| `specs/BACKLOG.md` | document | `projects/42_chat/42_chat.md` atualizado |
+| `specs/BACKLOG.md` | document | `[[projects]]/42_chat/42_chat.md` atualizado |
 | `specs/features/SECURITY_BACKLOG.md` | document | Nova página criada |
-| `specs/features/102-42-forum/metrics.md` | document | `feature-102-forum.md` atualizado com dados LATTE |
+| `specs/features/102-42-forum/metrics.md` | document | `[[feature-102-forum]].md` atualizado com dados LATTE |
 | `specs/features/100,101,102/*` | documents | Registrados no manifest, sem páginas novas |
 | `.claude/skills/*.md` | skills | Registrados no manifest |
 
@@ -79,6 +79,6 @@ O `metrics.md` tinha dados de execução real não capturados na wiki:
 
 ## Relacionado
 
-- [[synthesis/consolidation-2026-06-27|Consolidation Report 2026-06-27]] — Relatório detalhado do lint
-- [[projects/42_chat/features/feature-102-forum|Feature 102 — Forum]] — Página atualizada com métricas LATTE
-- [[projects/42_chat/features/security-backlog|Security Backlog]] — Nova página criada
+- [[synthesis/[[consolidation-2026-06-27]]|Consolidation Report 2026-06-27]] — Relatório detalhado do lint
+- [[[[projects]]/42_chat/features/[[feature-102-forum]]|Feature 102 — Forum]] — Página atualizada com métricas LATTE
+- [[[[projects]]/42_chat/features/security-backlog|Security Backlog]] — Nova página criada

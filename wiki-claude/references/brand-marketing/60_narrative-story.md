@@ -3,7 +3,7 @@ title: "Brand Narrative & Story"
 category: references
 tags: [brand, narrative, story]
 sources:
-  - "wiki/_raw/60_narrative-story.md"
+  - "wiki/_raw/[[60_narrative-story]].md"
 summary: "Brand Narrative & Story: framework e metodologia de referência."
 provenance:
   extracted: 0.15

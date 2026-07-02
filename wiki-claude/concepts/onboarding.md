@@ -2,7 +2,7 @@
 base_confidence: 0.5
 title: "Onboarding — Começando com o Framework SDD"
 category: concepts
-tags: [sdd, onboarding, tutorial, iniciante]
+tags: [sdd, [[onboarding]], tutorial, iniciante]
 aliases: [getting-started, como-comecar]
 sources: []
 summary: "Guia passo a passo para iniciar um projeto do zero com o framework SDD autônomo. Cobre init repo, brainstorm, spec, plan, tasks e execução com orchestrator."

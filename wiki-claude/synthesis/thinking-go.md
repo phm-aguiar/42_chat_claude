@@ -4,7 +4,7 @@ category: synthesis
 tags: [go, thinking, synthesis, code-review]
 sources:
   - "references/socratic-questioning.md"
-  - "references/cognitive-bias-inventory.md"
+  - "references/[[cognitive-bias-inventory]].md"
   - "references/go-code-review.md"
   - "references/go-style-guide.md"
 created: "2026-06-16T00:00:00Z"
@@ -38,9 +38,9 @@ decisões por trás dele sobrevivem ao escrutínio.
 | Ferramenta de Thinking | Aplicação em Go |
 |---|---|
 | [[references/socratic-questioning|Socratic Questioning]] | "Por que essa interface tem 5 métodos? Quais premissas sobre o caller estamos assumindo?" |
-| [[references/cognitive-bias-inventory|Cognitive Bias Inventory]] | "Estou escolhendo `sync.Mutex` por familiaridade ou porque `sync.RWMutex` não serve?" |
-| [[references/pre-mortem-analysis|Pre-Mortem]] | "Se esse código vazar goroutines em produção, como vamos detectar?" |
-| [[references/dialectic-synthesis|Dialectic Synthesis]] | "Qual é o argumento mais forte contra usar channels em vez de mutexes aqui?" |
+| [[references/[[cognitive-bias-inventory]]|Cognitive Bias Inventory]] | "Estou escolhendo `sync.Mutex` por familiaridade ou porque `sync.RWMutex` não serve?" |
+| [[references/[[pre-mortem-analysis]]|Pre-Mortem]] | "Se esse código vazar goroutines em produção, como vamos detectar?" |
+| [[references/[[dialectic-synthesis]]|Dialectic Synthesis]] | "Qual é o argumento mais forte contra usar channels em vez de mutexes aqui?" |
 | [[references/evidence-audit|Evidence Audit]] | "Esse benchmark realmente prova que a otimização funciona, ou o setup é viesado?" |
 
 ## Cross-cutting Insight
@@ -63,7 +63,7 @@ decisão de design sobrevive a um pre-mortem?" ^[inferred]
 - **Tempo:** Code review já é caro. Adicionar 3 passes de thinking dobra o
   tempo. Reserve para PRs de alto impacto (nova API, mudança de concorrência). ^[inferred]
 - **Ferramenta certa:** Nem todo PR precisa dos 4 passes. Use o
-  [[references/mode-selection-guide|Mode Selection Guide]] para calibrar.
+  [[references/[[mode-selection-guide]]|Mode Selection Guide]] para calibrar.
 
 ## Open Questions
 
@@ -76,7 +76,7 @@ decisão de design sobrevive a um pre-mortem?" ^[inferred]
 - [[references/go-code-review|Go Code Review]]
 - [[references/go-style-guide|Go Style Guide]]
 - [[references/socratic-questioning|Socratic Questioning]]
-- [[references/cognitive-bias-inventory|Cognitive Bias Inventory]]
-- [[references/pre-mortem-analysis|Pre-Mortem Analysis]]
-- [[synthesis/thinking-architecture|Thinking × Architecture]]
+- [[references/[[cognitive-bias-inventory]]|Cognitive Bias Inventory]]
+- [[references/[[pre-mortem-analysis]]|Pre-Mortem Analysis]]
+- [[synthesis/[[thinking-architecture]]|Thinking × Architecture]]
 - [[synthesis/go-tooling-ecosystem|Go Tooling Ecosystem]] — Gradiente automático→deliberativo do tooling Go

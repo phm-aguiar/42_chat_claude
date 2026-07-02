@@ -3,7 +3,7 @@ title: "Code Review Template"
 category: references
 tags: [template, code-review, process]
 sources:
-  - "wiki/_raw/code-review-template.md"
+  - "wiki/_raw/[[code-review-template]].md"
 summary: "Template para code review focado em riscos de backend e incidentes."
 provenance:
   extracted: 0.30

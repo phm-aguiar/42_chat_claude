@@ -29,13 +29,13 @@ updated: "2026-06-15"
 > **Relatório completo dividido em 9 subpáginas por seção:**
 
 - [[references/42-chat-sec1-fundamentacao|Sec 1: Fundamentação e Contexto Operacional no Ecossistema 42]]
-- [[references/42-chat-sec2-backend-concorrencia|Sec 2: Arquitetura de Backend e Gestão de Concorrência Extrema]]
+- [[references/[[42-chat-sec2-backend-concorrencia]]|Sec 2: Arquitetura de Backend e Gestão de Concorrência Extrema]]
 - [[references/42-chat-sec3-graceful-shutdown|Sec 3: Desligamento Gracioso (Graceful Shutdown) e Prevenção de Perda de Dados]]
 - [[references/42-chat-sec4-infra-tuning|Sec 4: Infraestrutura, Tuning Extremo do SO e Gerenciamento de Descritores de Arquivo]]
 - [[references/42-chat-sec5-api-42-rate-limits|Sec 5: Integração com a API da 42, Estratégia de Autenticação e Prevenção de Rate Limits]]
-- [[references/42-chat-sec6-campus-locations|Sec 6: Mapeamento de Campus e Consumo Otimizado do Endpoint de Locations]]
+- [[references/[[42-chat-sec6-campus-locations]]|Sec 6: Mapeamento de Campus e Consumo Otimizado do Endpoint de Locations]]
 - [[references/42-chat-sec7-microfrontends|Sec 7: Arquitetura de Microfrontends e Gerenciamento Global de Estado]]
-- [[references/42-chat-sec8-matchmaking-p2p|Sec 8: Lógica de Algoritmos P2P: Matchmaking (Evals) e Salas Efêmeras]]
+- [[references/[[42-chat-sec8-matchmaking-p2p]]|Sec 8: Lógica de Algoritmos P2P: Matchmaking (Evals) e Salas Efêmeras]]
 - [[references/42-chat-sec9-observabilidade-bdd|Sec 9: Observabilidade Estrutural e Engenharia de Software BDD]]
 
 ## Ver Também

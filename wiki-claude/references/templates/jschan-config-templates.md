@@ -176,5 +176,5 @@ module.exports = {
 ## Relacionado
 
 - [[tools/jschan/overview|Visão Geral do jschan]]
-- [[tools/jschan/installation|Guia de Instalação]]
+- [[tools/jschan/[[installation]]|Guia de Instalação]]
 - [[tools/jschan/operations|Guia de Operações]]

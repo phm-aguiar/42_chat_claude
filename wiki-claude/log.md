@@ -9,10 +9,11 @@
 - [2026-06-28T02:38:41Z] INGEST source="fb7755da.jsonl (current session)" pages_updated=3 pages_created=2 mode=full
 - [2026-06-28T02:38:41Z] INDEX_RE hydrating pages=334 categories=7
 - [2026-06-30T22:15:00Z] DIGEST period="7d" new_pages=13 updated_pages=30 themes=10 connections=5 saved=true
-- [2026-06-30T22:30:00Z] INGEST source="_raw/funcionalidade-chat.md" pages_updated=0 pages_created=1 mode=raw project="42_chat"
-- [2026-06-30T22:35:00Z] INGEST source="_raw/Documento de requisitos de produto (PRD).md" pages_updated=0 pages_created=1 mode=raw project="42_chat"
+- [2026-06-30T22:30:00Z] INGEST source="_raw/funcionalidade-chat.md" pages_updated=0 pages_created=1 mode=raw project="[[42_chat]]"
+- [2026-06-30T22:35:00Z] INGEST source="_raw/Documento de requisitos de produto (PRD).md" pages_updated=0 pages_created=1 mode=raw project="[[42_chat]]"
 - [2026-06-30T22:40:00Z] RAW_PROMOTE total_raw_files=69 processed=3 skipped=66 pages_created=2 pages_updated=0
-- [2026-07-01T23:10:00Z] INGEST source="_raw/Obsidian-CLI.md" pages_updated=0 pages_created=1 mode=raw project="42_chat" target="references/toolkits/obsidian/CLI.md"
+- [2026-07-01T23:10:00Z] INGEST source="_raw/Obsidian-[[CLI]].md" pages_updated=0 pages_created=1 mode=raw project="[[42_chat]]" target="references/toolkits/obsidian/[[CLI]].md"
 - [2026-07-01T23:30:00Z] RAW_CLEANUP removed=66 processed=69 remaining=0 note="MS Graph clippings already ingested per manifest"
 - [2026-07-01T23:56:07Z] CONSOLIDATE Phase1: removed invalid links (code files, _raw)
 - [2026-07-01T23:58:16Z] CONSOLIDATE_COMPLETE Phase1=links_fixed Phase2=orphans_linked Phase3=schema_complete Phase4=structure_optimized vault_health_before=32 vault_health_after=87
+- [2026-07-02T00:01:28Z] CONSOLIDATE_AGGRESSIVE orphans_analyzed=271 mentions_converted=261 true_orphans=6

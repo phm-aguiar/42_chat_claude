@@ -114,7 +114,7 @@ O fluxo é disparado pelo **agente principal** (o que está conversando com o hu
 - [[skills/brain|brain toolkit]] — Toolkit consolidado wiki/obsidian/docs
 - [[concepts/vault-taxonomy|Vault Taxonomy]] — Estrutura canônica de diretórios
 - [[concepts/obsidian-flow|Fluxo Obsidian]] — Integração wiki ↔ pipeline
-- [[references/toolkits/wiki/karpathy-pattern|Karpathy Pattern]] — Fundação teórica
+- [[references/toolkits/wiki/[[karpathy-pattern]]|Karpathy Pattern]] — Fundação teórica
 
 - [[concepts/obsidian-flow|Fluxo Obsidian]] — Como o subsistema wiki opera no dia a dia
 - [[concepts/sdd|SDD]] — Regra do vault fiel

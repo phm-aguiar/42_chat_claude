@@ -12,7 +12,7 @@ source: "https://learn.microsoft.com/pt-br/graph/api/resources/chat"
 
 ## Overview
 
-The `chat` resource in Microsoft Graph represents a conversation (chat) between one or more participants — users or applications. Chats are categorized into three types: **oneOnOne** (1:1 between two users), **group** (multi-user with a topic), and **meeting** (tied to an online meeting instance). This resource is central to the Teams messaging model and connects with [[references/ms-graph-chat-message-resource|chat messages]], [[references/ms-graph-member-resource|members]], and [[references/ms-graph-apps-tabs-resource|apps/tabs]].
+The `chat` resource in Microsoft Graph represents a conversation (chat) between one or more participants — users or applications. Chats are categorized into three types: **oneOnOne** (1:1 between two users), **group** (multi-user with a topic), and **meeting** (tied to an online meeting instance). This resource is central to the Teams messaging model and connects with [[references/ms-graph-chat-message-resource|chat messages]], [[references/[[ms-graph-member-resource]]|members]], and [[references/[[ms-graph-apps-tabs-resource]]|apps/tabs]].
 
 ---
 
@@ -100,6 +100,6 @@ The `chat` resource in Microsoft Graph represents a conversation (chat) between 
 ## Related Pages
 
 - [[references/ms-graph-chat-message-resource|chatMessage Resource]]
-- [[references/ms-graph-channel-resource|Channel Resource]]
-- [[references/ms-graph-member-resource|Conversation Members]]
-- [[references/ms-graph-apps-tabs-resource|Apps, Tabs & Pinned Messages]]
+- [[references/[[ms-graph-channel-resource]]|Channel Resource]]
+- [[references/[[ms-graph-member-resource]]|Conversation Members]]
+- [[references/[[ms-graph-apps-tabs-resource]]|Apps, Tabs & Pinned Messages]]

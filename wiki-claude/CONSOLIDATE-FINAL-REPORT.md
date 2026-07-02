@@ -93,9 +93,9 @@ Target:              95/100 🎯  MAINTAIN (achievable)
 ## 📚 Tooling Used
 
 **New Tools Created:**
-- `.claude/scripts/wiki-cli.py` — obsidian-cli wrapper
+- `.claude/scripts/wiki-[[cli]].py` — obsidian-[[cli]] wrapper
 - `/wiki-structure` skill — topology analysis
-- Updated `/wiki-lint` — fast path using obsidian-cli
+- Updated `/wiki-lint` — fast path using obsidian-[[cli]]
 
 ---
 

@@ -1,11 +1,11 @@
 ---
 title: "Go Tooling Ecosystem"
 category: synthesis
-tags: [go, golangci-lint, go-style, effective-go, code-review, synthesis]
+tags: [go, golangci-lint, go-style, [[effective-go]], code-review, synthesis]
 sources:
   - "tools/golangci-lint/index.md"
   - "references/go-style-guide.md"
-  - "references/go/effective-go.md"
+  - "references/go/[[effective-go]].md"
   - "references/go-code-review.md"
   - "references/go/go-code-review-rules.md"
   - "synthesis/thinking-go.md"
@@ -50,7 +50,7 @@ julga. O que o review tradicional ignora, as thinking tools interrogam. ^[inferr
 ## Onde se Encontram
 
 ### Camada 1: Formatação Automática
-- **[[references/go/effective-go#formatting|gofmt]]**: "Let the machine take care of formatting"
+- **[[references/go/[[effective-go]]#formatting|gofmt]]**: "Let the machine take care of formatting"
 - Cobertura: 100% do código. Zero decisões humanas. Resolve o bike-shedding permanente.
 
 ### Camada 2: Análise Estática
@@ -61,7 +61,7 @@ julga. O que o review tradicional ignora, as thinking tools interrogam. ^[inferr
 
 ### Camada 3: Style Guide
 - **[[references/go-style-guide|Go Style Guide]]**: 20 tópicos dos guias Google, Uber, Effective Go
-- **[[references/go/effective-go|Effective Go]]**: Documento canônico (2009), cobre naming, interfaces,
+- **[[references/go/[[effective-go]]|Effective Go]]**: Documento canônico (2009), cobre naming, interfaces,
   concorrência, erros
 - **[[references/go/go-code-review-rules|Code Review Rules]]**: 59 regras do Uber Go Style Guide
 - Cobertura: decisões de design que linters não capturam (quando usar interface vs struct,
@@ -127,7 +127,7 @@ ter checklist de code review mas marcar tudo sem ler. ^[inferred]
 - [[tools/golangci-lint/gocyclo|gocyclo]] — Complexidade ciclomática
 - [[tools/golangci-lint/bodyclose|bodyclose]] — HTTP body close
 - [[references/go-style-guide|Go Style Guide]] — 20 tópicos de estilo
-- [[references/go/effective-go|Effective Go]] — Guia canônico
+- [[references/go/[[effective-go]]|Effective Go]] — Guia canônico
 - [[references/go/go-code-review-rules|Code Review Rules]] — 59 regras Uber
 - [[references/go-code-review|Go Code Review]] — Checklist de revisão
 - [[synthesis/thinking-go|Thinking × Go]] — Thinking tools em code review Go

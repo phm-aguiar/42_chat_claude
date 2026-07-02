@@ -174,6 +174,6 @@ base_confidence: 0.5
 
 - [[concepts/sdd|Spec-Driven Development (conceito)]]
 - [[concepts/sdd-workflow|Fluxo de Trabalho SDD]]
-- sdd-brainstorm|SDD Brainstorm]]
+- [[sdd-brainstorm]]|SDD Brainstorm]]
 - sdd-generate-plan|SDD Generate Plan]]
 - sdd-generate-tasks|SDD Generate Tasks]]

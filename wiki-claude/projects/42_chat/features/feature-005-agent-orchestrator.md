@@ -56,6 +56,6 @@ O `AGENTS.md` raiz agora contém a seção **"Coordenação Direta (Modo Orquest
 
 ## Relacionado
 
-- [[projects/42_chat/features/feature-004-sdd-tasks-dag|004: Tasks DAG]] — Formato DAG (mantido)
+- [[projects/42_chat/features/[[feature-004-sdd-tasks-dag]]|004: Tasks DAG]] — Formato DAG (mantido)
 - [[projects/42_chat/agents/agent-onboard|onboard]] — Agente de inicialização
 - [[sdd]] — Metodologia

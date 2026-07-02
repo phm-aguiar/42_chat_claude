@@ -31,14 +31,14 @@ base_confidence: 0.5
 - `journal/digest-2026-06-21.md:57` — `[[adr/ADR-001]]` → `[[references/adr/adr-001-budget-tracking|ADR-001]]`
 
 ### Converted to plain text (skills/* — no skills/ dir in vault)
-- `journal/2026-06-14-sessao-qa-skills-42chat.md` — 9 `[[skills/*]]` links → plain text
-- `journal/2026-06-17-brainstorm-feature-101.md` — 2 `[[skills/sdd-brainstorm]]` → plain text
-- `references/sdd-dsa-series.md` — 3 `[[skills/sdd-*]]` → plain text
-- `_insights.md` — 4 `[[skills/*]]` → plain text
+- `journal/[[2026-06-14-sessao-qa-skills-42chat]].md` — 9 `[[skills/*]]` links → plain text
+- `journal/[[2026-06-17-brainstorm-feature-101]].md` — 2 `[[skills/sdd-brainstorm]]` → plain text
+- `references/[[sdd-dsa-series]].md` — 3 `[[skills/sdd-*]]` → plain text
+- `[[_insights]].md` — 4 `[[skills/*]]` → plain text
 
 ### Could not fix (no match, left as plain text by sed):
 - `[[concepts/coordination-graph]]` — no such page exists
-- `[[projects/42_Framework/features/005-latte-hardening]]` — feature never created
+- `[[projects/[[42_Framework]]/features/005-latte-hardening]]` — feature never created
 
 ## Cross-References Added (orphan rescue)
 
@@ -55,26 +55,26 @@ base_confidence: 0.5
 
 ### lifecycle: raw → draft (26 cucumber pages)
 All files in `references/cucumber/`:
-- cucumber-api-reference, introduction, step-definitions, checking-assertions, continuous-integration,
-  java-tooling, index, mocking-and-stubbing, testable-architecture, discovery-workshop, state-management,
-  step-organization, gocuke, 10-minute-tutorial, environment-variables, upgrading, example-mapping,
-  api-automation, history-of-bdd, configuration, browser-automation, user-story, who-does-what,
-  cucumber-expressions, parallel-execution, myths-about-bdd
+- cucumber-api-reference, introduction, step-definitions, [[checking-assertions]], [[continuous-integration]],
+  [[java-tooling]], index, [[mocking-and-stubbing]], [[testable-architecture]], discovery-workshop, [[state-management]],
+  [[step-organization]], [[gocuke]], [[10-minute-tutorial]], [[environment-variables]], upgrading, example-mapping,
+  [[api-automation]], history-of-bdd, configuration, [[browser-automation]], [[user-story]], [[who-does-what]],
+  cucumber-expressions, parallel-execution, [[myths-about-bdd]]
 
 ### lifecycle: stable → reviewed (1 page)
-- `references/42-graphic-charter-software.md` — "stable" is not in enum
+- `references/[[42-graphic-charter-software]].md` — "stable" is not in enum
 
 ### lifecycle: active → draft (1 page)
-- `projects/42_Framework/42_Framework.md` — "active" is not in enum
+- `projects/[[42_Framework]]/[[42_Framework]].md` — "active" is not in enum
 
 ### lifecycle: absorbed → archived (1 page)
-- `projects/42_chat/features/feature-005-agent-orchestrator.md` — "absorbed" is not in enum; archived is correct (feature superseded)
+- `projects/42_chat/features/[[feature-005-agent-orchestrator]].md` — "absorbed" is not in enum; archived is correct (feature superseded)
 
 ## Tag Normalizations (15 pages)
 
 All files in `tools/golangci-lint/linters/`:
-- revive, wsl, testifylint, _index, tagliatelle, govet, depguard, gosec, stylecheck,
-  overview, gocritic, gosimple, staticcheck, varnamelen, sloglint
+- revive, [[wsl]], testifylint, [[_index]], tagliatelle, govet, depguard, gosec, stylecheck,
+  [[overview]], gocritic, gosimple, staticcheck, varnamelen, sloglint
 
 Fixed: `tags: ['golangci-lint', 'linters']` → `tags: [golangci-lint, linters]`
 (Python-style single quotes are invalid YAML for Obsidian tag parsing)

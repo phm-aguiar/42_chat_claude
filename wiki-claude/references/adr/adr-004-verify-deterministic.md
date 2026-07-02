@@ -71,4 +71,4 @@ Verify determinístico primeiro, LLM como fallback:
 - Feature 005 spec: `specs/features/005-latte-hardening/spec.md`
 - Feature 005 plan: `specs/features/005-latte-hardening/plan.md` (ADR-009 original)
 - Operador Verify: `.claude/skills/sdd/latte_coordination/lead_operators.py`
-- Coordenação LATTE: [[projects/42_Framework/features/001-latte-coordination|Feature 001: LATTE Coordination]]
+- Coordenação LATTE: [[projects/42_Framework/features/[[001-latte-coordination]]|Feature 001: LATTE Coordination]]

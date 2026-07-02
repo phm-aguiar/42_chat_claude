@@ -3,11 +3,11 @@ title: "Thinking × Architecture"
 category: synthesis
 tags: [thinking, architecture, synthesis, decision-making]
 sources:
-  - "references/socratic-questioning.md"
+  - "references/[[socratic-questioning]].md"
   - "references/pre-mortem-analysis.md"
-  - "references/red-team-adversarial.md"
+  - "references/[[red-team-adversarial]].md"
   - "references/adr-template.md"
-  - "references/system-design.md"
+  - "references/[[system-design]].md"
 created: "2026-06-16T00:00:00Z"
 rag_score: 0.4825
 updated: "2026-06-16T00:00:00Z"
@@ -40,10 +40,10 @@ Cada ferramenta de thinking mapeia para uma fase da decisão arquitetural:
 
 | Ferramenta | Fase da Decisão | Pergunta-chave |
 |---|---|---|
-| [[references/socratic-questioning|Socratic Questioning]] | Exploração do problema | "Quais premissas estamos assumindo?" |
+| [[references/[[socratic-questioning]]|Socratic Questioning]] | Exploração do problema | "Quais premissas estamos assumindo?" |
 | [[references/dialectic-synthesis|Dialectic Synthesis]] | Avaliação de alternativas | "Qual é o argumento mais forte contra nossa escolha?" |
 | [[references/pre-mortem-analysis|Pre-Mortem]] | Validação do design | "Daqui a 6 meses, por que isso falhou?" |
-| [[references/red-team-adversarial|Red Team]] | Stress-test de segurança | "Como um adversário quebraria isso?" |
+| [[references/[[red-team-adversarial]]|Red Team]] | Stress-test de segurança | "Como um adversário quebraria isso?" |
 | [[references/cognitive-bias-inventory|Bias Inventory]] | Revisão do ADR | "Quais vieses estão distorcendo essa decisão?" |
 
 ## Cross-cutting Insight
@@ -57,11 +57,11 @@ O segundo é uma anotação de intenção. ^[inferred]
 de arquitetura, decisão de make-vs-buy), execute o ciclo completo:
 
 1. **Escreva o rascunho do ADR** (contexto, decisão, alternativas).
-2. **Passe o [[references/socratic-questioning|Socratic Questioning]]** —
+2. **Passe o [[references/[[socratic-questioning]]|Socratic Questioning]]** —
    documento as respostas como "Premissas validadas" no ADR.
 3. **Execute um [[references/pre-mortem-analysis|Pre-Mortem]]** —
    documente os riscos identificados como "Mitigações" no ADR.
-4. **Se for security-critical, rode o [[references/red-team-adversarial|Red Team]]**.
+4. **Se for security-critical, rode o [[references/[[red-team-adversarial]]|Red Team]]**.
 5. **Revise o ADR final com o [[references/cognitive-bias-inventory|Bias Inventory]]**.
 
 ## Tensions and Trade-offs
@@ -81,10 +81,10 @@ de arquitetura, decisão de make-vs-buy), execute o ciclo completo:
 ## Related
 
 - [[references/adr-template|ADR Template]]
-- [[references/system-design|System Design Guide]]
-- [[references/socratic-questioning|Socratic Questioning]]
+- [[references/[[system-design]]|System Design Guide]]
+- [[references/[[socratic-questioning]]|Socratic Questioning]]
 - [[references/pre-mortem-analysis|Pre-Mortem Analysis]]
-- [[references/red-team-adversarial|Red Team Adversarial]]
+- [[references/[[red-team-adversarial]]|Red Team Adversarial]]
 - [[references/dialectic-synthesis|Dialectic Synthesis]]
 - [[references/cognitive-bias-inventory|Cognitive Bias Inventory]]
 - [[references/mode-selection-guide|Mode Selection Guide]]

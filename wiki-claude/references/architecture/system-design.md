@@ -121,6 +121,6 @@ updated: "2026-06-16T00:00:00Z"
 
 - [[references/architecture-patterns|Architecture Patterns]]
 - [[references/nfr-checklist|NFR Checklist]]
-- [[references/database-selection|Database Selection]]
+- [[references/[[database-selection]]|Database Selection]]
 - [[references/adr-template|ADR Template]]
 - [[synthesis/thinking-architecture|Thinking × Architecture]] — Reasoning tools em ADRs

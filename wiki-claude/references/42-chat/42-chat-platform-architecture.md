@@ -119,5 +119,5 @@ Plataforma de chat em tempo real exclusiva para alunos da 42 SP, substituindo Sl
 ## Ver Também
 
 - [[references/42-chat-design-system|42 Chat Design System]] — Sistema visual e identidade
-- [[references/42-chat-engineering-requirements|42 Chat Engineering Requirements]] — Requisitos de engenharia
+- [[references/[[42-chat-engineering-requirements]]|42 Chat Engineering Requirements]] — Requisitos de engenharia
 - [[references/42-chat-architecture-diagram|42 Chat Architecture Diagram]] — Diagrama Mermaid

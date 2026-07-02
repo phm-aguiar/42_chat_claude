@@ -25,7 +25,7 @@ This hub indexes the consolidated Microsoft Graph API reference pages for Teams 
 
 | Resource | Page | Key Operations |
 |----------|------|----------------|
-| **Chat** | `[[references/ms-graph-chat-resource\|Chat Resource]]` | Create/List/Get/Update/Delete chat, `chatType` (oneOnOne/group/meeting), removeAllAccessForUser, user-app chat |
+| **Chat** | `[[references/[[ms-graph-chat-resource]]\|Chat Resource]]` | Create/List/Get/Update/Delete chat, `chatType` (oneOnOne/group/meeting), removeAllAccessForUser, user-app chat |
 | **Channel** | `[[references/ms-graph-channel-resource\|Channel Resource]]` | Create/List/Get/Update/Delete channel, `membershipType` (standard/private/shared), migration, archive/unarchive, email provisioning |
 | **chatMessage** | `[[references/ms-graph-chat-message-resource\|chatMessage Resource]]` | Send/List/Get messages, replies, reactions, mentions, soft delete, delta API, pagination |
 | **Members** | `[[references/ms-graph-member-resource\|conversationMember Resource]]` | Add/Remove/List/Get members in chats and channels, roles (owner/guest), sharedWithChannelTeamInfo |

@@ -82,5 +82,5 @@ mesma linha (não produzem `<p>`). Em linhas separadas, produzem `<p>`.
 
 - [[references/mdx/what-is-mdx|O que é MDX?]]
 - [[references/mdx/getting-started|Getting Started com MDX]]
-- [[references/mdx/using-mdx|Usando MDX]]
+- [[references/mdx/[[using-mdx]]|Usando MDX]]
 - [[references/mdx/extending-mdx|Estendendo MDX]]

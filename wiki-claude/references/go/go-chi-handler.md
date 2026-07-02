@@ -411,7 +411,7 @@ response := dto.CreateResourceResponse{
 3. **@Tags**: Plural resource name (e.g., "Resources", "Contacts")
 4. **@Accept**: Always `json`
 5. **@Produce**: Always `json`
-6. **@Security**: Add `BearerAuth` if authentication required
+6. **@Security**: Add `BearerAuth` if [[authentication]] required
 7. **@Param**: Define path params and request body
    - Path param: `@Param id path int true "Resource ID"`
    - Request body: `@Param request body dto.CreateResourceRequest true "Resource data"`

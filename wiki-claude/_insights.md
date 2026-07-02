@@ -31,7 +31,7 @@ Vault: 185 pages | Sources ingested: 148 | Token footprint: ~256K
 | skill-forge|skill-forge]] | 11 | 3 | |
 | wiki-ingest|wiki-ingest]] | 11 | 5 | |
 | agent-run|agent-run]] | 11 | 3 | |
-| [[concepts/obsidian-flow|Fluxo Obsidian]] | 11 | 5 | |
+| [[concepts/[[obsidian-flow]]|Fluxo Obsidian]] | 11 | 5 | |
 
 ## Tag Cluster Cohesion
 
@@ -53,18 +53,18 @@ Vault: 185 pages | Sources ingested: 148 | Token footprint: ~256K
 
 | Connection | Score | Reason |
 |---|---|---|
-| [[synthesis/sdd-go|SDD×Go]] → [[references/go-style-guide|Go Style Guide]] | 5 | cross-category (synthesis→references), ^[ambiguous] |
-| [[synthesis/sdd-go|SDD×Go]] → [[references/go-modular-architecture|Go Modular Architecture]] | 5 | cross-category, ^[ambiguous] |
-| [[synthesis/sdd-go|SDD×Go]] → [[references/go-testing|Go Testing]] | 5 | cross-category, ^[ambiguous] |
-| [[synthesis/sdd-go|SDD×Go]] → [[concepts/sdd-workflow|SDD Workflow]] | 5 | cross-category (synthesis→concepts), ^[ambiguous] |
-| [[synthesis/sdd-go|SDD×Go]] → [[references/go-error-handling|Go Error Handling]] | 5 | cross-category, ^[ambiguous] |
-| [[synthesis/thinking-architecture|Thinking×Architecture]] → [[references/adr-template|ADR Template]] | 4 | cross-category, ^[inferred] |
+| [[synthesis/[[sdd-go]]|SDD×Go]] → [[references/go-style-guide|Go Style Guide]] | 5 | cross-category (synthesis→references), ^[ambiguous] |
+| [[synthesis/[[sdd-go]]|SDD×Go]] → [[references/go-modular-architecture|Go Modular Architecture]] | 5 | cross-category, ^[ambiguous] |
+| [[synthesis/[[sdd-go]]|SDD×Go]] → [[references/go-testing|Go Testing]] | 5 | cross-category, ^[ambiguous] |
+| [[synthesis/[[sdd-go]]|SDD×Go]] → [[concepts/[[sdd-workflow]]|SDD Workflow]] | 5 | cross-category (synthesis→concepts), ^[ambiguous] |
+| [[synthesis/[[sdd-go]]|SDD×Go]] → [[references/go-error-handling|Go Error Handling]] | 5 | cross-category, ^[ambiguous] |
+| [[synthesis/thinking-architecture|Thinking×Architecture]] → [[references/[[adr-template]]|ADR Template]] | 4 | cross-category, ^[inferred] |
 | [[synthesis/thinking-architecture|Thinking×Architecture]] → [[references/red-team-adversarial|Red Team Adversarial]] | 4 | cross-category, ^[inferred] |
-| [[synthesis/thinking-go|Thinking×Go]] → [[references/mode-selection-guide|Mode Selection Guide]] | 4 | cross-category, ^[inferred] |
+| [[synthesis/[[thinking-go]]|Thinking×Go]] → [[references/mode-selection-guide|Mode Selection Guide]] | 4 | cross-category, ^[inferred] |
 
 ## Orphan-Adjacent (dead-ends near hubs)
 
-- [[journal/2026-06-14-readfile-truncation-pitfall]] — linked from 1 hub ([[concepts/obsidian-flow|Fluxo Obsidian]]), 0 outbound links
+- [[journal/[[2026-06-14-readfile-truncation-pitfall]]]] — linked from 1 hub ([[concepts/[[obsidian-flow]]|Fluxo Obsidian]]), 0 outbound links
 
 ## Tier Suggestions
 
@@ -76,10 +76,10 @@ Vault: 185 pages | Sources ingested: 148 | Token footprint: ~256K
 
 ## Questions Worth Asking
 
-1. Resolve: `synthesis/sdd-go.md` has 5+ ^[ambiguous] connections — claims linking SDD and Go patterns need verification
+1. Resolve: `synthesis/[[sdd-go]].md` has 5+ ^[ambiguous] connections — claims linking SDD and Go patterns need verification
 2. Audit: Should `#brand` tag be removed or consolidated? (8 pages, 0 internal links)
 3. Audit: Should `#implementation` tag be split? (14 pages, cohesion=0.0)
-4. Link: `journal/2026-06-14-readfile-truncation-pitfall` — dead-end linked from 1 hub, needs outbound links
+4. Link: `journal/[[2026-06-14-readfile-truncation-pitfall]]` — dead-end linked from 1 hub, needs outbound links
 5. Explore: `go-style-guide` is the #1 hub with 42 incoming links — is the MoC structure working as expected?
 
 <!-- GRAPH_SNAPSHOT: {"nodes": 182, "edges": 597, "top_hubs": ["references/go-style-guide.md", "skills/wiki-query.md", "references/go-error-handling.md", "references/42-chat-platform-architecture.md", "references/42-chat-engineering-requirements.md"], "fragmented_tags": ["brand", "implementation", "tasks", "agent", "thinking"], "cohesive_tags": ["gherkin", "websocket", "real-time", "bdd", "coding-standards"]} -->

@@ -29,7 +29,7 @@ golangci-lint help linters
 | [errcheck](#errcheck "errcheck configuration") | Errcheck is a program for checking for unchecked errors in Go code. These unchecked errors can be critical bugs in some cases. | bugs, error |  | v1.0.0 |  |
 | [gosimple](#gosimple "gosimple configuration") | Linter for Go source code that specializes in simplifying code. | style | ✔ | v1.20.0 |  |
 | [govet](#govet "govet configuration") | Vet examines Go source code and reports suspicious constructs. It is roughly the same as 'go vet' and uses its passes. | bugs, metalinter | ✔ | v1.0.0 |  |
-| [ineffassign](#ineffassign "ineffassign has no configuration") | Detects when assignments to existing variables are not used. | unused |  | v1.0.0 |  |
+| [[[ineffassign]]](#[[ineffassign]] "[[ineffassign]] has no configuration") | Detects when assignments to existing variables are not used. | unused |  | v1.0.0 |  |
 | [staticcheck](#staticcheck "staticcheck configuration") | It's a set of rules from staticcheck. It's not the same thing as the staticcheck binary. The author of staticcheck doesn't support or approve the use of staticcheck as a library inside golangci-lint. | bugs, metalinter | ✔ | v1.0.0 |  |
 | [unused](#unused "unused configuration") | Checks Go code for unused constants, variables, functions and types. | unused |  | v1.20.0 |  |
 
@@ -71,7 +71,7 @@ golangci-lint help linters
 | [gochecksumtype](#gochecksumtype "gochecksumtype configuration") | Run exhaustiveness checks on Go "sum types". | bugs |  | v1.55.0 |  |
 | [gocognit](#gocognit "gocognit configuration") | Computes and checks the cognitive complexity of functions. | complexity |  | v1.20.0 |  |
 | [goconst](#goconst "goconst configuration") | Finds repeated strings that could be replaced by a constant. | style |  | v1.0.0 |  |
-| [gocritic](#gocritic "gocritic configuration") | Provides diagnostics that check for bugs, performance and style issues.   Extensible without recompilation through dynamic rules.   Dynamic rules are written declaratively with AST patterns, filters, report message and optional suggestion. | style, metalinter | ✔ | v1.12.0 |  |
+| [[[gocritic]]](#[[gocritic]] "[[gocritic]] configuration") | Provides diagnostics that check for bugs, performance and style issues.   Extensible without recompilation through dynamic rules.   Dynamic rules are written declaratively with AST patterns, filters, report message and optional suggestion. | style, metalinter | ✔ | v1.12.0 |  |
 | [gocyclo](#gocyclo "gocyclo configuration") | Computes and checks the cyclomatic complexity of functions. | complexity |  | v1.0.0 |  |
 | [godot](#godot "godot configuration") | Check if comments end in a period. | style, comment | ✔ | v1.25.0 |  |
 | [godox](#godox "godox configuration") | Detects usage of FIXME, TODO and other keywords inside comments. | style, comment |  | v1.19.0 |  |

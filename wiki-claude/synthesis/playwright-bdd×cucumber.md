@@ -62,7 +62,7 @@ some quando o mesmo `.feature` é usado na discovery session (com Cucumber) e no
 
 **Padrão: "BDD Full-Stack"**
 
-1. **Discovery Workshop** — [[references/cucumber/discovery-workshop|Discovery Workshop]] com Three Amigos usando Example Mapping
+1. **Discovery Workshop** — [[references/cucumber/[[discovery-workshop]]|Discovery Workshop]] com Three Amigos usando Example Mapping
 2. **Especificação** — `.feature` files escritos colaborativamente (Gherkin como lingua franca)
 3. **Step Definitions** — Implementados com [[references/playwright-bdd/writing-steps|Playwright-BDD steps]] (Playwright-style ou Cucumber-style)
 4. **CI/CD** — [[references/cucumber/continuous-integration|CI pipeline]] com Playwright-BDD + reporters (Cucumber HTML + Playwright trace)
@@ -94,7 +94,7 @@ some quando o mesmo `.feature` é usado na discovery session (com Cucumber) e no
 - [[references/playwright-bdd/writing-features|Writing Features]]
 - [[references/playwright-bdd/cucumber-reporters|Cucumber Reporters]]
 - [[references/cucumber/index|Cucumber & BDD]]
-- [[references/cucumber/discovery-workshop|Discovery Workshop]]
+- [[references/cucumber/[[discovery-workshop]]|Discovery Workshop]]
 - [[references/cucumber/example-mapping|Example Mapping]]
 - [[references/cucumber/history-of-bdd|History of BDD]]
 - [[references/cucumber/gocuke|Gocuke]]

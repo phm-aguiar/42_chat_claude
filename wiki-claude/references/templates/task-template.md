@@ -3,7 +3,7 @@ title: "Task Template"
 category: references
 tags: [template, task, process]
 sources:
-  - "wiki/_raw/task-template.md"
+  - "wiki/_raw/[[task-template]].md"
 summary: "Template de task atômica: papel, dependências, paralelizável, arquivos, verificação."
 provenance:
   extracted: 0.30

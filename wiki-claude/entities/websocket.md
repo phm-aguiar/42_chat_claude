@@ -87,4 +87,4 @@ Todas as mensagens são **JSON** codificadas como [`WSMessage`](message.md). O t
 - [[chi]] — Roteador HTTP que expõe o endpoint `/ws`
 - [[oauth2]] — Auth pré-upgrade
 - [[user]] — Identidade do Client
-- [[synthesis/websocket×chi|WebSocket × Chi]] — Síntese de como o roteador e o hub se integram
+- [[synthesis/[[websocket×chi]]|WebSocket × Chi]] — Síntese de como o roteador e o hub se integram

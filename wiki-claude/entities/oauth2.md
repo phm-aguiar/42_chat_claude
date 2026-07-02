@@ -86,4 +86,4 @@ Quando `DEV_MODE=true`, o endpoint `/api/auth/dev/login` contorna o fluxo OAuth2
 - [[client]] — Resultado do fluxo
 - [[hub]] — Destino após auth
 - [[websocket]] — Upgrade após token
-- [[synthesis/oauth2×jwt|OAuth2 × JWT]] — Síntese do fluxo completo auth→token interno
+- [[synthesis/[[oauth2×jwt]]|OAuth2 × JWT]] — Síntese do fluxo completo auth→token interno

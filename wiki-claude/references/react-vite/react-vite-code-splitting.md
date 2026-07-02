@@ -214,5 +214,5 @@ function usePrefetchAfterIdle(preloadFns: Array<() => Promise<any>>, delay = 200
 
 ---
 
-← Back to [[references/react-vite-performance|React + Vite Performance MoC]]
+← Back to [[references/[[react-vite-performance]]|React + Vite Performance MoC]]
 

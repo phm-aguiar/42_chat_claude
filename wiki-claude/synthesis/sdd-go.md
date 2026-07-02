@@ -3,7 +3,7 @@ title: "SDD × Go"
 category: synthesis
 tags: [sdd, go, methodology, synthesis]
 sources:
-  - "references/go-style-guide.md"
+  - "references/[[go-[[style-guide]]]].md"
   - "concepts/sdd.md"
   - "concepts/sdd-workflow.md"
 created: "2026-06-16T00:00:00Z"
@@ -49,7 +49,7 @@ O pipeline SDD tem afinidade natural com projetos Go:
 
 ## Cross-cutting Insight
 
-O [[go-style-guide|Go Style Guide]] e o pipeline [[concepts/sdd|SDD]] são
+O [[[[go-[[style-guide]]]]|Go Style Guide]] e o pipeline [[concepts/sdd|SDD]] são
 dois lados da mesma moeda: um padroniza o código, o outro padroniza o processo.
 Projetos que adotam ambos ganham:
 
@@ -78,6 +78,6 @@ Projetos que adotam ambos ganham:
 
 - [[concepts/sdd|SDD]]
 - [[concepts/sdd-workflow|SDD Workflow]]
-- [[references/go-style-guide|Go Style Guide]]
+- [[references/[[go-[[style-guide]]]]|Go Style Guide]]
 - [[references/go-modular-architecture|Go Modular Architecture]]
 - [[references/go-testing|Go Testing]]

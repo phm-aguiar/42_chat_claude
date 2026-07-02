@@ -2,7 +2,7 @@
 summary: "Knowledge page - summary pending"
 base_confidence: 0.5
 lifecycle: draft
-title: "stylecheck"
+title: "[[stylecheck]]"
 tags: [golangci-lint, linters]
 created: 2026-06-21
 rag_score: 0.5
@@ -12,14 +12,14 @@ summary: "Knowledge page - summary pending"
 base_confidence: 0.5
 lifecycle: draft
 
-# stylecheck
+# [[stylecheck]]
 
 
 Stylecheck is a replacement for golint.
 
 ```
 linters-settings:
-  stylecheck:
+  [[stylecheck]]:
     # https://staticcheck.dev/docs/configuration/options/#dot_import_whitelist
     # Default: ["github.com/mmcloughlin/avo/build", "github.com/mmcloughlin/avo/operand", "github.com/mmcloughlin/avo/reg"]
     dot-import-whitelist:

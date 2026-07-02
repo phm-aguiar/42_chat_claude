@@ -148,4 +148,4 @@ linters:
 ## Ver Também
 - [[go-linting|Go Linting]] — Configuração de golangci-lint
 - [[go-defensive|Go Defensive]] — Programação defensiva em Go
-- [[references/go/go-code-review-rules|Code Review Rules]] — 59 regras do Uber Go Style Guide
+- [[references/go/[[go-code-review-rules]]|Code Review Rules]] — 59 regras do Uber Go Style Guide

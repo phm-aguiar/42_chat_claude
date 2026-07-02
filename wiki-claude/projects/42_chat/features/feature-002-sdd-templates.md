@@ -42,6 +42,6 @@ provenance:
 
 ## Relacionado
 
-- [[projects/42_chat/features/feature-001-start-repo|001: Estrutura]] — Base que esta feature refina
-- [[projects/42_chat/features/feature-003-forge-skill|003: Forge Skill]] — Consumidora dos templates
+- [[projects/42_chat/features/[[feature-001-start-repo]]|001: Estrutura]] — Base que esta feature refina
+- [[projects/42_chat/features/[[feature-003-forge-skill]]|003: Forge Skill]] — Consumidora dos templates
 - [[sdd]] — Metodologia

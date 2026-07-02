@@ -3,7 +3,7 @@ title: "Tech Spec Template"
 category: references
 tags: [template, techspec, architecture]
 sources:
-  - "wiki/_raw/techspec-template.md"
+  - "wiki/_raw/[[techspec-template]].md"
 summary: "Template de especificação técnica: problema, proposta, trade-offs, implementação."
 provenance:
   extracted: 0.30

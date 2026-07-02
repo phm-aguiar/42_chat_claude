@@ -32,7 +32,7 @@ lifecycle: draft
 - [Getting Started](getting-started.md) — Welcome guide and tutorial outline
 - [Installation](installation.md) — Install with npm, pnpm, or yarn
 - [Write first BDD test](write-first-test.md) — Create and run your first BDD test
-- [Add fixtures](add-fixtures.md) — Adding custom Playwright fixtures to steps
+- [Add fixtures]([[add-fixtures]].md) — Adding custom Playwright fixtures to steps
 
 ## Configuration
 
@@ -63,7 +63,7 @@ lifecycle: draft
 - [Keywords Matching](keywords-matching.md) — Require keyword match for step definitions
 - [Scoped Step Definitions](scoped-step-definitions.md) — Scope steps to specific features/tags
 - [Passing Data Between Steps](passing-data-between-steps.md) — Cross-step state via fixtures
-- [Passing Data Between Scenarios](passing-data-between-scenarios.md) — Serial mode data sharing
+- [Passing Data Between Scenarios]([[passing-data-between-scenarios]].md) — Serial mode data sharing
 
 ## Hooks
 
@@ -83,7 +83,7 @@ lifecycle: draft
 
 - [Authentication](authentication.md) — Static and dynamic auth approaches
 - [Fix with AI](fix-with-ai.md) — AI-assisted test fixing with ARIA snapshots
-- [Migration to v9](migration-v9.md) — Breaking changes and migration steps for v9
+- [Migration to v9]([[migration-v9]].md) — Breaking changes and migration steps for v9
 
 ## Reference
 

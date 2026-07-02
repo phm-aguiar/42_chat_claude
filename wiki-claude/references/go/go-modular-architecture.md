@@ -21,7 +21,7 @@ updated: "2026-06-16T00:00:00Z"
 # Go Modular Architecture
 
 ## Description
-Generate and refactor Go code using this project's modular architecture (`internal/modules/<module>`) with Fx DI, ports/usecase/repository boundaries, Chi HTTP adapters, typed domain errors, OTEL tracing, and use case metrics via decorators.
+Generate and refactor Go code using this project's modular architecture (`internal/modules/<module>`) with Fx DI, ports/usecase/repository boundaries, Chi HTTP adapters, typed domain errors, OTEL tracing, and use case metrics via [[decorators]].
 
 ## Specialized Skills Map
 
@@ -130,7 +130,7 @@ internal/modules/<module>/
 - Stateless when possible; compile-time assertion; return typed module errors.
 
 ### 13. Testing Patterns → skills: `go-unit-tests`, `go-integration-tests`
-- Unit: `testify/suite` for structs with dependencies; table-driven subtests for pure functions; Arrange/Act/Assert.
+- Unit: `testify/suite` for structs with dependencies; [[table-driven]] subtests for pure functions; Arrange/Act/Assert.
 - Integration: `//go:build integration`; files under `test/integration/...`; real DB/Redis; mock only external services.
 
 ## Do Not

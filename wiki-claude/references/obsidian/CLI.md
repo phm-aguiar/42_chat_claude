@@ -143,7 +143,7 @@ obsidian search query="TODO" --copy
 | `plugins:restrict` | Toggle restricted mode (on/off) |
 | `plugin id=<id>` | Get plugin info |
 | `plugin:enable\|disable id=<id>` | Enable/disable plugin |
-| `plugin:install id=<id>` | Install community plugin |
+| `plugin:install id=<id>` | [[Install]] community plugin |
 | `plugin:uninstall id=<id>` | Uninstall plugin |
 | `plugin:reload id=<id>` | Reload plugin (dev) |
 
@@ -215,7 +215,7 @@ obsidian search query="TODO" --copy
 | `themes` | List themes (versions) |
 | `theme` | Show active theme |
 | `theme:set name=<name>` | Set active theme |
-| `theme:install\|uninstall name=<name>` | Install/uninstall theme |
+| `theme:install\|uninstall name=<name>` | [[Install]]/uninstall theme |
 | `snippets` | List snippets |
 | `snippets:enabled` | List enabled snippets |
 | `snippet:enable\|disable name=<name>` | Enable/disable snippet |
@@ -302,7 +302,7 @@ Restart terminal after registration for PATH changes to take effect.
 
 ## Related Pages
 
-- [[references/toolkits/obsidian/EMBEDS]] — Embed syntax reference
+- [[references/toolkits/obsidian/[[EMBEDS]]]] — Embed syntax reference
 - [[references/toolkits/obsidian/PROPERTIES]] — Properties/YAML frontmatter
-- [[references/toolkits/obsidian/CALLOUTS]] — Callout syntax
+- [[references/toolkits/obsidian/[[CALLOUTS]]]] — Callout syntax
 - [[wiki-meta/wiki-architecture]] — Wiki structure and conventions

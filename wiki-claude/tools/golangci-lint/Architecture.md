@@ -88,7 +88,7 @@ pkg/lint/lintersdb/builder_linter.gofunc (b LinterBuilder) Build(cfg *config.Con
             WithSince("v1.18.0").
             WithLoadForGoAnalysis().
             WithPresets(linter.PresetPerformance, linter.PresetBugs).
-            WithURL("https://github.com/timakin/bodyclose"),
+            WithURL("https://github.com/timakin/[[bodyclose]]"),
         // ...
         linter.NewConfig(golinters.NewGovet(govetCfg)).
             WithEnabledByDefault().

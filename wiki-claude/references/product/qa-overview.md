@@ -101,7 +101,7 @@ BDD (especificação) ──define o "o quê"──> TDD (implementação)
    - Decisões arquiteturais derivadas dos cenários BDD.
    - Identificação de funções, módulos e interfaces a serem testadas.
 
-3. **Geração de Tarefas (sdd-generate-tasks → DAG)**
+3. **Geração de Tarefas ([[sdd-generate-tasks]] → DAG)**
    - Tasks atômicas com critérios de aceitação derivados dos cenários.
 
 4. **Implementação pelo agent-dev**

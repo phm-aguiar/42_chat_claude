@@ -2,7 +2,7 @@
 summary: "Knowledge page - summary pending"
 base_confidence: 0.5
 lifecycle: draft
-title: "False Positives"
+title: "[[False Positives]]"
 source: "https://golangci.github.io/legacy-v1-doc/usage/false-positives/"
 author:
 published:
@@ -165,7 +165,7 @@ package pkg
 You may add a comment explaining or justifying why `//nolint` is being used on the same line as the flag itself:
 
 ```
-//nolint:gocyclo // This legacy function is complex but the team too busy to simplify it
+//nolint:[[gocyclo]] // This legacy function is complex but the team too busy to simplify it
 func someLegacyFunction() *string {
   // ...
 }
@@ -249,25 +249,25 @@ If you don't want to use it you can set `issues.exclude-use-default` to `false`.
 
 ### EXC0012
 
-- linter: `revive`
+- linter: `[[revive]]`
 - pattern: `exported (.+) should have comment( \(or a comment on this block\))? or be unexported`
 - why: Annoying issue about not having a comment. The rare codebase has such comments.
 
 ### EXC0013
 
-- linter: `revive`
+- linter: `[[revive]]`
 - pattern: `package comment should be of the form "(.+)..."`
 - why: Annoying issue about not having a comment. The rare codebase has such comments.
 
 ### EXC0014
 
-- linter: `revive`
+- linter: `[[revive]]`
 - pattern: `comment on exported (.+) should be of the form "(.+)..."`
 - why: Annoying issue about not having a comment. The rare codebase has such comments.
 
 ### EXC0015
 
-- linter: `revive`
+- linter: `[[revive]]`
 - pattern: `should have a package comment`
 - why: Annoying issue about not having a comment. The rare codebase has such comments.
 

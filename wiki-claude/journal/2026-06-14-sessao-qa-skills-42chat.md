@@ -36,7 +36,7 @@ lifecycle_changed: "2026-06-14"
 
 1. **Agent QA funciona:** smoke-test real — DONE (5/5 testes, 100% cobertura), REJECTED (código ausente → evidência completa), BLOCKED (spec ambígua → pergunta específica)
 
-2. **7 skills QA cobrem ciclo completo:** gherkin-scenarios (escrever .feature), go-unit-tests (table-driven _test.go), local-test-runner (build+vet+test+cover), tdd-workflow (RED-GREEN-REFACTOR), cucumber-step-definitions (Godog), bdd-spec-process (discovery), playwright-bdd-e2e
+2. **7 skills QA cobrem ciclo completo:** gherkin-scenarios (escrever .feature), go-unit-tests (table-driven _test.go), local-test-runner (build+vet+test+cover), tdd-workflow (RED-GREEN-REFACTOR), cucumber-[[step-definitions]] (Godog), bdd-spec-process (discovery), playwright-bdd-e2e
 
 3. **41/41 skills com frontmatter padronizado:** 21 skills antigas (wiki, obsidian, visual) normalizadas com version, author, license, platforms, metadata.claude
 
@@ -44,7 +44,7 @@ lifecycle_changed: "2026-06-14"
 
 5. **Feature 100 refinada com wiki:** 4 referências wiki (platform-architecture, design-system, engineering-requirements, architecture-diagram) alimentaram spec/plan/tasks. Cores exatas, modelo híbrido RWMutex+channels, tuning PostgreSQL, cache 3 camadas
 
-6. **Taxonomia do vault documentada:** concepts/vault-taxonomy.md explica função de cada diretório (concepts, references, skills, projects, _raw, journal, synthesis, entities)
+6. **Taxonomia do vault documentada:** concepts/[[vault-[[taxonomy]]]].md explica função de cada diretório (concepts, references, skills, projects, _raw, journal, synthesis, entities)
 
 ## Decisões Feitas
 
@@ -65,7 +65,7 @@ lifecycle_changed: "2026-06-14"
 - [[projects/42_chat/features/feature-007-agent-qa|Feature 007]] — Agent QA implementado
 - gherkin-scenarios — Skill de cenários Gherkin
 - go-unit-tests — Skill de testes unitários Go
-- [[concepts/vault-taxonomy]] — Taxonomia do vault
+- [[concepts/[[vault-[[taxonomy]]]]]] — Taxonomia do vault
 - [[references/42-chat/42-chat-platform-architecture.md]] — Arquitetura do 42 Chat
 - [[references/42-chat-design-system]] — Design system do 42 Chat
 ## Skills Referenciadas
@@ -76,7 +76,7 @@ lifecycle_changed: "2026-06-14"
 - playwright-bdd-e2e|playwright-bdd-e2e]] — Testes E2E com Playwright BDD
 - tdd-workflow|tdd-workflow]] — Workflow TDD (Red-Green-Refactor)
 - wiki-lint|wiki-lint]] — Auditoria de saúde do vault
-- cucumber-step-definitions|cucumber-step-definitions]] — Step definitions para Cucumber/Godog
+- cucumber-[[step-definitions]]|cucumber-[[step-definitions]]]] — Step definitions para Cucumber/Godog
 - bdd-spec-process|bdd-spec-process]] — Processo de especificação BDD
 
-> Related: [[journal/digest-2026-06-15|Digest 2026-06-15]]
+> Related: [[journal/[[digest-2026-06-15]]|Digest 2026-06-15]]

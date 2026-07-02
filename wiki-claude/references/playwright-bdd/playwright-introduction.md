@@ -43,10 +43,10 @@ Playwright can be used as a [browser automation library](https://playwright.dev/
 
 Playwright-BDD extends Playwright with BDD capabilities, offering:
 
-- 🔥 Advanced tagging [by path](https://vitalets.github.io/playwright-bdd/#/writing-features/tags-from-path) and [special tags](https://vitalets.github.io/playwright-bdd/#/writing-features/special-tags)
+- 🔥 Advanced tagging [by path](https://vitalets.github.io/playwright-bdd/#/[[writing-features]]/tags-from-path) and [special tags](https://vitalets.github.io/playwright-bdd/#/[[writing-features]]/special-tags)
 - 🎩 [Step decorators](https://vitalets.github.io/playwright-bdd/#/writing-steps/decorators) for class methods
 - 🎯 [Scoped step definitions](https://vitalets.github.io/playwright-bdd/#/writing-steps/scoped)
-- ✨ [Exporting steps](https://vitalets.github.io/playwright-bdd/#/writing-features/chatgpt) for AI
+- ✨ [Exporting steps](https://vitalets.github.io/playwright-bdd/#/[[writing-features]]/chatgpt) for AI
 - ♻️ [Re-usable step functions](https://vitalets.github.io/playwright-bdd/#/writing-steps/reusing-step-fn)
 
 ## How Playwright-BDD works

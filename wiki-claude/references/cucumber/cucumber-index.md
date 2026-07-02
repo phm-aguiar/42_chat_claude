@@ -45,7 +45,7 @@ base_confidence: 0.5
 - [Myths About BDD](myths-about-bdd.md) — Common misconceptions debunked
 - [Who Does What](who-does-what.md) — The Three Amigos and team roles in BDD
 - [User Story](user-story.md) — Writing effective user stories with acceptance criteria
-- [Example Mapping](example-mapping.md) — Collaborative discovery technique
+- [Example Mapping]([[example-mapping]].md) — Collaborative discovery technique
 - [Discovery Workshop](discovery-workshop.md) — Running effective discovery sessions
 
 ## Step Definitions & Gherkin

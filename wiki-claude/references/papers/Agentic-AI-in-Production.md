@@ -85,8 +85,8 @@ Sem trace, debugar agente é arqueologia. Com trace: puxa sessão específica, e
 
 ## Relacionado
 
-- [[references/papers/LangGraph-vs-LangChain|LangGraph vs LangChain]] — decision matrix para frameworks
+- [[references/papers/[[LangGraph-vs-LangChain]]|LangGraph vs LangChain]] — decision matrix para frameworks
 - [[references/papers/LangGraph-in-Production|LangGraph in Production]] — state pruning, checkpointing, iteration limits
-- [[references/papers/Multi-Agent-Systems-in-Production|Multi-Agent Systems in Production]] — failure propagation, cost explosion, timeout decorator
+- [[references/papers/[[Multi-Agent-Systems-in-Production]]|Multi-Agent Systems in Production]] — failure propagation, cost explosion, timeout decorator
 - [[references/papers/Building-AI-Agents-Architecture|Building AI Agents Architecture]] — framework choice, model selection, eval infra
 - [[projects/42_Framework/features/005-latte-hardening|Feature 005: LATTE Hardening]] — alvo dos gaps de tool schema e error recovery

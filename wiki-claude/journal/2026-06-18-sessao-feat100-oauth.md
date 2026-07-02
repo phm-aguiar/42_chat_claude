@@ -25,7 +25,7 @@ updated: 2026-06-18
 - Execução do agent-orchestrator na feature 100 (42 Chat MVP) — 23 tasks em 4 fases
 - Descoberta: projeto já tinha código backend + frontend implementado
 - Debug do fluxo OAuth2 42 Intra (3 problemas resolvidos)
-- Adição de DEV_MODE com `/api/auth/dev/login` para testes sem OAuth
+- Adição de DEV_MODE com `/[[api]]/auth/dev/login` para testes sem OAuth
 - Regra constitucional: nunca hardcode credenciais
 - `.env.example` limpo com VAR="" para secrets
 
@@ -34,7 +34,7 @@ updated: 2026-06-18
 1. **Orchestrator fase a fase funcionou** — spawn manual de tasks em batches de 3, validação de evidência (arquivos existem, build passa, testes passam), 23/23 tasks concluídas
 2. **OAuth2 42 — 3 problemas em cascata:** (a) `redirect_uri` divergente entre frontend/backend/app 42, (b) shell env vars (`FORTYTWO_CLIENT_ID=123`) sobrescrevendo `.env` no Docker Compose, (c) React StrictMode double-invocando o effect do Callback — primeiro exchange (200) funcionava, segundo (500) derrubava o login
 3. **`#` em DATABASE_URL** quebra o parser de `.env` do Docker — resolveu com `%23`
-4. **DEV_MODE** (`/api/auth/dev/login?login=marvin`) permite testar chat sem OAuth2 real
+4. **DEV_MODE** (`/[[api]]/auth/dev/login?login=marvin`) permite testar chat sem OAuth2 real
 5. **Constitution atualizado** — anti-padrão #7: credenciais hardcoded proibidas
 
 ## Decisões
@@ -46,7 +46,7 @@ updated: 2026-06-18
 
 ## Referências
 
-- [[references/42-api-specification|42 API Specification]]
-- [[references/42-chat-platform-architecture|42 Chat Architecture]]
+- [[references/42-[[api]]-specification|42 API Specification]]
+- [[references/42-chat-platform-architecture|42 Chat [[Architecture]]]]
 - [[references/react-vite-development|React + Vite Development]]
 - [[concepts/sdd|SDD]]

@@ -49,7 +49,7 @@ lifecycle: draft
 ## Relacionado
 
 - [[references/papers/LATTE|LATTE]] — coordination graph
-- [[references/papers/A-MapReduce|A-MapReduce]] — experiential memory
+- [[references/papers/[[A-MapReduce]]|[[A-MapReduce]]]] — experiential memory
 - [[projects/42_Framework/features/002-experiential-memory|Feature 002]] — Wiki Experiential Memory
-- [[projects/42_Framework/features/003-hybrid-retrieval|Feature 003]] — Wiki Hybrid Retrieval & Normalization
+- [[projects/42_Framework/features/[[003-hybrid-retrieval]]|Feature 003]] — Wiki Hybrid Retrieval & Normalization
 - [[concepts/obsidian-flow|Fluxo Obsidian]]

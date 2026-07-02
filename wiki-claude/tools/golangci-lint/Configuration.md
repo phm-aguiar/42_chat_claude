@@ -85,7 +85,7 @@ linters:
     - copyloopvar
     - cyclop
     - decorder
-    - depguard
+    - [[depguard]]
     - dogsled
     - dupl
     - dupword
@@ -124,7 +124,7 @@ linters:
     - gosec
     - gosimple
     - gosmopolitan
-    - govet
+    - [[govet]]
     - grouper
     - iface
     - importas
@@ -161,7 +161,7 @@ linters:
     - recvcheck
     - revive
     - rowserrcheck
-    - sloglint
+    - [[sloglint]]
     - spancheck
     - sqlclosecheck
     - staticcheck
@@ -178,7 +178,7 @@ linters:
     - unused
     - usestdlibvars
     - usetesting
-    - varnamelen
+    - [[varnamelen]]
     - wastedassign
     - whitespace
     - wrapcheck
@@ -200,7 +200,7 @@ linters:
     - copyloopvar
     - cyclop
     - decorder
-    - depguard
+    - [[depguard]]
     - dogsled
     - dupl
     - dupword
@@ -239,7 +239,7 @@ linters:
     - gosec
     - gosimple
     - gosmopolitan
-    - govet
+    - [[govet]]
     - grouper
     - iface
     - importas
@@ -276,7 +276,7 @@ linters:
     - recvcheck
     - revive
     - rowserrcheck
-    - sloglint
+    - [[sloglint]]
     - spancheck
     - sqlclosecheck
     - staticcheck
@@ -293,7 +293,7 @@ linters:
     - unused
     - usestdlibvars
     - usetesting
-    - varnamelen
+    - [[varnamelen]]
     - wastedassign
     - whitespace
     - wrapcheck
@@ -713,7 +713,7 @@ Flags:
                                            Pattern: '(comment on exported (method|function|type|const)|should have( a package)? comment|comment should be of the form)'
                                          - EXC0003 (golint): False positive when tests are defined in package 'test'.
                                            Pattern: 'func name will be used as test\.Test.* by other packages, and that stutters; consider calling this'
-                                         - EXC0004 (govet): Common false positives.
+                                         - EXC0004 ([[govet]]): Common false positives.
                                            Pattern: '(possible misuse of unsafe.Pointer|should have signature)'
                                          - EXC0005 (staticcheck): Developers tend to write in C-style with an explicit 'break' in a 'switch', so it's ok to ignore.
                                            Pattern: 'SA4011'

@@ -5,13 +5,13 @@ lifecycle: draft
 title: "Scenario hooks"
 tags:
   - playwright-bdd
-  - writing-steps
+  - [[writing-steps]]
   - hooks
   - before
   - after
 created: 2026-06-21
 rag_score: 0.5
-source: "https://vitalets.github.io/playwright-bdd/#/writing-steps/hooks/scenario-hooks"
+source: "https://vitalets.github.io/playwright-bdd/#/[[writing-steps]]/hooks/scenario-hooks"
 ---
 summary: "Knowledge page - summary pending"
 base_confidence: 0.5
@@ -21,7 +21,7 @@ lifecycle: draft
 
 ## BeforeScenario / Before
 
-> Consider using [fixtures](#/writing-steps/hooks/fixtures) instead of hooks.
+> Consider using [fixtures](#/[[writing-steps]]/hooks/fixtures) instead of hooks.
 
 Playwright-BDD supports the scenario-level hook `BeforeScenario` (aliased as `Before`). It runs **before each scenario**.
 
@@ -89,7 +89,7 @@ BeforeScenario({ name: 'my hook', timeout: 5000 }, async function () {
 });
 ```
 
-The hook function accepts **1 argument** - [test-scoped fixtures](https://playwright.dev/docs/test-fixtures#built-in-fixtures). You can access [$testInfo](https://playwright.dev/docs/api/class-testinfo), [$tags](#/writing-steps/bdd-fixtures?id=tags) and any built-in or custom fixtures. See more details in [BeforeScenario / Before API](#/api?id=beforescenario-before).
+The hook function accepts **1 argument** - [test-scoped fixtures](https://playwright.dev/docs/test-fixtures#built-in-fixtures). You can access [$testInfo](https://playwright.dev/docs/api/class-testinfo), [$tags](#/[[writing-steps]]/bdd-fixtures?id=tags) and any built-in or custom fixtures. See more details in [BeforeScenario / Before API](#/api?id=beforescenario-before).
 
 #### Example of using BeforeScenario with custom fixture
 
@@ -119,7 +119,7 @@ BeforeScenario(async ({ myFixture }) => {
 
 ## AfterScenario / After
 
-> Consider using [fixtures](#/writing-steps/hooks/fixtures) instead of hooks.
+> Consider using [fixtures](#/[[writing-steps]]/hooks/fixtures) instead of hooks.
 
 Playwright-BDD supports the scenario-level hook `AfterScenario` (aliased as `After`). It runs **after each scenario**.
 
@@ -139,4 +139,4 @@ AfterScenario(async () => {
 });
 ```
 
-All options and behavior are similar to [BeforeScenario / Before](#/writing-steps/hooks/scenario-hooks?id=beforescenario-before).
+All options and behavior are similar to [BeforeScenario / Before](#/[[writing-steps]]/hooks/scenario-hooks?id=beforescenario-before).

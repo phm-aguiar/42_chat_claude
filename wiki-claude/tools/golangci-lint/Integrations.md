@@ -40,8 +40,8 @@ There is a [plugin](https://github.com/SublimeLinter/SublimeLinter-golangcilint)
 How to configure:
 
 - Install [plugin](https://plugins.jetbrains.com/plugin/12496-go-linter).
-- Add [File Watcher](https://www.jetbrains.com/help/go/settings-tools-file-watchers.html) using existing `golangci-lint` template.
-- If your version of GoLand does not have the `golangci-lint` [File Watcher](https://www.jetbrains.com/help/go/settings-tools-file-watchers.html) template you can configure your own and use arguments `run --disable=typecheck $FileDir$`.
+- Add [File Watcher](https://www.jetbrains.com/help/go/settings-tools-file-watchers.html) using existing `golangci-lint` [[template]].
+- If your version of GoLand does not have the `golangci-lint` [File Watcher](https://www.jetbrains.com/help/go/settings-tools-file-watchers.html) [[template]] you can configure your own and use arguments `run --disable=typecheck $FileDir$`.
 
 ### GNU Emacs
 
@@ -73,7 +73,7 @@ There are two versions of `bash-completion`, v1 and v2. V1 is for Bash 3.2 (whic
 
 The `golangci-lint` completion script doesn’t work correctly with bash-completion v1 and Bash 3.2. It requires bash-completion v2 and Bash 4.1+.
 
-Thus, to be able to correctly use `golangci-lint` completion on macOS, you have to install and use Bash 4.1+ ([instructions](https://itnext.io/upgrading-bash-on-macos-7138bd1066ba)).
+Thus, to be able to correctly use `golangci-lint` completion on macOS, you have to install and use Bash 4.1+ ([instructions](https://itnext.io/[[upgrading]]-bash-on-macos-7138bd1066ba)).
 
 The following instructions assume that you use Bash 4.1+ (that is, any Bash version of 4.1 or newer).
 
@@ -96,6 +96,6 @@ source ~/.bashrc
 
 ## CI Integration
 
-Check out our [documentation for CI integrations](https://golangci.github.io/legacy-v1-doc/welcome/install#ci-installation).
+Check out our [documentation for CI integrations](https://golangci.github.io/legacy-v1-doc/welcome/install#ci-[[installation]]).
 
 [Edit this page on GitHub](https://github.com/golangci/golangci-lint/tree/master/docs/src/docs/welcome/integrations.mdx)

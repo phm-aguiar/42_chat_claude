@@ -178,7 +178,7 @@ since **v8**
 - **Type:** `boolean`
 - **Default:** `false`
 
-If enabled, the keyword is also taken into account when searching for step definitions. See [Keywords matching](#/writing-steps/keywords-matching).
+If enabled, the keyword is also taken into account when searching for step definitions. See [Keywords matching](#/writing-steps/[[keywords-matching]]).
 
 ## arityCheck
 
