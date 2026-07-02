@@ -10,7 +10,7 @@ Chat em tempo real + fórum tech para os ~300 alunos da 42 São Paulo. Substitui
 | Frontend | React 18, Vite, Tailwind CSS, Shadcn/ui, Zustand, @mdx-js/react |
 | Banco | PostgreSQL 16 (Docker) |
 | Auth | OAuth2 42 Intra → JWT interno (12h) |
-| Infra | Docker Compose, Nginx reverse proxy, AWS EC2 t2.micro |
+| Infra | Docker Compose, Nginx reverse proxy, servidor local (on-premise 42SP se aceito) |
 
 ## Dev
 
@@ -158,8 +158,9 @@ IDs em toda API: strings UUID (nunca array de bytes).
 | ID | Feature | Status |
 |----|---------|--------|
 | 100 | Chat core (Go + WS + PostgreSQL + OAuth2) | ✅ Implementado |
-| 101 | Assinatura de participação (UserSignature + stats) | ✅ Implementado |
-| 102 | Fórum (boards → threads → posts, MDX, moderação) | ✅ Implementado (bugs fase 8 corrigidos) |
+| 101 | Assinatura de participação (UserSignature + stats) | ✅ Implementado via LATTE (builds/testes PASS; falta teste de carga + integração DB ao vivo) |
+| 102 | Fórum (boards → threads → posts, MDX, moderação) | 📋 Planejado — discovery/spec/plan/tasks prontos, sem código |
+| 103 | Expansão de mensageria (chats tipados, rooms, typing, emoticons) | 📋 Planejado — discovery/spec/plan/tasks prontos, sem código |
 
 Specs completas em `specs/features/<id>-<nome>/`: `spec.md`, `plan.md`, `tasks.md`, `acceptance/*.feature`
 
@@ -297,10 +298,11 @@ PYTHONPATH=.claude/skills/sdd python3 -m pytest .claude/skills/sdd/latte_coordin
 | Comando | Função |
 |---|---|
 | `/sdd` | Pipeline completo — dispatcher 8 modos |
-| `/sdd-brainstorm` | Entrevista interativa → spec.md |
+| `/sdd-brainstorm` | Entrevista interativa + cross-ref wiki/código → `reports/<id>-discovery.md` (ADR+PRD, quality score ≥ 20/25) |
+| `/sdd-generate-spec` | `reports/<id>-discovery.md` → `specs/features/<id>/spec.md` (condensado, pipeline-compatible) |
 | `/sdd-explore-tech` | Detecta stack → tech.md |
 | `/sdd-init-repo` | Inicializa estrutura SDD |
 | `/sdd-generate-plan` | spec.md → plan.md (4 seções + ADRs) |
-| `/sdd-generate-tasks` | spec+plan → tasks.md (DAG + LATTE) |
+| `/sdd-generate-tasks` | spec+plan → tasks.md (DAG + LATTE + Wiki-Keywords) |
 | `/sdd-validate` | Auditoria PASS/FAIL/WARN |
 | `/sdd-refactor-artifact` | Normaliza artefato para template canônico |

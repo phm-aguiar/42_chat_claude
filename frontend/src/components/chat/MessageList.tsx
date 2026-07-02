@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import type { Message } from '@/lib/api';
+import { UserSignature } from './UserSignature';
 
 interface MessageListProps {
   messages: Message[];
@@ -101,6 +102,7 @@ export function MessageList({ messages }: MessageListProps) {
             >
               {msg.content}
             </p>
+            <UserSignature userID={msg.user_id} />
           </div>
         </div>
       ))}

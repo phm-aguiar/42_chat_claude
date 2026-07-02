@@ -99,6 +99,8 @@ func (c *Client) readPump(ctx context.Context) {
 			continue
 		}
 
+		c.hub.EmitStatsChanged(c.userID)
+
 		enriched, _ := json.Marshal(msg)
 		c.hub.broadcast <- enriched
 	}

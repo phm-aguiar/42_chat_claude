@@ -96,6 +96,30 @@ func (h *Handler) GetUser(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(user)
 }
 
+// HandleUserStats retorna os stats de participação do usuário.
+// GET /api/users/{id}/stats
+func (h *Handler) HandleUserStats(w http.ResponseWriter, r *http.Request) {
+	idStr := chi.URLParam(r, "id")
+	id, err := strconv.Atoi(idStr)
+	if err != nil {
+		http.Error(w, `{"error":"id inválido","code":"INVALID_ID"}`, http.StatusBadRequest)
+		return
+	}
+
+	stats, err := GetUserStats(h.DB, id)
+	if err == sql.ErrNoRows {
+		http.Error(w, `{"error":"usuário não encontrado","code":"USER_NOT_FOUND"}`, http.StatusNotFound)
+		return
+	}
+	if err != nil {
+		http.Error(w, `{"error":"erro interno","code":"INTERNAL_ERROR"}`, http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(stats)
+}
+
 // ServeWS faz o upgrade da conexão para WebSocket.
 // GET /ws?token=<jwt>
 // Token aceito via query param (header não acessível na conexão WS inicial).

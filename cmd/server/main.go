@@ -61,6 +61,7 @@ func main() {
 	chatHandler := &chat.Handler{DB: database, Hub: hub}
 	r.With(auth.JWTMiddleware()).Get("/api/messages", chatHandler.GetMessages)
 	r.With(auth.JWTMiddleware()).Get("/api/users/{id}", chatHandler.GetUser)
+	r.With(auth.JWTMiddleware()).Get("/api/users/{id}/stats", chatHandler.HandleUserStats)
 	r.Get("/ws", chatHandler.ServeWS)
 	r.Get("/metrics", chatHandler.Metrics)
 

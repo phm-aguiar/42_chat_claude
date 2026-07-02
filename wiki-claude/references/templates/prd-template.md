@@ -77,3 +77,7 @@ Implementation details will be covered in the Technical Specification.]
 * Boundaries and limitations
 
 (Note: Technical implementation risks will be detailed in the Tech Spec.)]
+
+## Related
+
+- [[references/prd-product-requirements-document|PRD Guide]] — Como escrever Product Requirements Documents (artigo de referência)

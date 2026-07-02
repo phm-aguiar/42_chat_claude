@@ -2,12 +2,13 @@
 
 ## Metadados
 - **ID:** 100
-- **Status:** revisão
+- **Status:** accepted
 - **Aprovado:** true
 - **Autor:** phm-aguiar
 - **Data original:** 2026-06-14
-- **Revisão:** 2026-06-29 — reescrita após validação pós-implementação (ver debt.md)
+- **Revisão:** 2026-06-30 — discovery report v2.0 com Gherkin, ADR e débitos documentados
 - **Stack:** Go, React, PostgreSQL, Docker
+- **Discovery Report:** `reports/100-42chat-core-discovery.md`
 - **Referências:** [[references/42-chat-platform-architecture]], [[references/42-graphic-charter-software]]
 
 ## Propósito
@@ -142,7 +143,7 @@ Esta revisão corrige o escopo com base nos itens DT-004 e DT-005 do debt.md.
 ## Constraints
 
 - **Escala:** 300 conexões simultâneas (campus presencial)
-- **Infra:** AWS EC2 t2.micro (1 vCPU, 1 GB RAM). Go + PostgreSQL no mesmo host
+- **Infra:** local por enquanto; se aceito pela 42SP será hospedado em servidor on-premise da escola (specs desconhecidas). Go + PostgreSQL no mesmo host
 - **Latência:** mensagens em < 500ms p95 (teste k6)
 - **Segurança:** OAuth2 42 obrigatório em produção. JWT HS256 12h. Credenciais via env vars. NUNCA hardcode secrets
 - **Privacidade:** retenção 6 meses (LGPD Art. 15). Cron expurgo 24h

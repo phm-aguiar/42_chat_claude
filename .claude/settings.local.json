@@ -36,7 +36,10 @@
       "Bash(grep \"WHERE created_at < \\\\$1 AND deleted_at IS NULL ORDER BY created_at DESC LIMIT\" /home/zeenyt__/Projetos/42_chat_claude/internal/db/queries/messages.go)",
       "Bash(grep -E \"WHERE m\\\\.created_at < \\\\\\\\\\\\$1\" /home/zeenyt__/Projetos/42_chat_claude/internal/db/queries/messages.go)",
       "Bash(grep -E \"LIMIT \\\\\\\\\\\\$2\" /home/zeenyt__/Projetos/42_chat_claude/internal/db/queries/messages.go)",
-      "Bash(chmod +x *)"
+      "Bash(chmod +x *)",
+      "Bash(npx tsc *)",
+      "Bash(go test *)",
+      "Bash(grep -E \"\\\\.\\(md|go|tsx|ts|json\\)$\")"
     ]
   }
 }

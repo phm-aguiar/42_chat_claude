@@ -1,6 +1,6 @@
 # Wiki Index
 
-> **2026-06-27** · 334 páginas · 7 categorias
+> **2026-06-30** · 343 páginas · 7 categorias
 
 ## concepts (6)
 
@@ -23,7 +23,7 @@
 - [[entities/user|User (Modelo de Usuário)]] — User é o modelo de dados de um aluno da 42 autenticado no chat — ID fixo da API 42, login único, dados de perfil (image_url, host, level) sincronizados via OAuth2 e upserted no PostgreSQL.
 - [[entities/websocket|WebSocket (Protocolo)]] — WebSocket é o protocolo de comunicação full-duplex em tempo real do 42 Chat — upgrade HTTP → WS, mensagens JSON, ping/pong keepalive, implementado com a biblioteca gorilla/websocket.
 
-## journal (7)
+## journal (8)
 
 - [[journal/2026-06-14-readfile-truncation-pitfall|read_file truncation causes incomplete document consolidation]] — Arquivos 50K chars são truncados pelo read_file sem aviso explícito, causando consolidação incompleta. Verificar total_lines vs file_size antes de processar.
 - [[journal/2026-06-14-sessao-qa-skills-42chat|Sessão 2026-06-14 — Feature 007 QA + Skills + Feature 100 42 Chat]] — Sessão de 14/jun: finalização do agent-qa, criação de 7 skills QA, normalização de 41 skills, skill-forge atualizado, spec/plan/tasks da feature 100 (42 Chat Core) refinados com dados da wiki, taxonomia do vault documentada.
@@ -32,6 +32,7 @@
 - [[journal/2026-06-27-wiki-maintenance|2026-06-27 — Wiki Maintenance (Lint + Consolidate + Ingest)]] — Sessão de manutenção do wiki: wiki-status revelou 522K tokens e manifest ausente; wiki-lint --consolidate aplicou 59 correções; wiki-ingest inicializou manifest e ingeriu specs.
 - [[journal/digest-2026-06-15|Wiki Digest — 9 a 15 de Junho de 2026]] — Weekly knowledge digest: 88 páginas construídas. Base de QA completa (9 referências interligadas), framework SDD documentado, relatório 42 Chat split em 10 páginas. Vault auditado — zero orphans, zero broken links, zero duplicatas.
 - [[journal/digest-2026-06-21|Digest 2026-06-21 — Wiki Ingest Massiva + Gap Fill]] — A wiki do 42_chat cresceu de 130 para 361 páginas em um dia. 159 raw files ingeridos, 10 gaps de stack preenchidos, glossário populado, 7 ADRs criados.
+- [[journal/digest-2026-06-30|Wiki Digest — Last 7 Days]] — Wiki hygiene improved: 29 lifecycle states corrected, 15 tags normalized, 8 orphan links rescued, 9 broken links fixed, and 1 confidence fix via `wiki-lint --consolidate`. Knowledge ingested: specs backlog, security requirements, feature metrics, and session transcripts added approximately 13 new pages and updated 30+ existing pages via `wiki-ingest`. Feature 102 (42 Forum) completed via LATTE coordination, validating the forum implementation with 27/27 tasks passed across 7 phases and 25 subagents.
 
 ## projects (20)
 
@@ -48,6 +49,7 @@
 - [[projects/42_chat/features/feature-101-assinatura-participacao|Feature 101 — Assinatura de Participação]]
 - [[projects/42_chat/features/feature-102-forum|Feature 102 — 42 Forum]]
 - [[projects/42_chat/features/security-backlog|Security Backlog — 42 Chat]] — Backlog de hardening do nginx e da aplicação 42 Chat: SEC-001 a SEC-007 (rate limiting, TLS, WAF, JWT gateway, fail2ban, scanning CI, CSP).
+- [[projects/42_chat/concepts/chat-ui-specification|Especificação de UI do Chat — Estilo MSN Messenger]] — Especificação detalhada da interface de chat inspirada no MSN Messenger (v7.5/v8.5), com componentes visuais, hierarquia de layout e comportamentos interativos para QA.
 - [[projects/42_chat/skills/sdd-brainstorm|sdd-brainstorm]] — Skill SDD que conduz entrevista interativa via AskUserQuestion para gerar spec.md
 - [[projects/42_chat/skills/sdd-generate-plan|sdd-generate-plan]] — Skill SDD que gera plan.md com decisões arquiteturais (ADR) a partir do spec.md
 - [[projects/42_chat/skills/sdd-generate-tasks|sdd-generate-tasks]] — Skill SDD v2.0.0 que gera tasks.md com DAG (dependências, paralelismo, isolamento de arquivos)
@@ -56,7 +58,7 @@
 - [[projects/42_Framework/features/002-experiential-memory|002: Wiki Experiential Memory]] — Memória experiencial com indexação semântica de chunks da wiki, retrieval contextual, hint scoring com feedback loop, e distillation periódica. Inspirado no Experiential Memory do A-MapReduce.
 - [[projects/42_Framework/features/003-hybrid-retrieval|003: Hybrid Retrieval & Normalization]] — Pesquisa híbrida (BM25 + cosine), normalização de frontmatter (34 docs) e thresholds adaptativos. Baseado no relatório Otimização de Obsidian para IA.
 
-## references (241)
+## references (246)
 
 - [[references/10_purpose-why|Brand Purpose]] — Brand Purpose: framework e metodologia de referência.
 - [[references/20_positioning|Brand Positioning]] — Brand Positioning: framework e metodologia de referência.
@@ -80,6 +82,12 @@
 - [[references/42-chat-sec9-observabilidade-bdd|42 Chat — Observabilidade Estrutural e Engenharia de Software BDD]] — Seção 9/9 do relatório de arquitetura e viabilidade do 42 Chat. Observabilidade Estrutural e Engenharia de Software BDD.
 - [[references/42-graphic-charter-software|42 Graphic Charter — Software & UI Reference]] — Destilado da Graphic Charter 42 focado em desenvolvimento de software: cores exatas (hex), tipografia, regras de logotipo, UI elements e favicon. Corta branding físico, redes sociais, fotografia e vídeo.
 - [[references/42-oauth2-flow|OAuth2 42 — Fluxo Completo]] — Implementação do Authorization Code Flow da API 42 no 42 Chat — token exchange, upsert de usuário, DEV_MODE bypass e pitfalls de rate limit / expiração.
+- [[references/ms-graph-chat-api-hub|Microsoft Graph — Chat & Channel API Reference Hub]] — Central index for Microsoft Graph v1.0 Chat/Channel API resources consolidated from raw docs. Covers chats, channels, messages, members, apps/tabs, and pinned messages.
+- [[references/ms-graph-chat-resource|Microsoft Graph — Chat Resource]] — Chat resource types (oneOnOne, group, meeting), CRUD endpoints, permissions, and JSON schema.
+- [[references/ms-graph-channel-resource|Microsoft Graph — Channel Resource]] — Channel resource with membership types (standard, private, shared), CRUD, migration, archive/unarchive, email provisioning.
+- [[references/ms-graph-chat-message-resource|Microsoft Graph — chatMessage Resource]] — chatMessage properties (body, from, reactions, mentions, messageType), endpoints for channels and chats, soft delete, delta API.
+- [[references/ms-graph-member-resource|Microsoft Graph — conversationMember Resource]] — Add/remove/list/get members in chats and channels, role types (owner/guest), aadUserConversationMember, sharedWithChannelTeamInfo.
+- [[references/ms-graph-apps-tabs-resource|Microsoft Graph — Apps, Tabs & Pinned Messages]] — Installed apps (teamsApp), tabs (teamsTab), and pinned messages in chats and channels: install, upgrade, remove, pin/unpin.
 - [[references/50_voice-tone|Brand Voice & Tone]] — Brand Voice & Tone: framework e metodologia de referência.
 - [[references/60_narrative-story|Brand Narrative & Story]] — Brand Narrative & Story: framework e metodologia de referência.
 - [[references/70_founder-tension|Brand Founder vs Organization]] — Brand Founder vs Organization: framework e metodologia de referência.
@@ -246,6 +254,7 @@
 - [[references/playwright-bdd/writing-features|Writing features — Overview]]
 - [[references/playwright-bdd/writing-steps|Writing steps — Overview]]
 - [[references/postgresql|PostgreSQL no 42 Chat]] — Padrões de uso do PostgreSQL no 42 Chat Core — connection pool, migrations, queries parametrizadas, schema design e escolha lib/pq.
+- [[references/prd-product-requirements-document|PRD — O que é e Como Fazer]] — Guia completo sobre Product Requirements Document (PRD): estrutura, seções essenciais, construção prática e diferenças entre PRD, BRD e SRD. Baseado no template da Product Hunt.
 - [[references/prd-template|PRD Template]] — Template de Product Requirements Document: overview, objetivos, requisitos, milestones.
 - [[references/pre-mortem-analysis|Pre-Mortem Analysis]] — Metodologia pre-mortem (Gary Klein) com second-order thinking para antecipar falhas.
 - [[references/pr-template|PR Template]] — Template de Pull Request: descrição, changeset, risco, deploy notes, rollback.
@@ -275,6 +284,7 @@
 - [[references/toolkits/obsidian/EXAMPLES|Examples]]
 - [[references/toolkits/obsidian/FUNCTIONS_REFERENCE|Functions Reference]]
 - [[references/toolkits/obsidian/PROPERTIES|Properties]]
+- [[references/toolkits/obsidian/CLI|Obsidian CLI Reference]] — Complete CLI command reference for controlling Obsidian from terminal: daily notes, files, search, plugins, tasks, vault, workspace, and developer commands.
 - [[references/toolkits/qa/anti-patterns|Anti Patterns]]
 - [[references/toolkits/qa/best-practices|Best Practices]]
 - [[references/toolkits/qa/edge-cases|Edge Cases]]

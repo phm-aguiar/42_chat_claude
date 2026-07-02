@@ -32,11 +32,23 @@ export function useWebSocket() {
       setError(null);
       // Carrega histórico desde a última mensagem recebida
       fetchHistory(lastTimestampRef.current, 50);
+      // Re-fetch user stats after reconnection
+      const store = useChatStore.getState();
+      Object.keys(store.statsCache).forEach((uid) => {
+        store.fetchStats(Number(uid));
+      });
     };
 
     ws.onmessage = (event) => {
       try {
         const msg = JSON.parse(event.data);
+        // Handle user_stats_changed event
+        if (msg.type === 'user_stats_changed') {
+          const store = useChatStore.getState();
+          store.invalidateStats(msg.user_id);
+          store.fetchStats(msg.user_id);
+          return;
+        }
         // Mensagens de chat têm 'id' — eventos de sistema (join/leave) não
         if (msg.id) {
           addMessage(msg);

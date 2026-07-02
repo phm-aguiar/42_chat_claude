@@ -21,6 +21,7 @@ detecção de paralelismo, mapeamento spec→tasks e fases canônicas.
   - **Dependências:** Txxx, Tyyy | Nenhuma
   - **Paralelizável:** true | false
   - **Arquivos:** `path/to/file.go`, `path/to/other.go`
+  - **Wiki-Keywords:** keyword1, keyword2, keyword3
 ```
 
 ### Campos
@@ -31,6 +32,14 @@ detecção de paralelismo, mapeamento spec→tasks e fases canônicas.
 | `Dependências` | IDs que devem estar `[x]` antes | `T001, T002` ou `Nenhuma` |
 | `Paralelizável` | Pode rodar com outras da mesma fase | `true` ou `false` |
 | `Arquivos` | Paths que a task cria/modifica | Lista exaustiva, extensões explícitas |
+| `Wiki-Keywords` | Termos para buscar na wiki antes de iniciar | 2-5 keywords do domínio |
+
+**Sobre Wiki-Keywords:**
+O agente deve buscar cada keyword na wiki (`wiki-claude/`) antes de iniciar a task.
+Isso evita que o agente ignore padrões existentes e acumule débito técnico.
+- `researcher`: buscar evidências de comportamento atual
+- `analyst`: buscar padrões arquiteturais e decisões anteriores
+- `executor`: buscar convenções de código e exemplos do projeto
 
 ## Detecção de Paralelismo (Regra Primária)
 
@@ -49,16 +58,19 @@ Se violarem a regra 2:
 - **Extensões diferentes no mesmo diretório:** executor gerando `chat.feature` e executor gerando `message.go` em `specs/features/004-*/acceptance/` — sem conflito real. Extensões `.feature` ≠ `.go`.
 - **Arquivo único inevitável:** ex: `main.go` é shared. Se duas tasks executor tocam `main.go`, force sequencial e alerte.
 
-## Mapeamento spec/plan → tarefas DAG
+## Mapeamento spec/plan/discovery → tarefas DAG
 
-| Fonte no spec/plan | Gera task | Papel |
+| Fonte | Gera task | Papel |
 |---|---|---|
 | Exploração de base de código desconhecida | "Mapear padrões existentes em X" | researcher |
 | Auditoria de constituição | "Auditar feature Y contra constitution.md" | analyst |
 | Plano de execução para feature nova | "Derivar plano atômico para X" | analyst |
 | Restrições de segurança/performance | "Adicionar validação para restrição X" | executor |
-| Cenários BDD | "Implementar cenário: Dado X, Quando Y, Então Z" | executor |
-| Cenários de aceitação (Gherkin) | "Criar cenários Gherkin para feature X" | executor |
+| Cenário Gherkin de SUCESSO do discovery | "Implementar Scenario: <título do cenário>" | executor |
+| Cenário Gherkin de FALHA do discovery | "Implementar tratamento de erro: <título do cenário>" | executor |
+| Edge case Gherkin do discovery | "Implementar edge case: <título>" | executor |
+| Débito técnico antecipado (discovery seção 6) | "Mitigar débito: <descrição>" | executor |
+| Cenários de aceitação (Gherkin) | "Criar arquivo .feature para feature X" | executor |
 | Contratos (OpenAPI/AsyncAPI) | "Criar/atualizar contrato Y" | executor |
 | Decisões arquiteturais (ADR) | "Implementar ADR-NNN: descrição" | executor |
 | Componentes do plan | "Criar diretório/arquivo para componente Y" | executor |
@@ -66,6 +78,10 @@ Se violarem a regra 2:
 | Ferramentas de build/CI | "Configurar pipeline/linter Y" | executor |
 | Smoke test fim a fim | "Executar smoke test" | executor |
 | Documentação | "Atualizar README/llms.txt" | executor |
+
+**Regra de cobertura Gherkin:** se o discovery tem N cenários Gherkin, o tasks.md deve ter
+pelo menos N tasks de implementação correspondentes. Cada cenário de falha DEVE gerar uma task
+executor separada de tratamento de erro — nunca agrupe com o happy path.
 
 ## Fases canônicas
 

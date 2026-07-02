@@ -2,10 +2,13 @@
 
 ## Metadados
 - **ID:** 101
-- **Status:** draft
+- **Status:** accepted
+- **Aprovado:** true
 - **Autor:** phm-aguiar
 - **Data:** 2026-06-17
+- **Revisão:** 2026-06-30 — discovery report + plan + tasks; ambiguidades resolvidas
 - **Feature Anterior:** 100-42chat-core (depende de mensagens e WebSocket existentes)
+- **Discovery Report:** `reports/101-assinatura-participacao-discovery.md`
 
 ## Propósito
 > Cada usuário do chat (e futuro fórum) tem uma **assinatura de participação** 
@@ -65,12 +68,12 @@
 - **Segurança/Compliance:** Stats são públicos (qualquer usuário autenticado pode ver stats de qualquer outro). Sem PII além do login e avatar (já públicos)
 
 ## Critérios de Sucesso
-- [ ] Assinatura renderiza abaixo de cada mensagem sem quebrar o layout do chat
-- [ ] WebSocket mantém stats atualizados em tempo real com 50+ usuários simultâneos
-- [ ] Stats exibidos batem com queries diretas no banco (sem discrepância)
-- [ ] Placeholder "novato" aparece corretamente para usuários sem mensagens
-- [ ] Tiers de participação refletem os thresholds definidos
-- [ ] Testes automatizados cobrem o happy path e edge cases identificados
+- [x] Assinatura renderiza abaixo de cada mensagem sem quebrar o layout do chat (altura fixa 64px, `MessageList.tsx`)
+- [x] Placeholder "novato" aparece corretamente para usuários sem mensagens
+- [x] Tiers de participação refletem os thresholds definidos (`calcTier` + `stats_test.go`)
+- [x] Testes automatizados cobrem o happy path e edge cases (unit `calcTier`, debounce `-race`, 20 cenários BDD)
+- [ ] WebSocket mantém stats atualizados com 50+ usuários simultâneos — **não validado nesta sessão** (requer teste de carga runtime)
+- [ ] Stats batem com queries diretas no banco — lógica testada (unit), mas **sem teste de integração contra DB ao vivo** nesta sessão (mesmo bloqueio de pg_hba/Docker de features anteriores)
 
 ## Abordagem Escolhida
 **API on-demand + WebSocket push.** Sem tabela materializada — stats são computados
@@ -91,8 +94,9 @@ A query `COUNT + DISTINCT` na tabela de mensagens é trivial para o volume esper
 
 ## Dependências
 - **Feature 100 (42chat-core):** Mensagens, WebSocket hub, autenticação JWT
-- **Tabela `messages`:** Precisa ter `user_id` e `room_id` para agregar stats
+- **Tabela `messages`:** Tem `user_id` e `created_at` (migration 001). **NÃO tem `room_id`/`chat_id`** — existe uma única sala "general". Por isso `active_rooms` degrada para 0/1 até a Feature 103 adicionar `chat_id` (ver ADR-101.4 no discovery)
 - **Tabela `users`:** `created_at` para "membro desde"
+- **Feature 103 (futura):** ao introduzir `messages.chat_id`, `active_rooms` passa a `COUNT(DISTINCT chat_id)` sem mudança de contrato
 
 ## Definições de Tiers
 | Tier | Threshold (total de mensagens) | Rótulo |
@@ -102,12 +106,19 @@ A query `COUNT + DISTINCT` na tabela de mensagens é trivial para o volume esper
 | 2 | 51-200 | participante |
 | 3 | 201+ | veterano |
 
+## Débitos Técnicos
+
+| ID | Descrição | Severidade | Fix |
+|----|-----------|-----------|-----|
+| DT-101.1 | `active_rooms` retorna sempre 0/1 até a Feature 103 adicionar `messages.chat_id` | baixa | Resolver em F103 — sem mudança de contrato |
+| DT-101.2 | **Avatar + login duplicados no chat:** `MessageList.tsx` já exibe avatar e login no header da mensagem; `UserSignature` exibe novamente. Usuário vê foto e login duas vezes. Fix: remover avatar e login do `UserSignature`, exibindo apenas tier badge + contagem de mensagens (a assinatura vira só identidade de reputação, não de identidade visual). | média | Editar `UserSignature.tsx` — remover `<img>` e bloco de login; manter só o tier badge e `total_messages` |
+
 ## Checklist de Prontidão
-- [ ] Propósito claro e sem ambiguidade
-- [ ] Escopo delimitado (dentro/fora)
-- [ ] Cenários cobrem happy path e alternativos
-- [ ] Edge cases identificados com comportamento esperado
-- [ ] Constraints explícitas
-- [ ] Critérios de sucesso mensuráveis
-- [ ] Abordagem escolhida justificada
-- [ ] Aprovado: true
+- [x] Propósito claro e sem ambiguidade
+- [x] Escopo delimitado (dentro/fora)
+- [x] Cenários cobrem happy path e alternativos
+- [x] Edge cases identificados com comportamento esperado
+- [x] Constraints explícitas
+- [x] Critérios de sucesso mensuráveis
+- [x] Abordagem escolhida justificada
+- [x] Aprovado: true

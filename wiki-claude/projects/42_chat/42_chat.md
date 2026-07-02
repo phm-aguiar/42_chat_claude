@@ -13,7 +13,7 @@ provenance:
   inferred: 0.10
   ambiguous: 0.00
 created: "2026-06-13"
-updated: "2026-06-27"
+updated: "2026-06-30"
 tier: core
 ---
 
@@ -116,6 +116,7 @@ Backlog de hardening nginx: [[projects/42_chat/features/security-backlog|Securit
 - [[references/42-chat-design-system|Design System]] — Identidade visual 42 Graphic Charter
 - [[references/42-chat-engineering-requirements|Engineering Requirements]] — Concorrência, tuning, graceful shutdown
 - [[references/42-chat-architecture-diagram|Architecture Diagram]] — Diagramas Mermaid (auth, hub, deploy)
+- [[projects/42_chat/concepts/chat-ui-specification|UI Specification — Estilo MSN Messenger]] — Especificação de interface com lista de contatos, janela de conversa e comportamentos interativos
 
 ## Repositório
 

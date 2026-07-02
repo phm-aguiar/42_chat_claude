@@ -36,6 +36,25 @@ Usuário informa o diretório. Se não informado, pergunte.
 
 Extraia: funcionalidade, cenários BDD, restrições (spec) + stack, contratos, ADRs (plan).
 
+Se `spec.md` referenciar um `**Discovery Report:**`, leia também o discovery para extrair
+cenários Gherkin e débitos antecipados — eles devem gerar tasks explícitas.
+
+### 2.5. Extrair keywords para wiki
+
+Varra spec.md, plan.md e discovery.md (se presente) e extraia:
+- Nomes de domínio (ex: `board`, `thread`, `post`, `hub`, `JWT`, `UUIDv7`)
+- Padrões técnicos citados (ex: `soft delete`, `bump order`, `broadcast`)
+- Componentes do sistema mencionados (ex: `ws/hub`, `forum/store`, `auth/handler`)
+- Cenários de erro específicos (ex: `locked thread`, `slug reservado`)
+
+Crie uma lista global de keywords do projeto. Cada task receberá um subconjunto
+de 2-5 keywords mais relevantes para seu escopo no campo `Wiki-Keywords:`.
+
+**Regra de atribuição:**
+- Tasks `researcher`: keywords do domínio que o agente deve explorar
+- Tasks `analyst`: keywords dos padrões arquiteturais que devem ser auditados
+- Tasks `executor`: keywords dos componentes que serão criados/modificados
+
 ### 3. Carregar regras de geração
 
 Leia `${CLAUDE_SKILL_DIR}/assets/task-rules.md` para regras de atomicidade, formato DAG,
@@ -55,7 +74,8 @@ Se índice ausente, prossiga sem hints (não aborte).
 
 ### 4. Derivar tarefas atômicas
 
-Para cada elemento extraído, crie UMA tarefa:
+Para cada elemento extraído, crie UMA tarefa. Tasks derivadas de cenários Gherkin do discovery
+devem referenciar o cenário correspondente na descrição (ex: "Implementar Scenario: locked thread").
 
 ```markdown
 - [ ] **Tnnn:** Descrição da tarefa
@@ -63,7 +83,12 @@ Para cada elemento extraído, crie UMA tarefa:
   - **Dependências:** Txxx, Tyyy | Nenhuma
   - **Paralelizável:** true | false
   - **Arquivos:** `path/to/file.go`
+  - **Wiki-Keywords:** keyword1, keyword2, keyword3
 ```
+
+O campo `Wiki-Keywords:` instrui o agente a buscar esses termos na wiki antes de iniciar.
+Inclua 2-5 keywords por task. Para tasks executor sem equivalente wiki, use as keywords
+do componente que será modificado (ex: `hub, websocket, broadcast`).
 
 **Regra de paralelismo:** tasks paralelas na mesma fase devem ter conjuntos de `Arquivos` disjuntos.
 Se compartilharem paths → force sequencial. Exceção: `.feature` vs `.go` no mesmo diretório.
@@ -108,14 +133,19 @@ Sem `graph-operators` → modo legacy (DAG estático), compatibilidade reversa g
 - **Interação fase por fase obrigatória** — nunca gere tudo de uma vez.
 - **Approval gate** — sem `Aprovado: true`, ABORTE.
 - **Idempotência** — se `tasks.md` existe, pergunte.
+- **Cobertura Gherkin** — cada cenário Gherkin do discovery deve gerar task(s) correspondentes.
+- **Cenários de falha geram tasks separadas** — nunca agrupe erro com happy path.
+- **Wiki-Keywords obrigatório** — toda task deve ter pelo menos 1 keyword; nenhum campo vazio.
 
 ## Checklist
 
 - [ ] Approval gate verificado (`Aprovado: true`)
 - [ ] `tasks.md` escrito em `specs/features/<id>-<slug>/`
-- [ ] Cada task com Papel, Dependências, Paralelizável, Arquivos
+- [ ] Cada task com Papel, Dependências, Paralelizável, Arquivos, Wiki-Keywords
 - [ ] DAG validado: sem ciclos, deps quebradas ou órfãs não intencionais
 - [ ] Tasks paralelas têm Arquivos disjuntos
+- [ ] Cenários Gherkin do discovery cobertos por tasks correspondentes
+- [ ] Cenários de falha Gherkin têm tasks de tratamento de erro separadas
 - [ ] Interação fase por fase concluída
 - [ ] Usuário aprovou antes de salvar
 

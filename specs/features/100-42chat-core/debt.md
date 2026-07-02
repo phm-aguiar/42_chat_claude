@@ -272,3 +272,50 @@ WebSocket /ws 401 — useWebSocket aborta
 - Todas as cores via inline styles com paleta 42 explícita (sem Tailwind para evitar purge)
 
 **Status:** ✅ corrigido. Sidebar ainda usa proxy de histórico (ver DT-007 para presença real).
+
+---
+
+## DT-011 — `fetchHistory` acumula mensagens em vez de substituir (duplicação ao navegar)
+
+**Origem:** `frontend/src/stores/chatStore.ts:38` — `fetchHistory` faz:
+```ts
+messages: [...msgs.reverse(), ...state.messages]
+```
+
+**Sintoma:** ao navegar para outra rota e voltar para `/chat`, o `useWebSocket` monta novamente,
+`ws.onopen` dispara `fetchHistory(undefined, 50)`, e o Zustand store (persistido entre navegações)
+ainda tem as mensagens da sessão anterior. As mesmas 50 mensagens aparecem duplicadas no topo.
+
+**Causa raiz:** duas sub-causas independentes que se combinam:
+1. `fetchHistory` sem `before` (initial load) sempre mescla com o estado existente
+2. O Zustand store não é resetado entre montagens do `ChatPage`
+
+**Correção esperada:**
+```ts
+fetchHistory: async (before?: string, limit = 50) => {
+  try {
+    const msgs = await getMessages(before, limit);
+    const sorted = msgs.reverse();
+    set((state) => ({
+      // Initial load (before=undefined): substituir; load-more: prepend
+      messages: before
+        ? [...sorted, ...state.messages]
+        : sorted,
+    }));
+  } catch (err) {
+    set({ error: err instanceof Error ? err.message : 'Erro ao carregar histórico' });
+  }
+}
+```
+
+**Alternativa defensiva (complementar):** deduplicar por ID em `addMessage`:
+```ts
+addMessage: (msg) =>
+  set((state) => ({
+    messages: state.messages.some(m => m.id === msg.id)
+      ? state.messages
+      : [...state.messages, msg],
+  })),
+```
+
+**Prioridade:** alta — bug visível ao primeiro uso real.

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_updated": "2026-06-28T02:38:41Z",
+  "last_updated": "2026-07-02T02:11:39.650481Z",
   "sources": {
     "/home/zeenyt__/Projetos/42_chat_claude/specs/BACKLOG.md": {
       "ingested_at": "2026-06-28T02:38:41Z",
@@ -10,7 +10,9 @@
       "source_type": "document",
       "project": "42_chat",
       "pages_created": [],
-      "pages_updated": ["projects/42_chat/42_chat.md"]
+      "pages_updated": [
+        "projects/42_chat/42_chat.md"
+      ]
     },
     "/home/zeenyt__/Projetos/42_chat_claude/specs/features/SECURITY_BACKLOG.md": {
       "ingested_at": "2026-06-28T02:38:41Z",
@@ -19,7 +21,9 @@
       "content_hash": "sha256:a90c8d50a8d05303f21807d8cb83e9fff840e4a1daac3ec2ed1d47411bb384ce",
       "source_type": "document",
       "project": "42_chat",
-      "pages_created": ["projects/42_chat/features/security-backlog.md"],
+      "pages_created": [
+        "projects/42_chat/features/security-backlog.md"
+      ],
       "pages_updated": []
     },
     "/home/zeenyt__/Projetos/42_chat_claude/specs/features/100-42chat-core/spec.md": {
@@ -30,7 +34,9 @@
       "source_type": "document",
       "project": "42_chat",
       "pages_created": [],
-      "pages_updated": ["projects/42_chat/features/feature-100-42-chat-core.md"]
+      "pages_updated": [
+        "projects/42_chat/features/feature-100-42-chat-core.md"
+      ]
     },
     "/home/zeenyt__/Projetos/42_chat_claude/specs/features/100-42chat-core/plan.md": {
       "ingested_at": "2026-06-28T02:38:41Z",
@@ -70,7 +76,9 @@
       "source_type": "document",
       "project": "42_chat",
       "pages_created": [],
-      "pages_updated": ["projects/42_chat/features/feature-101-assinatura-participacao.md"]
+      "pages_updated": [
+        "projects/42_chat/features/feature-101-assinatura-participacao.md"
+      ]
     },
     "/home/zeenyt__/Projetos/42_chat_claude/specs/features/101-assinatura-participacao/plan.md": {
       "ingested_at": "2026-06-28T02:38:41Z",
@@ -110,7 +118,9 @@
       "source_type": "document",
       "project": "42_chat",
       "pages_created": [],
-      "pages_updated": ["projects/42_chat/features/feature-102-forum.md"]
+      "pages_updated": [
+        "projects/42_chat/features/feature-102-forum.md"
+      ]
     },
     "/home/zeenyt__/Projetos/42_chat_claude/specs/features/102-42-forum/plan.md": {
       "ingested_at": "2026-06-28T02:38:41Z",
@@ -150,7 +160,9 @@
       "source_type": "document",
       "project": "42_chat",
       "pages_created": [],
-      "pages_updated": ["projects/42_chat/features/feature-102-forum.md"]
+      "pages_updated": [
+        "projects/42_chat/features/feature-102-forum.md"
+      ]
     },
     "/home/zeenyt__/Projetos/42_chat_claude/.claude/skills/create-skill/SKILL.md": {
       "ingested_at": "2026-06-28T02:38:41Z",
@@ -261,6 +273,1164 @@
         "projects/42_chat/features/security-backlog.md"
       ],
       "note": "Current session (wiki-status + wiki-lint + wiki-ingest 2026-06-27). Re-ingest when session completes."
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/funcionalidade-chat.md": {
+      "ingested_at": "2026-06-30T22:30:00Z",
+      "size_bytes": 3835,
+      "modified_at": "2026-06-30T00:00:00Z",
+      "content_hash": null,
+      "source_type": "raw",
+      "project": "42_chat",
+      "pages_created": [
+        "projects/42_chat/concepts/chat-ui-specification.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Documento de requisitos de produto (PRD).md": {
+      "ingested_at": "2026-06-30T22:35:00Z",
+      "size_bytes": 5446,
+      "modified_at": "2026-06-30T00:00:00Z",
+      "content_hash": null,
+      "source_type": "raw",
+      "project": "42_chat",
+      "pages_created": [
+        "references/prd-product-requirements-document.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Adicionar membro a uma conversa - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.243264Z",
+      "size_bytes": 7489,
+      "modified_at": "2026-06-30T18:56:24.047455Z",
+      "content_hash": "sha256:652400366eca590e1867b5bc13b96e693ebf99894f67cb03dc71bf115a5171c5",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Adicionar membro ao canal - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.244119Z",
+      "size_bytes": 12570,
+      "modified_at": "2026-06-30T18:50:42.398557Z",
+      "content_hash": "sha256:d2f3ae27b270fd47b1a19bde5acc7da0f43792ec163b88011f950b01965b5d85",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Adicionar teamsApp - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.244659Z",
+      "size_bytes": 3531,
+      "modified_at": "2026-06-30T18:52:38.438863Z",
+      "content_hash": "sha256:46a6c600cc2ed399ad974c013e5f4612a109464ff60f581a711965292381c4bf",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Adicionar uma guia ao canal - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.245091Z",
+      "size_bytes": 5642,
+      "modified_at": "2026-06-30T18:51:47.474185Z",
+      "content_hash": "sha256:739695836a42e74e00dd5c8a50cebcd3b8c868d4efa5b3ce00817382a58678c2",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Atualizar chat - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.245403Z",
+      "size_bytes": 3728,
+      "modified_at": "2026-06-30T18:56:04.609577Z",
+      "content_hash": "sha256:2a91d207bf20be6c1efec673eb9de63e1a3baff27d2139ec165f5e684333da43",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Atualizar guia - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.245814Z",
+      "size_bytes": 4463,
+      "modified_at": "2026-06-30T18:52:01.069099Z",
+      "content_hash": "sha256:cecf81b497b8d43d0628af69896b6a4e3018f1d3cba6492fbad5a4873dbf2f19",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Atualizar membro no canal - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.246321Z",
+      "size_bytes": 5065,
+      "modified_at": "2026-06-30T18:51:11.595396Z",
+      "content_hash": "sha256:3cb29bf6839fb965fd0fd66a8b25c3d2c303273fbe57ebb5dd5adc6cfa4c7445",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Canal de patches - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.246860Z",
+      "size_bytes": 5176,
+      "modified_at": "2026-06-30T18:49:15.605071Z",
+      "content_hash": "sha256:5cde8cd7f246136c46c5cd18bd7cf57de0030900ebb7dd558a3cfcd5e0991c79",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Criar canal - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.247482Z",
+      "size_bytes": 14002,
+      "modified_at": "2026-06-30T18:48:52.780213Z",
+      "content_hash": "sha256:ff51423fece3832b0d5c7ea835672c967188ca64746fc05dc733464a6bc979a5",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Criar chat - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.248026Z",
+      "size_bytes": 14738,
+      "modified_at": "2026-06-30T18:55:50.182668Z",
+      "content_hash": "sha256:316f4fd2b62a9105496f96d711a15a2ec1c8ee63efe56e3ef4255c8de369443a",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Delete channel - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.248511Z",
+      "size_bytes": 3028,
+      "modified_at": "2026-06-30T18:49:23.093025Z",
+      "content_hash": "sha256:80ac3cd734ee964b4636ee0c52ffc7bab3db96f5bc035aa3186e7314872aec64",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Enviar chatMessage num canal - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.249089Z",
+      "size_bytes": 11343,
+      "modified_at": "2026-06-30T18:49:51.353856Z",
+      "content_hash": "sha256:0d32e1e3007beaaa8e2c9d89a5444f51edd94be3643f0ec59b93e92befa4728c",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Enviar respostas a uma mensagem num canal - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.249619Z",
+      "size_bytes": 8298,
+      "modified_at": "2026-06-30T18:50:02.382790Z",
+      "content_hash": "sha256:c1a0f7367d995dd0c72b1a9d192de2789b3661589d5e7bb4f53257a6bce8c3ce",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Excluir chat - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.249956Z",
+      "size_bytes": 3344,
+      "modified_at": "2026-06-30T18:56:11.728532Z",
+      "content_hash": "sha256:f554360398a719f740804f1f96d24c44a1138e4338466959be30eeefc4b9b0c1",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Excluir sharedWithChannelTeamInfo - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.250305Z",
+      "size_bytes": 3836,
+      "modified_at": "2026-06-30T18:54:45.650071Z",
+      "content_hash": "sha256:c7d10606d7284c1d53609887be3d0eff15f556996a2423574b86ecc915eaebdd",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Get primaryChannel - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.250647Z",
+      "size_bytes": 4310,
+      "modified_at": "2026-06-30T18:49:05.923131Z",
+      "content_hash": "sha256:63e2c5e3ce2432966ac910b39cf6d53b19cdcf0cbb07997548c3ce861aa57462",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Guia obter no canal - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.250962Z",
+      "size_bytes": 4733,
+      "modified_at": "2026-06-30T18:51:54.047143Z",
+      "content_hash": "sha256:f502c07a71551a42a07150c1c0bf6f6970d23e7f83f6f81e209e94edbd05c1f9",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/List enabledApps - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.251279Z",
+      "size_bytes": 4805,
+      "modified_at": "2026-06-30T18:52:19.198984Z",
+      "content_hash": "sha256:98105ac712915779f437fbec6d3395f529fe199e6a4c72744dc43d1074ca2a93",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Listar allChannels - Microsoft Graph v1.0 1.md": {
+      "ingested_at": "2026-07-01T01:32:43.251598Z",
+      "size_bytes": 7096,
+      "modified_at": "2026-06-30T18:48:45.956256Z",
+      "content_hash": "sha256:b44a79986b111a53f1d487bdd3d1eb670ea4ac0ae6424348249fe9c9108837a6",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Listar allChannels - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.251974Z",
+      "size_bytes": 7096,
+      "modified_at": "2026-06-30T18:48:17.972430Z",
+      "content_hash": "sha256:b44a79986b111a53f1d487bdd3d1eb670ea4ac0ae6424348249fe9c9108837a6",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Listar allowedMembers - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.252313Z",
+      "size_bytes": 5238,
+      "modified_at": "2026-06-30T18:54:52.329029Z",
+      "content_hash": "sha256:82487b234f00b70e3a4a8048231770ac402ae82ddaf7372de81e33352f88b5aa",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Listar canais - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.252835Z",
+      "size_bytes": 7833,
+      "modified_at": "2026-06-30T18:47:56.231565Z",
+      "content_hash": "sha256:b25b77a6b3d64cbf8d3bf458a6c28aaa99d987037cf7a7cc16dc9f76b71a7df2",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Listar conversas - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.253621Z",
+      "size_bytes": 24522,
+      "modified_at": "2026-06-30T18:55:18.733864Z",
+      "content_hash": "sha256:6df018c2353df5a1fefa1a9e6cc9aa94f2aa59fc2339d2a471e03e2b86fb09c2",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Listar guias no canal - Microsoft Graph v1.0 1.md": {
+      "ingested_at": "2026-07-01T01:32:43.254256Z",
+      "size_bytes": 7403,
+      "modified_at": "2026-06-30T18:51:42.057220Z",
+      "content_hash": "sha256:9d05aed315d027154ce6389b7645b65ad3a321f777730239e79c6a66123b4f0f",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Listar guias no canal - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.254610Z",
+      "size_bytes": 7403,
+      "modified_at": "2026-06-30T18:50:15.929708Z",
+      "content_hash": "sha256:9d05aed315d027154ce6389b7645b65ad3a321f777730239e79c6a66123b4f0f",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Listar incomingChannels - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.254998Z",
+      "size_bytes": 4855,
+      "modified_at": "2026-06-30T18:48:05.187510Z",
+      "content_hash": "sha256:a942d36fb80cd2cbe78609b8a1d4b35349c7bd1d3c96cf8328676bd0d6aabff1",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Listar membros de um canal - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.255315Z",
+      "size_bytes": 5111,
+      "modified_at": "2026-06-30T18:50:22.278671Z",
+      "content_hash": "sha256:985f9a407a0526f7953c93c904a46f0dff066410da245496f5f0ffb0936e1b93",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Listar mensagens do canal - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.255842Z",
+      "size_bytes": 34196,
+      "modified_at": "2026-06-30T18:49:30.864978Z",
+      "content_hash": "sha256:1841172a58cc2c18dfc3754ae21a9961026e8a5bc57fe1962f29dee556959e43",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Listar mensagens em um chat - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.256273Z",
+      "size_bytes": 25434,
+      "modified_at": "2026-06-30T18:57:08.888172Z",
+      "content_hash": "sha256:91b5565013aab50f16d677240f7ce3904d35ba51e8d03fb2838ddbcce2263a0f",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Listar sharedWithChannelTeamInfo - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.256546Z",
+      "size_bytes": 4371,
+      "modified_at": "2026-06-30T18:54:32.630152Z",
+      "content_hash": "sha256:78968b48d1f566a516ac4ee3c43bad0ee09300fd01ed1f802c7dedab0d3b90a5",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Listar todosMembers - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.256870Z",
+      "size_bytes": 6156,
+      "modified_at": "2026-06-30T18:50:35.842594Z",
+      "content_hash": "sha256:1ca8b02b81a348610d385a55dbd3b98a77a4d79748176d8fd5fa55a8c95375b4",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Liste os membros de um bate-papo. - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.257253Z",
+      "size_bytes": 4853,
+      "modified_at": "2026-06-30T18:56:18.080492Z",
+      "content_hash": "sha256:2bf5bfa5fdda22ce05f63b41faeddb79e741476905569032422d5dccc5f5e5c9",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Obtenha o conversationMember em um bate-papo. - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.257573Z",
+      "size_bytes": 4575,
+      "modified_at": "2026-06-30T18:56:29.423421Z",
+      "content_hash": "sha256:57d3b1459a43a7835121e6aba377963df00cffce142be2454d87cc2907837961",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Obter bate-papo - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.257942Z",
+      "size_bytes": 16611,
+      "modified_at": "2026-06-30T18:55:58.890613Z",
+      "content_hash": "sha256:d0462bcfb40938bcd8aecbedce2aba44a57ce8efe628224a4a08e725fd1efa41",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Obter canal - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.258259Z",
+      "size_bytes": 7457,
+      "modified_at": "2026-06-30T18:48:58.492178Z",
+      "content_hash": "sha256:f3a8e044c62a06d4e833c224a78a16f8d095ecfaeea37dfa57dbab1b2d249d8a",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Obter chat entre o utilizador e o teamsApp - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.258646Z",
+      "size_bytes": 4458,
+      "modified_at": "2026-06-30T18:56:40.826349Z",
+      "content_hash": "sha256:7a8c367d566b05a05235577affbc1099b65f14dc36794f89523811c6a01fd11f",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Obter filesFolder - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.259022Z",
+      "size_bytes": 4334,
+      "modified_at": "2026-06-30T18:50:09.635746Z",
+      "content_hash": "sha256:4c9c598260dceefc843f320e9259663d9cce4c6e620c93c5e3bc3dff97c70e17",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Obter membro de um canal - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.259360Z",
+      "size_bytes": 4374,
+      "modified_at": "2026-06-30T18:50:49.295519Z",
+      "content_hash": "sha256:7dfd57587c76e4d9fd38cec0f62fb63749ff11f980907909de05c289a54a5df1",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Obter sharedWithChannelTeamInfo - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.259682Z",
+      "size_bytes": 4275,
+      "modified_at": "2026-06-30T18:54:39.653971Z",
+      "content_hash": "sha256:7621f7f6f2a775ee79c07b89b069824df70f4ef856db550273e6df07353c81e0",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Obter teamsApp - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.259997Z",
+      "size_bytes": 4144,
+      "modified_at": "2026-06-30T18:52:29.571919Z",
+      "content_hash": "sha256:0c7e0a4c017cd0ccf5489f4101de32b0897838e5c978b405a95ac64f984c83da",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Receber chatMessagem em um canal ou chat - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.260489Z",
+      "size_bytes": 21809,
+      "modified_at": "2026-06-30T18:57:14.527137Z",
+      "content_hash": "sha256:768e2388cb193dfda6497ab30c389bfb0cab96a8a5400b0ae82d6ab9d7ca254d",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Remover canal - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.260722Z",
+      "size_bytes": 2890,
+      "modified_at": "2026-06-30T18:54:27.358185Z",
+      "content_hash": "sha256:0674e19877ac157a267a7de98bff0a63fe8e8922e790b9519ab5a118907bfaf4",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Remover membro do bate-papo - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.260937Z",
+      "size_bytes": 3053,
+      "modified_at": "2026-06-30T18:56:35.458383Z",
+      "content_hash": "sha256:7b42c154fbcc7b49fc9efbfa7c353c3814f2f4e9e84d4d270d8d14824e0c6ae9",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Remover membro do canal - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.261190Z",
+      "size_bytes": 3284,
+      "modified_at": "2026-06-30T18:51:18.444358Z",
+      "content_hash": "sha256:f6c6d3ba11cf15798b14f994a03aced321517a271b09076ac092154f35f481a7",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Remover teamsApp - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.261430Z",
+      "size_bytes": 3222,
+      "modified_at": "2026-06-30T18:54:06.274316Z",
+      "content_hash": "sha256:82a440de27cf89e5c0bcd511a4f59c7e21248a3edc5f3e5e53dd9cc0a3c1c423",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Separador Eliminar do canal - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.261774Z",
+      "size_bytes": 3291,
+      "modified_at": "2026-06-30T18:52:09.325047Z",
+      "content_hash": "sha256:58b29863bf1396ea8e8c453b5a881b553272a1be476bec6da78bf8983c007527",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Tipo de recurso chatMessage - Microsoft Graph v1.0 1.md": {
+      "ingested_at": "2026-07-01T01:32:43.262177Z",
+      "size_bytes": 17546,
+      "modified_at": "2026-06-30T18:57:45.468942Z",
+      "content_hash": "sha256:adf453ec003f4624a79052d7d99b92753e12870852088a00d01854d542a0e921",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Tipo de recurso chatMessage - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.262672Z",
+      "size_bytes": 17546,
+      "modified_at": "2026-06-30T18:45:21.937534Z",
+      "content_hash": "sha256:adf453ec003f4624a79052d7d99b92753e12870852088a00d01854d542a0e921",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Tipo de recurso de usu\u00e1rio - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.263138Z",
+      "size_bytes": 24236,
+      "modified_at": "2026-06-30T18:47:47.303621Z",
+      "content_hash": "sha256:cbfe218c5f077ddb5f706c40bce726dff75a67d910b3318bf4de31f99170019b",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/canal arquivo - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.263486Z",
+      "size_bytes": 6651,
+      "modified_at": "2026-06-30T18:50:55.885483Z",
+      "content_hash": "sha256:7c067a6f75f18aa068e81b5250c8f7b5cff03a29ac32de9fa1c2b6fde789a478",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/canal completeMigration - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.263818Z",
+      "size_bytes": 7332,
+      "modified_at": "2026-06-30T18:51:36.215256Z",
+      "content_hash": "sha256:04caaeaba3599685a25b3d41f22d135fe9daa5f73e9d6164b3e921b643e05b1d",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/canal doesUserHaveAccess - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.264152Z",
+      "size_bytes": 5978,
+      "modified_at": "2026-06-30T18:54:58.792989Z",
+      "content_hash": "sha256:a27313d615d7ed4e77afb1e37c21fff57d77bcdc2d09d4a5e8c5ad329850fe89",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/canal getAllRetainedMessages - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.264512Z",
+      "size_bytes": 7530,
+      "modified_at": "2026-06-30T18:49:44.522897Z",
+      "content_hash": "sha256:bf51b86b690eac4533501ae1155042e62bbbc3bfc4e5fbd40fe91e50eba406ca",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/canal startMigration - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.264919Z",
+      "size_bytes": 6237,
+      "modified_at": "2026-06-30T18:51:26.615313Z",
+      "content_hash": "sha256:715a0dbc454c5eb10ce32cc5dae68a3ecc6e1a29648f4cd2184866650c24abe8",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/canal unarchive - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.265209Z",
+      "size_bytes": 5812,
+      "modified_at": "2026-06-30T18:51:03.300442Z",
+      "content_hash": "sha256:e90265782f3f59c9af29267c16d7ef253b3d4c9c37795ce430846f839ccb1e0d",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/channel getAllMessages - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.265541Z",
+      "size_bytes": 7849,
+      "modified_at": "2026-06-30T18:49:37.624938Z",
+      "content_hash": "sha256:8c5fced10564a18963e153dc032653ce6008d5b2fc9f6852c00f078ba2efa62a",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/channel provisionEmail - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.265874Z",
+      "size_bytes": 4124,
+      "modified_at": "2026-06-30T18:54:13.899269Z",
+      "content_hash": "sha256:fbd35043ab4158d5cb812dfb8878bf1ec23871e096918623eeac787873129be5",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/channel removeEmail - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.266148Z",
+      "size_bytes": 2749,
+      "modified_at": "2026-06-30T18:54:21.034224Z",
+      "content_hash": "sha256:582916a4043b36baeb6813f60c5838e67c102ebab00b98295c356677bf7f8564",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/chat completeMigration - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.266490Z",
+      "size_bytes": 5916,
+      "modified_at": "2026-06-30T18:56:59.609231Z",
+      "content_hash": "sha256:966f5fcc8dc0eedf0d7299f0af3aef67bfb15b4076c90e92c21b1dbbeaf06cfb",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/chat getAllRetainedMessages - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.266789Z",
+      "size_bytes": 7602,
+      "modified_at": "2026-06-30T18:57:25.494067Z",
+      "content_hash": "sha256:267b694780af8f64eda7d424d6309c653d95ec2483fcea8d074a4e0a8dd6acd5",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/chat removeAllAccessForUser - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.267032Z",
+      "size_bytes": 3071,
+      "modified_at": "2026-06-30T18:56:47.668306Z",
+      "content_hash": "sha256:fbf2d727c089a45e25c59bd9c0db630f67fd08f78b845840bfced334c06d9c97",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/chat startMigration - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.267679Z",
+      "size_bytes": 6582,
+      "modified_at": "2026-06-30T18:56:53.719268Z",
+      "content_hash": "sha256:8f85d84f64f19cd6bf87541e67cf120113bf37949eaa08bdfee3215de81a88ea",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/chats getAllMessages - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.268017Z",
+      "size_bytes": 8665,
+      "modified_at": "2026-06-30T18:57:20.376100Z",
+      "content_hash": "sha256:83a1a469ab1064cb9d481fe39f145622351a0a5900e55f881492d31eaab6e6ba",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/chats-getAllMessages delta - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.268498Z",
+      "size_bytes": 20699,
+      "modified_at": "2026-06-30T18:57:34.212013Z",
+      "content_hash": "sha256:851dcf39ec9306065dbed69422ef861f1b3be0647f06f1a0ee56c16f4024e245",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/tipo de recurso de chat - Microsoft Graph v1.0 1.md": {
+      "ingested_at": "2026-07-01T01:32:43.268902Z",
+      "size_bytes": 16202,
+      "modified_at": "2026-06-30T18:55:09.607921Z",
+      "content_hash": "sha256:4eb2bb4c269899c32d4d153563a4bcf15c73ce7d9e1fbafcd37ebabb2715a0a3",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/tipo de recurso de chat - Microsoft Graph v1.0.md": {
+      "ingested_at": "2026-07-01T01:32:43.269246Z",
+      "size_bytes": 16202,
+      "modified_at": "2026-06-30T18:45:07.903622Z",
+      "content_hash": "sha256:4eb2bb4c269899c32d4d153563a4bcf15c73ce7d9e1fbafcd37ebabb2715a0a3",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/ms-graph-chat-resource.md",
+        "references/ms-graph-channel-resource.md",
+        "references/ms-graph-chat-message-resource.md",
+        "references/ms-graph-member-resource.md",
+        "references/ms-graph-apps-tabs-resource.md",
+        "references/ms-graph-chat-api-hub.md"
+      ],
+      "pages_updated": []
+    },
+    "/home/zeenyt__/Projetos/42_chat_claude/wiki-claude/_raw/Obsidian-CLI.md": {
+      "ingested_at": "2026-07-02T02:11:39.650407Z",
+      "size_bytes": 33011,
+      "modified_at": "2026-07-01T22:40:02.028557Z",
+      "content_hash": "sha256:99f73f2a3632f6477f9a1ae68280761c286e8153bbd579a178b1eb1493626d6b",
+      "source_type": "clipping",
+      "project": "42_chat",
+      "pages_created": [
+        "references/toolkits/obsidian/CLI.md"
+      ],
+      "pages_updated": []
     }
   },
   "projects": {
@@ -274,8 +1444,8 @@
     }
   },
   "stats": {
-    "total_sources_ingested": 23,
-    "total_pages": 336,
+    "total_sources_ingested": 25,
+    "total_pages": 338,
     "total_projects": 1,
     "last_full_rebuild": null
   }

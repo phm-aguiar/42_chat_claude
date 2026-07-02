@@ -53,3 +53,4 @@ As regras arquiteturais e a stack tecnológica vivem em `.github/memory/` (versi
 - [[concepts/onboarding|Onboarding]] — Como começar
 - [[concepts/wiki-model|Wiki Model]] — Knowledge management
 - [[synthesis/sdd-go|SDD × Go]] — Aplicação do SDD em projetos Go
+- [[references/prd-product-requirements-document|PRD Guide]] — Como escrever Product Requirements Documents

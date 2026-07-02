@@ -2,11 +2,13 @@
 
 ## Metadados
 - **ID:** 102
-- **Status:** draft
-- **Aprovado:** false
+- **Status:** accepted
+- **Aprovado:** true
 - **Autor:** phm-aguiar
 - **Data:** 2026-06-21
+- **Revisão:** 2026-06-30 — discovery report retroativo, artifacts SDD completos
 - **Stack:** Go, React + MDX, PostgreSQL (reuse), OAuth2 42
+- **Discovery Report:** `reports/102-42-forum-discovery.md`
 - **Referências:** [[004-jschan-forum-manager]] (modelo board/thread/post do jschan)
 - **Referências:** [[wiki/_raw/What is MDX]], [[wiki/_raw/Using MDX]]
 - **Referências:** [[wiki/_raw/42-graphic-charter-software]] — cores, tipografia e regras de UI oficiais da 42
@@ -166,7 +168,7 @@
 | Estilo | Tailwind + Shadcn/ui | Cores oficiais 42 ([[wiki/_raw/42-graphic-charter-software]]), Futura PT, border-radius:0 |
 | PKs | UUIDv7 (stdlib Go) | Time-sortable, sem enumeration |
 | Container | Docker Compose | Reuso, sem novo serviço |
-| Infra | AWS EC2 t2.micro | Mesmo host do chat |
+| Infra | Docker Compose, local | Mesmo host do chat; on-premise 42SP se aceito |
 
 ## Modelagem de Dados
 

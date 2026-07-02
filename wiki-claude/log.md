@@ -7,4 +7,9 @@
 - [2026-06-28T02:38:41Z] INGEST source=".claude/skills/*.md (16 files)" pages_updated=0 pages_created=0 mode=full manifest_registered=16
 - [2026-06-28T02:38:41Z] INGEST source="11c5e42b.jsonl (claude_conversation 2.1MB)" pages_updated=3 pages_created=6 mode=full note="journals from prior sessions already captured"
 - [2026-06-28T02:38:41Z] INGEST source="fb7755da.jsonl (current session)" pages_updated=3 pages_created=2 mode=full
-- [2026-06-28T02:38:41Z] INDEX_REBUILD pages=334 categories=7
+- [2026-06-28T02:38:41Z] INDEX_RE hydrating pages=334 categories=7
+- [2026-06-30T22:15:00Z] DIGEST period="7d" new_pages=13 updated_pages=30 themes=10 connections=5 saved=true
+- [2026-06-30T22:30:00Z] INGEST source="_raw/funcionalidade-chat.md" pages_updated=0 pages_created=1 mode=raw project="42_chat"
+- [2026-06-30T22:35:00Z] INGEST source="_raw/Documento de requisitos de produto (PRD).md" pages_updated=0 pages_created=1 mode=raw project="42_chat"
+- [2026-06-30T22:40:00Z] RAW_PROMOTE total_raw_files=69 processed=3 skipped=66 pages_created=2 pages_updated=0
+- [2026-07-01T23:10:00Z] INGEST source="_raw/Obsidian-CLI.md" pages_updated=0 pages_created=1 mode=raw project="42_chat" target="references/toolkits/obsidian/CLI.md"

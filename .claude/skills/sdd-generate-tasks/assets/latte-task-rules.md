@@ -47,6 +47,7 @@ Cada task ganha dois campos opcionais que alimentam o coordination graph inicial
   - **depends_on:** [Txxx, Tyyy]
   - **Paralelizável:** true | false
   - **Arquivos:** `path/to/file.go`, `path/to/other.go`
+  - **Wiki-Keywords:** keyword1, keyword2, keyword3
 ```
 
 ### Campos estendidos
