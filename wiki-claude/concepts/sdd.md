@@ -2,7 +2,7 @@
 base_confidence: 0.5
 title: "Spec-Driven Development (SDD)"
 category: concepts
-tags: [sdd, metodologia, pipeline]
+tags: ["methodology", "metodologia", "pipeline"]
 summary: "Metodologia onde specs são a fonte primária; código deriva delas."
 created: "2026-06-13"
 rag_score: 0.4857

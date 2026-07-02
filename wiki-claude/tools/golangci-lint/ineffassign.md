@@ -1,7 +1,7 @@
 ---
 title: "ineffassign — Ineffectual Assignment Detector"
 category: tools
-tags: [go, linter, golangci-lint, ineffassign, dead-code]
+tags: ["dead-code", "go", "golangci-lint", "ineffassign", "linting"]
 sources:
   - "wiki/_raw/gordonklausineffassign Detect ineffectual assignments in Go code..md"
 summary: "Detect ineffectual assignments in Go code. An assignment is ineffectual if the variable assigned is not thereafter used."

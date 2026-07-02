@@ -1,7 +1,7 @@
 ---
 title: "Implementation Notes Template"
 category: references
-tags: [template, implementation, process]
+tags: ["implementation", "methodology", "templates"]
 sources:
   - "wiki/_raw/implementation-notes-template.md"
 summary: "Template para notas de implementação: task, abordagem, decisões, rollback."

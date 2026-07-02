@@ -1,7 +1,7 @@
 ---
 title: "Evidence Audit"
 category: references
-tags: [thinking, evidence, audit]
+tags: ["audit", "evidence", "thinking"]
 sources:
   - "wiki/_raw/[[evidence-audit]].md"
 summary: "Metodologia de auditoria de evidências: falsificacionismo e avaliação de qualidade de claims."

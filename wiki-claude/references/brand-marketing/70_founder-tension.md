@@ -1,7 +1,7 @@
 ---
 title: "Brand Founder vs Organization"
 category: references
-tags: [brand, founder, organization]
+tags: ["brand", "founder", "organization"]
 sources:
   - "wiki/_raw/70_founder-tension.md"
 summary: "Brand Founder vs Organization: framework e metodologia de referência."

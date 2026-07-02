@@ -1,7 +1,7 @@
 ---
 title: "Go Performance"
 category: references
-tags: [go, style-guide, coding-standards]
+tags: ["go", "standards"]
 sources:
   - "wiki/_raw/go-performance/SKILL.md"
 summary: "Go Performance: boas práticas e regras de estilo Go destiladas de Uber Style Guide, Google Style Guide, Go Wiki CodeReviewComments."

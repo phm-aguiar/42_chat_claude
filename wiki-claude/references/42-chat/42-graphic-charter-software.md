@@ -1,6 +1,6 @@
 ---
 title: "42 Graphic Charter — Software & UI Reference"
-tags: [42, brand, design-system, ui, colors, typography]
+tags: ["42-chat", "brand", "colors", "design-system", "frontend", "typography"]
 category: references
 created: "2026-06-24"
 updated: "2026-06-24"

@@ -2,7 +2,7 @@
 base_confidence: 0.5
 title: "sdd-generate-plan"
 category: projects
-tags: [sdd, skill, plan, architecture, ADR]
+tags: ["ADR", "design", "methodology", "plan", "skills"]
 sources: []
 summary: Skill SDD que gera plan.md com decisões arquiteturais (ADR) a partir do spec.md
 lifecycle: draft

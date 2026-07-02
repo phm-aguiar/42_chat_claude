@@ -1,7 +1,7 @@
 ---
 title: React + Vite Performance Rules
 category: references
-tags: [react, vite, performance, bundling, optimization]
+tags: ["bundling", "frontend", "optimization", "performance", "tools"]
 sources: ["_raw/react.md", "_raw/_sections.md"]
 summary: Guia de otimização de performance para apps React com Vite — 23 regras em 6 categorias cobrindo build, code splitting, dev, assets, env e bundle analysis.
 provenance:

@@ -1,7 +1,7 @@
 ---
 title: Vite Environment API
 category: references
-tags: [vite, environment, ssr, multi-runtime]
+tags: ["environment", "multi-runtime", "ssr", "tools"]
 aliases: [Vite 6 Environment API]
 sources: ["_raw/environment-api.md"]
 summary: "API de múltiplos ambientes do Vite 6+: configuração de runtimes client/server/edge com herança de config e custom environment providers."

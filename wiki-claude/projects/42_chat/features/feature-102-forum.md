@@ -1,6 +1,6 @@
 ---
 title: "Feature 102 — 42 Forum"
-tags: [42, forum, sdd, feature, go, react, mdx]
+tags: ["42-chat", "feature", "forum", "frontend", "go", "mdx", "methodology"]
 category: projects
 status: implemented
 feature_id: 102

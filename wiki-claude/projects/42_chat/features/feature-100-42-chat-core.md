@@ -3,7 +3,7 @@ title: "Feature 100 — 42 Chat Core (MVP)"
 feature_id: 100
 category: feature
 status: implemented
-tags: [42chat, core, backend, websocket, oauth2, api, go, chi]
+tags: ["42-chat", "backend", "chi", "core", "documentation", "go", "security"]
 created: "2026-06-21T00:00:00Z"
 rag_score: 0.5
 updated: "2026-06-21T00:00:00Z"

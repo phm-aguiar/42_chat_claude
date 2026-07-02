@@ -1,7 +1,7 @@
 ---
 title: "Playwright-BDD × Cucumber"
 category: synthesis
-tags: [playwright-bdd, cucumber, bdd, testing, synthesis]
+tags: ["bdd", "cucumber", "knowledge", "playwright-bdd", "test"]
 sources:
   - "references/playwright-bdd/index.md"
   - "references/cucumber/index.md"

@@ -1,7 +1,7 @@
 ---
 title: "Pre-Mortem Analysis"
 category: references
-tags: [thinking, risk, planning]
+tags: ["planning", "risk", "thinking"]
 sources:
   - "wiki/_raw/pre-mortem-analysis.md"
 summary: "Metodologia pre-mortem (Gary Klein) com second-order thinking para antecipar falhas."

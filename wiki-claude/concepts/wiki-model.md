@@ -2,7 +2,7 @@
 base_confidence: 0.5
 title: "Wiki Model — Knowledge Management do Framework"
 category: concepts
-tags: [wiki, obsidian, knowledge-management, arquitetura]
+tags: ["arquitetura", "knowledge-management", "tools", "wiki"]
 aliases: [modelo-wiki, [[skills/wiki-llm-wiki|llm-wiki]]]
 sources: []
 summary: "O framework adota o modelo LLM Wiki (Karpathy) de 3 camadas: raw sources → wiki compilado → schema. Explica por que compilar conhecimento é superior a recuperar, e como o vault Obsidian versionado elimina amnésia cross-sessão."

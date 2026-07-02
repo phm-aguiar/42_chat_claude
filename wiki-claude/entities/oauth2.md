@@ -2,7 +2,7 @@
 base_confidence: 0.5
 lifecycle: draft
 title: "OAuth2 (Autenticação 42)"
-tags: [entity, glossary]
+tags: ["documentation", "entity"]
 aliases: [auth.OAuth2, OAuth 2.0, 42 OAuth, authorization code flow]
 created: 2026-06-21
 rag_score: 0.5

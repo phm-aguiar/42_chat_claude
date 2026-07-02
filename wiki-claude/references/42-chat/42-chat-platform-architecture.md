@@ -1,7 +1,7 @@
 ---
 title: "42 Chat — Platform Architecture"
 category: references
-tags: [42_chat, architecture, backend, frontend, infrastructure]
+tags: ["42-chat", "backend", "design", "frontend", "infrastructure"]
 sources:
   - wiki/_raw/42-chat-research.md
 summary: "Stack tecnológica completa da plataforma de chat P2P para a 42 SP: Go + WebSockets + PostgreSQL no backend, React + Vite + Module Federation no frontend, e infraestrutura Docker + AWS."

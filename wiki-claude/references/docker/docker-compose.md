@@ -2,7 +2,7 @@
 base_confidence: 0.5
 lifecycle: draft
 title: "Docker & Compose no 42 Chat"
-tags: [docker, devops, go]
+tags: ["devops", "docker", "go"]
 created: 2026-06-21
 rag_score: 0.5
 category: references

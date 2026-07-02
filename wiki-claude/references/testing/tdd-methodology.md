@@ -2,7 +2,7 @@
 base_confidence: 0.5
 title: "Metodologia TDD — Test-Driven Development"
 summary: "Referência completa sobre a metodologia TDD: ciclo Red-Green-Refactor-Commit, princípios FIRST, padrão AAA (Arrange-Act-Assert), nomenclatura e organização de testes, e os 8 anti-patterns mais comuns com exemplos práticos em Python/pytest."
-tags: [tdd, testing, pytest, reference]
+tags: ["documentation", "python-testing", "tdd", "test"]
 category: references
 created: "2026-06-13"
 rag_score: 0.4817

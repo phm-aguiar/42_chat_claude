@@ -4,7 +4,7 @@ base_confidence: 0.5
 lifecycle: draft
 title: "jschan — Anonymous Imageboard Engine"
 category: tools
-tags: [jschan, imageboard, forum, mongodb, redis, nginx, nodejs]
+tags: ["forum", "imageboard", "mongodb", "nginx", "nodejs", "redis", "tools"]
 created: "2026-06-20"
 rag_score: 0.5
 author: phm-aguiar

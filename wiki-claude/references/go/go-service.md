@@ -1,7 +1,7 @@
 ---
 title: "Go Service"
 category: references
-tags: [go, implementation, patterns]
+tags: ["go", "implementation", "patterns"]
 sources:
   - "wiki/_raw/go-service/SKILL.md"
 summary: "Go Service: padrão de implementação Go para service."

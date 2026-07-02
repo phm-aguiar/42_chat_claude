@@ -1,7 +1,7 @@
 ---
 title: "Microsoft Graph — Channel Resource"
 summary: "Reference for the MS Graph channel resource: membership types (standard, private, shared), CRUD endpoints, migration, email provisioning, and JSON schema."
-tags: [ms-graph, api-reference, channel]
+tags: ["channel", "documentation", "tools"]
 category: references
 lifecycle: draft
 provenance: ingested-from-raw

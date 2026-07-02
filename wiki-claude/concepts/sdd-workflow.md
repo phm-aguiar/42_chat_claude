@@ -2,7 +2,7 @@
 base_confidence: 0.5
 title: "SDD Workflow — Pipeline Completo"
 category: concepts
-tags: [sdd, workflow, pipeline, tutorial]
+tags: ["methodology", "pipeline", "tutorial", "workflow"]
 aliases: [pipeline, fluxo-sdd]
 sources: []
 summary: "Pipeline completo do Spec-Driven Development: brainstorm → spec → plan → tasks (DAG) → coordenação direta (sessão principal como Lead LATTE) → agentes (Dev/QA). O orquestrador separado foi deprecado em 2026-06-26 — a sessão principal coordena diretamente via ferramenta Agent."

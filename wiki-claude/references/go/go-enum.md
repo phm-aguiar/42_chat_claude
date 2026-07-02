@@ -1,7 +1,7 @@
 ---
 title: "Go Enum"
 category: references
-tags: [go, implementation, patterns]
+tags: ["go", "implementation", "patterns"]
 sources:
   - "wiki/_raw/go-enum/SKILL.md"
 summary: "Go Enum: padrão de implementação Go para enum."

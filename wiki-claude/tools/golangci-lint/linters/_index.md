@@ -3,7 +3,7 @@ summary: "Knowledge page - summary pending"
 base_confidence: 0.5
 lifecycle: draft
 title: "Linters — Índice"
-tags: [golangci-lint, linters, index]
+tags: ["golangci-lint", "index", "linting"]
 created: 2026-06-21
 rag_score: 0.5
 ---

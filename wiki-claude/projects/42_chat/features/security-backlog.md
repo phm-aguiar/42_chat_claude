@@ -1,7 +1,7 @@
 ---
 title: "Security Backlog — 42 Chat"
 category: feature
-tags: [security, nginx, hardening, backlog, owasp, tls]
+tags: ["backlog", "hardening", "nginx", "owasp", "security", "tls"]
 sources:
   - specs/features/SECURITY_BACKLOG.md
 summary: "Backlog de hardening do nginx e da aplicação 42 Chat: SEC-001 a SEC-007 (rate limiting, TLS, WAF, JWT gateway, fail2ban, scanning CI, CSP)."

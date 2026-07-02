@@ -1,7 +1,7 @@
 ---
 title: "Brand Synthesis"
 category: references
-tags: [brand, synthesis, strategy]
+tags: ["brand", "knowledge", "strategy"]
 sources:
   - "wiki/_raw/90_SYNTHESIS.md"
 summary: "Brand Synthesis: framework e metodologia de referência."

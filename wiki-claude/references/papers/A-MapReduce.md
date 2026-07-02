@@ -3,7 +3,7 @@ summary: "Knowledge page - summary pending"
 base_confidence: 0.5
 lifecycle: draft
 title: "A-MapReduce — Executing Wide Search via Agentic MapReduce"
-tags: [paper, multi-agent, mapreduce, memory, retrieval, cross-task, sdd]
+tags: ["cross-task", "mapreduce", "memory", "methodology", "multi-agent", "paper", "retrieval"]
 status: analyzed
 created: 2026-06-19
 rag_score: 0.5081

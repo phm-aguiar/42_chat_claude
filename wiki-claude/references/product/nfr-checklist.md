@@ -1,7 +1,7 @@
 ---
 title: "NFR Checklist"
 category: references
-tags: [architecture, nfr, checklist]
+tags: ["checklist", "design", "nfr"]
 sources:
   - "wiki/_raw/nfr-checklist.md"
 summary: "Checklist de Non-Functional Requirements: performance, segurança, escalabilidade, observabilidade."

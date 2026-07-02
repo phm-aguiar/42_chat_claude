@@ -1,7 +1,7 @@
 ---
 title: "Microsoft Graph — conversationMember Resource"
 summary: "Reference for the MS Graph conversationMember resource: add/remove/list/get members in chats and channels, role types (owner/guest), aadUserConversationMember type, and sharedWithChannelTeamInfo."
-tags: [ms-graph, api-reference, members]
+tags: ["documentation", "members", "tools"]
 category: references
 lifecycle: draft
 provenance: ingested-from-raw

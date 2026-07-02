@@ -1,7 +1,7 @@
 ---
 title: "Go Modular Architecture"
 category: references
-tags: [go, architecture, patterns]
+tags: ["design", "go", "patterns"]
 sources:
   - "wiki/_raw/go-modular-architecture.md"
 summary: "Go Modular Architecture: padrão de arquitetura modular para aplicações Go com separação de camadas."

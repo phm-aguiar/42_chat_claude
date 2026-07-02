@@ -1,7 +1,7 @@
 ---
 title: "WebSocket × Chi"
 category: synthesis
-tags: [websocket, chi, networking, real-time, synthesis]
+tags: ["backend", "chi", "knowledge", "networking"]
 sources:
   - "entities/websocket.md"
   - "entities/chi.md"

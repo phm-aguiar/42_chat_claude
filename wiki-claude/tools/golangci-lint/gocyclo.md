@@ -1,7 +1,7 @@
 ---
 title: "gocyclo — Cyclomatic Complexity Calculator"
 category: tools
-tags: [go, linter, golangci-lint, complexity, gocyclo]
+tags: ["complexity", "go", "golangci-lint", "linting"]
 sources:
   - "wiki/_raw/fzippgocyclo Calculate cyclomatic complexities of functions in Go source code..md"
 summary: "Gocyclo calculates cyclomatic complexities of functions in Go source code. Identifies code needing refactoring."

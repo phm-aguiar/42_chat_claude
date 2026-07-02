@@ -1,7 +1,7 @@
 ---
 title: "Microsoft Graph — chatMessage Resource"
 summary: "Reference for the MS Graph chatMessage resource: properties (body, from, reactions, mentions, messageType), endpoints for channels and chats, soft delete, delta API, and JSON schema."
-tags: [ms-graph, api-reference, chat-message]
+tags: ["42-chat", "documentation", "tools"]
 category: references
 lifecycle: draft
 provenance: ingested-from-raw

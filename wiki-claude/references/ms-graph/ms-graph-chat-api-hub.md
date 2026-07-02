@@ -1,7 +1,7 @@
 ---
 title: "Microsoft Graph — Chat & Channel API Reference Hub"
 summary: "Central index for Microsoft Graph v1.0 Chat/Channel API resources consolidated from raw docs. Covers chats, channels, messages, members, apps/tabs, and pinned messages."
-tags: [ms-graph, api-reference, hub, teams]
+tags: ["documentation", "hub", "teams", "tools"]
 category: references
 lifecycle: draft
 provenance: ingested-from-raw

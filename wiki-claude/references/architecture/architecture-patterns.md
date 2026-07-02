@@ -1,7 +1,7 @@
 ---
 title: "Architecture Patterns"
 category: references
-tags: [architecture, patterns, system-design]
+tags: ["design", "patterns", "system-design"]
 sources:
   - "wiki/_raw/architecture-patterns.md"
 summary: "Catálogo comparativo de padrões de arquitetura: monolith, microservices, event-driven, CQRS."

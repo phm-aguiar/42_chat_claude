@@ -1,7 +1,7 @@
 ---
 title: "Go Context"
 category: references
-tags: [go, style-guide, coding-standards]
+tags: ["go", "standards"]
 sources:
   - "wiki/_raw/go-context/SKILL.md"
 summary: "Go Context: boas práticas e regras de estilo Go destiladas de Go Wiki CodeReviewComments."

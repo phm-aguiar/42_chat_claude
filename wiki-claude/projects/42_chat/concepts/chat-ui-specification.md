@@ -1,7 +1,7 @@
 ---
 title: "Especificação de UI do Chat — Estilo MSN Messenger"
 category: concepts
-tags: [ui, chat, design, msn-messenger, frontend, specification]
+tags: ["42-chat", "design", "frontend", "msn-messenger", "specification"]
 sources:
   - "_raw/funcionalidade-chat.md"
 summary: "Especificação detalhada da interface de chat inspirada no MSN Messenger (versões 7.5 e 8.5), dividida em Janela Principal (lista de contatos) e Janela de Conversa, com comportamentos interativos para QA."

@@ -1,7 +1,7 @@
 ---
 title: "Go Integration Tests"
 category: references
-tags: [go, implementation, patterns]
+tags: ["go", "implementation", "patterns"]
 sources:
   - "wiki/_raw/go-integration-tests/SKILL.md"
 summary: "Go Integration Tests: padrão de implementação Go para integration tests."

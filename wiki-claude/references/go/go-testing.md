@@ -1,7 +1,7 @@
 ---
 title: "Go Testing"
 category: references
-tags: [go, style-guide, coding-standards]
+tags: ["go", "standards"]
 sources:
   - "wiki/_raw/go-testing/SKILL.md"
 summary: "Go Testing: boas práticas e regras de estilo Go destiladas de Google Style Guide, Uber Style Guide."

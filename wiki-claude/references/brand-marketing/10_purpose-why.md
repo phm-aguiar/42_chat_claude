@@ -1,7 +1,7 @@
 ---
 title: "Brand Purpose"
 category: references
-tags: [brand, strategy, purpose]
+tags: ["brand", "purpose", "strategy"]
 sources:
   - "wiki/_raw/10_purpose-why.md"
 summary: "Brand Purpose: framework e metodologia de referência."

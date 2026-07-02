@@ -1,7 +1,7 @@
 ---
 title: "Sessão 2026-06-14 — Feature 007 QA + Skills + Feature 100 42 Chat"
 category: journal
-tags: [sessao, journal, feature-007, feature-100, skills, qa]
+tags: ["feature-007", "feature-100", "journal", "qa", "sessao", "skills"]
 sources:
   - conversation:2026-06-14
 created: "2026-06-14"

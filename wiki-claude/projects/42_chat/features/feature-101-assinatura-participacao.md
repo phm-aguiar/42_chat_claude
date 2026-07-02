@@ -1,7 +1,7 @@
 ---
 title: "Feature 101 — Assinatura de Participação"
 category: feature
-tags: [sdd, 42chat, feature, backend, frontend, websocket]
+tags: ["42-chat", "backend", "feature", "frontend", "methodology"]
 sources:
   - specs/features/101-assinatura-participacao/spec.md
   - specs/features/101-assinatura-participacao/plan.md

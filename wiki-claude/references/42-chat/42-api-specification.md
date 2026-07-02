@@ -1,7 +1,7 @@
 ---
 title: 42 Intra API v2 — Specification
 category: references
-tags: [42, api, oauth2, reference]
+tags: ["42-chat", "documentation", "security"]
 sources: [_raw/42_api_raw]
 summary: "Guia de uso da API Intra 42 v2: OAuth2, escopos, paginação, filtros, ordenação, rate limiting (2 req/s, 1200 req/h) e token info."
 provenance:

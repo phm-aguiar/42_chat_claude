@@ -1,7 +1,7 @@
 ---
 title: "Go Gorm Model"
 category: references
-tags: [go, implementation, patterns]
+tags: ["go", "implementation", "patterns"]
 sources:
   - "wiki/_raw/go-gorm-model/SKILL.md"
 summary: "Go Gorm Model: padrão de implementação Go para gorm model."

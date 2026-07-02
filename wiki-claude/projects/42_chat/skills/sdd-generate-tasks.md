@@ -2,7 +2,7 @@
 base_confidence: 0.5
 title: "sdd-generate-tasks"
 category: projects
-tags: [sdd, skill, tasks, DAG, execution]
+tags: ["DAG", "execution", "methodology", "skills", "tasks"]
 sources: []
 summary: Skill SDD v2.0.0 que gera tasks.md com DAG (dependências, paralelismo, isolamento de arquivos)
 lifecycle: draft

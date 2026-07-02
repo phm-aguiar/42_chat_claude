@@ -4,7 +4,7 @@ base_confidence: 0.5
 lifecycle: draft
 title: "jschan — Guia de Instalação"
 category: tools
-tags: [jschan, installation, mongodb, redis, nginx, nodejs, pm2]
+tags: ["installation", "mongodb", "nginx", "nodejs", "pm2", "redis", "tools"]
 created: "2026-06-20"
 rag_score: 0.5
 author: phm-aguiar

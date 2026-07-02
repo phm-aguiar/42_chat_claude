@@ -1,7 +1,7 @@
 ---
 title: "Effective Go"
 category: references
-tags: [go, effective-go, style-guide, canonical, reference]
+tags: ["canonical", "documentation", "go", "go-knowledge", "standards"]
 sources:
   - "wiki/_raw/Effective Go - The Go Programming Language.md"
 summary: "Effective Go — o guia canônico da linguagem Go, cobrindo formatação, nomes, estruturas de controle, funções, dados, métodos, interfaces, concorrência e erros."

@@ -1,7 +1,7 @@
 ---
 title: "Go Websocket Hub"
 category: references
-tags: [go, websocket, real-time, patterns]
+tags: ["backend", "go", "patterns"]
 sources:
   - "wiki/_raw/go-websocket-hub/SKILL.md"
 summary: "Go Websocket Hub: padrões e boas práticas para WebSocket em Go com gorilla/websocket. Fontes: gorilla/websocket examples, gorilla/websocket chat example, websocket.org Go guide."

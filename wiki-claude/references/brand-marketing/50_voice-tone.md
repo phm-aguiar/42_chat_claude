@@ -1,7 +1,7 @@
 ---
 title: "Brand Voice & Tone"
 category: references
-tags: [brand, voice, tone]
+tags: ["brand", "tone", "voice"]
 sources:
   - "wiki/_raw/50_voice-tone.md"
 summary: "Brand Voice & Tone: framework e metodologia de referência."

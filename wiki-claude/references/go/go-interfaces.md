@@ -1,7 +1,7 @@
 ---
 title: "Go Interfaces"
 category: references
-tags: [go, style-guide, coding-standards]
+tags: ["go", "standards"]
 sources:
   - "wiki/_raw/go-interfaces/SKILL.md"
 summary: "Go Interfaces: boas práticas e regras de estilo Go destiladas de Effective Go, Google Style Guide, Uber Style Guide."

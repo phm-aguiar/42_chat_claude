@@ -1,7 +1,7 @@
 ---
 lifecycle: draft
 title: "Agentic AI in Production — Tool-Calling, Planning, Recovery"
-tags: [paper, agentic-ai, tool-calling, planning, error-recovery, observability, production-patterns]
+tags: ["agentic-ai", "error-recovery", "observability", "paper", "planning", "production-patterns", "tool-calling"]
 status: analyzed
 created: 2026-06-21
 rag_score: 0.5

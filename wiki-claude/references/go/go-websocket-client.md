@@ -1,7 +1,7 @@
 ---
 title: "Go Websocket Client"
 category: references
-tags: [go, websocket, real-time, patterns]
+tags: ["backend", "go", "patterns"]
 sources:
   - "wiki/_raw/go-websocket-client/SKILL.md"
 summary: "Go Websocket Client: padrões e boas práticas para WebSocket em Go com gorilla/websocket. Fontes: gorilla/websocket docs, gorilla/websocket examples."

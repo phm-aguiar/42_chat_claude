@@ -2,7 +2,7 @@
 base_confidence: 0.5
 title: "Wiki Frontmatter Template"
 category: meta
-tags: [wiki, template, frontmatter, standard]
+tags: ["frontmatter", "standard", "templates", "wiki"]
 created: "2026-06-21"
 rag_score: 0.5
 summary: "Template canônico de frontmatter para todas as páginas do vault. Define 3 tiers de campos: obrigatórios (todas), por diretório, e opcionais."
@@ -21,7 +21,7 @@ base_confidence: 0.5
 ---
 base_confidence: 0.5
 title: "Título da Página"
-tags: [tag1, tag2, tag3]
+tags: ["tag1", "tag2", "tag3"]
 created: "YYYY-MM-DD"
 ---
 base_confidence: 0.5
@@ -47,7 +47,7 @@ Exemplo:
 base_confidence: 0.5
 title: "Spec-Driven Development (SDD)"
 category: concepts
-tags: [sdd, metodologia, pipeline]
+tags: ["methodology", "metodologia", "pipeline"]
 created: "2026-06-13"
 ---
 base_confidence: 0.5
@@ -68,7 +68,7 @@ Exemplo:
 base_confidence: 0.5
 title: "Go Code Review Rules"
 category: go
-tags: [go, style-guide, coding-standards]
+tags: ["go", "standards"]
 created: "2026-06-15"
 updated: "2026-06-20"
 summary: "Regras de code review para Go: naming, error handling, concorrência, interfaces."
@@ -90,7 +90,7 @@ Exemplo:
 base_confidence: 0.5
 title: "wiki-lint"
 category: skill
-tags: [wiki, skill, validacao, auditoria]
+tags: ["auditoria", "skills", "validacao", "wiki"]
 created: "2026-06-14"
 summary: "Audita integridade do vault: wikilinks quebrados, estrutura de diretórios, frontmatter inválido."
 ---
@@ -109,7 +109,7 @@ Exemplo:
 base_confidence: 0.5
 title: "Digest 2026-06-21"
 category: journal
-tags: [digest, weekly]
+tags: ["digest", "weekly"]
 created: "2026-06-21"
 ---
 base_confidence: 0.5

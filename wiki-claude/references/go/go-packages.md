@@ -1,7 +1,7 @@
 ---
 title: "Go Packages"
 category: references
-tags: [go, style-guide, coding-standards]
+tags: ["go", "standards"]
 sources:
   - "wiki/_raw/go-packages/SKILL.md"
 summary: "Go Packages: boas práticas e regras de estilo Go destiladas de Google Style Guide, Uber Style Guide, Go Wiki CodeReviewComments."

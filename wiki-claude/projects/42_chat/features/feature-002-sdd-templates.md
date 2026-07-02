@@ -1,7 +1,7 @@
 ---
 title: "002: Templates Canônicos SDD"
 category: projects
-tags: [sdd, templates, spec, plan, tasks]
+tags: ["methodology", "plan", "spec", "tasks", "templates"]
 summary: "Define os 4 templates canônicos SDD: spec.md, plan.md, tasks.md, AGENTS.md + llms.txt."
 created: "2026-06-13"
 rag_score: 0.4833

@@ -1,7 +1,7 @@
 ---
 title: "SDD × Go"
 category: synthesis
-tags: [sdd, go, methodology, synthesis]
+tags: ["go", "knowledge", "methodology"]
 sources:
   - "references/[[go-[[style-guide]]]].md"
   - "concepts/sdd.md"

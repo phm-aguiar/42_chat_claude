@@ -1,7 +1,7 @@
 ---
 title: "misspell — Spell Checker for Source Code"
 category: tools
-tags: [go, linter, golangci-lint, misspell, spelling]
+tags: ["go", "golangci-lint", "linting", "misspell", "spelling"]
 sources:
   - "wiki/_raw/client9misspell Correct commonly misspelled English words in source files.md"
 summary: "Correct commonly misspelled English words in source files — fast, parallel spell checker for Go, text, and markdown."

@@ -2,7 +2,7 @@
 base_confidence: 0.5
 lifecycle: draft
 title: "PostgreSQL no 42 Chat"
-tags: [postgresql, go, database]
+tags: ["database", "go", "postgresql"]
 created: 2026-06-21
 rag_score: 0.5
 category: references

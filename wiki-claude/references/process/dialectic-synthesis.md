@@ -1,7 +1,7 @@
 ---
 title: "Dialectic Synthesis"
 category: references
-tags: [thinking, dialectic, reasoning]
+tags: ["dialectic", "methodology", "thinking"]
 sources:
   - "wiki/_raw/dialectic-synthesis.md"
 summary: "Síntese dialética hegeliana com steel manning para construir contra-argumentos sólidos."

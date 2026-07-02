@@ -1,7 +1,7 @@
 ---
 title: "Cognitive Bias Inventory"
 category: references
-tags: [thinking, bias, reasoning]
+tags: ["bias", "methodology", "thinking"]
 sources:
   - "wiki/_raw/cognitive-bias-inventory.md"
 summary: "Inventário estruturado de vieses cognitivos para detecção durante reasoning e challenge passes."

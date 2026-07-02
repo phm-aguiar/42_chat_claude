@@ -1,7 +1,7 @@
 ---
 title: "Documentation Style Guide"
 category: references
-tags: [documentation, style-guide, writing]
+tags: ["documentation", "standards", "writing"]
 sources:
   - "wiki/_raw/style-guide.md"
 summary: "Documentation Style Guide: framework e metodologia de referência."

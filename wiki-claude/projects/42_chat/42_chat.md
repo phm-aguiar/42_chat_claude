@@ -1,7 +1,7 @@
 ---
 title: "42_chat — Framework SDD Autônomo"
 category: project
-tags: [sdd, framework, agents, ai]
+tags: ["agents", "ai", "framework", "methodology"]
 sources:
   - specs/BACKLOG.md
 summary: "Framework SDD autônomo com agentes IA e humanos in loop. Pipeline: brainstorm → spec → plan → tasks (DAG) → sessão principal coordena → subagentes (Dev/QA). Aplicação 42_chat é o smoke-test real."

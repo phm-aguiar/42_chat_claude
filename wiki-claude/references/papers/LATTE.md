@@ -3,7 +3,7 @@ summary: "Knowledge page - summary pending"
 base_confidence: 0.5
 lifecycle: draft
 title: "LATTE — Language Agent Teams for Task Evolution"
-tags: [paper, multi-agent, coordination, task-graph, heartbeat, sdd]
+tags: ["coordination", "heartbeat", "methodology", "multi-agent", "paper", "task-graph"]
 status: implemented
 created: 2026-06-19
 rag_score: 0.5161

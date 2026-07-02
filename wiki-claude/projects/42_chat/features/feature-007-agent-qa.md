@@ -2,7 +2,7 @@
 base_confidence: 0.5
 title: "007: Agent QA"
 category: projects
-tags: [sdd, agent, qa, qualidade, teste]
+tags: ["agent", "methodology", "qa", "qualidade", "test"]
 summary: "Guardiao da qualidade do framework SDD. Spawnado pelo orchestrator como subagente leaf. Ciclo: le spec, escreve Gherkin, executa testes, lint, cobertura, reporta DONE/REJECTED/BLOCKED."
 created: "2026-06-13"
 rag_score: 0.4843

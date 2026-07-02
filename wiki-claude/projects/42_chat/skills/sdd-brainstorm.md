@@ -2,7 +2,7 @@
 base_confidence: 0.5
 title: "sdd-brainstorm"
 category: projects
-tags: [sdd, skill, brainstorm, spec]
+tags: ["brainstorm", "methodology", "skills", "spec"]
 sources: []
 summary: Skill SDD que conduz entrevista interativa via AskUserQuestion para gerar spec.md
 lifecycle: draft

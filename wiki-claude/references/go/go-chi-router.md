@@ -1,7 +1,7 @@
 ---
 title: "Go Chi Router"
 category: references
-tags: [go, implementation, patterns]
+tags: ["go", "implementation", "patterns"]
 sources:
   - "wiki/_raw/go-chi-router/SKILL.md"
 summary: "Go Chi Router: padrão de implementação Go para chi router."

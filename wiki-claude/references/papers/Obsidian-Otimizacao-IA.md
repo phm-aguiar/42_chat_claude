@@ -3,7 +3,7 @@ summary: "Knowledge page - summary pending"
 base_confidence: 0.5
 lifecycle: draft
 title: "Otimização de Obsidian para IA"
-tags: [paper, obsidian, rag, chunking, embeddings, hybrid-search, frontmatter, mcp]
+tags: ["chunking", "embeddings", "frontmatter", "hybrid-search", "mcp", "paper", "rag", "tools"]
 status: implemented
 created: 2026-06-19
 rag_score: 0.5

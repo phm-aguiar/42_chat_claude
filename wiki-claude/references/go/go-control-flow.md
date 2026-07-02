@@ -1,7 +1,7 @@
 ---
 title: "Go Control Flow"
 category: references
-tags: [go, style-guide, coding-standards]
+tags: ["go", "standards"]
 sources:
   - "wiki/_raw/go-control-flow/SKILL.md"
 summary: "Go Control Flow: boas práticas e regras de estilo Go destiladas de Effective Go, Google Style Guide."

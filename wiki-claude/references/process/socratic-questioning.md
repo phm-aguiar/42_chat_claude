@@ -1,7 +1,7 @@
 ---
 title: "Socratic Questioning"
 category: references
-tags: [thinking, socratic, reasoning]
+tags: ["methodology", "socratic", "thinking"]
 sources:
   - "wiki/_raw/socratic-questioning.md"
 summary: "Framework de questionamento socrático para expor premissas e aprofundar entendimento."

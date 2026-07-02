@@ -1,7 +1,7 @@
 ---
 title: "PRD Template"
 category: references
-tags: [template, prd, product]
+tags: ["prd", "product", "templates"]
 sources:
   - "wiki/_raw/prd-template.md"
 summary: "Template de Product Requirements Document: overview, objetivos, requisitos, milestones."

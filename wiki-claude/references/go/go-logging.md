@@ -1,7 +1,7 @@
 ---
 title: "Go Logging"
 category: references
-tags: [go, style-guide, coding-standards]
+tags: ["go", "standards"]
 sources:
   - "wiki/_raw/go-logging/SKILL.md"
 summary: "Go Logging: boas práticas e regras de estilo Go destiladas de Google Style Guide, Uber Style Guide."

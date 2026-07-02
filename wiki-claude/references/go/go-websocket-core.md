@@ -1,7 +1,7 @@
 ---
 title: "Go WebSocket Core"
 category: references
-tags: [go, websocket, real-time, patterns]
+tags: ["backend", "go", "patterns"]
 sources:
   - "wiki/_raw/go-websocket-core/SKILL.md"
 summary: "Go WebSocket Core: padrões e boas práticas para WebSocket em Go com gorilla/websocket. Fontes: gorilla/websocket official docs, websocket.org Go guide, gorilla/websocket GitHub."

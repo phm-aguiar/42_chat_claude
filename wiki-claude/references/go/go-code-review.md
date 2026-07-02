@@ -1,7 +1,7 @@
 ---
 title: "Go Code Review"
 category: references
-tags: [go, style-guide, coding-standards]
+tags: ["go", "standards"]
 sources:
   - "wiki/_raw/go-code-review/SKILL.md"
 summary: "Go Code Review: boas práticas e regras de estilo Go destiladas de Go Wiki CodeReviewComments, Uber Style Guide."

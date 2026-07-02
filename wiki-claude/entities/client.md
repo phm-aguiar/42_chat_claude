@@ -2,7 +2,7 @@
 base_confidence: 0.5
 lifecycle: draft
 title: "Client (WebSocket Client)"
-tags: [entity, glossary]
+tags: ["documentation", "entity"]
 aliases: [WebSocket Client, ws.Client, readPump, writePump]
 created: 2026-06-21
 rag_score: 0.5

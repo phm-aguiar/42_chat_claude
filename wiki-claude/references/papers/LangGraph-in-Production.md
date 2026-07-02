@@ -3,7 +3,7 @@ summary: "Knowledge page - summary pending"
 base_confidence: 0.5
 lifecycle: draft
 title: "LangGraph in Production — StateGraph, Checkpointing e Human-in-the-Loop"
-tags: [paper, langgraph, stateful-agents, checkpointing, human-in-the-loop, production-patterns]
+tags: ["checkpointing", "human-in-the-loop", "langgraph", "paper", "production-patterns", "stateful-agents"]
 status: analyzed
 created: 2026-06-19
 rag_score: 0.5

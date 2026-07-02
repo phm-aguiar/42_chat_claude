@@ -1,7 +1,7 @@
 ---
 title: "Go Style Guide Reference"
 category: references
-tags: [go, style-guide, coding-standards, reference]
+tags: ["documentation", "go", "standards"]
 sources:
   - "wiki/_raw/go-style-core/SKILL.md"
   - "wiki/_raw/go-naming/SKILL.md"

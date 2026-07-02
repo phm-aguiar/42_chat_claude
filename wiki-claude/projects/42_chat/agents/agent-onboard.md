@@ -1,7 +1,7 @@
 ---
 title: "onboard — Agente de Inicialização SDD"
 category: projects
-tags: [sdd, agent, onboard, init]
+tags: ["agent", "init", "methodology", "onboard"]
 summary: "Agente que inicializa projetos no framework SDD: estrutura, stack, brainstorm."
 created: "2026-06-13"
 rag_score: 0.4891

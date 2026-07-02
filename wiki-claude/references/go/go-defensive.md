@@ -1,7 +1,7 @@
 ---
 title: "Go Defensive"
 category: references
-tags: [go, style-guide, coding-standards]
+tags: ["go", "standards"]
 sources:
   - "wiki/_raw/go-defensive/SKILL.md"
 summary: "Go Defensive: boas práticas e regras de estilo Go destiladas de Effective Go, Uber Style Guide, Go Wiki CodeReviewComments."

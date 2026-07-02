@@ -1,7 +1,7 @@
 ---
 title: "Go Generics"
 category: references
-tags: [go, style-guide, coding-standards]
+tags: ["go", "standards"]
 sources:
   - "wiki/_raw/go-generics/SKILL.md"
 summary: "Go Generics: boas práticas e regras de estilo Go destiladas de Google Style Guide."

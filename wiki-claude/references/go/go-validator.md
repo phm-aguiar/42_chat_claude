@@ -1,7 +1,7 @@
 ---
 title: "Go Validator"
 category: references
-tags: [go, implementation, patterns]
+tags: ["go", "implementation", "patterns"]
 sources:
   - "wiki/_raw/go-validator/SKILL.md"
 summary: "Go Validator: padrão de implementação Go para validator."

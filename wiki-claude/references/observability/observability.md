@@ -3,7 +3,7 @@ summary: "Knowledge page - summary pending"
 base_confidence: 0.5
 lifecycle: draft
 title: Observabilidade em Produção — Go + Chi + Datadog
-tags: [observability, monitoring, devops, go, datadog, health-check, logging, metrics]
+tags: ["datadog", "devops", "go", "health-check", "logging", "metrics", "monitoring", "observability"]
 created: 2026-06-21
 rag_score: 0.5
 ---

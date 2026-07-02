@@ -1,7 +1,7 @@
 ---
 title: "Microsoft Graph — Chat Resource"
 summary: "Reference for the MS Graph chat resource: types (oneOnOne, group, meeting), CRUD endpoints, permissions, and JSON schema."
-tags: [ms-graph, api-reference, chat]
+tags: ["42-chat", "documentation", "tools"]
 category: references
 lifecycle: draft
 provenance: ingested-from-raw

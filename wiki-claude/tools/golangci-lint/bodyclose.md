@@ -1,7 +1,7 @@
 ---
 title: "bodyclose — HTTP Response Body Checker"
 category: tools
-tags: [go, linter, golangci-lint, http, bodyclose]
+tags: ["bodyclose", "go", "golangci-lint", "http", "linting"]
 sources:
   - "wiki/_raw/timakinbodyclose Analyzer checks whether HTTP response body is closed and a re-use of TCP connection is not blocked..md"
 summary: "bodyclose — static analysis tool which checks whether res.Body is correctly closed in Go HTTP clients."

@@ -2,7 +2,7 @@
 base_confidence: 0.5
 title: "006: Agent Dev"
 category: projects
-tags: [sdd, agent, dev, implementacao]
+tags: ["agent", "dev", "implementacao", "methodology"]
 summary: "Persona implementadora do framework SDD. Braço executor spawnado pelo orchestrator como subagente leaf. Skills plugáveis por stack."
 created: "2026-06-13"
 rag_score: 0.4862

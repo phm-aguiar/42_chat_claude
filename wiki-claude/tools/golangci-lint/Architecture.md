@@ -9,7 +9,7 @@ published:
 created: 2026-06-21
 rag_score: 0.5
 description: "Fast Go linters runner golangci-lint."
-tags: [golangci-lint, architecture]
+tags: ["design", "golangci-lint"]
 ---
 summary: "Knowledge page - summary pending"
 base_confidence: 0.5

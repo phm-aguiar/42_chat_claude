@@ -9,7 +9,7 @@ published:
 created: 2026-06-21
 rag_score: 0.5
 description: "Package goleak is a Goroutine leak detector."
-tags: [golangci-lint, testing, goroutines]
+tags: ["go", "golangci-lint", "test"]
 ---
 summary: "Knowledge page - summary pending"
 base_confidence: 0.5

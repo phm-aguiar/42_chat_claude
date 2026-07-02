@@ -1,7 +1,7 @@
 ---
 lifecycle: draft
 title: "Building AI Agents — Architecture, Trade-offs, and What We've Learned"
-tags: [paper, ai-agents, architecture, langchain, tool-design, model-selection, evaluation, production-patterns]
+tags: ["ai-agents", "design", "evaluation", "langchain", "model-selection", "paper", "production-patterns", "tool-design"]
 status: analyzed
 created: 2026-06-21
 rag_score: 0.5

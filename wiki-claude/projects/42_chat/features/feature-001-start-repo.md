@@ -1,7 +1,7 @@
 ---
 title: "001: Estrutura do Repositório"
 category: projects
-tags: [sdd, infra, github-actions, ci]
+tags: ["ci", "github-actions", "infra", "methodology"]
 summary: "Inicialização do repo 42_chat: estrutura SDD, CI/CD, templates base."
 created: "2026-06-13"
 rag_score: 0.4833

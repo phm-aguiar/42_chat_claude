@@ -1,7 +1,7 @@
 ---
 lifecycle: draft
 title: "Multi-Agent AI Systems in Production (2026)"
-tags: [paper, multi-agent, orchestration, failure-propagation, budget, timeout, production-patterns]
+tags: ["budget", "failure-propagation", "multi-agent", "orchestration", "paper", "production-patterns", "timeout"]
 status: analyzed
 created: 2026-06-20
 rag_score: 0.5

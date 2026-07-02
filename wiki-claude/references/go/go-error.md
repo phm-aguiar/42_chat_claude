@@ -1,7 +1,7 @@
 ---
 title: "Go Error"
 category: references
-tags: [go, implementation, patterns]
+tags: ["go", "implementation", "patterns"]
 sources:
   - "wiki/_raw/go-error/SKILL.md"
 summary: "Go Error: padrão de implementação Go para error."

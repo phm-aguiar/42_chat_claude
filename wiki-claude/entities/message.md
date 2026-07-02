@@ -2,7 +2,7 @@
 base_confidence: 0.5
 lifecycle: draft
 title: "Message (Modelo de Mensagem)"
-tags: [entity, glossary]
+tags: ["documentation", "entity"]
 aliases: [model.Message, WSMessage, mensagem, chat message]
 created: 2026-06-21
 rag_score: 0.5

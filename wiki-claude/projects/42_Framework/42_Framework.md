@@ -2,7 +2,7 @@
 base_confidence: 0.5
 title: "42 Framework"
 category: project
-tags: [meta-framework, sdd, wiki, agent-orchestration]
+tags: ["agent-orchestration", "meta-framework", "methodology", "wiki"]
 source_path: /home/zeenyt__/Projetos/42_Framework
 summary: "Meta-framework SDD com pipeline de especificação, wiki como memória semântica e orquestração multi-agente baseada em LATTE coordination graphs."
 lifecycle: draft

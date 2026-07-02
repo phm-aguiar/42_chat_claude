@@ -1,7 +1,7 @@
 ---
 title: 42 Intra API v2 — Endpoints Reference
 category: references
-tags: [42, api, endpoints, reference]
+tags: ["42-chat", "documentation", "endpoints"]
 sources: [_raw/42_api_docs.md]
 summary: "Catálogo de endpoints da API Intra 42 v2: 96 recursos, 739 endpoints. Organizado por relevância para o 42 Chat com indicadores de acesso (público/restrito)."
 provenance:

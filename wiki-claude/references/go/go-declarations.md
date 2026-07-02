@@ -1,7 +1,7 @@
 ---
 title: "Go Declarations"
 category: references
-tags: [go, style-guide, coding-standards]
+tags: ["go", "standards"]
 sources:
   - "wiki/_raw/go-declarations/SKILL.md"
 summary: "Go Declarations: boas práticas e regras de estilo Go destiladas de Google Style Guide, Uber Style Guide."

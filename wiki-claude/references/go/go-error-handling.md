@@ -1,7 +1,7 @@
 ---
 title: "Go Error Handling"
 category: references
-tags: [go, style-guide, coding-standards]
+tags: ["go", "standards"]
 sources:
   - "wiki/_raw/go-error-handling/SKILL.md"
 summary: "Go Error Handling: boas práticas e regras de estilo Go destiladas de Google Style Guide, Uber Style Guide."

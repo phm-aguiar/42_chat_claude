@@ -9,7 +9,7 @@ published:
 created: 2026-06-21
 rag_score: 0.5
 description: "The Uber Go Style Guide. Contribute to uber-go/guide development by creating an account on GitHub."
-tags: [golangci-lint, uber, configuration]
+tags: ["configuration", "golangci-lint", "uber"]
 ---
 summary: "Knowledge page - summary pending"
 base_confidence: 0.5

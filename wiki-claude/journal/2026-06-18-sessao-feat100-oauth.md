@@ -1,7 +1,7 @@
 ---
 title: "Sessão 18/jun — Feature 100 execução, OAuth2 42, credenciais"
 category: journal
-tags: [sessao, journal, feature-100, oauth2, debug, constitution]
+tags: ["constitution", "debug", "feature-100", "journal", "security", "sessao"]
 sources:
   - "conversation:2026-06-18"
 summary: "Execução da feature 100 (42 Chat MVP) com agent-orchestrator fase a fase, debug do fluxo OAuth2 42 (redirect_uri, StrictMode, shell env), regra anti-hardcoded-credentials no constitution, .env.example limpo."

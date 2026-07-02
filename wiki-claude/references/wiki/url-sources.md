@@ -1,6 +1,6 @@
 ---
 title: "Url Sources"
-tags: [wiki, reference]
+tags: ["documentation", "wiki"]
 created: 2026-06-20
 rag_score: 0.4827
 ---
@@ -100,7 +100,7 @@ The project overview stub (`<project-name>.md`) frontmatter:
 ---
 title: "<Project Name>"
 category: project
-tags: []
+tags: [""]
 sources: []
 created: "<ISO-8601 timestamp>"
 updated: "<ISO-8601 timestamp>"
@@ -143,7 +143,7 @@ The frontmatter differs slightly between modes:
 title: "<page title>"
 category: references
 project: "<project-name>"
-tags: [<2-4 domain tags from taxonomy>]
+tags: ["<2-4 domain tags from taxonomy>"]
 sources:
   - "<URL>"
 source_url: "<URL>"
@@ -166,7 +166,7 @@ lifecycle_changed: "<ISO date today>"
 ---
 title: "<page title>"
 category: misc
-tags: [<2-4 domain tags from taxonomy>]
+tags: ["<2-4 domain tags from taxonomy>"]
 sources:
   - "<URL>"
 source_url: "<URL>"

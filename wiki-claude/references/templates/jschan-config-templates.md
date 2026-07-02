@@ -4,7 +4,7 @@ base_confidence: 0.5
 lifecycle: draft
 title: "jschan Configuration Templates"
 category: references
-tags: [jschan, config, secrets, template, mongodb, redis]
+tags: ["config", "mongodb", "redis", "secrets", "templates", "tools"]
 created: "2026-06-20"
 rag_score: 0.5
 author: phm-aguiar

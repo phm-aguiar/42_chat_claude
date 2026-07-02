@@ -1,7 +1,7 @@
 ---
 title: "Go Tooling Ecosystem"
 category: synthesis
-tags: [go, golangci-lint, go-style, [[effective-go]], code-review, synthesis]
+tags: ["[[effective-go", "go", "golangci-lint"]], code-review, synthesis]
 sources:
   - "tools/golangci-lint/index.md"
   - "references/go-style-guide.md"

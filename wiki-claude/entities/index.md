@@ -2,7 +2,7 @@
 base_confidence: 0.5
 lifecycle: draft
 title: "Entities — Glossário do 42 Chat"
-tags: [entity, glossary, index]
+tags: ["documentation", "entity", "index"]
 created: 2026-06-21
 rag_score: 0.5
 category: entities

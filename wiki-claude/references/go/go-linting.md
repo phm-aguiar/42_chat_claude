@@ -1,7 +1,7 @@
 ---
 title: "Go Linting"
 category: references
-tags: [go, style-guide, coding-standards]
+tags: ["go", "standards"]
 sources:
   - "wiki/_raw/go-linting/SKILL.md"
 summary: "Go Linting: boas práticas e regras de estilo Go destiladas de Uber Style Guide."

@@ -2,7 +2,7 @@
 base_confidence: 0.5
 lifecycle: draft
 title: "JWT (JSON Web Token)"
-tags: [entity, glossary]
+tags: ["documentation", "entity"]
 aliases: [auth.JWTManager, token JWT, JSON Web Token, HS256]
 created: 2026-06-21
 rag_score: 0.5

@@ -1,7 +1,7 @@
 ---
 title: "ADR Template"
 category: references
-tags: [architecture, template, decision]
+tags: ["decision", "design", "templates"]
 sources:
   - "wiki/_raw/adr-template.md"
 summary: "Template para Architecture Decision Records (ADR) — registro de decisões arquiteturais."

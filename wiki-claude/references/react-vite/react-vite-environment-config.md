@@ -1,7 +1,7 @@
 ---
 title: React + Vite Environment & Bundle Analysis
 category: references
-tags: [react, vite, environment, security, bundle, visualizer]
+tags: ["bundle", "environment", "frontend", "security", "tools", "visualizer"]
 aliases: [React Vite Env Config]
 sources: ["_raw/env-vite-prefix.md", "_raw/env-modes.md", "_raw/env-sensitive-data.md", "_raw/bundle-visualizer.md"]
 summary: "4 regras MEDIUM de env config + bundle analysis React+Vite: prefixo VITE_ para segurança, mode-specific env files (.env.development/.production/staging), proteção de secrets e bundle visualizer com rollup-plugin-visualizer."

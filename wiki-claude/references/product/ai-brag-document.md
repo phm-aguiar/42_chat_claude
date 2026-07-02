@@ -1,7 +1,7 @@
 ---
 title: "AI Brag Document"
 category: references
-tags: [ai, documentation, career]
+tags: ["ai", "career", "documentation"]
 sources:
   - "wiki/_raw/ai-brag-document/SKILL.md"
 summary: "AI Brag Document: template para documentar conquistas e impacto do trabalho com IA."

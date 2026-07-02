@@ -2,7 +2,7 @@
 base_confidence: 0.5
 lifecycle: draft
 title: "Hub (WebSocket Hub)"
-tags: [entity, glossary]
+tags: ["documentation", "entity"]
 aliases: [WebSocket Hub, Connection Hub, ws.Hub]
 created: 2026-06-21
 rag_score: 0.5

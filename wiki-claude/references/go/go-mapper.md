@@ -1,7 +1,7 @@
 ---
 title: "Go Mapper"
 category: references
-tags: [go, implementation, patterns]
+tags: ["go", "implementation", "patterns"]
 sources:
   - "wiki/_raw/go-mapper/SKILL.md"
 summary: "Go Mapper: padrão de implementação Go para mapper."

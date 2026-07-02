@@ -1,7 +1,7 @@
 ---
 title: "Documento de Requisitos de Produto (PRD) — O que é e Como Fazer"
 category: references
-tags: [product-management, prd, requirements, agile, documentation, reference]
+tags: ["agile", "documentation", "prd", "product-management", "requirements"]
 sources:
   - "https://brasil.uxdesign.cc/documento-de-requisitos-de-produto-prd-o-que-%C3%A9-e-como-fazer-um-d86d03c23e8c"
 summary: "Guia completo sobre Product Requirements Document (PRD): estrutura, seções essenciais, construção prática e diferenças entre PRD, BRD e SRD. Baseado no template da Product Hunt."

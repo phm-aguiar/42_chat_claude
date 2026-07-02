@@ -1,7 +1,7 @@
 ---
 title: "Brainstorm Feature 101 — Assinatura de Participação"
 category: journal
-tags: [sdd, 42chat, brainstorm, feature]
+tags: ["42-chat", "brainstorm", "feature", "methodology"]
 sources:
   - conversation:2026-06-17
 created: "2026-06-17T03:30:00Z"

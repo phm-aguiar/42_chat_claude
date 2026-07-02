@@ -1,7 +1,7 @@
 ---
 title: "Claude Code — Skills (SKILL.md, frontmatter, invocação)"
 category: reference
-tags: [claude-code, skills, SKILL.md, frontmatter, plugins, agentskills]
+tags: ["SKILL.md", "agentskills", "claude-code", "frontmatter", "plugins", "skills"]
 created: "2026-06-27"
 rag_score: 0.5
 updated: "2026-06-27"

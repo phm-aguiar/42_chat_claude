@@ -2,7 +2,7 @@
 base_confidence: 0.5
 lifecycle: draft
 title: "Chi (HTTP Router)"
-tags: [entity, glossary]
+tags: ["documentation", "entity"]
 aliases: [go-chi, chi/v5, router, HTTP router]
 created: 2026-06-21
 rag_score: 0.5

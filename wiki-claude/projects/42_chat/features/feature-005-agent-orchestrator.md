@@ -1,7 +1,7 @@
 ---
 title: "005: Agent Orchestrator — Lição Aprendida"
 category: projects
-tags: [sdd, orchestrator, delegate-task, paralelismo, licao-aprendida]
+tags: ["delegate-task", "licao-aprendida", "methodology", "orchestrator", "paralelismo"]
 summary: "Feature que implementou o agente orquestrador (hoje absorvido pela coordenação direta da sessão principal). Mantida como registro arquitetural."
 created: "2026-06-13"
 rag_score: 0.4952

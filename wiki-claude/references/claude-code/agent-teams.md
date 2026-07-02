@@ -1,7 +1,7 @@
 ---
 title: "Claude Code — Agent Teams (orquestração de companheiros)"
 category: reference
-tags: [claude-code, agent-teams, subagentes, orquestracao, paralelismo]
+tags: ["agent-teams", "claude-code", "orquestracao", "paralelismo", "subagentes"]
 created: "2026-06-27"
 rag_score: 0.5
 updated: "2026-06-27"

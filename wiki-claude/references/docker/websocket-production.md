@@ -2,7 +2,7 @@
 base_confidence: 0.5
 lifecycle: draft
 title: "WebSocket Production — Ping/Pong, Reconnect, Scaling & Rate Limiting"
-tags: [websocket, production, scaling, pingpong, reconnect, rate-limiting, security]
+tags: ["backend", "pingpong", "production", "rate-limiting", "reconnect", "scaling", "security"]
 created: 2026-06-21
 rag_score: 0.5
 category: references

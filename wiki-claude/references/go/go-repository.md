@@ -1,7 +1,7 @@
 ---
 title: "Go Repository"
 category: references
-tags: [go, implementation, patterns]
+tags: ["go", "implementation", "patterns"]
 sources:
   - "wiki/_raw/go-repository/SKILL.md"
 summary: "Go Repository: padrão de implementação Go para repository."

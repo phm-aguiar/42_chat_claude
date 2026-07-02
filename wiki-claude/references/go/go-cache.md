@@ -1,7 +1,7 @@
 ---
 title: "Go Cache"
 category: references
-tags: [go, implementation, patterns]
+tags: ["go", "implementation", "patterns"]
 sources:
   - "wiki/_raw/go-cache/SKILL.md"
 summary: "Go Cache: padrão de implementação Go para cache."

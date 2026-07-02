@@ -2,7 +2,7 @@
 base_confidence: 0.5
 lifecycle: draft
 title: "Integration Testing with Docker"
-tags: [testing, docker, integration]
+tags: ["docker", "integration", "test"]
 created: 2026-06-21
 rag_score: 0.5
 category: references

@@ -1,7 +1,7 @@
 ---
 title: "Thinking × Go"
 category: synthesis
-tags: [go, thinking, synthesis, code-review]
+tags: ["code-review", "go", "knowledge", "thinking"]
 sources:
   - "references/socratic-questioning.md"
   - "references/[[cognitive-bias-inventory]].md"

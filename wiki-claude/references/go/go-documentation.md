@@ -1,7 +1,7 @@
 ---
 title: "Go Documentation"
 category: references
-tags: [go, style-guide, coding-standards]
+tags: ["go", "standards"]
 sources:
   - "wiki/_raw/go-documentation/SKILL.md"
 summary: "Go Documentation: boas práticas e regras de estilo Go destiladas de Google Style Guide."

@@ -1,7 +1,7 @@
 ---
 title: "System Design Guide"
 category: references
-tags: [architecture, system-design, guide]
+tags: ["design", "guide", "system-design"]
 sources:
   - "wiki/_raw/system-design.md"
 summary: "Guia de system design: abordagem estruturada para projetar sistemas distribuídos."

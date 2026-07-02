@@ -1,7 +1,7 @@
 ---
 title: "003: Forjar Nova Skill"
 category: projects
-tags: [sdd, skills, claude-agent, tooling]
+tags: ["claude-agent", "methodology", "skills", "tooling"]
 summary: "Skill forge-new-skill para criar skills claude Agent com scaffold, template e validação."
 created: "2026-06-13"
 rag_score: 0.4833

@@ -2,7 +2,7 @@
 base_confidence: 0.5
 lifecycle: draft
 title: "WebSocket (Protocolo)"
-tags: [entity, glossary]
+tags: ["documentation", "entity"]
 aliases: [WS, gorilla/websocket, real-time, Protocolo WebSocket, RFC 6455]
 created: 2026-06-21
 rag_score: 0.5

@@ -1,7 +1,7 @@
 ---
 title: "Database Selection"
 category: references
-tags: [architecture, database, selection]
+tags: ["database", "design", "selection"]
 sources:
   - "wiki/_raw/database-selection.md"
 summary: "Guia para seleção de banco de dados: tipos, trade-offs e critérios de decisão."

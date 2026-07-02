@@ -1,7 +1,7 @@
 ---
 title: "OAuth2 × JWT"
 category: synthesis
-tags: [oauth2, jwt, auth, security, synthesis]
+tags: ["auth", "jwt", "knowledge", "security"]
 sources:
   - "entities/oauth2.md"
   - "entities/jwt.md"

@@ -1,7 +1,7 @@
 ---
 title: "Brand Audience & Niche"
 category: references
-tags: [brand, audience, niche]
+tags: ["audience", "brand", "niche"]
 sources:
   - "wiki/_raw/30_audience-niche.md"
 summary: "Brand Audience & Niche: framework e metodologia de referência."

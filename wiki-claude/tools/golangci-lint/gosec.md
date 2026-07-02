@@ -1,7 +1,7 @@
 ---
 title: "gosec — Go Security Checker"
 category: tools
-tags: [go, linter, golangci-lint, security, gosec, sast]
+tags: ["go", "golangci-lint", "linting", "sast", "security"]
 sources:
   - "wiki/_raw/securegogosec Go security checker.md"
 summary: "gosec inspects source code for security problems by scanning the Go AST and SSA code representation. Includes pattern-based rules, SSA analysis, and taint analysis."

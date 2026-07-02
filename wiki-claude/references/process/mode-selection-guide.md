@@ -1,7 +1,7 @@
 ---
 title: "Mode Selection Guide"
 category: references
-tags: [thinking, reasoning, modes]
+tags: ["methodology", "modes", "thinking"]
 sources:
   - "wiki/_raw/mode-selection-guide.md"
 summary: "Guia para selecionar o modo de reasoning adequado (minimal, low, medium, high, max)."

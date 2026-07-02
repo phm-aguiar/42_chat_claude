@@ -1,7 +1,7 @@
 ---
 title: "Go Functions"
 category: references
-tags: [go, style-guide, coding-standards]
+tags: ["go", "standards"]
 sources:
   - "wiki/_raw/go-functions/SKILL.md"
 summary: "Go Functions: boas práticas e regras de estilo Go destiladas de Effective Go, Google Style Guide, Uber Style Guide."

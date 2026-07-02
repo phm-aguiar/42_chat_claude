@@ -1,7 +1,7 @@
 ---
 title: "2026-06-27 — Wiki Maintenance (Lint + Consolidate + Ingest)"
 category: journal
-tags: [wiki, maintenance, lint, ingest]
+tags: ["ingest", "lint", "maintenance", "wiki"]
 sources:
   - ~/.claude/[[projects]]/-home-zeenyt---Projetos-42-chat-claude/fb7755da-cfc2-46a3-b008-b4b0d4212c8e.jsonl
 summary: "Sessão de manutenção do wiki: wiki-status revelou 522K tokens e manifest ausente; wiki-lint --consolidate aplicou 59 correções; wiki-ingest inicializou manifest e ingeriu specs."

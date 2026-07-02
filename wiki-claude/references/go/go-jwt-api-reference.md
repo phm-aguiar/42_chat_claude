@@ -1,7 +1,7 @@
 ---
 title: Go JWT API Reference (v5.3.1)
 category: references
-tags: [go, jwt, api-reference, library]
+tags: ["documentation", "go", "jwt", "library"]
 sources: [_raw/golang-jwt-v5.3.1-API-Reference.md, _raw/golang-jwt-v5.3.1-Examples.md]
 summary: "Referência completa da API golang-jwt v5: Token, Claims, Parser, Validator, SigningMethod, ParserOptions, erros, e sub-pacotes request/test."
 provenance:

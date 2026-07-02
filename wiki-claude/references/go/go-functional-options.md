@@ -1,7 +1,7 @@
 ---
 title: "Go Functional Options"
 category: references
-tags: [go, style-guide, coding-standards]
+tags: ["go", "standards"]
 sources:
   - "wiki/_raw/go-functional-options/SKILL.md"
 summary: "Go Functional Options: boas práticas e regras de estilo Go destiladas de Uber Style Guide."

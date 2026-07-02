@@ -1,7 +1,7 @@
 ---
 title: "42 Chat — Engineering Requirements"
 category: references
-tags: [42_chat, engineering, go, linux, websockets, devops]
+tags: ["42-chat", "devops", "engineering", "go", "linux", "websockets"]
 sources:
   - wiki/_raw/42-chat-research.md
 summary: "Requisitos críticos de engenharia: concorrência segura em Go, graceful shutdown, tuning de file descriptors no Linux, caching contra rate limits da API 42, e observabilidade com Prometheus."

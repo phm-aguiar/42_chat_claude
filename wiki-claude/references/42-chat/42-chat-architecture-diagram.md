@@ -1,7 +1,7 @@
 ---
 title: "42 Chat — Architecture Diagram"
 category: references
-tags: [42_chat, architecture, diagram, mermaid]
+tags: ["42-chat", "design", "diagram", "mermaid"]
 sources:
   - wiki/_raw/42-chat-research.md
 summary: "Diagrama Mermaid da arquitetura completa do 42 Chat: fluxo de autenticação, WebSocket hub, microfrontends, e infraestrutura AWS."

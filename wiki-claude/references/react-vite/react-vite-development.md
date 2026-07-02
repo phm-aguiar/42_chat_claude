@@ -1,7 +1,7 @@
 ---
 title: React + Vite Development
 category: references
-tags: [react, vite, dev, hmr, fast-refresh]
+tags: ["dev", "fast-refresh", "frontend", "hmr", "tools"]
 sources: ["_raw/dev-dependency-prebundling.md", "_raw/dev-fast-refresh.md", "_raw/dev-hmr-config.md"]
 summary: "3 regras HIGH de dev React+Vite: dependency pre-bundling (2-5x faster cold start), estrutura de componentes para Fast Refresh e configuração de HMR (Docker/WSL/polling)."
 provenance:

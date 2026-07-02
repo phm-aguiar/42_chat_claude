@@ -1,7 +1,7 @@
 ---
 title: "Go Style Core"
 category: references
-tags: [go, style-guide, coding-standards]
+tags: ["go", "standards"]
 sources:
   - "wiki/_raw/go-style-core/SKILL.md"
 summary: "Go Style Core: boas práticas e regras de estilo Go destiladas de Effective Go, Google Style Guide, Uber Style Guide, Go Wiki CodeReviewComments."

@@ -1,7 +1,7 @@
 ---
 title: "Microsoft Graph — Apps, Tabs & Pinned Messages in Chat/Channel"
 summary: "Reference for MS Graph installedApps (teamsApp), tabs, and pinned messages in chats and channels: install, upgrade, remove apps; pin/unpin messages; add/remove tabs."
-tags: [ms-graph, api-reference, apps, tabs]
+tags: ["apps", "documentation", "tabs", "tools"]
 category: references
 lifecycle: draft
 provenance: ingested-from-raw

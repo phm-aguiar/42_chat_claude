@@ -3,7 +3,7 @@ summary: "Knowledge page - summary pending"
 base_confidence: 0.5
 lifecycle: draft
 title: "claude Data Format"
-tags: [wiki, reference]
+tags: ["documentation", "wiki"]
 created: 2026-06-20
 rag_score: 0.4844
 ---
@@ -31,7 +31,7 @@ Optional YAML frontmatter, then prose body:
 summary: "Knowledge page - summary pending"
 base_confidence: 0.5
 lifecycle: draft
-tags: [python, async, debugging]
+tags: ["async", "debugging", "python"]
 created_at: 2026-03-10T14:22:00Z
 project: my-api
 ---

@@ -1,7 +1,7 @@
 ---
 lifecycle: draft
 title: "LangGraph vs LangChain: Which We Deploy in Production (2026)"
-tags: [paper, langgraph, langchain, framework-comparison, production, decision-matrix]
+tags: ["decision-matrix", "framework-comparison", "langchain", "langgraph", "paper", "production"]
 status: analyzed
 created: 2026-06-20
 rag_score: 0.5

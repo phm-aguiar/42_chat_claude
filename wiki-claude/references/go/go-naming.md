@@ -1,7 +1,7 @@
 ---
 title: "Go Naming"
 category: references
-tags: [go, style-guide, coding-standards]
+tags: ["go", "standards"]
 sources:
   - "wiki/_raw/go-naming/SKILL.md"
 summary: "Go Naming: boas práticas e regras de estilo Go destiladas de Google Style Guide, Uber Style Guide."

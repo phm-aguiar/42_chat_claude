@@ -1,7 +1,7 @@
 ---
 title: Go JWT (golang-jwt v5)
 category: references
-tags: [go, jwt, auth, library]
+tags: ["auth", "go", "jwt", "library"]
 sources: [_raw/golang-jwt-v5.3.1-README.md, _raw/golang-jwt-v5.3.1-Migration.md, _raw/golang-jwt-v5.3.1-Examples.md]
 summary: Biblioteca Go para JSON Web Tokens (RFC 7519). Suporta HMAC, RSA, ECDSA, Ed25519. v5 traz Claims refatorado e ParserOptions.
 provenance:

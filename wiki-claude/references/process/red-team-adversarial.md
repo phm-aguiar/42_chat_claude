@@ -1,7 +1,7 @@
 ---
 title: "Red Team Adversarial"
 category: references
-tags: [thinking, security, adversarial]
+tags: ["adversarial", "security", "thinking"]
 sources:
   - "wiki/_raw/red-team-adversarial.md"
 summary: "Pensamento adversarial e red teaming para encontrar fraquezas antes dos adversários."

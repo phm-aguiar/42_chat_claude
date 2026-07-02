@@ -3,7 +3,7 @@ summary: "Knowledge page - summary pending"
 base_confidence: 0.5
 lifecycle: draft
 title: "gosimple"
-tags: [golangci-lint, linters]
+tags: ["golangci-lint", "linting"]
 created: 2026-06-21
 rag_score: 0.5
 part_of: "tools/golangci-lint/Linters.md"

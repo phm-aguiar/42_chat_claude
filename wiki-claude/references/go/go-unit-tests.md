@@ -1,7 +1,7 @@
 ---
 title: "Go Unit Tests"
 category: references
-tags: [go, implementation, patterns]
+tags: ["go", "implementation", "patterns"]
 sources:
   - "wiki/_raw/go-unit-tests/SKILL.md"
 summary: "Go Unit Tests: padrão de implementação Go para unit tests."

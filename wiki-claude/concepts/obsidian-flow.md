@@ -2,7 +2,7 @@
 base_confidence: 0.5
 title: "Fluxo Obsidian — Integração com o Framework"
 category: concepts
-tags: [obsidian, wiki, fluxo, integracao]
+tags: ["fluxo", "integracao", "tools", "wiki"]
 aliases: [obsidian-flow, fluxo-wiki]
 sources: []
 summary: "Como o subsistema wiki/Obsidian se integra ao framework SDD: quem inicia cada operação, quando ela é disparada, e como o ciclo de vida do vault (ingest → cross-link → lint → query) se encaixa no pipeline de desenvolvimento."

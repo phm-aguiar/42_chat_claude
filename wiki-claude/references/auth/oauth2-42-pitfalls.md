@@ -1,7 +1,7 @@
 ---
 title: OAuth2 42 Debugging Pitfalls
 category: references
-tags: [oauth2, 42, debug, security, env]
+tags: ["42-chat", "debug", "env", "security"]
 sources:
   - "conversation:2026-06-18"
 summary: "3 pitfalls comuns ao integrar OAuth2 da 42 Intra: redirect_uri divergente, shell env vars sobrescrevendo .env no Docker, e React StrictMode double-invocando token exchange."

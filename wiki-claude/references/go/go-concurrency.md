@@ -1,7 +1,7 @@
 ---
 title: "Go Concurrency"
 category: references
-tags: [go, style-guide, coding-standards]
+tags: ["go", "standards"]
 sources:
   - "wiki/_raw/go-concurrency/SKILL.md"
 summary: "Go Concurrency: boas práticas e regras de estilo Go destiladas de Effective Go, Google Style Guide, Uber Style Guide."

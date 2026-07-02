@@ -1,7 +1,7 @@
 ---
 title: "goimports — Go Import Manager"
 category: references
-tags: [go, tools, goimports, formatter, imports]
+tags: ["formatter", "go", "imports", "tools"]
 sources:
   - "wiki/_raw/goimports command - golang.orgxtoolscmdgoimports.md"
 summary: "Command goimports updates your Go import lines, adding missing ones and removing unreferenced ones. Also formats code in the same style as gofmt."

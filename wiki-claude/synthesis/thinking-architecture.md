@@ -1,7 +1,7 @@
 ---
 title: "Thinking × Architecture"
 category: synthesis
-tags: [thinking, architecture, synthesis, decision-making]
+tags: ["decision-making", "design", "knowledge", "thinking"]
 sources:
   - "references/[[socratic-questioning]].md"
   - "references/pre-mortem-analysis.md"

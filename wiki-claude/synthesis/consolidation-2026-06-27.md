@@ -2,7 +2,7 @@
 base_confidence: 0.5
 title: Consolidation Report 2026-06-27
 category: synthesis
-tags: [maintenance, consolidation, lint]
+tags: ["consolidation", "lint", "maintenance"]
 sources: []
 summary: Auto-generated consolidation report from wiki-lint --consolidate run on 2026-06-27. Fixed lifecycle values, tag formatting, broken links, and orphan cross-references.
 lifecycle: draft

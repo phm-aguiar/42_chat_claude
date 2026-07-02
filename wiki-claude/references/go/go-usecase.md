@@ -1,7 +1,7 @@
 ---
 title: "Go Usecase"
 category: references
-tags: [go, implementation, patterns]
+tags: ["go", "implementation", "patterns"]
 sources:
   - "wiki/_raw/go-usecase/SKILL.md"
 summary: "Go Usecase: padrão de implementação Go para usecase."

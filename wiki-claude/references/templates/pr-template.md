@@ -1,7 +1,7 @@
 ---
 title: "PR Template"
 category: references
-tags: [template, pr, process]
+tags: ["methodology", "pr", "templates"]
 sources:
   - "wiki/_raw/pr-template.md"
 summary: "Template de Pull Request: descrição, changeset, risco, deploy notes, rollback."

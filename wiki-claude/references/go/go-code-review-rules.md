@@ -1,7 +1,7 @@
 ---
 title: "Go Code Review Rules — Uber Style Guide (59 Regras)"
 category: references
-tags: [go, style-guide, code-review, uber-guide, reference]
+tags: ["code-review", "documentation", "go", "standards", "uber-guide"]
 sources:
   - "wiki/_raw/01-intro.md" 
   - "wiki/_raw/02-interface-pointer.md"

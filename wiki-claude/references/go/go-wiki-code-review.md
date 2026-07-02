@@ -1,7 +1,7 @@
 ---
 title: "Go Wiki: Code Review Comments"
 category: references
-tags: [go, code-review, wiki, reference, style-guide]
+tags: ["code-review", "documentation", "go", "standards", "wiki"]
 sources:
   - "wiki/_raw/Go Wiki Go Code Review Comments - The Go Programming Language.md"
 summary: "Go Wiki CodeReviewComments — checklist oficial da comunidade Go com comentários comuns feitos durante revisões de código."

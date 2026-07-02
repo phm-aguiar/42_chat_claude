@@ -1,7 +1,7 @@
 ---
 title: "exhaustive — Enum Switch Exhaustiveness Checker"
 category: tools
-tags: [go, linter, golangci-lint, enum, switch, exhaustive]
+tags: ["enum", "exhaustive", "go", "golangci-lint", "linting", "switch"]
 sources:
   - "wiki/_raw/nishanthsexhaustive Check exhaustiveness of switch statements of enum-like constants in Go source code..md"
 summary: "exhaustive checks exhaustiveness of enum switch statements in Go source code. Ensures all iota constants are covered."

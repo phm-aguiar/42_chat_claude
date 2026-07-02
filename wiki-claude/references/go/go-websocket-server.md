@@ -1,7 +1,7 @@
 ---
 title: "Go Websocket Server"
 category: references
-tags: [go, websocket, real-time, patterns]
+tags: ["backend", "go", "patterns"]
 sources:
   - "wiki/_raw/go-websocket-server/SKILL.md"
 summary: "Go Websocket Server: padrões e boas práticas para WebSocket em Go com gorilla/websocket. Fontes: gorilla/websocket docs, Go net/http docs, websocket.org."

@@ -2,7 +2,7 @@
 base_confidence: 0.5
 title: Wiki Insights
 category: synthesis
-tags: [meta, insights, status]
+tags: ["insights", "meta", "status"]
 sources: []
 summary: "Auto-generated wiki structure analysis: 182 nodes, 597 edges, top hubs, bridge pages, cluster cohesion, surprising connections, and tier suggestions."
 lifecycle: draft

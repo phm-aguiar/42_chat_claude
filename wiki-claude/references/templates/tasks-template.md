@@ -1,7 +1,7 @@
 ---
 title: "Tasks Template"
 category: references
-tags: [template, tasks, sdd]
+tags: ["methodology", "tasks", "templates"]
 sources:
   - "wiki/_raw/tasks-template.md"
 summary: "Template de tasks.md: lista de tarefas com DAG para o pipeline SDD."

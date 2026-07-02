@@ -3,7 +3,7 @@ summary: "Knowledge page - summary pending"
 base_confidence: 0.5
 lifecycle: draft
 title: "Tech Template"
-tags: [sdd, reference]
+tags: ["documentation", "methodology"]
 created: 2026-06-20
 rag_score: 0.4844
 ---

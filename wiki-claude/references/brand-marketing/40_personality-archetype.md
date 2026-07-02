@@ -1,7 +1,7 @@
 ---
 title: "Brand Personality & Archetype"
 category: references
-tags: [brand, personality, archetype]
+tags: ["archetype", "brand", "personality"]
 sources:
   - "wiki/_raw/40_personality-archetype.md"
 summary: "Brand Personality & Archetype: framework e metodologia de referência."

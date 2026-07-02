@@ -1,7 +1,7 @@
 ---
 title: React + Vite Asset Handling
 category: references
-tags: [react, vite, assets, images, svg, fonts]
+tags: ["assets", "fonts", "frontend", "images", "svg", "tools"]
 sources: ["_raw/asset-image-optimization.md", "_raw/asset-svg-components.md", "_raw/asset-fonts.md", "_raw/asset-public-dir.md"]
 summary: "4 regras HIGH de asset handling React+Vite: otimização de imagens (WebP/AVIF, lazy loading), SVG como React components com SVGR, fontes self-hosted com font-display: swap, e public/ vs import."
 provenance:

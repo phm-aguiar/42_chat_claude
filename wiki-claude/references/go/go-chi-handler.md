@@ -1,7 +1,7 @@
 ---
 title: "Go Chi Handler"
 category: references
-tags: [go, implementation, patterns]
+tags: ["go", "implementation", "patterns"]
 sources:
   - "wiki/_raw/go-chi-handler/SKILL.md"
 summary: "Go Chi Handler: padrão de implementação Go para chi handler."

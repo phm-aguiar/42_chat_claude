@@ -1,7 +1,7 @@
 ---
 title: "Claude Code — Agent View (UI de múltiplas sessões)"
 category: reference
-tags: [claude-code, agent-view, claude-agents, ui, terminal-tui, background-sessions, supervisor]
+tags: ["agent-view", "background-sessions", "claude-agents", "claude-code", "frontend", "supervisor", "terminal-tui"]
 created: "2026-06-27"
 rag_score: 0.5
 updated: "2026-06-27"

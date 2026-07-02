@@ -1,7 +1,7 @@
 ---
 title: "Brand Positioning"
 category: references
-tags: [brand, strategy, positioning]
+tags: ["brand", "positioning", "strategy"]
 sources:
   - "wiki/_raw/20_positioning.md"
 summary: "Brand Positioning: framework e metodologia de referência."
