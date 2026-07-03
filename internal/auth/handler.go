@@ -5,9 +5,12 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"log"
 	"net/http"
 	"net/url"
 	"os"
+	"strings"
+	"time"
 
 	"42chat/internal/db/queries"
 )
@@ -48,6 +51,18 @@ func (h *Handler) Callback(w http.ResponseWriter, r *http.Request) {
 	if err := queries.UpsertUser(h.DB, user); err != nil {
 		http.Error(w, `{"error":"erro interno","code":"DB_ERROR"}`, http.StatusInternalServerError)
 		return
+	}
+
+	// Enriquecimento best-effort: busca título e skills na API 42
+	title := ""
+	var skills []string
+	title, _ = fetchTitle(accessToken, user.ID, user.Login)
+	skills, _ = fetchTags(accessToken, user.ID)
+	if title != "" || len(skills) > 0 {
+		if err := queries.UpdateTitleSkills(h.DB, user.ID, title, skills); err != nil {
+			log.Printf("erro ao atualizar título/skills para user %d: %v", user.ID, err)
+			// Não aborta o login — é best-effort
+		}
 	}
 
 	token, err := GenerateJWT(user.ID, user.Login)
@@ -173,6 +188,96 @@ func fetchMe(accessToken string) (queries.User, error) {
 		CurrentHost: me.Location,
 		Level:       0, // level vem de /v2/me cursus_users — simplificado no MVP
 	}, nil
+}
+
+// fetchTitle busca e processa o título do usuário na API 42.
+// Retorna o título formatado (substitui %login pelo login real) ou string vazia em caso de erro.
+// Best-effort com timeout de 5 segundos.
+func fetchTitle(accessToken string, userID int, login string) (string, error) {
+	apiURL := os.Getenv("FORTYTWO_API_URL")
+	if apiURL == "" {
+		apiURL = "https://api.intra.42.fr"
+	}
+
+	client := &http.Client{Timeout: 5 * time.Second}
+	req, _ := http.NewRequest("GET", fmt.Sprintf("%s/v2/users/%d/titles", apiURL, userID), nil)
+	req.Header.Set("Authorization", "Bearer "+accessToken)
+
+	resp, err := client.Do(req)
+	if err != nil {
+		return "", fmt.Errorf("fetch titles: %w", err)
+	}
+	defer resp.Body.Close()
+
+	body, _ := io.ReadAll(resp.Body)
+
+	var titles []struct {
+		Name string `json:"name"`
+	}
+	if err := json.Unmarshal(body, &titles); err != nil {
+		return "", fmt.Errorf("decode titles: %w", err)
+	}
+
+	if len(titles) == 0 {
+		return "", nil
+	}
+
+	title := titles[0].Name
+	// Substitui %login pelo login real
+	title = strings.ReplaceAll(title, "%login", login)
+	return title, nil
+}
+
+// fetchTags busca e processa as tags (skills) do usuário na API 42.
+// Retorna até 10 nomes de tags em minúsculas, ou slice vazio em caso de erro.
+// Best-effort com timeout de 5 segundos.
+func fetchTags(accessToken string, userID int) ([]string, error) {
+	apiURL := os.Getenv("FORTYTWO_API_URL")
+	if apiURL == "" {
+		apiURL = "https://api.intra.42.fr"
+	}
+
+	client := &http.Client{Timeout: 5 * time.Second}
+	req, _ := http.NewRequest("GET", fmt.Sprintf("%s/v2/users/%d/tags_users", apiURL, userID), nil)
+	req.Header.Set("Authorization", "Bearer "+accessToken)
+
+	resp, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("fetch tags_users: %w", err)
+	}
+	defer resp.Body.Close()
+
+	body, _ := io.ReadAll(resp.Body)
+
+	// tags_users pode retornar array de objetos com um campo 'tag' contendo 'name'
+	// ou um campo 'name' direto — trata ambos defensivamente
+	var tagsResp []map[string]interface{}
+	if err := json.Unmarshal(body, &tagsResp); err != nil {
+		return nil, fmt.Errorf("decode tags_users: %w", err)
+	}
+
+	var skills []string
+	for i, item := range tagsResp {
+		if i >= 10 { // Limita a 10 tags
+			break
+		}
+
+		// Tenta field 'name' direto
+		if name, ok := item["name"].(string); ok {
+			skills = append(skills, strings.ToLower(name))
+			continue
+		}
+
+		// Tenta campo 'tag' com subcampo 'name'
+		if tagObj, ok := item["tag"].(map[string]interface{}); ok {
+			if name, ok := tagObj["name"].(string); ok {
+				skills = append(skills, strings.ToLower(name))
+				continue
+			}
+		}
+	}
+
+	return skills, nil
 }
 
 // devUserID gera um ID inteiro estável e único para um login de dev.

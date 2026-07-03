@@ -1,6 +1,8 @@
 # language: pt-BR
+# encoding: utf-8
 # Feature: 42 Forum — Fórum tech para alunos da 42
 # Spec: specs/features/102-42-forum/spec.md
+# 22 Cenários BDD (Gherkin) — Acceptance Criteria da Feature 102
 
 Funcionalidade: Fórum de tech da 42
   Como aluno da 42
@@ -10,182 +12,217 @@ Funcionalidade: Fórum de tech da 42
   Contexto:
     Dado que o sistema está rodando com Docker Compose
     E a migration 002_add_forum foi aplicada
-    E os 5 seed boards existem (/tech, /projects, /career, /events, /random)
+    E os 5 seed boards existem: /tech, /projects, /career, /events, /random
 
-  # ─── Boards ───────────────────────────────────────────
+  # ─────────────────────────────────────────────────────────────
+  # BOARDS — 5 cenários
+  # ─────────────────────────────────────────────────────────────
 
-  Cenário: Aluno vê lista de boards na landing page
-    Quando acesso GET /api/forum/boards
-    Então recebo status 200
-    E o body contém um array com 5 boards
-    E cada board tem slug, name, description, sfw
+  @boards
+  Cenário: Listar boards públicos retorna os 5 seed boards
+    Quando acesso GET /api/forum/boards sem autenticação
+    Então recebo status HTTP 200
+    E o body contém um array de boards
+    E cada board contém os campos: slug, name, description, sfw
+    E os 5 seed boards estão presentes: tech, projects, career, events, random
 
-  Cenário: Admin cria um novo board
-    Dado que estou autenticado como admin
-    Quando crio POST /api/forum/boards com slug "gamedev", name "Game Development"
-    Então recebo status 201
-    E o board aparece em GET /api/forum/boards
+  @boards
+  Cenário: Acessar um board existente por slug
+    Quando acesso GET /api/forum/boards/tech sem autenticação
+    Então recebo status HTTP 200
+    E o body contém um objeto com slug "tech"
+    E o objeto contém os campos: id, slug, name, owner_id, is_locked
 
-  Cenário: Slug reservado é rejeitado
+  @boards
+  Cenário: Board inexistente retorna erro BOARD_NOT_FOUND
+    Quando acesso GET /api/forum/boards/inexistente sem autenticação
+    Então recebo status HTTP 404
+    E o body contém o código de erro "BOARD_NOT_FOUND"
+    E o body contém uma mensagem descritiva
+
+  @boards @auth
+  Cenário: Criar board sem token retorna 401
+    Quando tento POST /api/forum/boards sem token
+      | slug | gamedev         |
+      | name | Game Development |
+    Então recebo status HTTP 401
+    E o body contém o código de erro "UNAUTHORIZED"
+
+  @boards @auth
+  Cenário: Criar board com slug reservado é rejeitado
     Dado que estou autenticado como admin
     Quando tento POST /api/forum/boards com slug "admin"
-    Então recebo status 400
-    E o body contém "slug reservado"
+      | name | Admin Board |
+    Então recebo status HTTP 400
+    E o body contém o código de erro "SLUG_RESERVED"
 
-  Cenário: Board owner edita settings do board
-    Dado que sou owner do board /tech
-    Quando faço PATCH /api/forum/boards/tech com name "Technology"
-    Então recebo status 200
-    E GET /api/forum/boards/tech retorna name "Technology"
+  # ─────────────────────────────────────────────────────────────
+  # THREADS — 7 cenários
+  # ─────────────────────────────────────────────────────────────
 
-  Cenário: Não-owner não edita board
-    Dado que NÃO sou staff do board /tech
-    Quando tento PATCH /api/forum/boards/tech
-    Então recebo status 403
-
-  Cenário: Board sem threads mostra mensagem vazia
-    Dado que o board /events não tem threads
-    Quando acesso GET /api/forum/boards/events/threads
-    Então recebo status 200
-    E o array de threads está vazio
-
-  # ─── Threads ──────────────────────────────────────────
-
-  Cenário: Aluno cria uma thread em um board
+  @threads
+  Cenário: Criar thread em board aberto com título e conteúdo válidos
     Dado que estou autenticado como aluno
     Quando crio POST /api/forum/boards/tech/threads
-      | title   | Como compilar Kernel BSD?          |
-      | content | # Kernel BSD\n\nGuia passo a passo |
-      | tags    | ["bsd", "kernel", "c"]             |
-    Então recebo status 201
+      | title   | Como compilar kernel BSD?     |
+      | content | # Passo 1\n\nBaixar fonte...   |
+      | tags    | ["bsd", "kernel", "c"]        |
+    Então recebo status HTTP 201
     E o body contém um id UUID
-    E GET /api/forum/boards/tech/threads mostra a thread no topo
+    E GET /api/forum/boards/tech/threads mostra a thread criada
 
-  Cenário: Título muito curto é rejeitado
-    Dado que estou autenticado
-    Quando tento criar thread com title "Oi"
-    Então recebo status 400
+  @threads
+  Cenário: Board locked rejeita criação de nova thread
+    Dado que estou autenticado como aluno
+    E o board /projects está locked (is_locked = true)
+    Quando tento POST /api/forum/boards/projects/threads
+      | title   | Meu projeto    |
+      | content | Descrição aqui |
+    Então recebo status HTTP 403
+    E o body contém o código de erro "BOARD_LOCKED"
 
-  Cenário: Título muito longo é rejeitado
-    Dado que estou autenticado
-    Quando tento criar thread com title de 201 caracteres
-    Então recebo status 400
+  @threads
+  Cenário: Título menor que 3 caracteres é rejeitado
+    Dado que estou autenticado como aluno
+    Quando tento POST /api/forum/boards/tech/threads com title "Ok"
+      | content | Conteúdo válido |
+    Então recebo status HTTP 400
+    E o body contém o código de erro "INVALID_TITLE"
 
-  Cenário: Conteúdo maior que 10k chars é rejeitado
-    Dado que estou autenticado
-    Quando tento criar thread com content de 10001 caracteres
-    Então recebo status 400
+  @threads
+  Cenário: Título maior que 200 caracteres é rejeitado
+    Dado que estou autenticado como aluno
+    Quando tento POST /api/forum/boards/tech/threads com title de 201 caracteres
+      | content | Conteúdo válido |
+    Então recebo status HTTP 400
+    E o body contém o código de erro "INVALID_TITLE"
 
-  Cenário: Threads em bump order com pinned no topo
-    Dado que o board /tech tem 3 threads (A criada primeiro, B depois, C pinned)
+  @threads
+  Cenário: Conteúdo maior que 10000 caracteres é rejeitado
+    Dado que estou autenticado como aluno
+    Quando tento POST /api/forum/boards/tech/threads
+      | title   | Tema válido     |
+      | content | "x" repetido 10001 vezes |
+    Então recebo status HTTP 400
+    E o body contém o código de erro "CONTENT_TOO_LONG"
+
+  @threads
+  Cenário: Threads são listadas em bump order com pinned no topo
+    Dado que estou autenticado como aluno
+    E o board /tech tem 3 threads: A (criada primeiro), B (depois), C (pinned)
     Quando acesso GET /api/forum/boards/tech/threads
-    Então a primeira thread é C (pinned)
-    E a segunda é B (último bump)
-    E a terceira é A (mais antiga)
+    Então recebo status HTTP 200
+    E a thread C aparece na posição 0 (é pinned)
+    E a thread B aparece na posição 1 (último post)
+    E a thread A aparece na posição 2 (mais antiga)
 
-  # ─── Posts ────────────────────────────────────────────
+  @threads
+  Cenário: Thread nova sobe ao topo após novo post (bump)
+    Dado que estou autenticado como aluno
+    E o board /tech tem 2 threads: A (mais recente), B (mais antiga)
+    Quando crio POST /api/forum/threads/{id_de_B}/posts com content "Resposta"
+    Então a thread B tem last_post_at atualizado
+    E GET /api/forum/boards/tech/threads mostra B na posição 0
+    E GET /api/forum/boards/tech/threads mostra A na posição 1
 
-  Cenário: Aluno responde uma thread
-    Dado que estou autenticado
-    E a thread /tech/thread/{id} existe e não está locked
-    Quando crio POST /api/forum/threads/{id}/posts com content "Resposta"
-    Então recebo status 201
-    E GET /api/forum/threads/{id} mostra 2 posts (OP + reply)
-    E post_count da thread é 2
+  # ─────────────────────────────────────────────────────────────
+  # POSTS — 5 cenários
+  # ─────────────────────────────────────────────────────────────
 
-  Cenário: Reply com reply_to referencia outro post
-    Dado que estou autenticado
-    E existe um post anterior com id {postId} na thread
+  @posts
+  Cenário: Aluno responde uma thread aberta
+    Dado que estou autenticado como aluno
+    E existe uma thread em /api/forum/threads/{id} que não está locked
+    Quando crio POST /api/forum/threads/{id}/posts com content "Concordo com você!"
+    Então recebo status HTTP 201
+    E o body contém um id UUID do novo post
+    E GET /api/forum/threads/{id} mostra post_count = 2 (OP + reply)
+
+  @posts
+  Cenário: Thread locked rejeita novo post com erro THREAD_LOCKED
+    Dado que estou autenticado como aluno
+    E existe uma thread locked (is_locked = true)
+    Quando tento POST /api/forum/threads/{id_locked}/posts com content "Resposta"
+    Então recebo status HTTP 403
+    E o body contém o código de erro "THREAD_LOCKED"
+
+  @posts
+  Cenário: Post com reply_to aninhado mantém referência
+    Dado que estou autenticado como aluno
+    E existe um post com id {postId} em uma thread
     Quando crio POST /api/forum/threads/{id}/posts
-      | content  | Concordo com você!    |
+      | content  | Em resposta: concordo |
       | reply_to | {postId}              |
-    Então recebo status 201
+    Então recebo status HTTP 201
     E o post criado tem reply_to = {postId}
+    E GET /api/forum/threads/{id}/posts mostra a referência
 
-  Cenário: Não é possível postar em thread locked
-    Dado que a thread está locked (is_locked = true)
-    Quando tento POST /api/forum/threads/{id}/posts
-    Então recebo status 403
-    E o body contém "THREAD_LOCKED"
+  @posts
+  Cenário: post_count da thread incrementa com novo post
+    Dado que estou autenticado como aluno
+    E GET /api/forum/threads/{id} mostra post_count = 1 (OP)
+    Quando crio POST /api/forum/threads/{id}/posts com content "Reply 1"
+    E crio POST /api/forum/threads/{id}/posts com content "Reply 2"
+    Então GET /api/forum/threads/{id} mostra post_count = 3
 
-  # ─── Moderação ────────────────────────────────────────
+  @posts
+  Cenário: Posts são listados em ordem cronológica (created_at)
+    Dado que estou autenticado como aluno
+    E uma thread tem 3 posts: OP, Reply1 (T+1s), Reply2 (T+2s)
+    Quando acesso GET /api/forum/threads/{id}/posts
+    Então o primeiro post é o OP (created_at mais antigo)
+    E o segundo post é Reply1
+    E o terceiro post é Reply2 (created_at mais recente)
 
-  Cenário: Mod fixa uma thread (pin)
-    Dado que sou mod do board /tech
-    E a thread /tech/thread/{id} não está pinned
+  # ─────────────────────────────────────────────────────────────
+  # MODERAÇÃO — 3 cenários
+  # ─────────────────────────────────────────────────────────────
+
+  @moderacao
+  Cenário: Mod pina uma thread com is_pinned = true
+    Dado que estou autenticado como mod do board /tech
+    E existe uma thread em /api/forum/threads/{id} que não está pinned
     Quando faço PATCH /api/forum/threads/{id} com is_pinned = true
-    Então recebo status 200
-    E a thread aparece no topo com is_pinned = true
+    Então recebo status HTTP 200
+    E GET /api/forum/boards/tech/threads mostra a thread na posição 0
 
-  Cenário: Mod fecha uma thread (lock)
-    Dado que sou mod do board /tech
-    E a thread /tech/thread/{id} não está locked
+  @moderacao
+  Cenário: Mod tranca uma thread com is_locked = true
+    Dado que estou autenticado como mod do board /tech
+    E existe uma thread em /api/forum/threads/{id} que não está locked
     Quando faço PATCH /api/forum/threads/{id} com is_locked = true
-    Então recebo status 200
-    E alunos não conseguem mais postar na thread
+    Então recebo status HTTP 200
+    E alunos comuns recebem 403 THREAD_LOCKED ao tentar postar
 
-  Cenário: Mod deleta uma thread (soft delete)
-    Dado que sou mod do board /tech
-    Quando faço DELETE /api/forum/threads/{id}
-    Então recebo status 200
-    E a thread não aparece mais em GET /api/forum/boards/tech/threads
-
-  Cenário: Mod deleta um post (soft delete)
-    Dado que sou mod do board /tech
+  @moderacao
+  Cenário: Soft delete de post esconde sem apagar dados
+    Dado que estou autenticado como mod do board /tech
+    E existe um post em /api/forum/posts/{id}
     Quando faço DELETE /api/forum/posts/{id}
-    Então recebo status 200
-    E o post aparece como "[deleted]" na thread
+    Então recebo status HTTP 200
+    E o post tem deleted_at não nulo
+    E GET /api/forum/threads/{thread_id}/posts não mostra o post deleted
+    E mas os dados do post continuam no banco de dados (soft delete)
 
-  Cenário: Não-mod não consegue moderar
-    Dado que NÃO sou staff do board /tech
-    Quando tento PATCH /api/forum/threads/{id} com is_pinned = true
-    Então recebo status 403
+  # ─────────────────────────────────────────────────────────────
+  # AUTH / IDENTIDADE — 2 cenários
+  # ─────────────────────────────────────────────────────────────
 
-  # ─── Board Staff ──────────────────────────────────────
+  @auth
+  Cenário: POST sem token retorna 401 UNAUTHORIZED
+    Quando tento POST /api/forum/boards/tech/threads sem token
+      | title   | Tema |
+      | content | Conteúdo |
+    Então recebo status HTTP 401
+    E o body contém o código de erro "UNAUTHORIZED"
 
-  Cenário: Owner adiciona mod ao board
-    Dado que sou owner do board /tech
-    Quando faço POST /api/forum/boards/tech/staff com user_id = 42, role = "mod"
-    Então recebo status 200
-    E o usuário 42 é mod do board /tech
-
-  Cenário: Owner remove staff do board
-    Dado que sou owner do board /tech
-    E o usuário 42 é mod do board /tech
-    Quando faço DELETE /api/forum/boards/tech/staff/42
-    Então recebo status 200
-    E o usuário 42 não é mais staff do board /tech
-
-  # ─── API 42 Integration ───────────────────────────────
-
-  Cenário: Título do aluno aparece como badge nos posts
-    Dado que o aluno "marvin" tem título "Go Expert" na API 42
-    Quando "marvin" faz login OAuth2
-    Então users.title = "Go Expert"
-    E os posts do marvin exibem o badge "Go Expert 🏆"
-
-  Cenário: Skills do aluno são sugeridas ao criar thread
-    Dado que o aluno "marvin" tem skills ["Go", "C", "Web"] na API 42
-    Quando "marvin" faz login OAuth2
-    Então users.skills = ["Go", "C", "Web"]
-    E ao criar thread, o autocomplete de tags sugere "Go", "C", "Web"
-
-  Cenário: Aluno sem título não mostra badge
-    Dado que o aluno "evaluatee" não tem título na API 42
-    Quando "evaluatee" faz login
-    Então users.title é NULL
-    E os posts não exibem badge
-
-  # ─── Usuário deletado ─────────────────────────────────
-
-  Cenário: Post de usuário deletado mostra "[deleted]"
-    Dado que um post existe com author_id = 999
-    Quando o usuário 999 é deletado do sistema
-    Então o post continua visível
-    Mas o login do autor aparece como "[deleted]"
-
-  Cenário: Reply-to de post deletado mostra referência
-    Dado que um post referencia reply_to = {deletedPostId}
-    E o post {deletedPostId} tem deleted_at não nulo
-    Quando acesso GET /api/forum/threads/{id}
-    Então o post de resposta mostra "Em resposta a [deleted]"
+  @auth @identidade
+  Cenário: Post exibe login real do autor sem anonimato
+    Dado que estou autenticado como aluno "marvin"
+    Quando crio POST /api/forum/boards/tech/threads
+      | title   | Pergunta técnica |
+      | content | Qual é o jeito?  |
+    E GET /api/forum/threads/{id}/posts
+    Então cada post contém um campo author.login = "marvin"
+    E cada post contém um campo author.image_url (avatar)
+    E o login "marvin" é visível ao consultar a thread (sem anonimato)

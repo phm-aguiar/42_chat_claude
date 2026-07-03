@@ -36,3 +36,6 @@ tmp/
 __pycache__/
 *.pyc
 *.pyo
+
+# Binário de build local
+/main

@@ -5,6 +5,7 @@
 @tailwind utilities;
 
 :root {
+  /* 42 Design System colors */
   --color-black: #1b1b1b;
   --color-white: #ffffff;
   --color-navy: #173d7a;
@@ -17,6 +18,9 @@
   --color-green: #2dd57a;
   --color-pink: #ec3391;
   --color-purple: #7300ff;
+
+  /* Shadcn/ui compatibility — flat design (0px border-radius) */
+  --radius: 0rem;
 }
 
 * {

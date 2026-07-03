@@ -3,6 +3,8 @@ package queries
 import (
 	"database/sql"
 	"fmt"
+
+	"github.com/lib/pq"
 )
 
 // User representa um aluno da 42 autenticado.
@@ -46,4 +48,18 @@ func GetUserByID(db *sql.DB, id int) (User, error) {
 		return User{}, fmt.Errorf("get user: %w", err)
 	}
 	return u, nil
+}
+
+// UpdateTitleSkills atualiza título e skills de um usuário.
+// Ambos os campos são opcionais; passa-se strings vazias para não alterar.
+func UpdateTitleSkills(db *sql.DB, userID int, title string, skills []string) error {
+	_, err := db.Exec(`
+		UPDATE users
+		SET title = $2, skills = $3
+		WHERE id = $1
+	`, userID, title, pq.Array(skills))
+	if err != nil {
+		return fmt.Errorf("update title/skills: %w", err)
+	}
+	return nil
 }

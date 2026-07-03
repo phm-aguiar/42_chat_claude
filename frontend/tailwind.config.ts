@@ -31,6 +31,18 @@ const config: Config = {
         "42-green": "#2DD57A",
         "42-pink": "#EC3391",
         "42-purple": "#7300FF",
+        // Design System 42 — namespace 'ft' para Shadcn/ui compat
+        ft: {
+          black: "#1B1B1B",
+          white: "#FFFFFF",
+          navy: "#173D7A",
+          nearblack: "#202026",
+          darkgray: "#29292E",
+          teal: "#00BABC",
+          cgblue: "#04809F",
+          green: "#2DD57A",
+          pink: "#EC3391",
+        },
       },
       fontFamily: {
         sans: ["Futura PT", "ui-sans-serif", "system-ui", "sans-serif"],

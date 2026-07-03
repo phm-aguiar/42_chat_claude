@@ -34,63 +34,28 @@ export function UserSignature({ userID }: UserSignatureProps) {
         color: 'rgba(255,255,255,0.6)',
       }}
     >
-      {/* Avatar */}
-      <img
-        src={stats?.image_url || '/assets/default-avatar.png'}
-        alt={stats?.login || 'usuário'}
-        onError={(e) => {
-          (e.currentTarget as HTMLImageElement).src = '/assets/default-avatar.png';
-        }}
-        style={{
-          width: '32px',
-          height: '32px',
-          flexShrink: 0,
-          objectFit: 'cover',
-          filter: 'grayscale(30%)',
-        }}
-      />
-
-      {/* Info container */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', flex: 1, minWidth: 0 }}>
-        {/* Login */}
-        <div
+      {/* Tier badge + message count (avatar + login removed to avoid duplication with MessageList header) */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+        {/* Tier badge */}
+        <span
           style={{
-            fontSize: '10px',
+            padding: '2px 6px',
+            borderRadius: 0,
+            backgroundColor: tierColor,
+            color: '#1B1B1B',
+            fontSize: '9px',
             fontWeight: 700,
-            letterSpacing: '0.08em',
             textTransform: 'uppercase',
-            color: 'rgba(255,255,255,0.8)',
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-            whiteSpace: 'nowrap',
+            letterSpacing: '0.06em',
           }}
         >
-          {stats?.login || 'usuário desconhecido'}
-        </div>
+          {tierLabel}
+        </span>
 
-        {/* Tier badge + message count */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-          {/* Tier badge */}
-          <span
-            style={{
-              padding: '2px 6px',
-              borderRadius: 0,
-              backgroundColor: tierColor,
-              color: '#1B1B1B',
-              fontSize: '9px',
-              fontWeight: 700,
-              textTransform: 'uppercase',
-              letterSpacing: '0.06em',
-            }}
-          >
-            {tierLabel}
-          </span>
-
-          {/* Message count */}
-          <span style={{ fontSize: '9px', color: 'rgba(255,255,255,0.5)' }}>
-            {stats?.total_messages || 0} mensagens
-          </span>
-        </div>
+        {/* Message count */}
+        <span style={{ fontSize: '9px', color: 'rgba(255,255,255,0.5)' }}>
+          {stats?.total_messages || 0} mensagens
+        </span>
       </div>
     </div>
   );
