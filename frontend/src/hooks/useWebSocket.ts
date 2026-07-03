@@ -7,6 +7,7 @@ const TYPING_DEBOUNCE_MS = 1000; // 1s debounce (ADR-103.4)
 
 export function useWebSocket() {
   const wsRef = useRef<WebSocket | null>(null);
+  const reconnectTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const attemptRef = useRef(0);
   const lastTimestampRef = useRef<string | undefined>(undefined);
   const typingTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -69,6 +70,11 @@ export function useWebSocket() {
     wsRef.current = ws;
 
     ws.onopen = () => {
+      // Socket antigo (troca de chat durante o handshake) — descarta
+      if (wsRef.current !== ws) {
+        ws.close();
+        return;
+      }
       attemptRef.current = 0;
       setStatus('connected');
       setError(null);
@@ -113,10 +119,16 @@ export function useWebSocket() {
     };
 
     ws.onerror = () => {
-      setStatus('error');
+      if (wsRef.current === ws) setStatus('error');
     };
 
     ws.onclose = () => {
+      // DT-01: só reconecta se ESTE socket ainda é o ativo. Fechamento
+      // intencional (troca de chat/unmount) zera wsRef antes do close —
+      // sem este guard, o timer de backoff reabria a conexão com o
+      // activeChat antigo (stale closure) e sobrescrevia wsRef, mandando
+      // as mensagens para a room errada (general).
+      if (wsRef.current !== ws) return;
       wsRef.current = null;
       setStatus('idle');
 
@@ -124,7 +136,7 @@ export function useWebSocket() {
       const delay = BACKOFF_DELAYS[Math.min(attemptRef.current, BACKOFF_DELAYS.length - 1)];
       attemptRef.current += 1;
 
-      setTimeout(() => {
+      reconnectTimerRef.current = setTimeout(() => {
         connect();
       }, delay);
     };
@@ -146,7 +158,12 @@ export function useWebSocket() {
     return () => {
       window.removeEventListener('chat:send', handleSend);
       if (typingTimeoutRef.current) clearTimeout(typingTimeoutRef.current);
-      wsRef.current?.close();
+      if (reconnectTimerRef.current) clearTimeout(reconnectTimerRef.current);
+      // Fechamento intencional: zera wsRef ANTES do close para o guard
+      // do onclose não agendar reconexão com closure antiga (DT-01)
+      const ws = wsRef.current;
+      wsRef.current = null;
+      ws?.close();
     };
   }, [connect, activeChat]);
 
