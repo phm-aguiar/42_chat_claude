@@ -29,11 +29,12 @@ type Client struct {
 	violations int
 	userID     int
 	login      string
+	roomID     string // ID da room (chat) que este cliente está conectado
 	db         *sql.DB
 }
 
 // NewClient cria um client com rate limiter: 10 msgs/s, burst 10 (ADR-008).
-func NewClient(hub *Hub, conn *websocket.Conn, userID int, login string, db *sql.DB) *Client {
+func NewClient(hub *Hub, conn *websocket.Conn, userID int, login string, db *sql.DB, roomID string) *Client {
 	return &Client{
 		hub:     hub,
 		conn:    conn,
@@ -41,6 +42,7 @@ func NewClient(hub *Hub, conn *websocket.Conn, userID int, login string, db *sql
 		limiter: rate.NewLimiter(10, 10),
 		userID:  userID,
 		login:   login,
+		roomID:  roomID,
 		db:      db,
 	}
 }
@@ -93,7 +95,7 @@ func (c *Client) readPump(ctx context.Context) {
 			continue
 		}
 
-		msg, err := queries.SaveMessage(c.db, c.userID, incoming.Content)
+		msg, err := queries.SaveMessage(c.db, c.userID, c.roomID, incoming.Content)
 		if err != nil {
 			log.Printf("ws save message: %v", err)
 			continue
@@ -101,8 +103,14 @@ func (c *Client) readPump(ctx context.Context) {
 
 		c.hub.EmitStatsChanged(c.userID)
 
-		enriched, _ := json.Marshal(msg)
-		c.hub.broadcast <- enriched
+		// Enriquece payload com chat_id da conexão (fixa, imutável)
+		msgMap := make(map[string]any)
+		msgBytes, _ := json.Marshal(msg)
+		json.Unmarshal(msgBytes, &msgMap)
+		msgMap["chat_id"] = c.roomID
+
+		enriched, _ := json.Marshal(msgMap)
+		c.hub.BroadcastToRoom(c.roomID, enriched)
 	}
 }
 

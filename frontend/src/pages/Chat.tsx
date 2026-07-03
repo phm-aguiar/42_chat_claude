@@ -1,15 +1,36 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useChatStore } from '@/stores/chatStore';
 import { clearToken } from '@/lib/auth';
 import { MessageList } from '@/components/chat/MessageList';
 import { MessageInput } from '@/components/chat/MessageInput';
 import { OnlineSidebar } from '@/components/chat/OnlineSidebar';
+import { TypingIndicator } from '@/components/chat/TypingIndicator';
+import { parseEmoticons } from '@/lib/emoticons';
 import { useWebSocket } from '@/hooks/useWebSocket';
+import { GENERAL_CHAT_ID } from '@/lib/chatApi';
+
+import ChatList from '@/pages/chat/ChatList';
 
 export function ChatPage() {
-  const { messages, status, fetchHistory } = useChatStore();
-  useWebSocket();
+  const {
+    messages,
+    status,
+    fetchHistory,
+    activeChat,
+    fetchHistoryForChat,
+  } = useChatStore();
+  const { sendTyping } = useWebSocket();
+  const [loadedChats, setLoadedChats] = useState<Set<string>>(new Set([GENERAL_CHAT_ID]));
 
+  // Feature 103: carregar histórico do chat ativo na primeira vez
+  useEffect(() => {
+    if (!loadedChats.has(activeChat)) {
+      fetchHistoryForChat(activeChat, undefined, 50);
+      setLoadedChats((prev) => new Set([...prev, activeChat]));
+    }
+  }, [activeChat, fetchHistoryForChat, loadedChats]);
+
+  // Feature 100: histórico inicial do "general" chat
   useEffect(() => {
     fetchHistory(undefined, 50);
   }, [fetchHistory]);
@@ -21,6 +42,13 @@ export function ChatPage() {
   function handleLogout() {
     clearToken();
     window.location.replace('/');
+  }
+
+  function handleInputChange(value: string) {
+    // Dispara sendTyping() com debounce 1s (via useWebSocket)
+    if (value.length > 0) {
+      sendTyping();
+    }
   }
 
   const statusLabel =
@@ -96,13 +124,27 @@ export function ChatPage() {
 
       {/* Body */}
       <div style={{ display: 'flex', flex: 1, overflow: 'hidden' }}>
-        {/* Sidebar */}
-        <OnlineSidebar />
+        {/* Sidebar: Chat List + Online Users */}
+        <div style={{ display: 'flex', flexDirection: 'column', width: '240px', borderRight: '1px solid #29292E', overflow: 'hidden' }}>
+          {/* ChatList (Feature 103) */}
+          <ChatList />
+          {/* OnlineSidebar (Feature 100) */}
+          <div style={{ flex: 1, overflow: 'auto', borderTop: '1px solid #29292E' }}>
+            <OnlineSidebar />
+          </div>
+        </div>
 
-        {/* Main */}
+        {/* Main: Message List + Input */}
         <div style={{ display: 'flex', flexDirection: 'column', flex: 1, overflow: 'hidden' }}>
-          <MessageList messages={messages} />
-          <MessageInput onSend={handleSend} disabled={status !== 'connected'} />
+          <MessageList messages={messages} contentRenderer={parseEmoticons} />
+          {/* Typing Indicator (Feature 103) */}
+          <TypingIndicator chatId={activeChat} />
+          {/* Input */}
+          <MessageInput
+            onSend={handleSend}
+            disabled={status !== 'connected'}
+            onInputChange={handleInputChange}
+          />
         </div>
       </div>
     </div>

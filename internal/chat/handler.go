@@ -16,6 +16,7 @@ import (
 	"42chat/internal/ws"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/google/uuid"
 	"github.com/gorilla/websocket"
 )
 
@@ -48,6 +49,7 @@ var upgrader = websocket.Upgrader{
 
 // GetMessages retorna histórico de mensagens com cursor pagination.
 // GET /api/messages?before=<timestamp>&limit=<n>
+// Backward compat: implicitamente filtra por GeneralChatID (room padrão do chat global)
 func (h *Handler) GetMessages(w http.ResponseWriter, r *http.Request) {
 	before := time.Now().UTC()
 	if b := r.URL.Query().Get("before"); b != "" {
@@ -63,7 +65,7 @@ func (h *Handler) GetMessages(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	msgs, err := queries.GetMessages(h.DB, before, limit)
+	msgs, err := queries.GetMessages(h.DB, before, limit, ws.GeneralChatID)
 	if err != nil {
 		http.Error(w, `{"error":"erro interno","code":"DB_ERROR"}`, http.StatusInternalServerError)
 		return
@@ -121,8 +123,9 @@ func (h *Handler) HandleUserStats(w http.ResponseWriter, r *http.Request) {
 }
 
 // ServeWS faz o upgrade da conexão para WebSocket.
-// GET /ws?token=<jwt>
+// GET /ws?token=<jwt>&chat_id=<uuid>
 // Token aceito via query param (header não acessível na conexão WS inicial).
+// chat_id é opcional: default é GeneralChatID (backward compat).
 func (h *Handler) ServeWS(w http.ResponseWriter, r *http.Request) {
 	// Valida JWT do query param (fallback para WS onde o header é difícil de setar)
 	token := r.URL.Query().Get("token")
@@ -137,21 +140,34 @@ func (h *Handler) ServeWS(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Extrai chat_id da query; default: GeneralChatID (backward compat)
+	chatID := r.URL.Query().Get("chat_id")
+	if chatID == "" {
+		chatID = ws.GeneralChatID
+	} else {
+		// Valida formato UUID do chatID recebido
+		if _, err := uuid.Parse(chatID); err != nil {
+			http.Error(w, `{"error":"chat_id inválido","code":"INVALID_CHAT_ID"}`, http.StatusBadRequest)
+			return
+		}
+	}
+
 	conn, err := upgrader.Upgrade(w, r, nil)
 	if err != nil {
 		return
 	}
 
-	client := ws.NewClient(h.Hub, conn, claims.UserID, claims.Login, h.DB)
+	client := ws.NewClient(h.Hub, conn, claims.UserID, claims.Login, h.DB, chatID)
 	h.Hub.Register(client)
 
-	// Broadcast de entrada
+	// Broadcast de entrada — room-aware
 	joinMsg, _ := json.Marshal(map[string]string{
 		"type":    "join",
 		"login":   claims.Login,
 		"content": claims.Login + " entrou no chat",
+		"chat_id": chatID,
 	})
-	h.Hub.Broadcast(joinMsg)
+	h.Hub.BroadcastToRoom(chatID, joinMsg)
 
 	// Inicia pumps em goroutines
 	go client.WritePump()
@@ -161,8 +177,9 @@ func (h *Handler) ServeWS(w http.ResponseWriter, r *http.Request) {
 				"type":    "leave",
 				"login":   claims.Login,
 				"content": claims.Login + " saiu do chat",
+				"chat_id": chatID,
 			})
-			h.Hub.Broadcast(leaveMsg)
+			h.Hub.BroadcastToRoom(chatID, leaveMsg)
 		}()
 		// context.Background: r.Context() é cancelado quando ServeWS retorna,
 		// o que encerraria readPump imediatamente. A vida do WS é gerenciada

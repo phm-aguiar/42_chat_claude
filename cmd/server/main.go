@@ -8,12 +8,18 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"strconv"
 	"syscall"
 	"time"
 
 	"42chat/internal/auth"
 	"42chat/internal/chat"
+	chathandler "42chat/internal/chat/handler"
+	"42chat/internal/chat/routes"
+	chatstore "42chat/internal/chat/store"
 	"42chat/internal/db"
+	forumroutes "42chat/internal/forum/routes"
+	"42chat/internal/forum/store"
 	"42chat/internal/ws"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
@@ -65,7 +71,33 @@ func main() {
 	r.Get("/ws", chatHandler.ServeWS)
 	r.Get("/metrics", chatHandler.Metrics)
 
-	// TODO: forum routes
+	// Chat stores (typic ed chats, members, messages)
+	chats := &chatstore.ChatStore{DB: database}
+	members := &chatstore.MemberStore{DB: database}
+	messages := &chatstore.MessageStore{DB: database}
+
+	// Chat subrouter /api/chats
+	r.Mount("/api/chats", routes.Routes(chats, members, messages))
+
+	// Chat message deletion (DELETE /api/messages/{id}) — registered at root for consistency with GET /api/messages
+	chatMsgHandler := &chathandler.MessageHandler{Messages: messages, Members: members}
+	r.With(auth.JWTMiddleware()).Delete("/api/messages/{id}", chatMsgHandler.DeleteMessage)
+
+	// Forum routes
+	forumroutes.RegisterForumRoutes(r, database)
+
+	// Seed initial boards if FORUM_ADMIN_ID is set
+	forumAdminIDStr := os.Getenv("FORUM_ADMIN_ID")
+	if forumAdminIDStr != "" {
+		if adminID, err := strconv.Atoi(forumAdminIDStr); err == nil && adminID > 0 {
+			boardStore := &store.BoardStore{DB: database}
+			if err := boardStore.SeedBoards(adminID); err != nil {
+				log.Printf("warning: failed to seed boards: %v", err)
+			} else {
+				log.Printf("forum: seeded initial boards with admin_id=%d", adminID)
+			}
+		}
+	}
 
 	addr := ":" + port
 	log.Printf("Starting server on %s", addr)

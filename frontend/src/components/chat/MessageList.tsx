@@ -1,16 +1,18 @@
 import { useEffect, useRef } from 'react';
 import type { Message } from '@/lib/api';
 import { UserSignature } from './UserSignature';
+import { parseEmoticons } from '@/lib/emoticons';
 
 interface MessageListProps {
   messages: Message[];
+  contentRenderer?: (content: string) => string;
 }
 
 function formatTime(iso: string): string {
   return new Date(iso).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
 }
 
-export function MessageList({ messages }: MessageListProps) {
+export function MessageList({ messages, contentRenderer = parseEmoticons }: MessageListProps) {
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -100,7 +102,7 @@ export function MessageList({ messages }: MessageListProps) {
                 wordBreak: 'break-word',
               }}
             >
-              {msg.content}
+              {contentRenderer(msg.content)}
             </p>
             <UserSignature userID={msg.user_id} />
           </div>

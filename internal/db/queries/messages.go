@@ -10,6 +10,7 @@ import (
 type Message struct {
 	ID        string    `json:"id"`        // UUID como string — nunca []byte
 	UserID    int       `json:"user_id"`
+	ChatID    string    `json:"chat_id"`   // Room-aware: identifica qual chat/room
 	Login     string    `json:"login"`
 	ImageURL  string    `json:"image_url"`
 	Content   string    `json:"content"`
@@ -18,13 +19,13 @@ type Message struct {
 
 // SaveMessage persiste uma mensagem e retorna o registro completo com dados do usuário.
 // Usa JOIN para popular login e image_url inline.
-func SaveMessage(db *sql.DB, userID int, content string) (Message, error) {
+func SaveMessage(db *sql.DB, userID int, chatID string, content string) (Message, error) {
 	var msg Message
 	err := db.QueryRow(`
-		INSERT INTO messages (user_id, content)
-		VALUES ($1, $2)
-		RETURNING id::text, user_id, content, created_at
-	`, userID, content).Scan(&msg.ID, &msg.UserID, &msg.Content, &msg.CreatedAt)
+		INSERT INTO messages (user_id, chat_id, content)
+		VALUES ($1, $2, $3)
+		RETURNING id::text, user_id, chat_id::text, content, created_at
+	`, userID, chatID, content).Scan(&msg.ID, &msg.UserID, &msg.ChatID, &msg.Content, &msg.CreatedAt)
 	if err != nil {
 		return Message{}, fmt.Errorf("save message: %w", err)
 	}
@@ -41,21 +42,23 @@ func SaveMessage(db *sql.DB, userID int, content string) (Message, error) {
 // GetMessages busca mensagens com cursor pagination.
 // before: timestamp cursor (mensagens criadas ANTES deste instante)
 // limit: máximo de mensagens a retornar
+// chatID: filtra apenas mensagens da room/chat específica
 // Retorna em ordem DESC (mais recente primeiro) conforme ADR cursor pagination.
-func GetMessages(db *sql.DB, before time.Time, limit int) ([]Message, error) {
+func GetMessages(db *sql.DB, before time.Time, limit int, chatID string) ([]Message, error) {
 	if limit <= 0 || limit > 100 {
 		limit = 50
 	}
 
 	rows, err := db.Query(`
-		SELECT m.id::text, m.user_id, u.login, u.image_url, m.content, m.created_at
+		SELECT m.id::text, m.user_id, m.chat_id::text, u.login, COALESCE(u.image_url, ''), m.content, m.created_at
 		FROM messages m
 		JOIN users u ON u.id = m.user_id
-		WHERE m.created_at < $1
+		WHERE m.created_at < $1::timestamptz
+		  AND m.chat_id = $3::uuid
 		  AND m.deleted_at IS NULL
 		ORDER BY m.created_at DESC
 		LIMIT $2
-	`, before, limit)
+	`, before, limit, chatID)
 	if err != nil {
 		return nil, fmt.Errorf("get messages: %w", err)
 	}
@@ -64,7 +67,7 @@ func GetMessages(db *sql.DB, before time.Time, limit int) ([]Message, error) {
 	var msgs []Message
 	for rows.Next() {
 		var msg Message
-		if err := rows.Scan(&msg.ID, &msg.UserID, &msg.Login, &msg.ImageURL, &msg.Content, &msg.CreatedAt); err != nil {
+		if err := rows.Scan(&msg.ID, &msg.UserID, &msg.ChatID, &msg.Login, &msg.ImageURL, &msg.Content, &msg.CreatedAt); err != nil {
 			return nil, fmt.Errorf("scan message: %w", err)
 		}
 		msgs = append(msgs, msg)

@@ -3,9 +3,10 @@ import { useState, useRef, type KeyboardEvent } from 'react';
 interface MessageInputProps {
   onSend: (content: string) => void;
   disabled?: boolean;
+  onInputChange?: (value: string) => void;
 }
 
-export function MessageInput({ onSend, disabled = false }: MessageInputProps) {
+export function MessageInput({ onSend, disabled = false, onInputChange }: MessageInputProps) {
   const [value, setValue] = useState('');
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -38,7 +39,10 @@ export function MessageInput({ onSend, disabled = false }: MessageInputProps) {
       <textarea
         ref={textareaRef}
         value={value}
-        onChange={(e) => setValue(e.target.value)}
+        onChange={(e) => {
+          setValue(e.target.value);
+          onInputChange?.(e.target.value);
+        }}
         onKeyDown={handleKeyDown}
         disabled={disabled}
         maxLength={5000}

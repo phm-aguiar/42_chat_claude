@@ -7,10 +7,15 @@ import (
 	"time"
 )
 
+// GeneralChatID é a room padrão para o chat global (feature 100).
+// SYNC: internal/db/migrations/003_chat_resources.sql
+const GeneralChatID = "00000000-0000-7000-8000-000000000001"
+
 // Hub gerencia todas as conexões WebSocket ativas.
 // ADR-001: modelo híbrido — RWMutex no mapa + send chan por client.
 type Hub struct {
 	clients       map[*Client]bool
+	rooms         map[string]map[*Client]bool // roomID -> (clients), protegido por mu
 	mu            sync.RWMutex
 	register      chan *Client
 	unregister    chan *Client
@@ -23,6 +28,7 @@ type Hub struct {
 func NewHub() *Hub {
 	return &Hub{
 		clients:       make(map[*Client]bool),
+		rooms:         make(map[string]map[*Client]bool),
 		register:      make(chan *Client, 16),
 		unregister:    make(chan *Client, 16),
 		broadcast:     make(chan []byte, 256),
@@ -38,6 +44,11 @@ func (h *Hub) Run(ctx context.Context) {
 		case client := <-h.register:
 			h.mu.Lock()
 			h.clients[client] = true
+			// Lazy creation: adiciona cliente à room dele
+			if h.rooms[client.roomID] == nil {
+				h.rooms[client.roomID] = make(map[*Client]bool)
+			}
+			h.rooms[client.roomID][client] = true
 			h.mu.Unlock()
 
 		case client := <-h.unregister:
@@ -45,6 +56,14 @@ func (h *Hub) Run(ctx context.Context) {
 			if _, ok := h.clients[client]; ok {
 				delete(h.clients, client)
 				close(client.send)
+				// Remove da room
+				if room, ok := h.rooms[client.roomID]; ok {
+					delete(room, client)
+					// GC: remove room vazia se não for general
+					if len(room) == 0 && client.roomID != GeneralChatID {
+						delete(h.rooms, client.roomID)
+					}
+				}
 			}
 			h.mu.Unlock()
 
@@ -71,6 +90,25 @@ func (h *Hub) Run(ctx context.Context) {
 // Broadcast envia uma mensagem para todos os clients conectados.
 func (h *Hub) Broadcast(msg []byte) {
 	h.broadcast <- msg
+}
+
+// BroadcastToRoom envia uma mensagem para todos os clients em uma room específica.
+// Implementa o mesmo padrão non-blocking + unregister assíncrono do Broadcast global.
+func (h *Hub) BroadcastToRoom(roomID string, msg []byte) {
+	h.mu.RLock()
+	roomClients := h.rooms[roomID]
+	h.mu.RUnlock()
+
+	for client := range roomClients {
+		select {
+		case client.send <- msg:
+		default:
+			// canal cheio — desconecta sem bloquear o broadcast
+			go func(c *Client) {
+				h.unregister <- c
+			}(client)
+		}
+	}
 }
 
 // Shutdown notifica todos os clients com evento de sistema e aguarda drenagem.

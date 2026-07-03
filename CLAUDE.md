@@ -159,8 +159,8 @@ IDs em toda API: strings UUID (nunca array de bytes).
 |----|---------|--------|
 | 100 | Chat core (Go + WS + PostgreSQL + OAuth2) | ✅ Implementado |
 | 101 | Assinatura de participação (UserSignature + stats) | ✅ Implementado via LATTE (builds/testes PASS; falta teste de carga + integração DB ao vivo) |
-| 102 | Fórum (boards → threads → posts, MDX, moderação) | 📋 Planejado — discovery/spec/plan/tasks prontos, sem código |
-| 103 | Expansão de mensageria (chats tipados, rooms, typing, emoticons) | 📋 Planejado — discovery/spec/plan/tasks prontos, sem código |
+| 102 | Fórum (boards → threads → posts, MDX, moderação) | ✅ Implementado via LATTE (2026-07-02: 28/28 tasks, smoke 11/11, testes store live PASS) |
+| 103 | Expansão de mensageria (chats tipados, rooms, typing, emoticons) | ✅ Implementado via LATTE (2026-07-03: 21/21 tasks, smoke fórum 11/11, `-race` PASS, migration 003 validada em banco limpo) |
 
 Specs completas em `specs/features/<id>-<nome>/`: `spec.md`, `plan.md`, `tasks.md`, `acceptance/*.feature`
 
@@ -190,88 +190,32 @@ Artefatos em `specs/features/<NNN>-<slug>/`. Pipeline imutável — pular etapas
 
 ### Coordenação Direta — Protocolo LATTE
 
-A **sessão principal** é o Lead (ℓ). **Não spawna orquestrador intermediário** — você coordena direto.
-Workers (𝒲) via ferramenta `Agent`: `researcher` (Sonnet, read-only), `analyst` (Sonnet, síntese), `executor` (Haiku, implementação). Todos consultam a wiki via experiential memory antes de agir.
-
-#### Agentes disponíveis
-
-| Agente | Responsabilidade | Modelo |
-|---|---|---|
-| `researcher` | Descoberta read-only — mapeia código, evidências, build state | Sonnet |
-| `analyst` | Síntese — audita constitution.md, produz plano atômico | Sonnet |
-| `executor` | Implementação genérica — código, testes, docs (natureza da task decide o quê) | Haiku |
-
-#### Algorithm A4.5 — Execução por Rounds
-
-1. **Approval gate:** Leia `spec.md`. Se `Aprovado: false` → ABORTE imediatamente.
-2. **Carregar DAG:** Leia `tasks.md`, extraia tasks com Papel, Dependências, Paralelizável, Arquivos.
-3. **Frontier:** tasks sem dependências pendentes = prontas para dispatch neste round.
-4. **Dispatch (janela deslizante ≤ 3):** spawne tasks da frontier em batch via `Agent`. Tasks paralelas com Arquivos disjuntos podem ir simultâneas.
-5. **Por completion:** valide evidência DONE (`go build ./...` passa + arquivos existem) → aplique `Close` (marque `[x]` no tasks.md) → frontier atualiza → dispatche dependentes.
-6. **Heartbeat H=4:** worker silencioso por 4 rounds → `reassign` (re-spawne com contexto enriquecido, tentativa N/3).
-7. **Retry:** 3 falhas na mesma task → `block` a sub-árvore → escale para o humano.
-8. **Context saturation:** a cada 4 turns, sumarize tasks concluídas antes de continuar.
-9. **Features >15 tasks:** execute fase por fase (`max-rounds: 40`). Valide incrementalmente.
-
-#### 7 Operadores de Estado
-
-```
-Ready → Assigned → Claimed → Completed → Released → Closed → Verified
-  ↑        │          │          │
-  └────────┴──────────┴──────────┘ (heartbeat timeout → retry, máx 3)
-```
-
-| Operador | Gatilho | Ação do Lead |
-|---|---|---|
-| `Discover` | Deps satisfeitas | Task entra na frontier |
-| `Assign` | Dispatch | Task atribuída a worker via `Agent` |
-| `Claim` | Worker aceita | Worker confirma início (incluso no prompt) |
-| `Complete` | Worker entrega evidência | Lead valida: arquivos existem + build passa |
-| `Release` | Validação ok | Marca task como verificada |
-| `Close` | Release aceito | Marca `[x]` no tasks.md — task imutável |
-| `Verify` | Features críticas | Segundo agente confirma (opcional) |
-
-#### Quando NÃO delegar
-
-Arquivos da task já existem **e** `go build ./...` passa → marque `[x]` direto (Close sem dispatch).
-
-#### Controle de budget
-
-Se `graph-operators: enabled` no tasks.md → respeite `max-rounds` e `heartbeat-threshold` do frontmatter YAML. Sem LATTE explícito → janela deslizante padrão (≤ 3 workers, H=4, max 40 rounds por fase).
+A execução de `tasks.md` é coordenada pela sessão principal (Lead) com workers `researcher`/`analyst`/`executor` via `Agent`.
+**Protocolo completo (Algorithm A4.5, 7 operadores, heartbeat, budget): skill `/sdd`, modo `coordinate`.** Carregue a skill antes de implementar qualquer feature.
 
 ## Wiki (`wiki-claude/`)
 
-### Antes de trabalhar (setup ou após grandes mudanças)
+Consulta (agentes fazem isso antes de agir — wiki-first):
 ```bash
-python3 .claude/skills/wiki/experiential_memory/cli_index.py --full
-python3 .claude/skills/wiki/lint/sync_scores.py
+python3 .claude/skills/wiki/experiential_memory/cli_query.py --semantic "<query>" --hybrid --top-k 5
 ```
 
-### Durante o trabalho (por sessão ou pré-commit)
+Manutenção (após grandes mudanças no vault):
 ```bash
-python3 .claude/skills/wiki/lint/validate_template.py
-python3 .claude/skills/wiki/lint/fix_frontmatter.py --dry-run  # preview
-python3 .claude/skills/wiki/lint/fix_frontmatter.py             # aplicar
+python3 .claude/skills/wiki/experiential_memory/cli_index.py --full --wiki-dir wiki-claude  # reindexar
+python3 .claude/skills/wiki/experiential_memory/cli_distill.py                              # destilar chunks redundantes
+python3 .claude/skills/wiki/experiential_memory/normalize_frontmatter.py                    # frontmatter mínimo em docs sem YAML
 ```
 
-### Manutenção periódica
-```bash
-python3 .claude/skills/wiki/experiential_memory/cli_distill.py   # destilar chunks redundantes
-python3 .claude/skills/wiki/lint/chunk_split.py --dry-run        # splitar arquivos >500 linhas
-python3 .claude/skills/wiki/experiential_memory/cli_index.py --full  # reindexar pós-split
-```
-
-Templates e config: `wiki-claude/_meta/template.md`, `wiki-claude/_meta/chunking.yaml`
+Template de frontmatter: `wiki-claude/_meta/template.md`. Config de chunking: `wiki-claude/_meta/chunking.yaml`
 
 ## Git
 
 ### Antes de todo commit
 ```bash
-# Validação wiki
-python3 .claude/skills/wiki/lint/validate_template.py
-
-# Testes do framework LATTE (84 testes)
-PYTHONPATH=.claude/skills/sdd python3 -m pytest .claude/skills/sdd/latte_coordination/tests/ -q
+go build ./... && go vet ./...
+# Se tocou frontend: cd frontend && npm run build
+# Se tocou wiki-claude/: reindexar (ver seção Wiki)
 ```
 
 ### Nunca commitar
@@ -297,7 +241,7 @@ PYTHONPATH=.claude/skills/sdd python3 -m pytest .claude/skills/sdd/latte_coordin
 
 | Comando | Função |
 |---|---|
-| `/sdd` | Pipeline completo — dispatcher 8 modos |
+| `/sdd` | Pipeline completo — dispatcher 9 modos (inclui `coordinate` = execução LATTE) |
 | `/sdd-brainstorm` | Entrevista interativa + cross-ref wiki/código → `reports/<id>-discovery.md` (ADR+PRD, quality score ≥ 20/25) |
 | `/sdd-generate-spec` | `reports/<id>-discovery.md` → `specs/features/<id>/spec.md` (condensado, pipeline-compatible) |
 | `/sdd-explore-tech` | Detecta stack → tech.md |

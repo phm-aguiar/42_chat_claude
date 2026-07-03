@@ -12,7 +12,7 @@ discovery: reports/103-ms-graph-messaging-discovery.md
 
 ## Fase 0: Descoberta
 
-- [ ] **T001:** Mapear impactos do hub refactor em `internal/ws/hub.go` e `internal/ws/handler.go`
+- [x] **T001:** Mapear impactos do hub refactor em `internal/ws/hub.go` e `internal/ws/handler.go`
   - **Papel:** researcher
   - **agent:** researcher1
   - **depends_on:** []
@@ -20,7 +20,7 @@ discovery: reports/103-ms-graph-messaging-discovery.md
   - **Arquivos:** `internal/ws/hub.go`, `internal/ws/handler.go`
   - **Wiki-Keywords:** Hub, rooms, broadcast, goroutine, RWMutex, WebSocket
 
-- [ ] **T002:** Auditar feature 103 contra constitution.md; mapear fronteira entre hub global e rooms
+- [x] **T002:** Auditar feature 103 contra constitution.md; mapear fronteira entre hub global e rooms
   - **Papel:** analyst
   - **agent:** analyst1
   - **depends_on:** [T001]
@@ -32,7 +32,7 @@ discovery: reports/103-ms-graph-messaging-discovery.md
 
 ## Fase 1: Fundação
 
-- [ ] **T003:** Criar migration `003_chat_resources.sql` (chats, chat_members, ALTER messages + backfill + índices)
+- [x] **T003:** Criar migration `003_chat_resources.sql` (chats, chat_members, ALTER messages + backfill + índices)
   - **Papel:** executor
   - **agent:** executor1
   - **depends_on:** [T002]
@@ -40,7 +40,7 @@ discovery: reports/103-ms-graph-messaging-discovery.md
   - **Arquivos:** `internal/db/migrations/003_chat_resources.sql`
   - **Wiki-Keywords:** migration, UUIDv7, backfill, chat_id, GENERAL_UUID, soft-delete
 
-- [ ] **T004:** Criar Go models `Chat` e `ChatMember` em `internal/chat/model/`
+- [x] **T004:** Criar Go models `Chat` e `ChatMember` em `internal/chat/model/`
   - **Papel:** executor
   - **agent:** executor1
   - **depends_on:** [T003]
@@ -48,7 +48,7 @@ discovery: reports/103-ms-graph-messaging-discovery.md
   - **Arquivos:** `internal/chat/model/chat.go`
   - **Wiki-Keywords:** UUIDv7, Chat, ChatMember, role, oneOnOne, group
 
-- [ ] **T005:** Criar arquivos Gherkin de acceptance: `chat_lifecycle.feature`, `messaging.feature`, `typing_indicator.feature`, `emoticons.feature`
+- [x] **T005:** Criar arquivos Gherkin de acceptance: `chat_lifecycle.feature`, `messaging.feature`, `typing_indicator.feature`, `emoticons.feature`
   - **Papel:** executor
   - **agent:** executor2
   - **depends_on:** [T002]
@@ -60,7 +60,7 @@ discovery: reports/103-ms-graph-messaging-discovery.md
 
 ## Fase 2: Backend — Stores
 
-- [ ] **T006:** Criar `internal/chat/store/chats.go` — CRUD chats + listar chats do usuário
+- [x] **T006:** Criar `internal/chat/store/chats.go` — CRUD chats + listar chats do usuário
   - **Papel:** executor
   - **agent:** executor1
   - **depends_on:** [T004]
@@ -68,7 +68,7 @@ discovery: reports/103-ms-graph-messaging-discovery.md
   - **Arquivos:** `internal/chat/store/chats.go`
   - **Wiki-Keywords:** lib/pq, SQL, chat, CRUD, UUIDv7, oneOnOne, group
 
-- [ ] **T007:** Criar `internal/chat/store/members.go` — add/remove membro, get role
+- [x] **T007:** Criar `internal/chat/store/members.go` — add/remove membro, get role
   - **Papel:** executor
   - **agent:** executor2
   - **depends_on:** [T004]
@@ -76,7 +76,7 @@ discovery: reports/103-ms-graph-messaging-discovery.md
   - **Arquivos:** `internal/chat/store/members.go`
   - **Wiki-Keywords:** chat_members, role, owner, mod, member, UNIQUE-constraint
 
-- [ ] **T008:** Criar `internal/chat/store/messages.go` — list by chat_id (cursor), send, soft delete
+- [x] **T008:** Criar `internal/chat/store/messages.go` — list by chat_id (cursor), send, soft delete
   - **Papel:** executor
   - **agent:** executor1
   - **depends_on:** [T004]
@@ -88,7 +88,7 @@ discovery: reports/103-ms-graph-messaging-discovery.md
 
 ## Fase 3: Backend — Handlers + Hub
 
-- [ ] **T009:** Criar `internal/chat/handler/chats.go` — POST /api/chats, GET /api/chats, GET /api/chats/{id}
+- [x] **T009:** Criar `internal/chat/handler/chats.go` — POST /api/chats, GET /api/chats, GET /api/chats/{id}
   - **Papel:** executor
   - **agent:** executor1
   - **depends_on:** [T006, T007]
@@ -96,7 +96,7 @@ discovery: reports/103-ms-graph-messaging-discovery.md
   - **Arquivos:** `internal/chat/handler/chats.go`
   - **Wiki-Keywords:** Chi, handler, JWT, auth, oneOnOne, group, 201, 404, 409
 
-- [ ] **T010:** Criar `internal/chat/handler/messages.go` — GET/POST /api/chats/{id}/messages, DELETE /api/messages/{id}
+- [x] **T010:** Criar `internal/chat/handler/messages.go` — GET/POST /api/chats/{id}/messages, DELETE /api/messages/{id}
   - **Papel:** executor
   - **agent:** executor2
   - **depends_on:** [T008, T007]
@@ -104,23 +104,23 @@ discovery: reports/103-ms-graph-messaging-discovery.md
   - **Arquivos:** `internal/chat/handler/messages.go`
   - **Wiki-Keywords:** paginação, cursor, has_more, next_before, soft-delete, tombstone, mod
 
-- [ ] **T011:** Refatorar `internal/ws/hub.go` — adicionar rooms, `BroadcastToRoom`, manter backward compat
+- [x] **T011:** Refatorar `internal/ws/hub.go` — adicionar rooms, `BroadcastToRoom`, manter backward compat
   - **Papel:** executor
   - **agent:** executor1
   - **depends_on:** [T002]
   - **Paralelizável:** false
-  - **Arquivos:** `internal/ws/hub.go`
+  - **Arquivos:** `internal/ws/hub.go`, `internal/ws/client.go`
   - **Wiki-Keywords:** Hub, rooms, map, RWMutex, BroadcastToRoom, GENERAL_UUID, race-condition
 
-- [ ] **T012:** Atualizar `internal/ws/handler.go` — extrair `chat_id` da query string; sem `chat_id` → GENERAL_UUID
+- [x] **T012:** Atualizar `internal/chat/handler.go` (ServeWS) — extrair `chat_id` da query string (sem `chat_id` → GENERAL_UUID); join/leave por room; `queries.SaveMessage`/`GetMessages` com `chat_id`
   - **Papel:** executor
   - **agent:** executor1
   - **depends_on:** [T011]
   - **Paralelizável:** false
-  - **Arquivos:** `internal/ws/handler.go`
+  - **Arquivos:** `internal/chat/handler.go`, `internal/db/queries/messages.go`
   - **Wiki-Keywords:** WebSocket, chat_id, query-param, backward-compat, GENERAL_UUID, JWT
 
-- [ ] **T013:** Criar `internal/chat/handler/members.go` + middleware `ChatMember`, `ChatModOnly` + rotas Chi `/api/chat`
+- [x] **T013:** Criar `internal/chat/handler/members.go` + middleware `ChatMember`, `ChatModOnly` + rotas Chi `/api/chat`
   - **Papel:** executor
   - **agent:** executor2
   - **depends_on:** [T009, T010]
@@ -128,7 +128,7 @@ discovery: reports/103-ms-graph-messaging-discovery.md
   - **Arquivos:** `internal/chat/handler/members.go`, `internal/chat/middleware/auth.go`, `internal/chat/routes/routes.go`
   - **Wiki-Keywords:** Chi, middleware, member, mod, auth, 403, subrouter
 
-- [ ] **T014:** Registrar subrouter `/api/chat` em `cmd/server/main.go`
+- [x] **T014:** Registrar subrouter `/api/chat` em `cmd/server/main.go`
   - **Papel:** executor
   - **agent:** executor1
   - **depends_on:** [T013]
@@ -140,7 +140,7 @@ discovery: reports/103-ms-graph-messaging-discovery.md
 
 ## Fase 4: Frontend
 
-- [ ] **T015:** Criar `frontend/src/lib/emoticons.ts` — mapa de emoticons + função `parseEmoticons(text)`
+- [x] **T015:** Criar `frontend/src/lib/emoticons.ts` — mapa de emoticons + função `parseEmoticons(text)`
   - **Papel:** executor
   - **agent:** executor2
   - **depends_on:** [T002]
@@ -148,7 +148,7 @@ discovery: reports/103-ms-graph-messaging-discovery.md
   - **Arquivos:** `frontend/src/lib/emoticons.ts`
   - **Wiki-Keywords:** emoticons, regex, MSN, frontend-parsing, React
 
-- [ ] **T016:** Atualizar `frontend/src/stores/chatStore.ts` — suporte multi-chat, typing state, `activeChat`
+- [x] **T016:** Atualizar `frontend/src/stores/chatStore.ts` — suporte multi-chat, typing state, `activeChat`
   - **Papel:** executor
   - **agent:** executor1
   - **depends_on:** [T014]
@@ -156,7 +156,7 @@ discovery: reports/103-ms-graph-messaging-discovery.md
   - **Arquivos:** `frontend/src/stores/chatStore.ts`
   - **Wiki-Keywords:** Zustand, chatStore, multi-chat, activeChat, typing, fetchHistory, dedup
 
-- [ ] **T017:** Criar `frontend/src/pages/chat/ChatList.tsx` — lista de chats do usuário (sidebar esquerda)
+- [x] **T017:** Criar `frontend/src/pages/chat/ChatList.tsx` — lista de chats do usuário (sidebar esquerda)
   - **Papel:** executor
   - **agent:** executor2
   - **depends_on:** [T016]
@@ -164,7 +164,7 @@ discovery: reports/103-ms-graph-messaging-discovery.md
   - **Arquivos:** `frontend/src/pages/chat/ChatList.tsx`
   - **Wiki-Keywords:** React, Tailwind, sidebar, oneOnOne, group, general, DS42
 
-- [ ] **T018:** Atualizar `frontend/src/pages/chat/Chat.tsx` (ChatWindow) — typing indicator + emoticons + chat_id no WS
+- [x] **T018:** Atualizar `frontend/src/pages/chat/Chat.tsx` (ChatWindow) — typing indicator + emoticons + chat_id no WS
   - **Papel:** executor
   - **agent:** executor1
   - **depends_on:** [T016, T015]
@@ -176,7 +176,7 @@ discovery: reports/103-ms-graph-messaging-discovery.md
 
 ## Fase 5: Validação e Documentação
 
-- [ ] **T019:** Testes unitários Go: `go test -race ./internal/ws/...` + `go test ./internal/chat/...`
+- [x] **T019:** Testes unitários Go: `go test -race ./internal/ws/...` + `go test ./internal/chat/...`
   - **Papel:** executor
   - **agent:** executor1
   - **depends_on:** [T012, T013]
@@ -184,7 +184,7 @@ discovery: reports/103-ms-graph-messaging-discovery.md
   - **Arquivos:** `internal/ws/hub_test.go`, `internal/chat/store/chats_test.go`, `internal/chat/store/messages_test.go`
   - **Wiki-Keywords:** go-test, race-condition, httptest, godog, TDD, RED-GREEN
 
-- [ ] **T020:** Verificar regressão Feature 100/102: rodar `tests/forum_smoke_test.sh` + validar `/ws?token` sem chat_id
+- [x] **T020:** Verificar regressão Feature 100/102: rodar `tests/forum_smoke_test.sh` + validar `/ws?token` sem chat_id
   - **Papel:** executor
   - **agent:** executor2
   - **depends_on:** [T018, T019]
@@ -192,7 +192,7 @@ discovery: reports/103-ms-graph-messaging-discovery.md
   - **Arquivos:** `tests/forum_smoke_test.sh`
   - **Wiki-Keywords:** smoke-test, regressão, Feature-100, backward-compat, GENERAL_UUID
 
-- [ ] **T021:** Build final: `go build ./...`, `go vet ./...`, `cd frontend && npm run build`
+- [x] **T021:** Build final: `go build ./...`, `go vet ./...`, `cd frontend && npm run build`
   - **Papel:** executor
   - **agent:** Lead
   - **depends_on:** [T019, T020]

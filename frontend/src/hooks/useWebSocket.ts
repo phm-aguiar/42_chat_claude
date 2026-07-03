@@ -1,13 +1,52 @@
 import { useEffect, useRef, useCallback } from 'react';
 import { useChatStore } from '@/stores/chatStore';
+import { GENERAL_CHAT_ID } from '@/lib/chatApi';
 
 const BACKOFF_DELAYS = [1000, 2000, 4000, 8000, 16000]; // ms, cap 16s
+const TYPING_DEBOUNCE_MS = 1000; // 1s debounce (ADR-103.4)
 
 export function useWebSocket() {
   const wsRef = useRef<WebSocket | null>(null);
   const attemptRef = useRef(0);
   const lastTimestampRef = useRef<string | undefined>(undefined);
-  const { addMessage, setStatus, setError, fetchHistory } = useChatStore();
+  const typingTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const lastTypingSentRef = useRef<number>(0);
+
+  const {
+    addMessage,
+    setStatus,
+    setError,
+    fetchHistory,
+    activeChat,
+    setTyping,
+  } = useChatStore();
+
+  /**
+   * sendTyping — Emite evento de digitação com debounce 1s (ADR-103.4).
+   * Não emitir mais de 1x/s mesmo se usuário continua digitando.
+   */
+  const sendTyping = useCallback(() => {
+    const now = Date.now();
+    const timeSinceLastTyping = now - lastTypingSentRef.current;
+
+    // Se menos de 1s, agendar envio no futuro
+    if (timeSinceLastTyping < TYPING_DEBOUNCE_MS) {
+      if (typingTimeoutRef.current) clearTimeout(typingTimeoutRef.current);
+      typingTimeoutRef.current = setTimeout(() => {
+        if (wsRef.current?.readyState === WebSocket.OPEN) {
+          wsRef.current.send(JSON.stringify({ type: 'typing', chat_id: activeChat }));
+          lastTypingSentRef.current = Date.now();
+        }
+      }, TYPING_DEBOUNCE_MS - timeSinceLastTyping);
+      return;
+    }
+
+    // Pode enviar agora
+    if (wsRef.current?.readyState === WebSocket.OPEN) {
+      wsRef.current.send(JSON.stringify({ type: 'typing', chat_id: activeChat }));
+      lastTypingSentRef.current = now;
+    }
+  }, [activeChat]);
 
   const connect = useCallback(() => {
     const token = localStorage.getItem('token');
@@ -21,7 +60,10 @@ export function useWebSocket() {
 
     const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
     const host = window.location.host;
-    const url = `${protocol}//${host}/ws?token=${encodeURIComponent(token)}`;
+    // ADR-103.5: incluir chat_id se não for GENERAL (backward compat)
+    const chatParam =
+      activeChat !== GENERAL_CHAT_ID ? `&chat_id=${encodeURIComponent(activeChat)}` : '';
+    const url = `${protocol}//${host}/ws?token=${encodeURIComponent(token)}${chatParam}`;
 
     const ws = new WebSocket(url);
     wsRef.current = ws;
@@ -42,6 +84,7 @@ export function useWebSocket() {
     ws.onmessage = (event) => {
       try {
         const msg = JSON.parse(event.data);
+
         // Handle user_stats_changed event
         if (msg.type === 'user_stats_changed') {
           const store = useChatStore.getState();
@@ -49,6 +92,16 @@ export function useWebSocket() {
           store.fetchStats(msg.user_id);
           return;
         }
+
+        // Handle typing indicator (ADR-103.4)
+        if (msg.type === 'typing') {
+          // Ignore próprio usuário digitando (opcional, mas recomendado)
+          if (msg.login && msg.login !== localStorage.getItem('userLogin')) {
+            setTyping(msg.chat_id, msg.login);
+          }
+          return;
+        }
+
         // Mensagens de chat têm 'id' — eventos de sistema (join/leave) não
         if (msg.id) {
           addMessage(msg);
@@ -75,7 +128,7 @@ export function useWebSocket() {
         connect();
       }, delay);
     };
-  }, [addMessage, setStatus, setError, fetchHistory]);
+  }, [activeChat, addMessage, setStatus, setError, fetchHistory, setTyping]);
 
   useEffect(() => {
     connect();
@@ -84,7 +137,7 @@ export function useWebSocket() {
     function handleSend(e: Event) {
       const { content } = (e as CustomEvent<{ content: string }>).detail;
       if (wsRef.current?.readyState === WebSocket.OPEN) {
-        wsRef.current.send(JSON.stringify({ type: 'message', content }));
+        wsRef.current.send(JSON.stringify({ type: 'message', content, chat_id: activeChat }));
       }
     }
 
@@ -92,11 +145,13 @@ export function useWebSocket() {
 
     return () => {
       window.removeEventListener('chat:send', handleSend);
+      if (typingTimeoutRef.current) clearTimeout(typingTimeoutRef.current);
       wsRef.current?.close();
     };
-  }, [connect]);
+  }, [connect, activeChat]);
 
   return {
     status: useChatStore((s) => s.status),
+    sendTyping,
   };
 }
