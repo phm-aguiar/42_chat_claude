@@ -20,7 +20,6 @@ rag_score: 0.5
 sources:
   - https://mdxjs.com/docs/getting-started/
 ---
-base_confidence: 0.5
 
 # Getting Started com MDX
 

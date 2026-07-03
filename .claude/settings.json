@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(go build ./...)",
+      "Bash(go vet ./...)",
+      "Bash(go test ./...)",
+      "Bash(npm run build)",
+      "Bash(python3 -m json.tool *)",
+      "Bash(python3 .claude/skills/wiki/experiential_memory/cli_query.py *)",
+      "Bash(python3 .claude/skills/wiki/experiential_memory/cli_index.py *)"
+    ]
+  }
+}

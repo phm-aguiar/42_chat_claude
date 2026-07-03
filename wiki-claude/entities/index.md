@@ -8,7 +8,6 @@ rag_score: 0.5
 category: entities
 summary: Índice do glossário de entidades e conceitos do 42 Chat Core — Hub, Client, Message, User, JWT, OAuth2, WebSocket e Chi.
 ---
-base_confidence: 0.5
 lifecycle: draft
 
 # Entities — Glossário do 42 Chat

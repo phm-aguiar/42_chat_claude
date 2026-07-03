@@ -1,5 +1,4 @@
 ---
-base_confidence: 0.5
 title: "Wiki Frontmatter Template"
 category: meta
 tags: ["frontmatter", "standard", "templates", "wiki"]
@@ -7,7 +6,6 @@ created: "2026-06-21"
 rag_score: 0.5
 summary: "Template canônico de frontmatter para todas as páginas do vault. Define 3 tiers de campos: obrigatórios (todas), por diretório, e opcionais."
 ---
-base_confidence: 0.5
 
 # Wiki Frontmatter Template
 
@@ -19,12 +17,10 @@ base_confidence: 0.5
 
 ```yaml
 ---
-base_confidence: 0.5
 title: "Título da Página"
 tags: ["tag1", "tag2", "tag3"]
 created: "YYYY-MM-DD"
 ---
-base_confidence: 0.5
 ```
 
 | Campo | Tipo | Descrição |
@@ -44,13 +40,11 @@ base_confidence: 0.5
 Exemplo:
 ```yaml
 ---
-base_confidence: 0.5
 title: "Spec-Driven Development (SDD)"
 category: concepts
 tags: ["methodology", "metodologia", "pipeline"]
 created: "2026-06-13"
 ---
-base_confidence: 0.5
 ```
 
 ### references/
@@ -65,7 +59,6 @@ base_confidence: 0.5
 Exemplo:
 ```yaml
 ---
-base_confidence: 0.5
 title: "Go Code Review Rules"
 category: go
 tags: ["go", "standards"]
@@ -74,7 +67,6 @@ updated: "2026-06-20"
 summary: "Regras de code review para Go: naming, error handling, concorrência, interfaces."
 lifecycle: reviewed
 ---
-base_confidence: 0.5
 ```
 
 ### skills/
@@ -87,14 +79,12 @@ base_confidence: 0.5
 Exemplo:
 ```yaml
 ---
-base_confidence: 0.5
 title: "wiki-lint"
 category: skill
 tags: ["auditoria", "skills", "validacao", "wiki"]
 created: "2026-06-14"
 summary: "Audita integridade do vault: wikilinks quebrados, estrutura de diretórios, frontmatter inválido."
 ---
-base_confidence: 0.5
 ```
 
 ### journal/
@@ -106,13 +96,11 @@ base_confidence: 0.5
 Exemplo:
 ```yaml
 ---
-base_confidence: 0.5
 title: "Digest 2026-06-21"
 category: journal
 tags: ["digest", "weekly"]
 created: "2026-06-21"
 ---
-base_confidence: 0.5
 ```
 
 ### entities/ e synthesis/
@@ -156,7 +144,13 @@ Sem campos adicionais obrigatórios. `category: meta` recomendado.
 
 3. **Datas ISO 8601:** Sempre `YYYY-MM-DD`. Opcionalmente `YYYY-MM-DDThh:mm:ss`.
 
-4. **Ordem canônica dos campos:**
+4. **Aliases para retrieval:** popule `aliases` com as variações léxicas que um agente
+   digitaria ao buscar o conteúdo — sinônimos técnicos, nome em inglês/português, siglas
+   e identificadores de código (ex.: nota sobre soft delete → `["soft delete", "deleted_at",
+   "exclusão lógica"]`). O índice híbrido (`cli_query.py --hybrid`) usa esses termos no
+   matching BM25; aliases bem escolhidos aumentam o recall sem inflar o corpo da nota.
+
+5. **Ordem canônica dos campos:**
    ```yaml
    title
    category

@@ -24,7 +24,6 @@ sources:
   - /home/zeenyt__/Projetos/42_Framework/.claude/skills/sdd/latte_coordination/orchestrator.py
   - https://github.com/AgentOps-AI/agentops
 ---
-base_confidence: 0.5
 
 # Análise de Custo de Tokens — claude + 42_Framework
 

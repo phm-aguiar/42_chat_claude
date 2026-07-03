@@ -14,7 +14,6 @@ tags:
   - sdd
 summary: "Memória experiencial com indexação semântica de chunks da wiki, retrieval contextual, hint scoring com feedback loop, e distillation periódica. Inspirado no Experiential Memory do A-MapReduce."
 ---
-base_confidence: 0.5
 lifecycle: draft
 
 # 002: Wiki Experiential Memory — Memória Experiencial com Indexação Semântica

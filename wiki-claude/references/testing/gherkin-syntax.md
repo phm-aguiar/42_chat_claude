@@ -21,7 +21,6 @@ sources:
   - "wiki/_raw/qa/gherkin-syntax/quick-reference-Gherkin.md"
   - "wiki/_raw/qa/gherkin-syntax/gherkin.md"
 ---
-base_confidence: 0.5
 
 # Sintaxe Gherkin — Referência Completa
 

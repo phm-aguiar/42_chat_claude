@@ -11,7 +11,6 @@ tier: peripheral
 created: "2026-06-27T00:00:00Z"
 updated: "2026-06-27T00:00:00Z"
 ---
-base_confidence: 0.5
 
 # Consolidation Report — 2026-06-27
 

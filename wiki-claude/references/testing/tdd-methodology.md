@@ -15,7 +15,6 @@ sources:
   - "wiki/_raw/qa/tdd/TDD Workflow Guide.md"
   - "wiki/_raw/qa/tdd/TDD Anti-Patterns Reference.md"
 ---
-base_confidence: 0.5
 
 # Metodologia TDD — Test-Driven Development
 

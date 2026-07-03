@@ -17,3 +17,4 @@
 - [2026-07-01T23:56:07Z] CONSOLIDATE Phase1: removed invalid links (code files, _raw)
 - [2026-07-01T23:58:16Z] CONSOLIDATE_COMPLETE Phase1=links_fixed Phase2=orphans_linked Phase3=schema_complete Phase4=structure_optimized vault_health_before=32 vault_health_after=87
 - [2026-07-02T00:01:28Z] CONSOLIDATE_AGGRESSIVE orphans_analyzed=271 mentions_converted=261 true_orphans=6
+- [2026-07-02T23:00:00Z] CAPTURE type=synthesis page="synthesis/latte-lead-coordination-lessons.md" title="LATTE — Lições de Coordenação do Lead (execução em escala real)"

@@ -20,7 +20,6 @@ based_on:
   - "LATTE: Language Agent Teams for Task Evolution"
 depends_on: "001-latte-coordination"
 ---
-base_confidence: 0.5
 lifecycle: draft
 
 # Wiki Experiential Memory — Features 002 & 003

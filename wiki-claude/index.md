@@ -1,9 +1,10 @@
 # Wiki Index
 
-> **2026-06-30** · 343 páginas · 7 categorias
+> **2026-07-02** · 347 páginas · 7 categorias
 
-## concepts (6)
+## concepts (7)
 
+- [[concepts/context-engineering|Context Engineering (Engenharia de Contexto)]] — Disciplina de gerir cirurgicamente o que entra na janela de contexto de um agente LLM: imposto fixo de arquivos de ciclo de vida, poda ativa, retrieval indexado vs força bruta.
 - [[concepts/obsidian-flow|Fluxo Obsidian — Integração com o Framework]] — Como o subsistema wiki/Obsidian se integra ao framework SDD: quem inicia cada operação, quando ela é disparada, e como o ciclo de vida do vault (ingest → cross-link → lint → query) se encaixa no pipeline de desenvolvimento.
 - [[concepts/onboarding|Onboarding — Começando com o Framework SDD]] — Guia passo a passo para iniciar um projeto do zero com o framework SDD autônomo. Cobre init repo, brainstorm, spec, plan, tasks e execução com orchestrator.
 - [[concepts/sdd|Spec-Driven Development (SDD)]] — Metodologia onde specs são a fonte primária; código deriva delas.
@@ -34,7 +35,7 @@
 - journal/[[digest-2026-06-21|Digest 2026-06-21 — Wiki Ingest Massiva + Gap Fill]] — A wiki do 42_chat cresceu de 130 para 361 páginas em um dia. 159 raw files ingeridos, 10 gaps de stack preenchidos, glossário populado, 7 ADRs criados.
 - journal/[[digest-2026-06-30|Wiki Digest — Last 7 Days]] — Wiki hygiene improved: 29 lifecycle states corrected, 15 tags normalized, 8 orphan links rescued, 9 broken links fixed, and 1 confidence fix via `wiki-lint --consolidate`. Knowledge ingested: specs backlog, security requirements, feature metrics, and session transcripts added approximately 13 new pages and updated 30+ existing pages via `wiki-ingest`. Feature 102 (42 Forum) completed via LATTE coordination, validating the forum implementation with 27/27 tasks passed across 7 phases and 25 subagents.
 
-## projects (20)
+## projects (21)
 
 - [[projects/42_chat/42_chat|42_chat — Framework SDD Autônomo]] — Framework SDD autônomo com agentes IA e humanos in loop. Pipeline: brainstorm → spec → plan → tasks (DAG) → sessão principal coordena → subagentes (Dev/QA). Aplicação 42_chat é o smoke-test real.
 - projects/42_chat/agents/[[agent-onboard|onboard — Agente de Inicialização SDD]] — Agente que inicializa projetos no framework SDD: estrutura, stack, brainstorm.
@@ -47,6 +48,7 @@
 - projects/42_chat/features/[[feature-007-agent-qa|007: Agent QA]] — Guardiao da qualidade do framework SDD. Spawnado pelo orchestrator como subagente leaf. Ciclo: le spec, escreve Gherkin, executa testes, lint, cobertura, reporta DONE/REJECTED/BLOCKED.
 - [[projects/42_chat/features/feature-100-42-chat-core|Feature 100 — 42 Chat Core (MVP)]]
 - [[projects/42_chat/features/feature-101-assinatura-participacao|Feature 101 — Assinatura de Participação]]
+- [[projects/42_chat/features/feature-102-forum|Feature 102 — 42 Forum]] — Fórum boards → threads → posts com MDX e moderação, implementado via LATTE em 2026-07-02 (28/28 tasks, smoke 11/11). Schema UUIDv7 + soft delete + bump order, 9 ADRs (ADR-102.2 corrigida: google/uuid, não stdlib), métricas de execução.
 - [[projects/42_chat/features/feature-102-forum|Feature 102 — 42 Forum]]
 - [[projects/42_chat/features/security-backlog|Security Backlog — 42 Chat]] — Backlog de hardening do nginx e da aplicação 42 Chat: SEC-001 a SEC-007 (rate limiting, TLS, WAF, JWT gateway, fail2ban, scanning CI, CSP).
 - projects/42_chat/concepts/[[chat-ui-specification|Especificação de UI do Chat — Estilo MSN Messenger]] — Especificação detalhada da interface de chat inspirada no MSN Messenger (v7.5/v8.5), com componentes visuais, hierarquia de layout e comportamentos interativos para QA.
@@ -58,7 +60,7 @@
 - projects/42_Framework/features/002-[[experiential-memory|002: Wiki Experiential Memory]] — Memória experiencial com indexação semântica de chunks da wiki, retrieval contextual, hint scoring com feedback loop, e distillation periódica. Inspirado no Experiential Memory do A-MapReduce.
 - [[projects/42_Framework/features/003-hybrid-retrieval|003: Hybrid Retrieval & Normalization]] — Pesquisa híbrida (BM25 + cosine), normalização de frontmatter (34 docs) e thresholds adaptativos. Baseado no relatório Otimização de Obsidian para IA.
 
-## references (246)
+## references (247)
 
 - references/[[10_purpose-why|Brand Purpose]] — Brand Purpose: framework e metodologia de referência.
 - references/[[20_positioning|Brand Positioning]] — Brand Positioning: framework e metodologia de referência.
@@ -108,6 +110,7 @@
 - [[references/claude-code/agent-teams|Claude Code — Agent Teams (orquestração de companheiros)]] — Documentação Claude Code v2.1.178+ sobre equipes de agentes — orquestração de múltiplos companheiros Claude Code com lista de tarefas compartilhada, mensagens diretas e modos in-process / split-pane.
 - [[references/claude-code/agent-view|Claude Code — Agent View (UI de múltiplas sessões)]] — Documentação Claude Code v2.1.139+ (preview) sobre agent view — TUI fullscreen via claude agents para despachar e gerenciar muitas sessões background, com supervisor process, worktrees isolados e atalhos de teclado.
 - [[references/claude-code/claude-skills|Claude Code — Skills (SKILL.md, frontmatter, invocação)]] — Documentação Claude Code sobre skills — criação de SKILL.md, frontmatter completo, escopos (pessoal/projeto/plugin/enterprise), invocação (user/claude), execução em subagent, share e troubleshooting. Padrão aberto Agent Skills (agentskills.io).
+- [[references/claude-code/token-sparing-playbook|Token-Sparing Playbook — 42 Chat]] — Playbook aplicado de economia de tokens na pipeline SDD+LATTE+wiki: CLAUDE.md enxuto, protocolo LATTE na skill /sdd, wiki-first via índice local, e o que foi avaliado e descartado (udiff, MCP externo, re-ranking).
 - Code Review Template — Template para code review focado em riscos de backend e incidentes.
 - Cognitive Bias Inventory — Inventário estruturado de vieses cognitivos para detecção durante reasoning e challenge passes.
 - references/[[cost-tracking-analysis|Análise de Custo de Tokens — claude + 42_Framework]]
@@ -309,9 +312,10 @@
 - references/[[vite-rolldown-migration|Vite Rolldown Migration]] — Guia de migração Vite 7 → 8: Rolldown substitui esbuild+Rollup, Oxc substitui esbuild transformer, rollupOptions → rolldownOptions, esbuild → oxc.
 - WebSocket Production — Ping/Pong, Reconnect, Scaling & Rate Limiting — Padrões de produção para WebSocket no 42 Chat — keepalive com ping/pong, estratégias de reconexão client-side, scaling multi-instância via Redis pub/sub, persistência de mensagens com soft delete e cursor pagination, rate limiting e hardening de segurança.
 
-## synthesis (8)
+## synthesis (9)
 
 - [[synthesis/consolidation-2026-06-27|Consolidation Report 2026-06-27]] — Auto-generated consolidation report from wiki-lint --consolidate run on 2026-06-27. Fixed lifecycle values, tag formatting, broken links, and orphan cross-references.
+- [[synthesis/latte-lead-coordination-lessons|LATTE — Lições de Coordenação do Lead]] — 8 padrões operacionais do Lead LATTE extraídos da execução real da feature 102: paralelismo × namespace de pacote, reassign via inspeção de disco, prevenção de bugs por prompt, costuras de integração como ponto cego do DAG.
 - synthesis/[[go-tooling-ecosystem|Go Tooling Ecosystem]] — O ecossistema de tooling Go como um gradiente de disciplinas — do automático (gofmt) ao manual (code review com thinking tools). Como linting, estilo e revisão formam camadas complementares de qualidade.
 - [[synthesis/oauth2×jwt|OAuth2 × JWT]] — A dupla de autenticação do 42 Chat: OAuth2 externo (API 42) para identidade e JWT interno para sessão. Duas camadas com responsabilidades distintas que, juntas, formam a espinha dorsal de segurança do sistema.
 - [[synthesis/playwright-bdd×cucumber|Playwright-BDD × Cucumber]] — O que emerge da interseção entre Playwright-BDD e Cucumber tradicional: duas filosofias de BDD que se complementam em camadas — Cucumber para discovery e especificação, Playwright-BDD para execução em browser real.

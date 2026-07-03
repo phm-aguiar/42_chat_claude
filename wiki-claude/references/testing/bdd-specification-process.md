@@ -29,7 +29,6 @@ sources:
   - "wiki/_raw/qa/bdd-spec/prompt-writer.md"
   - "wiki/_raw/qa/bdd-spec/use_gherkin_expert.md"
 ---
-base_confidence: 0.5
 
 # Processo de Especificação BDD com Gherkin
 ## O que é BDD?

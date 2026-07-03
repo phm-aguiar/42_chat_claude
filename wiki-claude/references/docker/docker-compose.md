@@ -12,7 +12,6 @@ provenance:
   inferred: 0.02
   ambiguous: 0.00
 ---
-base_confidence: 0.5
 lifecycle: draft
 
 # Docker & Compose no 42 Chat Core

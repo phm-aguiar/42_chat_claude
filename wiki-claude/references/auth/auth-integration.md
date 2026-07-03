@@ -12,7 +12,6 @@ provenance:
   inferred: 0.03
   ambiguous: 0.00
 ---
-base_confidence: 0.5
 lifecycle: draft
 
 # Integração de Auth — JWT + Chi + WebSocket

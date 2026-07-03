@@ -10,7 +10,6 @@ created: "2026-06-19"
 rag_score: 0.484
 updated: "2026-06-19"
 ---
-base_confidence: 0.5
 
 # 42 Framework — Meta-Framework SDD
 

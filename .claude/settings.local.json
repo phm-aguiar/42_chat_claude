@@ -52,7 +52,22 @@
       "Bash(bash /tmp/consolidate-dryrun.sh)",
       "Bash(bash /tmp/consolidate-fix.sh)",
       "Bash(obsidian vault=wiki-claude unresolved --total)",
-      "Bash(obsidian vault=wiki-claude orphans --total)"
+      "Bash(obsidian vault=wiki-claude orphans --total)",
+      "Skill(fewer-permission-prompts)",
+      "Bash(npx oxlint *)",
+      "Bash(timeout 5 go run ./cmd/server/main.go)",
+      "Read(//tmp/**)",
+      "Bash(node -e ' *)",
+      "Bash(/home/zeenyt__/Projetos/42_chat_claude/tests/forum_smoke_test.sh *)",
+      "Bash(export DATABASE_URL=\"postgres://postgres:postgres@localhost:5432/postgres?sslmode=disable\")",
+      "Bash(export DATABASE_URL=\"postgres://postgres:postgres@127.0.0.1:5432/postgres?sslmode=disable\")",
+      "Bash(netstat -tulnp)",
+      "Bash(bash tests/forum_smoke_test.sh)",
+      "Bash(pip install *)",
+      "Bash(curl -s -o /dev/null -w \"frontend :9999 → %{http_code}\\\\n\" http://localhost:9999/)",
+      "Bash(curl -s -o /dev/null -w \"api /health → %{http_code}\\\\n\" http://localhost:8080/health)",
+      "Bash(awk '{print $1}')",
+      "Bash(git status *)"
     ]
   }
 }

@@ -18,7 +18,6 @@ lifecycle_reason: "auto-promoted by wiki-lint: well-established reference page"
 sources:
   - "wiki/_raw/qa/gherkin-examples/Examples real-world examples gherkin.md"
 ---
-base_confidence: 0.5
 
 # Exemplos de Gherkin — Referência Completa
 

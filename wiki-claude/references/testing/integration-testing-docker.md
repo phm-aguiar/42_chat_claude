@@ -8,7 +8,6 @@ rag_score: 0.5
 category: references
 summary: Smoke tests, Docker test lifecycle, WebSocket testing with gorilla/websocket, table-driven patterns, and CI/CD integration — based on real 42_chat patterns.
 ---
-base_confidence: 0.5
 lifecycle: draft
 
 # Integration Testing with Docker

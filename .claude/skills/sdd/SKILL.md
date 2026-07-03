@@ -4,20 +4,22 @@ description: >
   Pipeline SDD (Spec-Driven Development) — toolkit unificado para o ciclo completo:
   brainstorm → spec.md → plan.md → tasks.md → validate → refactor. Selecione o modo
   pelo contexto: brainstorm (nova feature/ideia), explore_tech (mapear stack), init_repo
-  (inicializar SDD), plan (gerar plan.md), tasks (gerar tasks.md), validate (auditar
-  conformidade), refactor (normalizar artefato), wiki-enforce (tabela de gatilhos CLAUDE.md).
+  (inicializar SDD), plan (gerar plan.md), tasks (gerar tasks.md), coordinate (executar
+  tasks.md via protocolo LATTE), validate (auditar conformidade), refactor (normalizar
+  artefato), wiki-enforce (tabela de gatilhos CLAUDE.md).
   Trigger: SDD, spec, feature, pipeline, brainstorm, explore tech, init repo, gerar plano,
-  gerar tasks, validar SDD, refatorar artefato, wiki enforcement.
+  gerar tasks, executar tasks, implementar feature, coordenar workers, LATTE,
+  validar SDD, refatorar artefato, wiki enforcement.
 when_to_use: >
   Carregue quando o usuário mencionar SDD, spec-driven, brainstorm, discutir ideia,
-  nova feature, gerar plan, gerar tasks, validar SDD, refatorar spec, init sdd,
-  inicializar sdd, explore tech, mapear stack, wiki enforcement, ou qualquer fase
-  do pipeline de especificação.
+  nova feature, gerar plan, gerar tasks, executar/implementar uma feature com tasks.md
+  pronto (LATTE), validar SDD, refatorar spec, init sdd, inicializar sdd, explore tech,
+  mapear stack, wiki enforcement, ou qualquer fase do pipeline de especificação.
 allowed-tools: Read Bash Write Edit
 disable-model-invocation: true
 ---
 
-# sdd — Pipeline SDD (8 modos)
+# sdd — Pipeline SDD (9 modos)
 
 ```
 brainstorm → spec.md ──→ plan → plan.md ──→ tasks → tasks.md
@@ -37,6 +39,7 @@ brainstorm → spec.md ──→ plan → plan.md ──→ tasks → tasks.md
 | `init_repo` | Inicializar SDD | Repo vazio/existente | `.github/memory/` + `specs/` |
 | `plan` | Gerar plano arquitetural | `spec.md` | `plan.md` |
 | `tasks` | Gerar matriz DAG | `spec.md` + `plan.md` | `tasks.md` |
+| `coordinate` | Executar tasks.md (protocolo LATTE) | `tasks.md` aprovado | Código + tasks `[x]` |
 | `validate` | Auditar estrutura SDD | Repo | Relatório PASS/FAIL/WARN |
 | `refactor` | Normalizar artefato SDD | `spec/plan/tasks.md` | Artefato canônico |
 | `wiki-enforce` | Wire wiki no CLAUDE.md | `CLAUDE.md` | Tabela de gatilhos wiki |
@@ -117,6 +120,53 @@ brainstorm → spec.md ──→ plan → plan.md ──→ tasks → tasks.md
 6. Pergunte antes de salvar. Escreva `tasks.md`.
 
 **Guardrails:** Tasks paralelas NUNCA compartilham paths. Nunca agrupe ações. Interação fase por fase obrigatória.
+
+---
+
+## Modo: coordinate — Protocolo LATTE
+
+**Gatilhos:** executar tasks, implementar feature, coordenar workers, rodar LATTE, começar implementação.
+
+A **sessão principal** é o Lead (ℓ). **Não spawna orquestrador intermediário** — você coordena direto.
+Workers (𝒲) via ferramenta `Agent`: `researcher` (Sonnet, read-only), `analyst` (Sonnet, síntese), `executor` (Haiku, implementação). Todos consultam a wiki via experiential memory antes de agir (`cli_query.py --semantic ... --hybrid`).
+
+### Algorithm A4.5 — Execução por Rounds
+
+1. **Approval gate:** Leia `spec.md`. Se `Aprovado: false` → ABORTE imediatamente.
+2. **Carregar DAG:** Leia `tasks.md`, extraia tasks com Papel, Dependências, Paralelizável, Arquivos.
+3. **Frontier:** tasks sem dependências pendentes = prontas para dispatch neste round.
+4. **Dispatch (janela deslizante ≤ 3):** spawne tasks da frontier em batch via `Agent`. Tasks paralelas com Arquivos disjuntos podem ir simultâneas.
+5. **Por completion:** valide evidência DONE (`go build ./...` passa + arquivos existem) → aplique `Close` (marque `[x]` no tasks.md) → frontier atualiza → dispatche dependentes.
+6. **Heartbeat H=4:** worker silencioso por 4 rounds → `reassign` (re-spawne com contexto enriquecido, tentativa N/3).
+7. **Retry:** 3 falhas na mesma task → `block` a sub-árvore → escale para o humano.
+8. **Context saturation:** a cada 4 turns, sumarize tasks concluídas antes de continuar.
+9. **Features >15 tasks:** execute fase por fase (`max-rounds: 40`). Valide incrementalmente.
+
+### 7 Operadores de Estado
+
+```
+Ready → Assigned → Claimed → Completed → Released → Closed → Verified
+  ↑        │          │          │
+  └────────┴──────────┴──────────┘ (heartbeat timeout → retry, máx 3)
+```
+
+| Operador | Gatilho | Ação do Lead |
+|---|---|---|
+| `Discover` | Deps satisfeitas | Task entra na frontier |
+| `Assign` | Dispatch | Task atribuída a worker via `Agent` |
+| `Claim` | Worker aceita | Worker confirma início (incluso no prompt) |
+| `Complete` | Worker entrega evidência | Lead valida: arquivos existem + build passa |
+| `Release` | Validação ok | Marca task como verificada |
+| `Close` | Release aceito | Marca `[x]` no tasks.md — task imutável |
+| `Verify` | Features críticas | Segundo agente confirma (opcional) |
+
+### Quando NÃO delegar
+
+Arquivos da task já existem **e** `go build ./...` passa → marque `[x]` direto (Close sem dispatch).
+
+### Controle de budget
+
+Se `graph-operators: enabled` no tasks.md → respeite `max-rounds` e `heartbeat-threshold` do frontmatter YAML. Sem LATTE explícito → janela deslizante padrão (≤ 3 workers, H=4, max 40 rounds por fase).
 
 ---
 

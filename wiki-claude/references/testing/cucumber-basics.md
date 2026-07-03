@@ -19,7 +19,6 @@ sources:
   - "wiki/_raw/qa/cucumber/cucumber-step-definitions.md"
   - "wiki/_raw/qa/cucumber/cucumber-best-practices.md"
 ---
-base_confidence: 0.5
 
 # Cucumber & BDD — Referência Completa
 

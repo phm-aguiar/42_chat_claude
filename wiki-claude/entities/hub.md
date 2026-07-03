@@ -13,7 +13,6 @@ provenance:
   inferred: 0.05
   ambiguous: 0.00
 ---
-base_confidence: 0.5
 lifecycle: draft
 
 # Hub (WebSocket Hub)

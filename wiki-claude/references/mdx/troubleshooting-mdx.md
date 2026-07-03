@@ -13,7 +13,6 @@ lifecycle: reviewed
 created: 2026-06-21
 rag_score: 0.5
 ---
-base_confidence: 0.5
 
 # Troubleshooting MDX
 

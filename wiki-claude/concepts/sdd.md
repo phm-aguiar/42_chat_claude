@@ -12,7 +12,6 @@ lifecycle_changed: "2026-06-15"
 lifecycle_reason: "auto-promoted by wiki-lint: well-established reference page"
 sources: []
 ---
-base_confidence: 0.5
 
 # Spec-Driven Development (SDD)
 

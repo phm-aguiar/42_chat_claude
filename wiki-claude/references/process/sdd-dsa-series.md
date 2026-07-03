@@ -23,7 +23,6 @@ sources:
   - https://blog.dsacademy.com.br/spec-driven-development-a-nova-arquitetura-de-engenharia-de-software-na-era-dos-agentes-de-ia-parte-1/
   - https://blog.dsacademy.com.br/spec-driven-development-a-nova-arquitetura-de-engenharia-de-software-na-era-dos-agentes-de-ia-parte-2/
 ---
-base_confidence: 0.5
 
 # Spec-Driven Development — Série DSA Academy
 

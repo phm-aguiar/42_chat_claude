@@ -12,7 +12,6 @@ created: "2026-06-17"
 rag_score: 0.4825
 updated: "2026-06-17"
 ---
-base_confidence: 0.5
 
 # Wiki Insights — 2026-06-17
 
@@ -51,16 +50,16 @@ Vault: 185 pages | Sources ingested: 148 | Token footprint: ~256K
 
 ## Surprising Connections (top 8)
 
-| Connection | Score | Reason |
-|---|---|---|
-| synthesis/[[sdd-go|SDD×Go]] → Go Style Guide | 5 | cross-category (synthesis→references), ^[ambiguous] |
-| synthesis/[[sdd-go|SDD×Go]] → Go Modular Architecture | 5 | cross-category, ^[ambiguous] |
-| synthesis/[[sdd-go|SDD×Go]] → Go Testing | 5 | cross-category, ^[ambiguous] |
-| synthesis/[[sdd-go|SDD×Go]] → concepts/[[sdd-workflow|SDD Workflow]] | 5 | cross-category (synthesis→concepts), ^[ambiguous] |
-| synthesis/[[sdd-go|SDD×Go]] → Go Error Handling | 5 | cross-category, ^[ambiguous] |
-| [[synthesis/thinking-architecture|Thinking×Architecture]] → references/[[adr-template|ADR Template]] | 4 | cross-category, ^[inferred] |
-| [[synthesis/thinking-architecture|Thinking×Architecture]] → Red Team Adversarial | 4 | cross-category, ^[inferred] |
-| synthesis/[[thinking-go|Thinking×Go]] → Mode Selection Guide | 4 | cross-category, ^[inferred] |
+| Connection                        | Score                                               | Reason         |                                                     |                                                   |
+| --------------------------------- | --------------------------------------------------- | -------------- | --------------------------------------------------- | ------------------------------------------------- |
+| synthesis/[[sdd-go                | SDD×Go]] → Go Style Guide                           | 5              | cross-category (synthesis→references), ^[ambiguous] |                                                   |
+| synthesis/[[sdd-go                | SDD×Go]] → Go Modular Architecture                  | 5              | cross-category, ^[ambiguous]                        |                                                   |
+| synthesis/[[sdd-go                | SDD×Go]] → Go Testing                               | 5              | cross-category, ^[ambiguous]                        |                                                   |
+| synthesis/[[sdd-go                | SDD×Go]] → concepts/[[sdd-workflow                  | SDD Workflow]] | 5                                                   | cross-category (synthesis→concepts), ^[ambiguous] |
+| synthesis/[[sdd-go                | SDD×Go]] → Go Error Handling                        | 5              | cross-category, ^[ambiguous]                        |                                                   |
+| [[synthesis/thinking-architecture | Thinking×Architecture]] → references/[[adr-template | ADR Template]] | 4                                                   | cross-category, ^[inferred]                       |
+| [[synthesis/thinking-architecture | Thinking×Architecture]] → Red Team Adversarial      | 4              | cross-category, ^[inferred]                         |                                                   |
+| synthesis/[[thinking-go           | Thinking×Go]] → Mode Selection Guide                | 4              | cross-category, ^[inferred]                         |                                                   |
 
 ## Orphan-Adjacent (dead-ends near hubs)
 

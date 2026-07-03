@@ -21,7 +21,6 @@ sources:
   - "wiki/_raw/qa/gherkin-practices/anti-patterns.md"
   - "wiki/_raw/qa/gherkin-practices/Best Practices improving existing scenarios.md"
 ---
-base_confidence: 0.5
 
 # Gherkin — Boas Práticas
 

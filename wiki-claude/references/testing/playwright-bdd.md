@@ -20,7 +20,6 @@ sources:
   - "wiki/_raw/qa/playwright-bdd/playwright-bdd-configuration.md"
   - "wiki/_raw/qa/playwright-bdd/playwright-bdd-step-definitions.md"
 ---
-base_confidence: 0.5
 
 # Playwright BDD — Referência Completa
 
