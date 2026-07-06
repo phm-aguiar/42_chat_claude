@@ -16,6 +16,7 @@ import (
 type ChatHandler struct {
 	Chats   *store.ChatStore
 	Members *store.MemberStore
+	Reads   *store.ReadStore
 }
 
 // === Response Helpers (não exportados) ===
@@ -138,7 +139,7 @@ func (h *ChatHandler) Create(w http.ResponseWriter, r *http.Request) {
 	writeJSON(w, http.StatusCreated, response)
 }
 
-// List retorna todos os chats do usuário autenticado.
+// List retorna todos os chats do usuário autenticado com contagem de mensagens não lidas.
 // GET /api/chats
 func (h *ChatHandler) List(w http.ResponseWriter, r *http.Request) {
 	claims := auth.GetClaims(r.Context())
@@ -147,14 +148,14 @@ func (h *ChatHandler) List(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	chats, err := h.Chats.ListUserChats(claims.UserID)
+	chats, err := h.Reads.ListUserChatsWithUnread(claims.UserID)
 	if err != nil {
 		writeError(w, http.StatusInternalServerError, "failed to list chats", "INTERNAL_ERROR")
 		return
 	}
 
 	if chats == nil {
-		chats = []model.Chat{}
+		chats = []model.ChatWithUnread{}
 	}
 
 	writeJSON(w, http.StatusOK, chats)

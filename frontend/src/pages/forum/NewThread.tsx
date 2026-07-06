@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useForumStore } from '@/stores/forumStore';
 import { MDXEditor } from '@/components/forum/MDXEditor';
 import { TagInput } from '@/components/forum/TagInput';
@@ -8,6 +9,7 @@ interface NewThreadProps {
 }
 
 export function NewThread({ slug }: NewThreadProps) {
+  const navigate = useNavigate();
   const { currentBoard, loading, error, fetchThreads, createThread, clearError } = useForumStore();
 
   const [title, setTitle] = useState('');
@@ -46,14 +48,14 @@ export function NewThread({ slug }: NewThreadProps) {
       }
 
       // Success — navigate to board (new thread will appear at the top)
-      window.location.pathname = `/forum/${slug}`;
+      navigate(`/forum/${slug}`);
     } catch (err) {
       setIsSubmitting(false);
     }
   }
 
   function handleCancel() {
-    window.location.pathname = `/forum/${slug}`;
+    navigate(`/forum/${slug}`);
   }
 
   return (

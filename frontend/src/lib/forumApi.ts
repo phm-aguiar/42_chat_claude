@@ -1,5 +1,4 @@
-// Base URL de API relativa — proxy Vite redireciona para backend em dev
-const BASE = '';
+import { apiFetch } from './http';
 
 /**
  * ApiError é o formato padrão de erro retornado pela API do fórum.
@@ -59,15 +58,6 @@ export interface Post {
 }
 
 /**
- * Obtém o token JWT do localStorage para autenticação.
- * Header: Authorization: Bearer <token>
- */
-function authHeader(): HeadersInit {
-  const token = localStorage.getItem('token');
-  return token ? { Authorization: `Bearer ${token}` } : {};
-}
-
-/**
  * Trata erro HTTP: parse JSON ou lança message genérico.
  */
 async function handleError(res: Response): Promise<never> {
@@ -84,9 +74,7 @@ async function handleError(res: Response): Promise<never> {
  * GET /api/forum/boards
  */
 export async function fetchBoards(): Promise<Board[]> {
-  const res = await fetch(`${BASE}/api/forum/boards`, {
-    headers: authHeader(),
-  });
+  const res = await apiFetch('/api/forum/boards');
   if (!res.ok) await handleError(res);
   return res.json();
 }
@@ -96,9 +84,7 @@ export async function fetchBoards(): Promise<Board[]> {
  * GET /api/forum/boards/{slug}
  */
 export async function fetchBoard(slug: string): Promise<Board> {
-  const res = await fetch(`${BASE}/api/forum/boards/${encodeURIComponent(slug)}`, {
-    headers: authHeader(),
-  });
+  const res = await apiFetch(`/api/forum/boards/${encodeURIComponent(slug)}`);
   if (!res.ok) await handleError(res);
   return res.json();
 }
@@ -116,13 +102,11 @@ export async function fetchThreads(
   if (limit !== undefined) params.set('limit', String(limit));
   if (offset !== undefined) params.set('offset', String(offset));
 
-  const url = `${BASE}/api/forum/boards/${encodeURIComponent(slug)}/threads${
+  const path = `/api/forum/boards/${encodeURIComponent(slug)}/threads${
     params.toString() ? `?${params.toString()}` : ''
   }`;
 
-  const res = await fetch(url, {
-    headers: authHeader(),
-  });
+  const res = await apiFetch(path);
   if (!res.ok) await handleError(res);
   return res.json();
 }
@@ -132,9 +116,7 @@ export async function fetchThreads(
  * GET /api/forum/threads/{id}
  */
 export async function fetchThread(id: string): Promise<Thread> {
-  const res = await fetch(`${BASE}/api/forum/threads/${id}`, {
-    headers: authHeader(),
-  });
+  const res = await apiFetch(`/api/forum/threads/${id}`);
   if (!res.ok) await handleError(res);
   return res.json();
 }
@@ -148,12 +130,8 @@ export async function createThread(
   slug: string,
   input: { title: string; content: string; tags: string[] }
 ): Promise<Thread> {
-  const res = await fetch(`${BASE}/api/forum/boards/${encodeURIComponent(slug)}/threads`, {
+  const res = await apiFetch(`/api/forum/boards/${encodeURIComponent(slug)}/threads`, {
     method: 'POST',
-    headers: {
-      ...authHeader(),
-      'Content-Type': 'application/json',
-    },
     body: JSON.stringify(input),
   });
   if (!res.ok) await handleError(res);
@@ -165,9 +143,7 @@ export async function createThread(
  * GET /api/forum/threads/{id}/posts
  */
 export async function fetchPosts(threadId: string): Promise<Post[]> {
-  const res = await fetch(`${BASE}/api/forum/threads/${threadId}/posts`, {
-    headers: authHeader(),
-  });
+  const res = await apiFetch(`/api/forum/threads/${threadId}/posts`);
   if (!res.ok) await handleError(res);
   return res.json();
 }
@@ -181,12 +157,8 @@ export async function createPost(
   threadId: string,
   input: { content: string; reply_to?: string | null }
 ): Promise<Post> {
-  const res = await fetch(`${BASE}/api/forum/threads/${threadId}/posts`, {
+  const res = await apiFetch(`/api/forum/threads/${threadId}/posts`, {
     method: 'POST',
-    headers: {
-      ...authHeader(),
-      'Content-Type': 'application/json',
-    },
     body: JSON.stringify(input),
   });
   if (!res.ok) await handleError(res);
@@ -199,12 +171,8 @@ export async function createPost(
  * Body: parcial (is_pinned, is_locked, etc)
  */
 export async function patchThread(id: string, partial: Partial<Thread>): Promise<Thread> {
-  const res = await fetch(`${BASE}/api/forum/threads/${id}`, {
+  const res = await apiFetch(`/api/forum/threads/${id}`, {
     method: 'PATCH',
-    headers: {
-      ...authHeader(),
-      'Content-Type': 'application/json',
-    },
     body: JSON.stringify(partial),
   });
   if (!res.ok) await handleError(res);
@@ -216,9 +184,8 @@ export async function patchThread(id: string, partial: Partial<Thread>): Promise
  * DELETE /api/forum/threads/{id}
  */
 export async function deleteThread(id: string): Promise<void> {
-  const res = await fetch(`${BASE}/api/forum/threads/${id}`, {
+  const res = await apiFetch(`/api/forum/threads/${id}`, {
     method: 'DELETE',
-    headers: authHeader(),
   });
   if (!res.ok) await handleError(res);
 }
@@ -228,9 +195,8 @@ export async function deleteThread(id: string): Promise<void> {
  * DELETE /api/forum/posts/{id}
  */
 export async function deletePost(id: string): Promise<void> {
-  const res = await fetch(`${BASE}/api/forum/posts/${id}`, {
+  const res = await apiFetch(`/api/forum/posts/${id}`, {
     method: 'DELETE',
-    headers: authHeader(),
   });
   if (!res.ok) await handleError(res);
 }

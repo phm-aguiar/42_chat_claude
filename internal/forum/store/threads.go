@@ -57,10 +57,11 @@ func (s *ThreadStore) Create(t *model.Thread) error {
 func (s *ThreadStore) GetByID(id string) (*model.Thread, error) {
 	var t model.Thread
 	err := s.DB.QueryRow(`
-		SELECT id, board_id, author_id, title, content, tags, is_pinned, is_locked, post_count, last_post_at, created_at, deleted_at
-		FROM threads
-		WHERE id = $1 AND deleted_at IS NULL
-	`, id).Scan(&t.ID, &t.BoardID, &t.AuthorID, &t.Title, &t.Content, pq.Array(&t.Tags), &t.IsPinned, &t.IsLocked, &t.PostCount, &t.LastPostAt, &t.CreatedAt, &t.DeletedAt)
+		SELECT t.id, t.board_id, t.author_id, u.login, COALESCE(u.image_url, ''), t.title, t.content, t.tags, t.is_pinned, t.is_locked, t.post_count, t.last_post_at, t.created_at, t.deleted_at
+		FROM threads t
+		LEFT JOIN users u ON u.id = t.author_id
+		WHERE t.id = $1 AND t.deleted_at IS NULL
+	`, id).Scan(&t.ID, &t.BoardID, &t.AuthorID, &t.AuthorLogin, &t.AuthorImageURL, &t.Title, &t.Content, pq.Array(&t.Tags), &t.IsPinned, &t.IsLocked, &t.PostCount, &t.LastPostAt, &t.CreatedAt, &t.DeletedAt)
 
 	if err == sql.ErrNoRows {
 		return nil, fmt.Errorf("thread not found: %s", id)
@@ -76,10 +77,11 @@ func (s *ThreadStore) GetByID(id string) (*model.Thread, error) {
 // Exclui threads deletados. Usa LIMIT e OFFSET para paginação.
 func (s *ThreadStore) ListByBoard(boardID string, limit, offset int) ([]model.Thread, error) {
 	rows, err := s.DB.Query(`
-		SELECT id, board_id, author_id, title, content, tags, is_pinned, is_locked, post_count, last_post_at, created_at, deleted_at
-		FROM threads
-		WHERE board_id = $1 AND deleted_at IS NULL
-		ORDER BY is_pinned DESC, last_post_at DESC
+		SELECT t.id, t.board_id, t.author_id, u.login, COALESCE(u.image_url, ''), t.title, t.content, t.tags, t.is_pinned, t.is_locked, t.post_count, t.last_post_at, t.created_at, t.deleted_at
+		FROM threads t
+		LEFT JOIN users u ON u.id = t.author_id
+		WHERE t.board_id = $1 AND t.deleted_at IS NULL
+		ORDER BY t.is_pinned DESC, t.last_post_at DESC
 		LIMIT $2 OFFSET $3
 	`, boardID, limit, offset)
 
@@ -91,7 +93,7 @@ func (s *ThreadStore) ListByBoard(boardID string, limit, offset int) ([]model.Th
 	var threads []model.Thread
 	for rows.Next() {
 		var t model.Thread
-		err := rows.Scan(&t.ID, &t.BoardID, &t.AuthorID, &t.Title, &t.Content, pq.Array(&t.Tags), &t.IsPinned, &t.IsLocked, &t.PostCount, &t.LastPostAt, &t.CreatedAt, &t.DeletedAt)
+		err := rows.Scan(&t.ID, &t.BoardID, &t.AuthorID, &t.AuthorLogin, &t.AuthorImageURL, &t.Title, &t.Content, pq.Array(&t.Tags), &t.IsPinned, &t.IsLocked, &t.PostCount, &t.LastPostAt, &t.CreatedAt, &t.DeletedAt)
 		if err != nil {
 			return nil, fmt.Errorf("scan thread: %w", err)
 		}
@@ -169,4 +171,40 @@ func (s *ThreadStore) Bump(id string) error {
 	}
 
 	return nil
+}
+
+// ListRecent retorna threads recentes cross-board (de todos os boards),
+// ordenados por last_post_at DESC, para exibição no hub/dashboard.
+// Inclui o board_slug via JOIN boards.
+func (s *ThreadStore) ListRecent(limit int) ([]model.ThreadWithBoard, error) {
+	rows, err := s.DB.Query(`
+		SELECT t.id, t.board_id, b.slug, t.author_id, u.login, COALESCE(u.image_url, ''), t.title, t.content, t.tags, t.is_pinned, t.is_locked, t.post_count, t.last_post_at, t.created_at, t.deleted_at
+		FROM threads t
+		LEFT JOIN boards b ON b.id = t.board_id
+		LEFT JOIN users u ON u.id = t.author_id
+		WHERE t.deleted_at IS NULL
+		ORDER BY t.last_post_at DESC
+		LIMIT $1
+	`, limit)
+
+	if err != nil {
+		return nil, fmt.Errorf("list recent threads: %w", err)
+	}
+	defer rows.Close()
+
+	var threads []model.ThreadWithBoard
+	for rows.Next() {
+		var t model.ThreadWithBoard
+		err := rows.Scan(&t.ID, &t.BoardID, &t.BoardSlug, &t.AuthorID, &t.AuthorLogin, &t.AuthorImageURL, &t.Title, &t.Content, pq.Array(&t.Tags), &t.IsPinned, &t.IsLocked, &t.PostCount, &t.LastPostAt, &t.CreatedAt, &t.DeletedAt)
+		if err != nil {
+			return nil, fmt.Errorf("scan thread with board: %w", err)
+		}
+		threads = append(threads, t)
+	}
+
+	if err := rows.Err(); err != nil {
+		return nil, fmt.Errorf("rows error: %w", err)
+	}
+
+	return threads, nil
 }

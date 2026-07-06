@@ -219,7 +219,12 @@ func TestConcurrentRoomAccess(t *testing.T) {
 
 	wg.Wait()
 
-	// Verifica que todos foram registrados
+	// Register() envia ao canal e Run() processa assíncrono — aguarda o dreno
+	// com deadline antes de verificar a contagem.
+	deadline := time.Now().Add(2 * time.Second)
+	for hub.ClientCount() != numGoroutines*numClients && time.Now().Before(deadline) {
+		time.Sleep(5 * time.Millisecond)
+	}
 	if hub.ClientCount() != numGoroutines*numClients {
 		t.Errorf("ConcurrentRoomAccess: expected %d clients, got %d",
 			numGoroutines*numClients, hub.ClientCount())
@@ -241,4 +246,149 @@ func TestConcurrentRoomAccess(t *testing.T) {
 	time.Sleep(100 * time.Millisecond)
 
 	t.Logf("ConcurrentRoomAccess: %d clients handled %d broadcasts without race", hub.ClientCount(), 10)
+}
+
+// TestNotifyUsers testa envio de mensagem direcionada para usuários específicos.
+func TestNotifyUsers(t *testing.T) {
+	hub := NewHub()
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	go hub.Run(ctx)
+
+	// Cria 3 clients do userID 100 (múltiplas conexões do mesmo usuário)
+	user100c1 := &Client{hub: hub, send: make(chan []byte, 256), roomID: "room-a", userID: 100}
+	user100c2 := &Client{hub: hub, send: make(chan []byte, 256), roomID: "room-b", userID: 100}
+	user100c3 := &Client{hub: hub, send: make(chan []byte, 256), roomID: "room-c", userID: 100}
+
+	// Cria 2 clients do userID 200
+	user200c1 := &Client{hub: hub, send: make(chan []byte, 256), roomID: "room-a", userID: 200}
+	user200c2 := &Client{hub: hub, send: make(chan []byte, 256), roomID: "room-b", userID: 200}
+
+	// Cria 1 client do userID 300 (sem notificação)
+	user300c1 := &Client{hub: hub, send: make(chan []byte, 256), roomID: "room-a", userID: 300}
+
+	// Registra todos
+	for _, c := range []*Client{user100c1, user100c2, user100c3, user200c1, user200c2, user300c1} {
+		hub.Register(c)
+	}
+
+	// Aguarda registro
+	time.Sleep(100 * time.Millisecond)
+
+	// Envia notificação apenas para userIDs 100 e 200
+	msg := []byte(`{"type":"friend_online","user_id":42}`)
+	hub.NotifyUsers([]int{100, 200}, msg)
+
+	// Aguarda entrega
+	time.Sleep(100 * time.Millisecond)
+
+	// Verifica que user 100 recebeu em TODAS as 3 conexões
+	if _, ok := <-user100c1.send; !ok {
+		t.Error("NotifyUsers: user 100 connection 1 should receive message")
+	}
+	if _, ok := <-user100c2.send; !ok {
+		t.Error("NotifyUsers: user 100 connection 2 should receive message")
+	}
+	if _, ok := <-user100c3.send; !ok {
+		t.Error("NotifyUsers: user 100 connection 3 should receive message")
+	}
+
+	// Verifica que user 200 recebeu em AMBAS as conexões
+	if _, ok := <-user200c1.send; !ok {
+		t.Error("NotifyUsers: user 200 connection 1 should receive message")
+	}
+	if _, ok := <-user200c2.send; !ok {
+		t.Error("NotifyUsers: user 200 connection 2 should receive message")
+	}
+
+	// Verifica que user 300 NÃO recebeu (não estava na lista)
+	select {
+	case <-user300c1.send:
+		t.Error("NotifyUsers: user 300 should NOT receive message (not in target list)")
+	default:
+		// OK: nenhuma mensagem recebida
+	}
+
+	t.Logf("NotifyUsers: delivered message to 2 users (5 total connections), isolated 1 user (1 connection)")
+}
+
+// TestNotifyUsersConcurrent testa NotifyUsers sob concorrência com register/unregister.
+// Deve passar com -race.
+func TestNotifyUsersConcurrent(t *testing.T) {
+	hub := NewHub()
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	go hub.Run(ctx)
+
+	var wg sync.WaitGroup
+
+	// 5 goroutines registrando clientes continuamente
+	for i := 0; i < 5; i++ {
+		wg.Add(1)
+		go func(gid int) {
+			defer wg.Done()
+			for j := 0; j < 10; j++ {
+				userID := (gid*10 + j) % 50 // 50 usuários diferentes
+				client := &Client{
+					hub:    hub,
+					send:   make(chan []byte, 256),
+					roomID: "concurrent-room",
+					userID: userID,
+				}
+				hub.Register(client)
+				time.Sleep(time.Microsecond)
+			}
+		}(i)
+	}
+
+	// 5 goroutines desregistrando clientes
+	registeredClients := make([]*Client, 0, 50)
+	mu := sync.Mutex{}
+
+	for i := 0; i < 5; i++ {
+		wg.Add(1)
+		go func(gid int) {
+			defer wg.Done()
+			for j := 0; j < 10; j++ {
+				userID := (gid*10 + j) % 50
+				client := &Client{
+					hub:    hub,
+					send:   make(chan []byte, 256),
+					roomID: "concurrent-room",
+					userID: userID,
+				}
+				hub.Register(client)
+				mu.Lock()
+				registeredClients = append(registeredClients, client)
+				mu.Unlock()
+
+				time.Sleep(time.Microsecond)
+
+				// Desregistra alguns
+				if j%2 == 0 {
+					hub.Unregister(client)
+				}
+			}
+		}(i)
+	}
+
+	// 3 goroutines fazendo NotifyUsers concorrentes
+	for i := 0; i < 3; i++ {
+		wg.Add(1)
+		go func(uid int) {
+			defer wg.Done()
+			for j := 0; j < 20; j++ {
+				targetUsers := []int{uid % 50, (uid + 1) % 50, (uid + 2) % 50}
+				msg := []byte(`{"type":"test"}`)
+				hub.NotifyUsers(targetUsers, msg)
+				time.Sleep(time.Microsecond)
+			}
+		}(i)
+	}
+
+	wg.Wait()
+
+	t.Logf("NotifyUsersConcurrent: completed with %d clients remaining", hub.ClientCount())
 }

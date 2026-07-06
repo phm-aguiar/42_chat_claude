@@ -1,6 +1,7 @@
 import { useEffect, useRef, useCallback } from 'react';
 import { useChatStore } from '@/stores/chatStore';
 import { GENERAL_CHAT_ID } from '@/lib/chatApi';
+import { getValidToken, getSavedUser } from '@/lib/auth';
 
 const BACKOFF_DELAYS = [1000, 2000, 4000, 8000, 16000]; // ms, cap 16s
 const TYPING_DEBOUNCE_MS = 1000; // 1s debounce (ADR-103.4)
@@ -50,7 +51,7 @@ export function useWebSocket() {
   }, [activeChat]);
 
   const connect = useCallback(() => {
-    const token = localStorage.getItem('token');
+    const token = getValidToken();
     if (!token) {
       setStatus('error');
       setError('Token de autenticação não encontrado');
@@ -102,7 +103,8 @@ export function useWebSocket() {
         // Handle typing indicator (ADR-103.4)
         if (msg.type === 'typing') {
           // Ignore próprio usuário digitando (opcional, mas recomendado)
-          if (msg.login && msg.login !== localStorage.getItem('userLogin')) {
+          const currentUser = getSavedUser();
+          if (msg.login && msg.login !== currentUser?.login) {
             setTyping(msg.chat_id, msg.login);
           }
           return;

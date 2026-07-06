@@ -13,9 +13,11 @@ const GeneralChatID = "00000000-0000-7000-8000-000000000001"
 
 // Hub gerencia todas as conexões WebSocket ativas.
 // ADR-001: modelo híbrido — RWMutex no mapa + send chan por client.
+// ADR-105.3: usersIndex para notificação direcionada.
 type Hub struct {
 	clients       map[*Client]bool
 	rooms         map[string]map[*Client]bool // roomID -> (clients), protegido por mu
+	usersIndex    map[int]map[*Client]bool    // userID -> (clients ativas do usuário), protegido por mu
 	mu            sync.RWMutex
 	register      chan *Client
 	unregister    chan *Client
@@ -29,6 +31,7 @@ func NewHub() *Hub {
 	return &Hub{
 		clients:       make(map[*Client]bool),
 		rooms:         make(map[string]map[*Client]bool),
+		usersIndex:    make(map[int]map[*Client]bool),
 		register:      make(chan *Client, 16),
 		unregister:    make(chan *Client, 16),
 		broadcast:     make(chan []byte, 256),
@@ -49,6 +52,11 @@ func (h *Hub) Run(ctx context.Context) {
 				h.rooms[client.roomID] = make(map[*Client]bool)
 			}
 			h.rooms[client.roomID][client] = true
+			// ADR-105.3: adicionar ao índice de usuários
+			if h.usersIndex[client.userID] == nil {
+				h.usersIndex[client.userID] = make(map[*Client]bool)
+			}
+			h.usersIndex[client.userID][client] = true
 			h.mu.Unlock()
 
 		case client := <-h.unregister:
@@ -62,6 +70,14 @@ func (h *Hub) Run(ctx context.Context) {
 					// GC: remove room vazia se não for general
 					if len(room) == 0 && client.roomID != GeneralChatID {
 						delete(h.rooms, client.roomID)
+					}
+				}
+				// ADR-105.3: remover do índice de usuários
+				if userClients, ok := h.usersIndex[client.userID]; ok {
+					delete(userClients, client)
+					// GC: remove submapa se vazio
+					if len(userClients) == 0 {
+						delete(h.usersIndex, client.userID)
 					}
 				}
 			}
@@ -107,6 +123,28 @@ func (h *Hub) BroadcastToRoom(roomID string, msg []byte) {
 			go func(c *Client) {
 				h.unregister <- c
 			}(client)
+		}
+	}
+}
+
+// NotifyUsers envia msg para todas as conexões ativas dos userIDs informados,
+// independente da room. Non-blocking, com unregister assíncrono em caso de falha.
+// ADR-105.3: suporta notificação direcionada cross-room (e.g., friend_online, stats_changed).
+// NOTA: select com default é non-blocking, portanto seguro manter o RLock durante send.
+func (h *Hub) NotifyUsers(userIDs []int, msg []byte) {
+	h.mu.RLock()
+	defer h.mu.RUnlock()
+
+	for _, uid := range userIDs {
+		for client := range h.usersIndex[uid] {
+			select {
+			case client.send <- msg:
+			default:
+				// canal cheio — desconecta sem bloquear
+				go func(c *Client) {
+					h.unregister <- c
+				}(client)
+			}
 		}
 	}
 }

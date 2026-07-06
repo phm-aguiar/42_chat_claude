@@ -38,15 +38,17 @@ func RegisterForumRoutes(r chi.Router, db *sql.DB) {
 
 		// === Board Routes ===
 
-		// GET /api/forum/boards — listagem pública
-		r.Get("/boards", boardHandler.List)
+		// GET /api/forum/boards — listagem (requer autenticação)
+		r.With(auth.JWTMiddleware(), forumMw.AuthRequired).
+			Get("/boards", boardHandler.List)
 
-		// POST /api/forum/boards — criar board (JWT + AuthRequired + AdminOnly)
+		// POST /api/forum/boards — criar board (JWT + AdminOnly)
 		r.With(auth.JWTMiddleware(), forumMw.AdminOnly).
 			Post("/boards", boardHandler.Create)
 
-		// GET /api/forum/boards/{slug} — get único board (público)
-		r.Get("/boards/{slug}", boardHandler.Get)
+		// GET /api/forum/boards/{slug} — get único board (requer autenticação)
+		r.With(auth.JWTMiddleware(), forumMw.AuthRequired).
+			Get("/boards/{slug}", boardHandler.Get)
 
 		// PATCH /api/forum/boards/{slug} — atualizar board (JWT + BoardOwner)
 		r.With(auth.JWTMiddleware(), forumMw.BoardOwner).
@@ -69,15 +71,22 @@ func RegisterForumRoutes(r chi.Router, db *sql.DB) {
 
 		// === Thread Routes ===
 
-		// GET /api/forum/boards/{slug}/threads — listagem de threads por board (público)
-		r.Get("/boards/{slug}/threads", threadHandler.ListByBoard)
+		// GET /api/forum/boards/{slug}/threads — listagem de threads por board (requer autenticação)
+		r.With(auth.JWTMiddleware(), forumMw.AuthRequired).
+			Get("/boards/{slug}/threads", threadHandler.ListByBoard)
 
 		// POST /api/forum/boards/{slug}/threads — criar thread (JWT + AuthRequired)
 		r.With(auth.JWTMiddleware(), forumMw.AuthRequired).
 			Post("/boards/{slug}/threads", threadHandler.Create)
 
-		// GET /api/forum/threads/{id} — get único thread (público)
-		r.Get("/threads/{id}", threadHandler.Get)
+		// GET /api/forum/threads/recent — threads recentes cross-board (requer autenticação)
+		// Deve ser registrado ANTES de /threads/{id} para não colidir com o parâmetro
+		r.With(auth.JWTMiddleware(), forumMw.AuthRequired).
+			Get("/threads/recent", threadHandler.ListRecent)
+
+		// GET /api/forum/threads/{id} — get único thread (requer autenticação)
+		r.With(auth.JWTMiddleware(), forumMw.AuthRequired).
+			Get("/threads/{id}", threadHandler.Get)
 
 		// PATCH /api/forum/threads/{id} — atualizar thread (JWT + ModOnly)
 		r.With(auth.JWTMiddleware(), forumMw.ModOnly).
@@ -89,8 +98,9 @@ func RegisterForumRoutes(r chi.Router, db *sql.DB) {
 
 		// === Post Routes ===
 
-		// GET /api/forum/threads/{id}/posts — listagem de posts por thread (público)
-		r.Get("/threads/{id}/posts", postHandler.ListByThread)
+		// GET /api/forum/threads/{id}/posts — listagem de posts por thread (requer autenticação)
+		r.With(auth.JWTMiddleware(), forumMw.AuthRequired).
+			Get("/threads/{id}/posts", postHandler.ListByThread)
 
 		// POST /api/forum/threads/{id}/posts — criar post (JWT + AuthRequired)
 		r.With(auth.JWTMiddleware(), forumMw.AuthRequired).

@@ -11,7 +11,7 @@ plan: specs/features/105-frontend-revamp/plan.md
 
 ## Fase 0: Descoberta
 
-- [ ] **T001:** Mapear router/App.tsx atual, inventário de estilos inline por tela, montagem de auth headers em forumApi/chatApi, e resolução de autor nos stores/handlers do fórum
+- [x] **T001:** Mapear router/App.tsx atual, inventário de estilos inline por tela, montagem de auth headers em forumApi/chatApi, e resolução de autor nos stores/handlers do fórum
   - **Papel:** researcher
   - **agent:** researcher1
   - **depends_on:** []
@@ -19,7 +19,7 @@ plan: specs/features/105-frontend-revamp/plan.md
   - **Arquivos:** `frontend/src/App.tsx`, `frontend/src/lib/forumApi.ts`, `frontend/src/lib/chatApi.ts`, `internal/forum/store/threads.go`, `internal/forum/store/posts.go`, `internal/forum/handler/`
   - **Wiki-Keywords:** router, inline-styles, auth-header, forum, autor, JOIN
 
-- [ ] **T002:** Auditar plan 105 vs constitution; refinar contratos por executor (SQL do unread_count, assinatura NotifyUsers, mapa de rotas do router novo)
+- [x] **T002:** Auditar plan 105 vs constitution; refinar contratos por executor (SQL do unread_count, assinatura NotifyUsers, mapa de rotas do router novo)
   - **Papel:** analyst
   - **agent:** analyst1
   - **depends_on:** [T001]
@@ -31,7 +31,7 @@ plan: specs/features/105-frontend-revamp/plan.md
 
 ## Fase 1: Backend
 
-- [ ] **T003:** Criar migration `004_chat_reads.sql` (tabela chat_reads, PK composta, FKs CASCADE, idempotente)
+- [x] **T003:** Criar migration `004_chat_reads.sql` (tabela chat_reads, PK composta, FKs CASCADE, idempotente)
   - **Papel:** executor
   - **agent:** executor1
   - **depends_on:** [T002]
@@ -39,7 +39,7 @@ plan: specs/features/105-frontend-revamp/plan.md
   - **Arquivos:** `internal/db/migrations/004_chat_reads.sql`
   - **Wiki-Keywords:** migration, chat_reads, last_read_at, idempotente
 
-- [ ] **T004:** Criar `internal/chat/store/reads.go` — upsert leitura + unread_count por chat (general incluso, ignora deleted e mensagens próprias)
+- [x] **T004:** Criar `internal/chat/store/reads.go` — upsert leitura + unread_count por chat (general incluso, ignora deleted e mensagens próprias)
   - **Papel:** executor
   - **agent:** executor1
   - **depends_on:** [T003]
@@ -47,7 +47,7 @@ plan: specs/features/105-frontend-revamp/plan.md
   - **Arquivos:** `internal/chat/store/reads.go`
   - **Wiki-Keywords:** unread, upsert, ON-CONFLICT, COALESCE, timestamptz
 
-- [ ] **T005:** Hub — `usersIndex map[int]map[*Client]bool` + `NotifyUsers(userIDs, msg)` sob o mesmo mutex + testes `-race`
+- [x] **T005:** Hub — `usersIndex map[int]map[*Client]bool` + `NotifyUsers(userIDs, msg)` sob o mesmo mutex + testes `-race`
   - **Papel:** executor
   - **agent:** executor2
   - **depends_on:** [T002]
@@ -55,7 +55,7 @@ plan: specs/features/105-frontend-revamp/plan.md
   - **Arquivos:** `internal/ws/hub.go`, `internal/ws/hub_test.go`
   - **Wiki-Keywords:** Hub, usersIndex, NotifyUsers, RWMutex, race-condition
 
-- [ ] **T006:** Forum stores — JOIN users (author_login, author_image_url com COALESCE) em threads/posts + `ListRecent(limit)` cross-board
+- [x] **T006:** Forum stores — JOIN users (author_login, author_image_url com COALESCE) em threads/posts + `ListRecent(limit)` cross-board
   - **Papel:** executor
   - **agent:** executor1
   - **depends_on:** [T002]
@@ -63,7 +63,7 @@ plan: specs/features/105-frontend-revamp/plan.md
   - **Arquivos:** `internal/forum/store/threads.go`, `internal/forum/store/posts.go`, `internal/forum/model/thread.go`, `internal/forum/model/post.go`
   - **Wiki-Keywords:** JOIN, autor, COALESCE, ListRecent, cross-board
 
-- [ ] **T007:** Forum handlers/rotas — `AuthRequired` nos GETs (ADR-105.4), campos de autor nos responses, rota `GET /api/forum/threads/recent`; atualizar `tests/forum_smoke_test.sh` (Bearer nos GETs + caso 401)
+- [x] **T007:** Forum handlers/rotas — `AuthRequired` nos GETs (ADR-105.4), campos de autor nos responses, rota `GET /api/forum/threads/recent`; atualizar `tests/forum_smoke_test.sh` (Bearer nos GETs + caso 401)
   - **Papel:** executor
   - **agent:** executor2
   - **depends_on:** [T006]
@@ -71,27 +71,27 @@ plan: specs/features/105-frontend-revamp/plan.md
   - **Arquivos:** `internal/forum/handler/threads.go`, `internal/forum/handler/posts.go`, `internal/forum/handler/boards.go`, `internal/forum/routes/routes.go`, `tests/forum_smoke_test.sh`
   - **Wiki-Keywords:** AuthRequired, 401, smoke-test, recent-threads
 
-- [ ] **T008:** Chat handlers — `POST /api/chats/{id}/read` (204), `unread_count` no `GET /api/chats`, emissão de `chat_activity` para membros fora da room (general excluído) nos caminhos WS e REST
+- [x] **T008:** Chat handlers — `POST /api/chats/{id}/read` (204), `unread_count` no `GET /api/chats`, emissão de `chat_activity` para membros fora da room (general excluído) nos caminhos WS e REST
   - **Papel:** executor
   - **agent:** executor1
   - **depends_on:** [T004, T005]
   - **Paralelizável:** false
-  - **Arquivos:** `internal/chat/handler/reads.go`, `internal/chat/handler/chats.go`, `internal/chat/handler/messages.go`, `internal/chat/routes/routes.go`, `internal/ws/client.go`
+  - **Arquivos:** `internal/chat/handler/reads.go`, `internal/chat/handler/chats.go`, `internal/chat/handler/messages.go`, `internal/chat/routes/routes.go`, `internal/ws/client.go`, `cmd/server/main.go`, `internal/db/queries/chat_members.go`
   - **Wiki-Keywords:** chat_activity, unread_count, mark-read, NotifyUsers, GENERAL_UUID
 
 ---
 
 ## Fase 2: Frontend — Fundação
 
-- [ ] **T009:** Tokens no `tailwind.config.ts` (surface/text/accent/status, ADR-105.1) + `lib/http.ts` (fetch wrapper: Bearer + 401 → /login) + migrar forumApi/chatApi para o wrapper
+- [x] **T009:** Tokens no `tailwind.config.ts` (surface/text/accent/status, ADR-105.1) + `lib/http.ts` (fetch wrapper: Bearer + 401 → /login) + migrar forumApi/chatApi para o wrapper
   - **Papel:** executor
   - **agent:** executor2
   - **depends_on:** [T002]
   - **Paralelizável:** true
-  - **Arquivos:** `frontend/tailwind.config.ts`, `frontend/src/lib/http.ts`, `frontend/src/lib/forumApi.ts`, `frontend/src/lib/chatApi.ts`
+  - **Arquivos:** `frontend/tailwind.config.ts`, `frontend/src/lib/http.ts`, `frontend/src/lib/forumApi.ts`, `frontend/src/lib/chatApi.ts`, `frontend/src/lib/api.ts`
   - **Wiki-Keywords:** tokens, Tailwind, fetch-wrapper, 401, interceptor
 
-- [ ] **T010:** Componentes `frontend/src/components/ui/` — Button, Card, Input, Badge, EmptyState, Avatar (fallback iniciais), PageHeader — só tokens, zero hex solto, border-radius 0
+- [x] **T010:** Componentes `frontend/src/components/ui/` — Button, Card, Input, Badge, EmptyState, Avatar (fallback iniciais), PageHeader — só tokens, zero hex solto, border-radius 0
   - **Papel:** executor
   - **agent:** executor2
   - **depends_on:** [T009]
@@ -99,7 +99,7 @@ plan: specs/features/105-frontend-revamp/plan.md
   - **Arquivos:** `frontend/src/components/ui/Button.tsx`, `frontend/src/components/ui/Card.tsx`, `frontend/src/components/ui/Input.tsx`, `frontend/src/components/ui/Badge.tsx`, `frontend/src/components/ui/EmptyState.tsx`, `frontend/src/components/ui/Avatar.tsx`, `frontend/src/components/ui/PageHeader.tsx`
   - **Wiki-Keywords:** design-system, componentes, Avatar-fallback, contraste-AA, DS42
 
-- [ ] **T011:** `RequireAuth` + reestruturação do router em `App.tsx` + `layouts/AppShell.tsx` (navegação lateral Hub/Chat/Fórum com badge agregado, header contextual único — DT-02)
+- [x] **T011:** `RequireAuth` + reestruturação do router em `App.tsx` + `layouts/AppShell.tsx` (navegação lateral Hub/Chat/Fórum com badge agregado, header contextual único — DT-02)
   - **Papel:** executor
   - **agent:** executor1
   - **depends_on:** [T010]

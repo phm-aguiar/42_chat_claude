@@ -1,5 +1,4 @@
-// Base URL de API relativa — proxy Vite redireciona para backend em dev
-const BASE = '';
+import { apiFetch } from './http';
 
 /**
  * GENERAL_CHAT_ID — UUID fixo do chat "general" (Feature 100 backward compat).
@@ -61,15 +60,6 @@ export interface MessagesResponse {
 }
 
 /**
- * Obtém o token JWT do localStorage para autenticação.
- * Header: Authorization: Bearer <token>
- */
-function authHeader(): HeadersInit {
-  const token = localStorage.getItem('token');
-  return token ? { Authorization: `Bearer ${token}` } : {};
-}
-
-/**
  * Trata erro HTTP: parse JSON ou lança message genérico.
  */
 async function handleError(res: Response): Promise<never> {
@@ -86,9 +76,7 @@ async function handleError(res: Response): Promise<never> {
  * GET /api/chats
  */
 export async function fetchChats(): Promise<Chat[]> {
-  const res = await fetch(`${BASE}/api/chats`, {
-    headers: authHeader(),
-  });
+  const res = await apiFetch('/api/chats');
   if (!res.ok) await handleError(res);
   return res.json();
 }
@@ -98,9 +86,7 @@ export async function fetchChats(): Promise<Chat[]> {
  * GET /api/chats/{id}
  */
 export async function fetchChat(id: string): Promise<Chat> {
-  const res = await fetch(`${BASE}/api/chats/${id}`, {
-    headers: authHeader(),
-  });
+  const res = await apiFetch(`/api/chats/${id}`);
   if (!res.ok) await handleError(res);
   return res.json();
 }
@@ -115,12 +101,8 @@ export async function createChat(input: {
   topic?: string;
   members?: number[];
 }): Promise<Chat> {
-  const res = await fetch(`${BASE}/api/chats`, {
+  const res = await apiFetch('/api/chats', {
     method: 'POST',
-    headers: {
-      ...authHeader(),
-      'Content-Type': 'application/json',
-    },
     body: JSON.stringify(input),
   });
   if (!res.ok) await handleError(res);
@@ -144,13 +126,11 @@ export async function fetchMessages(
   if (before) params.set('before', before);
   params.set('limit', String(Math.min(limit, 100)));
 
-  const url = `${BASE}/api/chats/${chatId}/messages${
+  const path = `/api/chats/${chatId}/messages${
     params.toString() ? `?${params.toString()}` : ''
   }`;
 
-  const res = await fetch(url, {
-    headers: authHeader(),
-  });
+  const res = await apiFetch(path);
   if (!res.ok) await handleError(res);
   return res.json();
 }
@@ -164,12 +144,8 @@ export async function sendMessage(
   chatId: string,
   content: string
 ): Promise<Message> {
-  const res = await fetch(`${BASE}/api/chats/${chatId}/messages`, {
+  const res = await apiFetch(`/api/chats/${chatId}/messages`, {
     method: 'POST',
-    headers: {
-      ...authHeader(),
-      'Content-Type': 'application/json',
-    },
     body: JSON.stringify({ content, chat_id: chatId }),
   });
   if (!res.ok) await handleError(res);
@@ -181,9 +157,8 @@ export async function sendMessage(
  * DELETE /api/messages/{id}
  */
 export async function deleteMessage(id: string): Promise<void> {
-  const res = await fetch(`${BASE}/api/messages/${id}`, {
+  const res = await apiFetch(`/api/messages/${id}`, {
     method: 'DELETE',
-    headers: authHeader(),
   });
   if (!res.ok) await handleError(res);
 }
@@ -194,12 +169,8 @@ export async function deleteMessage(id: string): Promise<void> {
  * Body: {user_id}
  */
 export async function addMember(chatId: string, userId: number): Promise<void> {
-  const res = await fetch(`${BASE}/api/chats/${chatId}/members`, {
+  const res = await apiFetch(`/api/chats/${chatId}/members`, {
     method: 'POST',
-    headers: {
-      ...authHeader(),
-      'Content-Type': 'application/json',
-    },
     body: JSON.stringify({ user_id: userId }),
   });
   if (!res.ok) await handleError(res);
@@ -213,12 +184,8 @@ export async function removeMember(
   chatId: string,
   userId: number
 ): Promise<void> {
-  const res = await fetch(
-    `${BASE}/api/chats/${chatId}/members/${userId}`,
-    {
-      method: 'DELETE',
-      headers: authHeader(),
-    }
-  );
+  const res = await apiFetch(`/api/chats/${chatId}/members/${userId}`, {
+    method: 'DELETE',
+  });
   if (!res.ok) await handleError(res);
 }

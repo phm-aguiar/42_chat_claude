@@ -1,5 +1,4 @@
-// Base URL de API relativa — proxy Vite redireciona para backend em dev
-const BASE = '';
+import { apiFetch } from './http';
 
 export interface Message {
   id: string;
@@ -18,27 +17,18 @@ export interface User {
   level: number;
 }
 
-function authHeader(): HeadersInit {
-  const token = localStorage.getItem('token');
-  return token ? { Authorization: `Bearer ${token}` } : {};
-}
-
 export async function getMessages(before?: string, limit = 50): Promise<Message[]> {
   const params = new URLSearchParams();
   if (before) params.set('before', before);
   params.set('limit', String(limit));
 
-  const res = await fetch(`${BASE}/api/messages?${params}`, {
-    headers: authHeader(),
-  });
+  const res = await apiFetch(`/api/messages?${params}`);
   if (!res.ok) throw new Error(`getMessages: ${res.status}`);
   return res.json();
 }
 
 export async function getUserById(id: number): Promise<User> {
-  const res = await fetch(`${BASE}/api/users/${id}`, {
-    headers: authHeader(),
-  });
+  const res = await apiFetch(`/api/users/${id}`);
   if (!res.ok) throw new Error(`getUser: ${res.status}`);
   return res.json();
 }

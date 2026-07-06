@@ -43,6 +43,28 @@ const config: Config = {
           green: "#2DD57A",
           pink: "#EC3391",
         },
+        // Semantic Design Tokens (ADR-105.1) — Paleta "Sleek" + "Minimalist"
+        // Nomeação: bg-surface-*, text-content-*, border-accent-*, text-status-*
+        surface: {
+          base: "#1B1B1B",        // Fundo primário (black institucional)
+          panel: "#202026",       // Fundo elevado (near-black)
+          raised: "#29292E",      // Fundo mais elevado (dark-gray)
+          hover: "#35353C",       // Hover subtle (um pouco acima de raised)
+        },
+        content: {
+          primary: "#F2F2F2",     // Texto principal (branco suave)
+          secondary: "#A8A8B3",   // Texto secundário (cinza médio)
+          muted: "#6E6E78",       // Texto mutado/desabilitado (cinza escuro)
+        },
+        accent: {
+          teal: "#00BABC",        // Ênfase teal
+          navy: "#173D7A",        // Ênfase navy
+        },
+        status: {
+          error: "#EC3391",       // Pink para erros
+          success: "#2DD57A",     // Green para sucesso
+          warning: "#FFB800",     // Laranja para avisos (padrão)
+        },
       },
       fontFamily: {
         sans: ["Futura PT", "ui-sans-serif", "system-ui", "sans-serif"],

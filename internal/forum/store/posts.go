@@ -50,10 +50,11 @@ func (s *PostStore) GetByID(id string) (*model.Post, error) {
 	var replyTo sql.NullString
 
 	err := s.DB.QueryRow(`
-		SELECT id, thread_id, author_id, reply_to, content, created_at, deleted_at
-		FROM posts
-		WHERE id = $1 AND deleted_at IS NULL
-	`, id).Scan(&p.ID, &p.ThreadID, &p.AuthorID, &replyTo, &p.Content, &p.CreatedAt, &deletedAt)
+		SELECT p.id, p.thread_id, p.author_id, u.login, COALESCE(u.image_url, ''), p.reply_to, p.content, p.created_at, p.deleted_at
+		FROM posts p
+		LEFT JOIN users u ON u.id = p.author_id
+		WHERE p.id = $1 AND p.deleted_at IS NULL
+	`, id).Scan(&p.ID, &p.ThreadID, &p.AuthorID, &p.AuthorLogin, &p.AuthorImageURL, &replyTo, &p.Content, &p.CreatedAt, &deletedAt)
 
 	if err == sql.ErrNoRows {
 		return nil, fmt.Errorf("post not found: %s", id)
@@ -79,10 +80,11 @@ func (s *PostStore) GetByID(id string) (*model.Post, error) {
 // ordenados por created_at ASC (compatível com índice idx_posts_thread_time).
 func (s *PostStore) ListByThread(threadID string) ([]model.Post, error) {
 	rows, err := s.DB.Query(`
-		SELECT id, thread_id, author_id, reply_to, content, created_at, deleted_at
-		FROM posts
-		WHERE thread_id = $1 AND deleted_at IS NULL
-		ORDER BY created_at ASC
+		SELECT p.id, p.thread_id, p.author_id, u.login, COALESCE(u.image_url, ''), p.reply_to, p.content, p.created_at, p.deleted_at
+		FROM posts p
+		LEFT JOIN users u ON u.id = p.author_id
+		WHERE p.thread_id = $1 AND p.deleted_at IS NULL
+		ORDER BY p.created_at ASC
 	`, threadID)
 
 	if err != nil {
@@ -96,7 +98,7 @@ func (s *PostStore) ListByThread(threadID string) ([]model.Post, error) {
 		var deletedAt sql.NullTime
 		var replyTo sql.NullString
 
-		err := rows.Scan(&p.ID, &p.ThreadID, &p.AuthorID, &replyTo, &p.Content, &p.CreatedAt, &deletedAt)
+		err := rows.Scan(&p.ID, &p.ThreadID, &p.AuthorID, &p.AuthorLogin, &p.AuthorImageURL, &replyTo, &p.Content, &p.CreatedAt, &deletedAt)
 		if err != nil {
 			return nil, fmt.Errorf("scan post: %w", err)
 		}

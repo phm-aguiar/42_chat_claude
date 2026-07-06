@@ -111,6 +111,28 @@ func (c *Client) readPump(ctx context.Context) {
 
 		enriched, _ := json.Marshal(msgMap)
 		c.hub.BroadcastToRoom(c.roomID, enriched)
+
+		// Emitir chat_activity para membros (se não for general)
+		if c.roomID != GeneralChatID {
+			memberIDs, err := queries.GetChatMemberIDs(c.db, c.roomID)
+			if err == nil && len(memberIDs) > 0 {
+				// Filtrar para excluir o remetente
+				var targetIDs []int
+				for _, id := range memberIDs {
+					if id != c.userID {
+						targetIDs = append(targetIDs, id)
+					}
+				}
+				// Emitir notificação se houver membros para notificar
+				if len(targetIDs) > 0 {
+					payload, _ := json.Marshal(map[string]string{
+						"type":    "chat_activity",
+						"chat_id": c.roomID,
+					})
+					c.hub.NotifyUsers(targetIDs, payload)
+				}
+			}
+		}
 	}
 }
 

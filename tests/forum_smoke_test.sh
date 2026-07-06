@@ -1,7 +1,7 @@
 #!/bin/bash
 set -u
 
-# forum_smoke_test.sh — 11 cenários de integração para o fórum
+# forum_smoke_test.sh — 12 cenários de integração para o fórum
 # Executa curl contra servidor real com JWT dev login
 
 BASE_URL="http://localhost:8080"
@@ -46,7 +46,7 @@ extract_post_count() {
 }
 
 echo "=========================================="
-echo "Forum Smoke Test — 11 Cenários"
+echo "Forum Smoke Test — 12 Cenários"
 echo "=========================================="
 echo ""
 
@@ -62,10 +62,10 @@ echo -e "${GREEN}Token adquirido${NC}"
 echo ""
 
 # ============================================================================
-# Cenário 1: GET /api/forum/boards sem auth → 200 e os 5 seed boards
+# Cenário 1: GET /api/forum/boards com auth → 200 e os 5 seed boards
 # ============================================================================
-echo "Cenário 1: GET /api/forum/boards sem auth"
-RESPONSE=$(curl -s -w "\n%{http_code}" "$BASE_URL/api/forum/boards")
+echo "Cenário 1: GET /api/forum/boards com auth"
+RESPONSE=$(curl -s -w "\n%{http_code}" -H "Authorization: Bearer $TOKEN" "$BASE_URL/api/forum/boards")
 HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
 BODY=$(echo "$RESPONSE" | head -n-1)
 
@@ -84,10 +84,10 @@ fi
 echo ""
 
 # ============================================================================
-# Cenário 2: GET /api/forum/boards/tech → 200
+# Cenário 2: GET /api/forum/boards/tech com auth → 200
 # ============================================================================
-echo "Cenário 2: GET /api/forum/boards/tech"
-RESPONSE=$(curl -s -w "\n%{http_code}" "$BASE_URL/api/forum/boards/tech")
+echo "Cenário 2: GET /api/forum/boards/tech com auth"
+RESPONSE=$(curl -s -w "\n%{http_code}" -H "Authorization: Bearer $TOKEN" "$BASE_URL/api/forum/boards/tech")
 HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
 
 if [ "$HTTP_CODE" = "200" ]; then
@@ -98,10 +98,10 @@ fi
 echo ""
 
 # ============================================================================
-# Cenário 3: GET /api/forum/boards/naoexiste → 404 BOARD_NOT_FOUND
+# Cenário 3: GET /api/forum/boards/naoexiste com auth → 404 BOARD_NOT_FOUND
 # ============================================================================
-echo "Cenário 3: GET /api/forum/boards/naoexiste"
-RESPONSE=$(curl -s -w "\n%{http_code}" "$BASE_URL/api/forum/boards/naoexiste")
+echo "Cenário 3: GET /api/forum/boards/naoexiste com auth"
+RESPONSE=$(curl -s -w "\n%{http_code}" -H "Authorization: Bearer $TOKEN" "$BASE_URL/api/forum/boards/naoexiste")
 HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
 BODY=$(echo "$RESPONSE" | head -n-1)
 
@@ -198,7 +198,7 @@ if [ -n "$THREAD_ID" ]; then
 
 	if [ "$HTTP_CODE" = "201" ]; then
 		# Agora GET o thread para verificar post_count
-		THREAD_RESPONSE=$(curl -s "$BASE_URL/api/forum/threads/$THREAD_ID")
+		THREAD_RESPONSE=$(curl -s -H "Authorization: Bearer $TOKEN" "$BASE_URL/api/forum/threads/$THREAD_ID")
 		POST_COUNT=$(extract_post_count "$THREAD_RESPONSE")
 
 		if [ "$POST_COUNT" = "1" ]; then
@@ -216,11 +216,11 @@ else
 fi
 
 # ============================================================================
-# Cenário 8: GET /api/forum/threads/{id}/posts → 200 com 1 post
+# Cenário 8: GET /api/forum/threads/{id}/posts com auth → 200 com 1 post
 # ============================================================================
 if [ -n "$THREAD_ID" ]; then
-	echo "Cenário 8: GET /api/forum/threads/{id}/posts"
-	RESPONSE=$(curl -s -w "\n%{http_code}" "$BASE_URL/api/forum/threads/$THREAD_ID/posts")
+	echo "Cenário 8: GET /api/forum/threads/{id}/posts com auth"
+	RESPONSE=$(curl -s -w "\n%{http_code}" -H "Authorization: Bearer $TOKEN" "$BASE_URL/api/forum/threads/$THREAD_ID/posts")
 	HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
 	BODY=$(echo "$RESPONSE" | head -n-1)
 
@@ -309,6 +309,21 @@ if [ "$HTTP_CODE" = "404" ] && echo "$BODY" | grep -q "BOARD_NOT_FOUND"; then
 	test_result "POST thread em board inexistente — 404 BOARD_NOT_FOUND" "PASS"
 else
 	test_result "POST thread em board inexistente — HTTP $HTTP_CODE (esperado 404)" "FAIL"
+fi
+echo ""
+
+# ============================================================================
+# Cenário 12: GET /api/forum/boards sem token → 401 UNAUTHORIZED
+# ============================================================================
+echo "Cenário 12: GET /api/forum/boards sem token"
+RESPONSE=$(curl -s -w "\n%{http_code}" "$BASE_URL/api/forum/boards")
+HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
+BODY=$(echo "$RESPONSE" | head -n-1)
+
+if [ "$HTTP_CODE" = "401" ] && echo "$BODY" | grep -q "UNAUTHORIZED"; then
+	test_result "GET /api/forum/boards sem token — 401 UNAUTHORIZED" "PASS"
+else
+	test_result "GET /api/forum/boards sem token — HTTP $HTTP_CODE (esperado 401)" "FAIL"
 fi
 echo ""
 

@@ -1,4 +1,4 @@
-const BASE = '';
+import { apiFetch } from './http';
 
 export interface UserStats {
   user_id: number;
@@ -11,15 +11,8 @@ export interface UserStats {
   member_since: string;
 }
 
-function authHeader(): HeadersInit {
-  const token = localStorage.getItem('token');
-  return token ? { Authorization: `Bearer ${token}` } : {};
-}
-
 export async function fetchUserStats(userID: number): Promise<UserStats> {
-  const res = await fetch(`${BASE}/api/users/${userID}/stats`, {
-    headers: authHeader(),
-  });
+  const res = await apiFetch(`/api/users/${userID}/stats`);
   if (!res.ok) throw new Error(`fetchUserStats: ${res.status}`);
   return res.json();
 }

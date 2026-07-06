@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useForumStore } from '@/stores/forumStore';
 import { ThreadRow } from '@/components/forum/ThreadRow';
 
@@ -7,6 +8,7 @@ interface BoardViewProps {
 }
 
 export function BoardView({ slug }: BoardViewProps) {
+  const navigate = useNavigate();
   const { currentBoard, threads, loading, error, fetchThreads, clearError } = useForumStore();
 
   // Fetch threads when slug changes
@@ -15,11 +17,11 @@ export function BoardView({ slug }: BoardViewProps) {
   }, [slug, fetchThreads]);
 
   function handleThreadClick(threadId: string) {
-    window.location.pathname = `/forum/${slug}/thread/${threadId}`;
+    navigate(`/forum/${slug}/thread/${threadId}`);
   }
 
   function handleNewThread() {
-    window.location.pathname = `/forum/${slug}/new`;
+    navigate(`/forum/${slug}/new`);
   }
 
   return (
@@ -49,7 +51,7 @@ export function BoardView({ slug }: BoardViewProps) {
       >
         {/* Back button */}
         <button
-          onClick={() => window.location.replace('/forum')}
+          onClick={() => navigate('/forum')}
           style={{
             background: 'transparent',
             border: 'none',

@@ -11,6 +11,7 @@ import (
 	"42chat/internal/auth"
 	"42chat/internal/chat/model"
 	"42chat/internal/chat/store"
+	"42chat/internal/ws"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
@@ -20,6 +21,8 @@ import (
 type MessageHandler struct {
 	Messages *store.MessageStore
 	Members  *store.MemberStore
+	Chats    *store.ChatStore
+	Hub      *ws.Hub
 }
 
 // === Response Helpers (não exportados, prefixo specific para evitar conflito com chats.go) ===
@@ -186,6 +189,28 @@ func (h *MessageHandler) SendMessage(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		writeMsgError(w, http.StatusInternalServerError, "failed to send message", "INTERNAL_ERROR")
 		return
+	}
+
+	// Emitir chat_activity para membros (se não for general)
+	if chatID != ws.GeneralChatID {
+		members, err := h.Chats.GetChatMembers(chatID)
+		if err == nil {
+			// Coletar IDs dos membros excluindo o remetente
+			var memberIDs []int
+			for _, m := range members {
+				if m.UserID != claims.UserID {
+					memberIDs = append(memberIDs, m.UserID)
+				}
+			}
+			// Emitir notificação se houver membros para notificar
+			if len(memberIDs) > 0 {
+				payload, _ := json.Marshal(map[string]string{
+					"type":    "chat_activity",
+					"chat_id": chatID,
+				})
+				h.Hub.NotifyUsers(memberIDs, payload)
+			}
+		}
 	}
 
 	writeMsgJSON(w, http.StatusCreated, msg)

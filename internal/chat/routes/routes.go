@@ -5,6 +5,7 @@ import (
 	"42chat/internal/chat/handler"
 	"42chat/internal/chat/middleware"
 	"42chat/internal/chat/store"
+	"42chat/internal/ws"
 
 	"github.com/go-chi/chi/v5"
 	chimw "github.com/go-chi/chi/v5/middleware"
@@ -13,16 +14,17 @@ import (
 // Routes monta todas as rotas de chat em um subrouter.
 // Instancia stores, handlers e middleware, e define a tabela de rotas.
 // Retorna um chi.Router pronto para ser montado em /api/chats.
-func Routes(chats *store.ChatStore, members *store.MemberStore, messages *store.MessageStore) chi.Router {
+func Routes(chats *store.ChatStore, members *store.MemberStore, messages *store.MessageStore, reads *store.ReadStore, hub *ws.Hub) chi.Router {
 	r := chi.NewRouter()
 
 	// Middleware local do subrouter (logging)
 	r.Use(chimw.Logger)
 
 	// Instancia handlers
-	chatHandler := &handler.ChatHandler{Chats: chats, Members: members}
-	messageHandler := &handler.MessageHandler{Messages: messages, Members: members}
+	chatHandler := &handler.ChatHandler{Chats: chats, Members: members, Reads: reads}
+	messageHandler := &handler.MessageHandler{Messages: messages, Members: members, Chats: chats, Hub: hub}
 	memberHandler := &handler.MemberHandler{Members: members, Chats: chats}
+	readHandler := &handler.ReadHandler{Reads: reads}
 
 	// Instancia middleware
 	chatMw := middleware.New(members)
@@ -50,6 +52,10 @@ func Routes(chats *store.ChatStore, members *store.MemberStore, messages *store.
 	// POST /api/chats/{id}/messages — enviar mensagem (JWT + ChatMember)
 	r.With(auth.JWTMiddleware(), chatMw.ChatMember).
 		Post("/{id}/messages", messageHandler.SendMessage)
+
+	// POST /api/chats/{id}/read — marcar chat como lido (JWT + ChatMember)
+	r.With(auth.JWTMiddleware(), chatMw.ChatMember).
+		Post("/{id}/read", readHandler.MarkRead)
 
 	// NOTE: DELETE /api/messages/{id} é registrado no main.go (não no subrouter)
 	// para manter consistência com GET /api/messages que está no root

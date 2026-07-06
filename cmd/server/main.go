@@ -71,13 +71,14 @@ func main() {
 	r.Get("/ws", chatHandler.ServeWS)
 	r.Get("/metrics", chatHandler.Metrics)
 
-	// Chat stores (typic ed chats, members, messages)
+	// Chat stores (typic ed chats, members, messages, reads)
 	chats := &chatstore.ChatStore{DB: database}
 	members := &chatstore.MemberStore{DB: database}
 	messages := &chatstore.MessageStore{DB: database}
+	reads := &chatstore.ReadStore{DB: database}
 
 	// Chat subrouter /api/chats
-	r.Mount("/api/chats", routes.Routes(chats, members, messages))
+	r.Mount("/api/chats", routes.Routes(chats, members, messages, reads, hub))
 
 	// Chat message deletion (DELETE /api/messages/{id}) — registered at root for consistency with GET /api/messages
 	chatMsgHandler := &chathandler.MessageHandler{Messages: messages, Members: members}

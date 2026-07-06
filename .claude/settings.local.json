@@ -67,7 +67,17 @@
       "Bash(curl -s -o /dev/null -w \"frontend :9999 → %{http_code}\\\\n\" http://localhost:9999/)",
       "Bash(curl -s -o /dev/null -w \"api /health → %{http_code}\\\\n\" http://localhost:8080/health)",
       "Bash(awk '{print $1}')",
-      "Bash(git status *)"
+      "Bash(git status *)",
+      "Bash(git push *)",
+      "Bash(echo \"GO_BUILD_EXIT=$?\")",
+      "Bash(echo \"GO_VET_EXIT=$?\")",
+      "Bash(echo \"TSC_EXIT=$?\")",
+      "Bash(grep -i \"\\\\.env$\")",
+      "Bash(psql *)",
+      "Bash(bash -n /home/zeenyt__/Projetos/42_chat_claude/tests/forum_smoke_test.sh)",
+      "Bash(grep -rn \"#[0-9A-Fa-f]\\\\{3,6\\\\}\" frontend/src/components/ui/)",
+      "Bash(export DATABASE_URL=\"postgres://chat:banana42@localhost:5433/chat?sslmode=disable\")",
+      "Bash(docker exec 42_chat_claude-postgres-1 *)"
     ]
   }
 }

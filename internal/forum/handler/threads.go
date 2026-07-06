@@ -267,3 +267,32 @@ func (h *ThreadHandler) Delete(w http.ResponseWriter, r *http.Request) {
 
 	w.WriteHeader(http.StatusNoContent)
 }
+
+// ListRecent retorna threads recentes cross-board.
+// GET /api/forum/threads/recent?limit=10
+// Query params: limit (default 10, clamp 1-50)
+// Response: 200 com array de threads com board_slug.
+func (h *ThreadHandler) ListRecent(w http.ResponseWriter, r *http.Request) {
+	// Parse query params
+	limitStr := r.URL.Query().Get("limit")
+	limit := 10
+
+	if limitStr != "" {
+		if l, err := strconv.Atoi(limitStr); err == nil && l >= 1 && l <= 50 {
+			limit = l
+		}
+	}
+
+	// Busca threads recentes
+	threads, err := h.Threads.ListRecent(limit)
+	if err != nil {
+		writeError(w, http.StatusInternalServerError, "failed to list recent threads", "INTERNAL_ERROR")
+		return
+	}
+
+	if threads == nil {
+		threads = []model.ThreadWithBoard{}
+	}
+
+	writeJSON(w, http.StatusOK, threads)
+}

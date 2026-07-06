@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
+import { useParams } from 'react-router-dom';
 import { useForumStore } from '@/stores/forumStore';
 import { PostCard } from '@/components/forum/PostCard';
 import { MDXEditor } from '@/components/forum/MDXEditor';
@@ -10,12 +11,9 @@ import type { Post } from '@/lib/forumApi';
  * Route: /forum/{slug}/thread/{id}
  */
 export function ThreadView() {
-  // Extrair threadId da URL
-  const threadId = useMemo(() => {
-    const path = window.location.pathname;
-    const match = path.match(/\/thread\/([a-f0-9-]+)/);
-    return match?.[1] || '';
-  }, []);
+  // Extrair threadId da URL via react-router
+  const { threadId } = useParams<{ threadId: string }>();
+  const tid = threadId || '';
 
   const {
     currentThread,
@@ -33,13 +31,13 @@ export function ThreadView() {
   const [editorContent, setEditorContent] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Fetch thread + posts — deps APENAS threadId
+  // Fetch thread + posts — deps APENAS tid
   useEffect(() => {
-    if (!threadId) return;
-    fetchThread(threadId);
-    fetchPosts(threadId);
+    if (!tid) return;
+    fetchThread(tid);
+    fetchPosts(tid);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [threadId]);
+  }, [tid]);
 
   /**
    * Constrói árvore de replies a partir de posts.
@@ -119,11 +117,11 @@ export function ThreadView() {
    * Submeter nova resposta.
    */
   const handleSubmitReply = async () => {
-    if (!threadId || !editorContent.trim()) return;
+    if (!tid || !editorContent.trim()) return;
 
     setIsSubmitting(true);
     try {
-      await createPost(threadId, {
+      await createPost(tid, {
         content: editorContent,
         reply_to: replyingTo,
       });

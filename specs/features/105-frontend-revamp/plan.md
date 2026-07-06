@@ -135,6 +135,13 @@ exceto `/login` e `/auth/callback`) + wrapper de fetch único (`lib/http.ts`) qu
 Bearer e, em 401, limpa token e redireciona `/login`. `forumApi`/`chatApi` migram para o
 wrapper (elimina headers manuais duplicados).
 
+**Adendo (2026-07-03, auditoria T002):** o roteamento declarativo com `RequireAuth`/`Outlet`
+exige `react-router-dom` — dependência nova aprovada. Não viola a constraint "sem bibliotecas
+novas de UI" do spec: é lib de roteamento/lógica (mesma categoria de Zustand), não de
+componentes visuais. A seção 1 ("Sem novas libs") fica emendada: sem novas libs **de UI**;
+`react-router-dom` adicionada em T011. O wrapper também absorve a 3ª cópia de `authHeader()`
+em `lib/api.ts` (legado feature 100), não citada originalmente.
+
 ---
 
 ## 3. Contratos
