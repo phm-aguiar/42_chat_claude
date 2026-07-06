@@ -7,7 +7,7 @@ Chat em tempo real + fórum tech para os ~300 alunos da 42 São Paulo. Substitui
 | Camada | Tecnologia |
 |--------|-----------|
 | Backend | Go 1.25, Chi router, gorilla/websocket, lib/pq |
-| Frontend | React 18, Vite, Tailwind CSS, Shadcn/ui, Zustand, @mdx-js/react |
+| Frontend | React 18, Vite, react-router-dom v7, Tailwind CSS (design tokens + componentes próprios em `components/ui/`), Zustand, @mdx-js/react |
 | Banco | PostgreSQL 16 (Docker) |
 | Auth | OAuth2 42 Intra → JWT interno (12h) |
 | Infra | Docker Compose, Nginx reverse proxy, servidor local (on-premise 42SP se aceito) |
@@ -78,7 +78,7 @@ frontend/src/
   lib/forumApi.ts                # API calls — IDs sempre como string UUID
   hooks/forum/
 tests/
-  forum_smoke_test.sh            # 11 integration tests
+  forum_smoke_test.sh            # 12 integration tests
   internal/forum/handler/
     forum_test.go
     edge_test.go                 # Slug reservado, thread locked, content ≤10k
@@ -137,7 +137,7 @@ IDs em toda API: strings UUID (nunca array de bytes).
 
 **React:**
 - IDs: sempre `string` — converter antes de fetch e push de URL (ver `forumApi.ts`)
-- Avatar: `onError` → fallback `/assets/default-avatar.png`
+- Avatar: componente `ui/Avatar` com fallback de iniciais do login — nunca `<img>` cru, nunca asset estático
 - MDX: conteúdo armazenado como texto puro, renderizado no cliente com `MDXRenderer`
 - Zustand: `forumStore` — nunca acessar API diretamente nos componentes
 
@@ -161,6 +161,7 @@ IDs em toda API: strings UUID (nunca array de bytes).
 | 101 | Assinatura de participação (UserSignature + stats) | ✅ Implementado via LATTE (builds/testes PASS; falta teste de carga + integração DB ao vivo) |
 | 102 | Fórum (boards → threads → posts, MDX, moderação) | ✅ Implementado via LATTE (2026-07-02: 28/28 tasks, smoke 11/11, testes store live PASS) |
 | 103 | Expansão de mensageria (chats tipados, rooms, typing, emoticons) | ✅ Implementado via LATTE (2026-07-03: 21/21 tasks, smoke fórum 11/11, `-race` PASS, migration 003 validada em banco limpo) |
+| 105 | Frontend revamp (design tokens, AppShell + router, Hub, unread badges, auth fórum, autores reais) | ✅ Implementado via LATTE (2026-07-05: 18/18 tasks, smoke 12/12, migrations 001–004 em banco limpo, testes live PASS) |
 
 Specs completas em `specs/features/<id>-<nome>/`: `spec.md`, `plan.md`, `tasks.md`, `acceptance/*.feature`
 

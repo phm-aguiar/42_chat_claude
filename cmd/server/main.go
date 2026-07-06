@@ -61,6 +61,7 @@ func main() {
 
 	// WebSocket Hub
 	hub := ws.NewHub()
+	hub.DB = database // ADR-107.2: injeta DB para queries de presença
 	go hub.Run(ctx)
 
 	// Chat handler

@@ -20,29 +20,9 @@ export function MessageList({ messages, contentRenderer = parseEmoticons }: Mess
   }, [messages.length]);
 
   return (
-    <div
-      style={{
-        flex: 1,
-        overflowY: 'auto',
-        padding: '16px 0',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '2px',
-      }}
-    >
+    <div className="flex-1 overflow-y-auto py-4 flex flex-col gap-0.5">
       {messages.length === 0 && (
-        <div
-          style={{
-            flex: 1,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: '#29292E',
-            fontSize: '11px',
-            letterSpacing: '0.15em',
-            textTransform: 'uppercase',
-          }}
-        >
+        <div className="flex-1 flex items-center justify-center text-content-muted text-xs tracking-widest uppercase">
           Nenhuma mensagem ainda
         </div>
       )}
@@ -50,58 +30,27 @@ export function MessageList({ messages, contentRenderer = parseEmoticons }: Mess
       {messages.map((msg) => (
         <div
           key={msg.id}
-          style={{
-            display: 'flex',
-            alignItems: 'flex-start',
-            gap: '10px',
-            padding: '4px 20px',
-            transition: 'background 0.1s',
-          }}
-          onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.02)')}
-          onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
+          className="flex items-start gap-2.5 px-5 py-1 transition-colors hover:bg-surface-raised"
         >
           {/* Avatar */}
           <img
             src={msg.image_url || '/assets/default-avatar.png'}
             alt={msg.login}
             onError={(e) => { (e.currentTarget as HTMLImageElement).src = '/assets/default-avatar.png'; }}
-            style={{
-              width: '28px',
-              height: '28px',
-              flexShrink: 0,
-              objectFit: 'cover',
-              filter: 'grayscale(30%)',
-              marginTop: '2px',
-            }}
+            className="w-7 h-7 shrink-0 object-cover grayscale-[30%] mt-0.5"
           />
 
           {/* Content */}
-          <div style={{ flex: 1, minWidth: 0 }}>
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginBottom: '2px' }}>
-              <span
-                style={{
-                  color: '#00BABC',
-                  fontSize: '11px',
-                  fontWeight: 700,
-                  letterSpacing: '0.08em',
-                  textTransform: 'uppercase',
-                }}
-              >
+          <div className="flex-1 min-w-0">
+            <div className="flex items-baseline gap-2 mb-0.5">
+              <span className="text-accent-primary text-xs font-bold tracking-widest uppercase">
                 {msg.login}
               </span>
-              <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: '10px' }}>
+              <span className="text-content-muted text-xs">
                 {formatTime(msg.created_at)}
               </span>
             </div>
-            <p
-              style={{
-                color: 'rgba(255,255,255,0.85)',
-                fontSize: '13px',
-                lineHeight: '1.5',
-                margin: 0,
-                wordBreak: 'break-word',
-              }}
-            >
+            <p className="text-content-primary text-sm leading-relaxed m-0 break-words">
               {contentRenderer(msg.content)}
             </p>
             <UserSignature userID={msg.user_id} />

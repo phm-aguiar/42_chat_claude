@@ -18,11 +18,11 @@ export function EmptyState({
           {typeof icon === 'string' ? icon : icon}
         </div>
       )}
-      <h3 className="text-text-content-primary text-lg font-medium">
+      <h3 className="text-content-primary text-lg font-medium">
         {title}
       </h3>
       {description && (
-        <p className="text-text-content-secondary text-sm max-w-md text-center">
+        <p className="text-content-secondary text-sm max-w-md text-center">
           {description}
         </p>
       )}

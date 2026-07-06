@@ -30,7 +30,7 @@ func (s *MessageStore) ListByChat(chatID string, before time.Time, limit int) ([
 		SELECT m.id::text, m.user_id, m.chat_id::text, u.login, COALESCE(u.image_url, ''),
 		       CASE WHEN m.deleted_at IS NOT NULL THEN '[mensagem removida]'
 		            ELSE m.content END AS content,
-		       m.created_at
+		       m.kind, m.created_at
 		FROM messages m
 		JOIN users u ON u.id = m.user_id
 		WHERE m.chat_id = $1::uuid AND m.created_at < $2::timestamptz
@@ -46,7 +46,7 @@ func (s *MessageStore) ListByChat(chatID string, before time.Time, limit int) ([
 	var messages []queries.Message
 	for rows.Next() {
 		var msg queries.Message
-		if err := rows.Scan(&msg.ID, &msg.UserID, &msg.ChatID, &msg.Login, &msg.ImageURL, &msg.Content, &msg.CreatedAt); err != nil {
+		if err := rows.Scan(&msg.ID, &msg.UserID, &msg.ChatID, &msg.Login, &msg.ImageURL, &msg.Content, &msg.Kind, &msg.CreatedAt); err != nil {
 			return nil, false, fmt.Errorf("scan message: %w", err)
 		}
 		messages = append(messages, msg)
@@ -66,14 +66,20 @@ func (s *MessageStore) ListByChat(chatID string, before time.Time, limit int) ([
 	return messages, has_more, nil
 }
 
-// Send insere uma nova mensagem e retorna com dados do usuário enriquecidos (login, image_url).
+// Send insere uma nova mensagem com kind='text' e retorna com dados do usuário enriquecidos.
+// Usa SendKind internamente para manter backward compatibility.
 func (s *MessageStore) Send(chatID string, userID int, content string) (queries.Message, error) {
+	return s.SendKind(chatID, userID, content, "text")
+}
+
+// SendKind insere uma nova mensagem com kind específico e retorna com dados do usuário enriquecidos (login, image_url).
+func (s *MessageStore) SendKind(chatID string, userID int, content string, kind string) (queries.Message, error) {
 	var msg queries.Message
 	err := s.DB.QueryRow(`
-		INSERT INTO messages (user_id, chat_id, content)
-		VALUES ($1, $2::uuid, $3)
-		RETURNING id::text, user_id, chat_id::text, content, created_at
-	`, userID, chatID, content).Scan(&msg.ID, &msg.UserID, &msg.ChatID, &msg.Content, &msg.CreatedAt)
+		INSERT INTO messages (user_id, chat_id, content, kind)
+		VALUES ($1, $2::uuid, $3, $4)
+		RETURNING id::text, user_id, chat_id::text, content, kind, created_at
+	`, userID, chatID, content, kind).Scan(&msg.ID, &msg.UserID, &msg.ChatID, &msg.Content, &msg.Kind, &msg.CreatedAt)
 
 	if err != nil {
 		return queries.Message{}, fmt.Errorf("send message: %w", err)

@@ -98,50 +98,20 @@ export function ModControls({ target, role, onDone }: ModControlsProps) {
 
   const isConfirming = confirmingId !== null;
 
-  // Estilo base de botão: small, flat, darkgray
-  const buttonBaseStyle: React.CSSProperties = {
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: '6px',
-    padding: '6px 10px',
-    fontSize: '12px',
-    fontWeight: 400,
-    fontFamily: '"Futura PT", ui-sans-serif, system-ui',
-    border: 'none',
-    borderRadius: 0, // Flat design
-    backgroundColor: '#29292E',
-    color: '#29292E',
-    cursor: 'pointer',
-    transition: 'all 0.15s',
-    whiteSpace: 'nowrap',
-  };
-
-  // Estados de hover/focus
-  const getNormalButtonProps = (hoverColor: string) => ({
-    onMouseEnter: (e: React.MouseEvent<HTMLButtonElement>) => {
-      e.currentTarget.style.color = hoverColor;
-    },
-    onMouseLeave: (e: React.MouseEvent<HTMLButtonElement>) => {
-      e.currentTarget.style.color = '#29292E';
-    },
-  });
+  // Classes base para botão: small, flat, icon-only com hover de cor
+  const buttonBaseClass = 'inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-normal font-sans border-none transition-colors duration-150 cursor-pointer whitespace-nowrap';
+  const normalButtonClass = 'bg-surface-raised text-surface-raised hover:text-accent-primary';
+  const deleteButtonBaseClass = 'bg-surface-raised border-none transition-colors duration-150 cursor-pointer whitespace-nowrap';
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        gap: '8px',
-        alignItems: 'center',
-      }}
-    >
+    <div className="flex gap-2 items-center">
       {target.kind === 'thread' && (
         <>
           {/* Pin/Unpin Button */}
           <button
             onClick={handlePin}
             title={target.thread.is_pinned ? 'Desafixar' : 'Afixar'}
-            style={buttonBaseStyle}
-            {...getNormalButtonProps('#00BABC')}
+            className={`${buttonBaseClass} ${normalButtonClass}`}
           >
             {target.thread.is_pinned ? '📌' : '📍'}
           </button>
@@ -150,8 +120,7 @@ export function ModControls({ target, role, onDone }: ModControlsProps) {
           <button
             onClick={handleLock}
             title={target.thread.is_locked ? 'Desbloquear' : 'Bloquear'}
-            style={buttonBaseStyle}
-            {...getNormalButtonProps('#00BABC')}
+            className={`${buttonBaseClass} ${normalButtonClass}`}
           >
             {target.thread.is_locked ? '🔓' : '🔒'}
           </button>
@@ -162,20 +131,11 @@ export function ModControls({ target, role, onDone }: ModControlsProps) {
       <button
         onClick={handleDelete}
         title={isConfirming ? 'Clique novamente para confirmar' : 'Deletar'}
-        style={{
-          ...buttonBaseStyle,
-          color: isConfirming ? '#EC3391' : '#29292E',
-        }}
-        onMouseEnter={(e) => {
-          if (!isConfirming) {
-            e.currentTarget.style.color = '#EC3391';
-          }
-        }}
-        onMouseLeave={(e) => {
-          if (!isConfirming) {
-            e.currentTarget.style.color = '#29292E';
-          }
-        }}
+        className={`${buttonBaseClass} ${deleteButtonBaseClass} ${
+          isConfirming
+            ? 'text-status-error'
+            : 'text-surface-raised hover:text-status-error'
+        }`}
       >
         {isConfirming ? 'Confirmar?' : '🗑️'}
       </button>

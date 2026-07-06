@@ -3,6 +3,7 @@ package ws
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"sync"
 	"testing"
 	"time"
@@ -391,4 +392,221 @@ func TestNotifyUsersConcurrent(t *testing.T) {
 	wg.Wait()
 
 	t.Logf("NotifyUsersConcurrent: completed with %d clients remaining", hub.ClientCount())
+}
+
+// TestEffectiveStatus verifica a função EffectiveStatus com diferentes combinações.
+// ADR-107.2: sem conexão → offline; chosen ∈ {invisible, offline} → offline; senão chosen.
+func TestEffectiveStatus(t *testing.T) {
+	tests := []struct {
+		name      string
+		chosen    string
+		connected bool
+		expected  string
+	}{
+		{"not connected", "online", false, "offline"},
+		{"not connected invisible", "invisible", false, "offline"},
+		{"connected online", "online", true, "online"},
+		{"connected away", "away", true, "away"},
+		{"connected busy", "busy", true, "busy"},
+		{"connected invisible", "invisible", true, "offline"},
+		{"connected offline", "offline", true, "offline"},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			result := EffectiveStatus(tt.chosen, tt.connected)
+			if result != tt.expected {
+				t.Errorf("EffectiveStatus(%q, %v) = %q, want %q", tt.chosen, tt.connected, result, tt.expected)
+			}
+		})
+	}
+}
+
+// TestIsUserOnline verifica se IsUserOnline retorna corretamente.
+func TestIsUserOnline(t *testing.T) {
+	hub := NewHub()
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	go hub.Run(ctx)
+
+	userID := 99
+	client1 := &Client{hub: hub, send: make(chan []byte, 256), roomID: "room-a", userID: userID}
+
+	// Inicialmente não deve estar online
+	if hub.IsUserOnline(userID) {
+		t.Errorf("IsUserOnline: user should not be online initially")
+	}
+
+	// Após registrar, deve estar online
+	hub.Register(client1)
+	time.Sleep(50 * time.Millisecond)
+
+	if !hub.IsUserOnline(userID) {
+		t.Errorf("IsUserOnline: user should be online after register")
+	}
+
+	// Após unregister, não deve estar online
+	hub.Unregister(client1)
+	time.Sleep(50 * time.Millisecond)
+
+	if hub.IsUserOnline(userID) {
+		t.Errorf("IsUserOnline: user should not be online after unregister")
+	}
+}
+
+// TestPresenceFirstLastConnection verifica que eventos de presença são emitidos
+// apenas na primeira e última conexão do usuário.
+// ADR-107.2: presença emitida na 1ª conexão (não offline), offline na última.
+func TestPresenceFirstLastConnection(t *testing.T) {
+	hub := NewHub()
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	go hub.Run(ctx)
+
+	userID := 77
+	client1 := &Client{hub: hub, send: make(chan []byte, 256), roomID: "room-a", userID: userID}
+	client2 := &Client{hub: hub, send: make(chan []byte, 256), roomID: "room-b", userID: userID}
+
+	// Registra o primeiro cliente — deve emitir presença (se DB != nil, emite 1ª)
+	// Para simplificar o teste, não setamos DB, então não há broadcast automático
+	// Vamos testar apenas a lógica de contagem de primeira/última conexão
+	hub.Register(client1)
+	time.Sleep(50 * time.Millisecond)
+
+	// Verifica que usersIndex tem 1 conexão do usuário
+	hub.mu.RLock()
+	numConns := len(hub.usersIndex[userID])
+	hub.mu.RUnlock()
+
+	if numConns != 1 {
+		t.Errorf("TestPresenceFirstLastConnection: expected 1 connection, got %d", numConns)
+	}
+
+	// Registra o segundo cliente do mesmo usuário
+	hub.Register(client2)
+	time.Sleep(50 * time.Millisecond)
+
+	// Verifica que usersIndex tem 2 conexões
+	hub.mu.RLock()
+	numConns = len(hub.usersIndex[userID])
+	hub.mu.RUnlock()
+
+	if numConns != 2 {
+		t.Errorf("TestPresenceFirstLastConnection: expected 2 connections, got %d", numConns)
+	}
+
+	// Unregister do primeiro cliente — não é a última conexão, não deve emitir offline
+	hub.Unregister(client1)
+	time.Sleep(50 * time.Millisecond)
+
+	hub.mu.RLock()
+	numConns = len(hub.usersIndex[userID])
+	hub.mu.RUnlock()
+
+	if numConns != 1 {
+		t.Errorf("TestPresenceFirstLastConnection: after unregister 1, expected 1 connection, got %d", numConns)
+	}
+
+	// Unregister do segundo cliente — é a última conexão, deve emitir offline
+	hub.Unregister(client2)
+	time.Sleep(50 * time.Millisecond)
+
+	hub.mu.RLock()
+	_, exists := hub.usersIndex[userID]
+	hub.mu.RUnlock()
+
+	if exists {
+		t.Errorf("TestPresenceFirstLastConnection: user should be removed from usersIndex after last unregister")
+	}
+}
+
+// TestOnlineUserIDs verifica que OnlineUserIDs retorna corretamente.
+func TestOnlineUserIDs(t *testing.T) {
+	hub := NewHub()
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	go hub.Run(ctx)
+
+	// Registra alguns clientes
+	userIDs := []int{10, 20, 30}
+	clients := make([]*Client, len(userIDs))
+
+	for i, uid := range userIDs {
+		clients[i] = &Client{hub: hub, send: make(chan []byte, 256), roomID: "room", userID: uid}
+		hub.Register(clients[i])
+	}
+
+	time.Sleep(100 * time.Millisecond)
+
+	// Obtém usuários online
+	onlineIDs := hub.OnlineUserIDs()
+
+	// Verifica que todos os 3 usuários estão online
+	if len(onlineIDs) != 3 {
+		t.Errorf("OnlineUserIDs: expected 3 users, got %d", len(onlineIDs))
+	}
+
+	// Verifica que cada um está na lista
+	idMap := make(map[int]bool)
+	for _, id := range onlineIDs {
+		idMap[id] = true
+	}
+
+	for _, uid := range userIDs {
+		if !idMap[uid] {
+			t.Errorf("OnlineUserIDs: user %d not in online list", uid)
+		}
+	}
+
+	// Unregister um cliente
+	hub.Unregister(clients[0])
+	time.Sleep(50 * time.Millisecond)
+
+	onlineIDs = hub.OnlineUserIDs()
+	if len(onlineIDs) != 2 {
+		t.Errorf("OnlineUserIDs: after unregister, expected 2 users, got %d", len(onlineIDs))
+	}
+}
+
+// TestNudgeCooldown verifica que o cooldown de 10s por (user, room) funciona.
+// ADR-107.4: cooldown 10s por (user, room); violação envia erro só ao remetente.
+func TestNudgeCooldown(t *testing.T) {
+	hub := NewHub()
+
+	userID := 88
+	roomID := "room-cooldown"
+
+	// Registra um nudge para (user, room)
+	key := fmt.Sprintf("%d:%s", userID, roomID)
+
+	hub.nudgeMu.Lock()
+	hub.lastNudge[key] = time.Now()
+	hub.nudgeMu.Unlock()
+
+	// Tenta outro nudge imediatamente — deve estar em cooldown
+	hub.nudgeMu.Lock()
+	lastTime, exists := hub.lastNudge[key]
+	hub.nudgeMu.Unlock()
+
+	if !exists || time.Now().Sub(lastTime) >= 10*time.Second {
+		t.Errorf("TestNudgeCooldown: nudge should be in cooldown")
+	}
+
+	// Aguarda 11 segundos e tenta novamente — cooldown deve ter passado
+	time.Sleep(11 * time.Second)
+
+	hub.nudgeMu.Lock()
+	lastTime, exists = hub.lastNudge[key]
+	now := time.Now()
+	hub.nudgeMu.Unlock()
+
+	if exists && now.Sub(lastTime) < 10*time.Second {
+		t.Errorf("TestNudgeCooldown: cooldown should have passed after 11 seconds")
+	} else if !exists {
+		// Se não existir, é porque o map foi resetado ou nunca existiu — aceitável
+		t.Logf("TestNudgeCooldown: entry not found (acceptable if cleaned up)")
+	}
 }

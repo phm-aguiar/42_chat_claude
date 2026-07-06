@@ -7,37 +7,9 @@ import { ForumListPage } from "@/pages/forum/ForumList";
 import { BoardView } from "@/pages/forum/BoardView";
 import { ThreadView } from "@/pages/forum/ThreadView";
 import { NewThread } from "@/pages/forum/NewThread";
+import { Hub } from "@/pages/Hub";
 import { RequireAuth } from "@/components/RequireAuth";
 import { AppShell } from "@/layouts/AppShell";
-
-// Placeholder Hub — T012 criará a página real
-function HubPage() {
-  return (
-    <div
-      style={{
-        padding: "40px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        minHeight: "100%",
-      }}
-    >
-      <div style={{ textAlign: "center" }}>
-        <p
-          style={{
-            color: "var(--color-dark-gray)",
-            fontSize: "14px",
-            textTransform: "uppercase",
-            letterSpacing: "0.5px",
-            margin: 0,
-          }}
-        >
-          Hub em construção — T012
-        </p>
-      </div>
-    </div>
-  );
-}
 
 function App() {
   return (
@@ -49,7 +21,7 @@ function App() {
       {/* Rotas autenticadas */}
       <Route element={<RequireAuth />}>
         <Route element={<AppShell />}>
-          <Route path="/" element={<HubPage />} />
+          <Route path="/" element={<Hub />} />
           <Route path="/chat" element={<ChatPage />} />
           <Route path="/forum" element={<ForumListPage />} />
           <Route path="/forum/:slug" element={<BoardViewWrapper />} />

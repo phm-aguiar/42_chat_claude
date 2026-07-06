@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useOutletContext } from 'react-router-dom';
 import { useForumStore } from '@/stores/forumStore';
 import { MDXEditor } from '@/components/forum/MDXEditor';
 import { TagInput } from '@/components/forum/TagInput';
+import { Button } from '@/components/ui/Button';
 
 interface NewThreadProps {
   slug: string;
@@ -10,6 +11,7 @@ interface NewThreadProps {
 
 export function NewThread({ slug }: NewThreadProps) {
   const navigate = useNavigate();
+  const { setPageTitle } = useOutletContext<{ setPageTitle: (title: string) => void }>();
   const { currentBoard, loading, error, fetchThreads, createThread, clearError } = useForumStore();
 
   const [title, setTitle] = useState('');
@@ -20,7 +22,8 @@ export function NewThread({ slug }: NewThreadProps) {
   // Fetch board info on mount
   useEffect(() => {
     fetchThreads(slug, 1, 0);
-  }, [slug, fetchThreads]);
+    setPageTitle('Nova Thread');
+  }, [slug, fetchThreads, setPageTitle]);
 
   // Validation helpers
   const titleIsValid = title.trim().length >= 3 && title.trim().length <= 200;
@@ -59,122 +62,36 @@ export function NewThread({ slug }: NewThreadProps) {
   }
 
   return (
-    <div
-      style={{
-        height: '100dvh',
-        display: 'flex',
-        flexDirection: 'column',
-        background: '#1B1B1B',
-        fontFamily: '"Futura PT", ui-sans-serif, system-ui',
-        backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px)',
-        backgroundSize: '24px 24px',
-      }}
-    >
-      {/* Header */}
-      <header
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          padding: '0 20px',
-          height: '48px',
-          background: '#202026',
-          borderBottom: '1px solid #29292E',
-          flexShrink: 0,
-          gap: '16px',
-        }}
-      >
-        {/* Back button */}
-        <button
+    <div className="flex flex-col h-screen bg-surface-base">
+      {/* Toolbar */}
+      <div className="bg-surface-panel border-b border-surface-raised px-5 py-3 flex items-center gap-3 flex-shrink-0">
+        <Button
+          variant="ghost"
+          size="sm"
           onClick={handleCancel}
-          style={{
-            background: 'transparent',
-            border: 'none',
-            color: '#29292E',
-            fontSize: '12px',
-            letterSpacing: '0.15em',
-            textTransform: 'uppercase',
-            cursor: 'pointer',
-            transition: 'all 0.15s',
-            padding: '0',
-            fontFamily: '"Futura PT", ui-sans-serif, system-ui',
-            fontWeight: 400,
-          }}
-          onMouseEnter={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.color = '#FFFFFF';
-          }}
-          onMouseLeave={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.color = '#29292E';
-          }}
+          className="text-content-muted hover:text-content-primary"
         >
           ← Board
-        </button>
-
-        <span style={{ color: '#29292E', fontSize: '11px' }}>—</span>
-
-        {/* Board name + New Thread label */}
-        <span
-          style={{
-            color: '#FFFFFF',
-            fontWeight: 400,
-            fontSize: '13px',
-            letterSpacing: '0.05em',
-            textTransform: 'uppercase',
-          }}
-        >
+        </Button>
+        <span className="text-content-muted text-xs">—</span>
+        <span className="text-content-primary text-sm font-normal uppercase tracking-tight">
           {currentBoard?.name || 'Carregando...'}
         </span>
-
-        <span style={{ color: '#29292E', fontSize: '11px' }}>—</span>
-
-        <span
-          style={{
-            color: '#29292E',
-            fontWeight: 400,
-            fontSize: '12px',
-            letterSpacing: '0.05em',
-            textTransform: 'uppercase',
-          }}
-        >
+        <span className="text-content-muted text-xs">—</span>
+        <span className="text-content-muted text-sm font-normal uppercase tracking-tight">
           Nova Thread
         </span>
-      </header>
+      </div>
 
       {/* Main Content */}
-      <div
-        style={{
-          flex: 1,
-          overflow: 'auto',
-          padding: '20px',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '16px',
-        }}
-      >
+      <div className="flex-1 overflow-auto p-5">
         {/* Error message */}
         {error && (
-          <div
-            style={{
-              backgroundColor: '#EC3391',
-              color: '#FFFFFF',
-              padding: '12px 16px',
-              fontSize: '12px',
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}
-          >
+          <div className="bg-status-error text-content-primary px-4 py-3 mb-4 text-xs flex items-center justify-between gap-4 flex-shrink-0">
             <span>{error}</span>
             <button
               onClick={clearError}
-              style={{
-                background: 'transparent',
-                border: 'none',
-                color: '#FFFFFF',
-                cursor: 'pointer',
-                fontSize: '16px',
-                padding: '0',
-                marginLeft: '16px',
-              }}
+              className="bg-transparent border-0 text-content-primary cursor-pointer text-sm p-0 ml-auto hover:opacity-80"
             >
               ✕
             </button>
@@ -182,31 +99,10 @@ export function NewThread({ slug }: NewThreadProps) {
         )}
 
         {/* Form container */}
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '16px',
-            maxWidth: '800px',
-          }}
-        >
+        <div className="max-w-2xl mx-auto">
           {/* Title field */}
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '6px',
-            }}
-          >
-            <label
-              style={{
-                fontSize: '12px',
-                color: '#29292E',
-                fontWeight: 400,
-                letterSpacing: '0.05em',
-                textTransform: 'uppercase',
-              }}
-            >
+          <div className="mb-6">
+            <label className="block text-content-muted text-xs font-normal uppercase tracking-wide mb-1.5">
               Título
             </label>
             <input
@@ -215,63 +111,33 @@ export function NewThread({ slug }: NewThreadProps) {
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Digite o título da thread..."
               maxLength={200}
-              style={{
-                padding: '10px 12px',
-                background: '#202026',
-                border:
+              className={`
+                w-full px-3 py-2 bg-surface-panel border text-content-primary text-sm font-normal
+                outline-none transition-colors
+                ${
                   title.trim().length > 0 && !titleIsValid
-                    ? '1px solid #EC3391'
-                    : '1px solid #29292E',
-                color: '#FFFFFF',
-                fontSize: '13px',
-                fontFamily: 'inherit',
-                outline: 'none',
-                transition: 'border-color 0.15s',
-                borderRadius: 0,
-              }}
-              onFocus={(e) => {
-                if (titleIsValid || title.trim().length === 0) {
-                  (e.currentTarget as HTMLInputElement).style.borderColor =
-                    '#00BABC';
+                    ? 'border-status-error'
+                    : 'border-surface-raised focus:border-accent-primary'
                 }
-              }}
-              onBlur={(e) => {
-                (e.currentTarget as HTMLInputElement).style.borderColor =
-                  title.trim().length > 0 && !titleIsValid
-                    ? '#EC3391'
-                    : '#29292E';
-              }}
+              `}
             />
             <div
-              style={{
-                fontSize: '11px',
-                color:
+              className={`
+                text-xs mt-1.5
+                ${
                   title.trim().length > 0 && !titleIsValid
-                    ? '#EC3391'
-                    : '#5B5B60',
-              }}
+                    ? 'text-status-error'
+                    : 'text-content-muted'
+                }
+              `}
             >
               {title.length} / 200 ({title.trim().length < 3 ? 'mínimo 3' : 'OK'})
             </div>
           </div>
 
           {/* Content field */}
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '6px',
-            }}
-          >
-            <label
-              style={{
-                fontSize: '12px',
-                color: '#29292E',
-                fontWeight: 400,
-                letterSpacing: '0.05em',
-                textTransform: 'uppercase',
-              }}
-            >
+          <div className="mb-6">
+            <label className="block text-content-muted text-xs font-normal uppercase tracking-wide mb-1.5">
               Conteúdo
             </label>
             <MDXEditor
@@ -282,103 +148,34 @@ export function NewThread({ slug }: NewThreadProps) {
           </div>
 
           {/* Tags field */}
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '6px',
-            }}
-          >
-            <label
-              style={{
-                fontSize: '12px',
-                color: '#29292E',
-                fontWeight: 400,
-                letterSpacing: '0.05em',
-                textTransform: 'uppercase',
-              }}
-            >
+          <div className="mb-8">
+            <label className="block text-content-muted text-xs font-normal uppercase tracking-wide mb-1.5">
               Tags
             </label>
             <TagInput tags={tags} onChange={setTags} max={5} />
           </div>
 
           {/* Action buttons */}
-          <div
-            style={{
-              display: 'flex',
-              gap: '12px',
-              marginTop: '12px',
-            }}
-          >
-            <button
+          <div className="flex gap-3">
+            <Button
+              variant="primary"
+              size="md"
               onClick={handleSubmit}
               disabled={!canSubmit}
-              style={{
-                padding: '10px 20px',
-                background: canSubmit ? '#00BABC' : '#29292E',
-                color: canSubmit ? '#1B1B1B' : '#5B5B60',
-                border: 'none',
-                fontSize: '12px',
-                fontWeight: 700,
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase',
-                cursor: canSubmit ? 'pointer' : 'not-allowed',
-                transition: 'all 0.15s',
-                borderRadius: 0,
-              }}
-              onMouseEnter={(e) => {
-                if (canSubmit) {
-                  (e.currentTarget as HTMLButtonElement).style.background =
-                    '#04809F';
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (canSubmit) {
-                  (e.currentTarget as HTMLButtonElement).style.background =
-                    '#00BABC';
-                }
-              }}
+              className="uppercase tracking-wider font-bold"
             >
               {isSubmitting ? 'Criando...' : 'Criar Thread'}
-            </button>
+            </Button>
 
-            <button
+            <Button
+              variant="secondary"
+              size="md"
               onClick={handleCancel}
               disabled={isSubmitting || loading}
-              style={{
-                padding: '10px 20px',
-                background: 'transparent',
-                border: '1px solid #29292E',
-                color: '#29292E',
-                fontSize: '12px',
-                fontWeight: 400,
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase',
-                cursor:
-                  isSubmitting || loading ? 'not-allowed' : 'pointer',
-                transition: 'all 0.15s',
-                borderRadius: 0,
-              }}
-              onMouseEnter={(e) => {
-                if (!isSubmitting && !loading) {
-                  (e.currentTarget as HTMLButtonElement).style.borderColor =
-                    '#FFFFFF';
-                  (e.currentTarget as HTMLButtonElement).style.color =
-                    '#FFFFFF';
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (!isSubmitting && !loading) {
-                  (e.currentTarget as HTMLButtonElement).style.borderColor =
-                    '#29292E';
-                  (e.currentTarget as HTMLButtonElement).style.color =
-                    '#29292E';
-                }
-              }}
+              className="uppercase tracking-wider font-bold"
             >
               Cancelar
-            </button>
+            </Button>
           </div>
         </div>
       </div>

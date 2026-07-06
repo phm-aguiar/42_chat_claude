@@ -7,7 +7,7 @@
 - `go build ./...` deve passar antes de qualquer PR
 - `go vet ./...` deve passar antes de qualquer PR
 - `cd frontend && npm run build` deve passar antes de qualquer PR
-- Testes de integração: `tests/forum_smoke_test.sh` (11 casos) deve passar
+- Testes de integração: `tests/forum_smoke_test.sh` (12 casos) deve passar
 - Testes unitários Go: `go test ./...` deve passar
 
 ## Restrições Arquiteturais
@@ -42,18 +42,26 @@
 
 **Frontend:**
 - Framework: React 18 com Vite
-- Estilo: Tailwind CSS + Shadcn/ui
+- Estilo: Tailwind CSS + design tokens semânticos e componentes próprios em `components/ui/` (ADR-105.1) — sem Shadcn/ui ou libs de componentes
 - Estado: Zustand (`forumStore`, `chatStore`) — nunca Redux, nunca Context API para estado global
 - Markdown: `react-markdown` + `remark-gfm` + `rehype-highlight`
 - Sem jQuery, sem Axios (usar `fetch` nativo)
 
 ## Design System
 
-- `border-radius: 0` em TODOS os componentes — flat design, cantos retos
-- Paleta primária: Black `#1B1B1B`, White `#FFFFFF`
-- Paleta UI: Dark Navy `#173D7A`, Near Black `#202026`, Dark Gray `#29292E`, Teal `#00BABC`, CG Blue `#04809F`, Green `#2DD57A`, Pink `#EC3391`
-- Tipografia: Futura PT (300/400/700). Fallback: `ui-sans-serif`
-- Avatar: `onError` → fallback `/assets/default-avatar.png`
+> **Emenda 2026-07-05 (feature 107, aprovada pelo product owner):** o design de referência
+> é o mockup `42_chat.dc.html` (Claude Design) — híbrido Discord/MSN. A regra anterior de
+> `border-radius: 0` e a paleta do charter 42 estão revogadas.
+
+- Referência única: `specs/features/107-msn-discord-reskin/design/DESIGN-REFERENCE.md`
+- Superfícies: base `#150e1f`, deep `#120b1a`, panel `#1a1226`, raised `#241833`, hover `#2b1c3d`, chat `#170f22`
+- Texto: primary `#f1ecf7`; secundário/muted via alphas de `rgba(241,236,247,…)`
+- Acento primário: Pink `#ff5fa2` (gradiente `#ff5fa2→#c23f7f` em ações); secundário: Cyan `oklch(74% 0.17 200)`
+- Status (presença): online `#3ee08a`, away `#ffcc4d`, busy `#ff4d6d`, invisible `#6b6478`, offline `#4a4358`
+- Radius: LIVRE conforme mockup — avatares/dots circulares, bolhas 14px, inputs 8–10px; proibido zerar radius globalmente
+- Tipografia: Inter (UI) + JetBrains Mono (branding, timestamps, labels técnicos) via Google Fonts
+- Estilo SEMPRE via tokens semânticos do `tailwind.config.ts` (`surface-*`, `content-*`, `accent-*`, `status-*`) — hex solto continua proibido
+- Avatar: componente `ui/Avatar` com fallback de iniciais do login (cor determinística) — nunca imagem quebrada, nunca asset estático (feature 105)
 
 ## Anti-Padrões Proibidos
 

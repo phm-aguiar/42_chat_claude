@@ -9,7 +9,7 @@ export function Card({
   children,
   ...props
 }: CardProps) {
-  const baseStyles = 'bg-surface-panel p-4';
+  const baseStyles = 'rounded-xl bg-surface-panel border border-white/5 p-4';
   const finalClassName = `${baseStyles} ${className}`.trim();
 
   return (

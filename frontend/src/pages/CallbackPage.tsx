@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { saveToken, type AuthUser } from '@/lib/auth';
+import { Button } from '@/components/ui/Button';
+import { Card } from '@/components/ui/Card';
 
 export function CallbackPage() {
   const [error, setError] = useState<string | null>(null);
@@ -29,28 +31,36 @@ export function CallbackPage() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-[#1B1B1B] flex items-center justify-center">
-        <div className="text-center">
-          <p className="text-[#EC3391] text-sm uppercase tracking-wider mb-4">
-            Erro no login
-          </p>
-          <p className="text-[#29292E] text-xs mb-6">{error}</p>
-          <a
-            href="/"
-            className="text-[#00BABC] text-xs uppercase tracking-wider hover:text-[#04809F]"
+      <div className="min-h-screen bg-surface-base flex items-center justify-center p-4">
+        <Card className="w-full max-w-sm p-8 flex flex-col gap-6 text-center">
+          <div>
+            <p className="text-status-error text-sm uppercase tracking-wider font-semibold mb-3">
+              Erro na autenticação
+            </p>
+            <p className="text-content-secondary text-sm leading-relaxed">
+              {error}
+            </p>
+          </div>
+          <Button
+            variant="primary"
+            size="md"
+            onClick={() => window.location.href = '/login'}
+            className="w-full uppercase tracking-wider font-semibold"
           >
-            Tentar novamente
-          </a>
-        </div>
+            Voltar ao login
+          </Button>
+        </Card>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#1B1B1B] flex items-center justify-center">
-      <p className="text-[#29292E] text-sm uppercase tracking-widest animate-pulse">
-        Autenticando...
-      </p>
+    <div className="min-h-screen bg-surface-base flex items-center justify-center p-4">
+      <Card className="w-full max-w-sm p-8">
+        <p className="text-content-secondary text-sm uppercase tracking-widest font-semibold text-center animate-pulse">
+          Autenticando...
+        </p>
+      </Card>
     </div>
   );
 }

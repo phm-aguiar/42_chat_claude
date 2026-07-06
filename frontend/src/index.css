@@ -1,30 +1,10 @@
-/* MVP local — sem dependência de fontes externas ou licenças.
-   Em produção: migrar para Google Fonts (Outfit/Plus Jakarta Sans). */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  /* 42 Design System colors */
-  --color-black: #1b1b1b;
-  --color-white: #ffffff;
-  --color-navy: #173d7a;
-  --color-near-black: #202026;
-  --color-dark-gray: #29292e;
-  --color-mid-gray: #5b5b60;
-  --color-light-gray: #e3e3e3;
-  --color-teal: #00babc;
-  --color-cg-blue: #04809f;
-  --color-green: #2dd57a;
-  --color-pink: #ec3391;
-  --color-purple: #7300ff;
-
-  /* Shadcn/ui compatibility — flat design (0px border-radius) */
-  --radius: 0rem;
-}
+/* Tailwind v4: @import substitui as diretivas @tailwind do v3, e @config
+   carrega o tailwind.config.ts (tokens do design system) — sem ele o v4
+   ignora a config JS e nenhuma utility de token é gerada. */
+@import "tailwindcss";
+@config "../tailwind.config.ts";
 
 * {
-  border-radius: 0 !important;
   box-sizing: border-box;
 }
 
@@ -38,17 +18,11 @@ body,
 }
 
 body {
-  font-family: "Futura PT", ui-sans-serif, system-ui, sans-serif;
-  background-color: var(--color-near-black);
-  color: var(--color-white);
+  font-family: "Inter", system-ui, sans-serif;
+  background-color: #150e1f;
+  color: #f1ecf7;
   margin: 0;
   min-height: 100vh;
-  background-image: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.08) 1px,
-    transparent 1px
-  );
-  background-size: 28px 28px;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -61,29 +35,57 @@ body {
 }
 
 a {
-  color: var(--color-teal);
+  color: #ff5fa2;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 a:hover {
-  color: var(--color-green);
+  color: #c23f7f;
 }
 
 button {
-  border-radius: 0;
   font-family: inherit;
 }
 
 code {
-  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
-  background-color: var(--color-dark-gray);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  background-color: #241833;
   padding: 2px 4px;
 }
 
 pre {
-  background-color: var(--color-dark-gray);
+  background-color: #241833;
   padding: 12px 16px;
   overflow-x: auto;
-  border-radius: 0;
+}
+
+/* MSN/Discord reskin — gradiente accent e animações */
+.bg-gradient-accent {
+  background: linear-gradient(135deg, #ff5fa2, #c23f7f);
+}
+
+@keyframes shake42 {
+  0% { transform: translateX(0); }
+  10% { transform: translateX(-10px); }
+  20% { transform: translateX(10px); }
+  30% { transform: translateX(-10px); }
+  40% { transform: translateX(10px); }
+  50% { transform: translateX(-5px); }
+  60% { transform: translateX(5px); }
+  70% { transform: translateX(0); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes pulseDot42 {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-shake42 {
+  animation: shake42 0.5s;
+}
+
+.animate-pulse-dot {
+  animation: pulseDot42 2s infinite;
 }

@@ -4,7 +4,7 @@ set -u
 # forum_smoke_test.sh — 12 cenários de integração para o fórum
 # Executa curl contra servidor real com JWT dev login
 
-BASE_URL="http://localhost:8080"
+BASE_URL="http://localhost:9999"
 PASS=0
 FAIL=0
 THREAD_ID=""
@@ -320,8 +320,8 @@ RESPONSE=$(curl -s -w "\n%{http_code}" "$BASE_URL/api/forum/boards")
 HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
 BODY=$(echo "$RESPONSE" | head -n-1)
 
-if [ "$HTTP_CODE" = "401" ] && echo "$BODY" | grep -q "UNAUTHORIZED"; then
-	test_result "GET /api/forum/boards sem token — 401 UNAUTHORIZED" "PASS"
+if [ "$HTTP_CODE" = "401" ] && echo "$BODY" | grep -q "MISSING_TOKEN"; then
+	test_result "GET /api/forum/boards sem token — 401 MISSING_TOKEN" "PASS"
 else
 	test_result "GET /api/forum/boards sem token — HTTP $HTTP_CODE (esperado 401)" "FAIL"
 fi

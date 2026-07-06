@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { getMessages } from '@/lib/api';
+import { apiFetch } from '@/lib/http';
 import { fetchUserStats, type UserStats } from '@/lib/statsApi';
 import {
   GENERAL_CHAT_ID,
@@ -49,6 +50,10 @@ interface ChatState {
   setTyping: (chatId: string, login: string, expiresAt?: number) => void;
   clearTyping: (chatId: string, login: string) => void;
   clearError: () => void;
+
+  // Actions: Feature 105 (unread tracking)
+  markRead: (chatId: string) => Promise<void>;
+  bumpUnread: (chatId: string) => void;
 }
 
 export const useChatStore = create<ChatState>((set) => ({
@@ -270,4 +275,40 @@ export const useChatStore = create<ChatState>((set) => ({
   },
 
   clearError: () => set({ error: null }),
+
+  // Feature 105: markRead via POST /api/chats/{id}/read
+  markRead: async (chatId: string) => {
+    try {
+      const res = await apiFetch(`/api/chats/${chatId}/read`, {
+        method: 'POST',
+      });
+      if (!res.ok) {
+        throw new Error(`Failed to mark chat as read: ${res.status}`);
+      }
+      // Zera unread_count localmente
+      set((state) => {
+        const updated = state.chats.map((c) =>
+          c.id === chatId ? { ...c, unread_count: 0 } : c
+        );
+        return { chats: updated };
+      });
+    } catch (err) {
+      // Silencioso — evita travar a UX por erro de read
+      console.warn(`markRead error for ${chatId}:`, err);
+    }
+  },
+
+  // Feature 105: bumpUnread para incrementar contador local (evento chat_activity)
+  bumpUnread: (chatId: string) => {
+    set((state) => {
+      const updated = state.chats.map((c) => {
+        if (c.id === chatId) {
+          const current = (c as any).unread_count ?? 0;
+          return { ...c, unread_count: current + 1 };
+        }
+        return c;
+      });
+      return { chats: updated };
+    });
+  },
 }));

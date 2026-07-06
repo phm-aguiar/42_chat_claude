@@ -32,6 +32,8 @@ export interface Thread {
   id: string;
   board_id: string;
   author_id: number;
+  author_login: string;
+  author_image_url: string;
   title: string;
   content: string;
   tags: string[];
@@ -51,6 +53,8 @@ export interface Post {
   id: string;
   thread_id: string;
   author_id: number;
+  author_login: string;
+  author_image_url: string;
   reply_to?: string | null; // UUID do post que este responde (nullable)
   content: string;
   created_at: string; // ISO 8601

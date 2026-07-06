@@ -9,12 +9,7 @@ interface MDXRendererProps {
 export function MDXRenderer({ content }: MDXRendererProps) {
   return (
     <div
-      style={{
-        color: '#FFFFFF',
-        fontSize: '13px',
-        lineHeight: '1.6',
-        wordBreak: 'break-word',
-      }}
+      className="text-content-primary text-sm leading-relaxed break-words"
     >
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
@@ -22,83 +17,39 @@ export function MDXRenderer({ content }: MDXRendererProps) {
         components={{
           // Headings
           h1: ({ children }) => (
-            <h1
-              style={{
-                fontSize: '20px',
-                fontWeight: 700,
-                marginTop: '16px',
-                marginBottom: '12px',
-                color: '#FFFFFF',
-              }}
-            >
+            <h1 className="text-xl font-bold mt-4 mb-3 text-content-primary">
               {children}
             </h1>
           ),
           h2: ({ children }) => (
-            <h2
-              style={{
-                fontSize: '16px',
-                fontWeight: 700,
-                marginTop: '14px',
-                marginBottom: '10px',
-                color: '#FFFFFF',
-              }}
-            >
+            <h2 className="text-lg font-bold mt-3.5 mb-2.5 text-content-primary">
               {children}
             </h2>
           ),
           h3: ({ children }) => (
-            <h3
-              style={{
-                fontSize: '14px',
-                fontWeight: 700,
-                marginTop: '12px',
-                marginBottom: '8px',
-                color: '#FFFFFF',
-              }}
-            >
+            <h3 className="text-base font-bold mt-3 mb-2 text-content-primary">
               {children}
             </h3>
           ),
           // Paragraphs
           p: ({ children }) => (
-            <p
-              style={{
-                marginBottom: '12px',
-              }}
-            >
+            <p className="mb-3">
               {children}
             </p>
           ),
           // Lists
           ul: ({ children }) => (
-            <ul
-              style={{
-                marginLeft: '20px',
-                marginBottom: '12px',
-                listStyleType: 'disc',
-              }}
-            >
+            <ul className="ml-5 mb-3 list-disc">
               {children}
             </ul>
           ),
           ol: ({ children }) => (
-            <ol
-              style={{
-                marginLeft: '20px',
-                marginBottom: '12px',
-                listStyleType: 'decimal',
-              }}
-            >
+            <ol className="ml-5 mb-3 list-decimal">
               {children}
             </ol>
           ),
           li: ({ children }) => (
-            <li
-              style={{
-                marginBottom: '6px',
-              }}
-            >
+            <li className="mb-1.5">
               {children}
             </li>
           ),
@@ -106,50 +57,20 @@ export function MDXRenderer({ content }: MDXRendererProps) {
           code: ({ children, className }) => {
             const isBlock = className?.startsWith('language-');
             return isBlock ? (
-              <pre
-                style={{
-                  background: '#1B1B1B',
-                  border: '1px solid #29292E',
-                  padding: '12px',
-                  marginBottom: '12px',
-                  overflowX: 'auto',
-                  color: '#FFFFFF',
-                  fontSize: '12px',
-                  fontFamily: '"Courier New", monospace',
-                }}
-              >
-                <code className={className} style={{ color: 'inherit' }}>
+              <pre className="bg-surface-base border border-surface-raised p-3 mb-3 overflow-x-auto text-content-primary text-xs font-mono">
+                <code className={className}>
                   {children}
                 </code>
               </pre>
             ) : (
-              <code
-                style={{
-                  background: '#202026',
-                  border: '1px solid #29292E',
-                  padding: '3px 6px',
-                  borderRadius: 0,
-                  color: '#2DD57A',
-                  fontFamily: '"Courier New", monospace',
-                  fontSize: '12px',
-                }}
-              >
+              <code className="bg-surface-panel border border-surface-raised px-1.5 py-0.5 text-status-success font-mono text-xs">
                 {children}
               </code>
             );
           },
           // Blockquote
           blockquote: ({ children }) => (
-            <blockquote
-              style={{
-                borderLeft: '3px solid #00BABC',
-                marginLeft: 0,
-                marginBottom: '12px',
-                paddingLeft: '12px',
-                color: '#E3E3E3',
-                fontStyle: 'italic',
-              }}
-            >
+            <blockquote className="border-l-4 border-accent-primary mb-3 pl-3 text-content-secondary italic">
               {children}
             </blockquote>
           ),
@@ -159,14 +80,7 @@ export function MDXRenderer({ content }: MDXRendererProps) {
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              style={{
-                color: '#00BABC',
-                textDecoration: 'underline',
-                cursor: 'pointer',
-                transition: 'color 0.15s',
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = '#04809F')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = '#00BABC')}
+              className="text-accent-primary underline cursor-pointer hover:text-accent-primary/80 transition-colors duration-150"
             >
               {children}
             </a>
@@ -176,12 +90,7 @@ export function MDXRenderer({ content }: MDXRendererProps) {
             <img
               src={src}
               alt={alt || 'Image'}
-              style={{
-                maxWidth: '100%',
-                height: 'auto',
-                marginBottom: '12px',
-                display: 'block',
-              }}
+              className="max-w-full h-auto mb-3 block"
               onError={(e) => {
                 const img = e.currentTarget;
                 img.style.display = 'none';
@@ -190,66 +99,32 @@ export function MDXRenderer({ content }: MDXRendererProps) {
           ),
           // Horizontal rule
           hr: () => (
-            <hr
-              style={{
-                border: 'none',
-                borderTop: '1px solid #29292E',
-                marginTop: '16px',
-                marginBottom: '16px',
-              }}
-            />
+            <hr className="border-none border-t border-surface-raised my-4" />
           ),
           // Tables
           table: ({ children }) => (
-            <table
-              style={{
-                width: '100%',
-                borderCollapse: 'collapse',
-                marginBottom: '12px',
-                borderSpacing: 0,
-              }}
-            >
+            <table className="w-full border-collapse mb-3">
               {children}
             </table>
           ),
           thead: ({ children }) => (
-            <thead
-              style={{
-                borderBottom: '2px solid #29292E',
-              }}
-            >
+            <thead className="border-b-2 border-surface-raised">
               {children}
             </thead>
           ),
           tbody: ({ children }) => <tbody>{children}</tbody>,
           tr: ({ children }) => (
-            <tr
-              style={{
-                borderBottom: '1px solid #29292E',
-              }}
-            >
+            <tr className="border-b border-surface-raised">
               {children}
             </tr>
           ),
           th: ({ children }) => (
-            <th
-              style={{
-                textAlign: 'left',
-                padding: '8px 12px',
-                fontWeight: 700,
-                color: '#FFFFFF',
-              }}
-            >
+            <th className="text-left px-3 py-2 font-bold text-content-primary">
               {children}
             </th>
           ),
           td: ({ children }) => (
-            <td
-              style={{
-                padding: '8px 12px',
-                color: '#FFFFFF',
-              }}
-            >
+            <td className="px-3 py-2 text-content-primary">
               {children}
             </td>
           ),

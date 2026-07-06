@@ -38,41 +38,13 @@ export function MDXEditor({ value, onChange, placeholder = 'Digite seu conteúdo
   }
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '8px',
-        background: '#202026',
-        border: '1px solid #29292E',
-      }}
-    >
+    <div className="flex flex-col gap-2 bg-surface-panel border border-surface-raised">
       {/* Toolbar */}
-      <div
-        style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: '6px',
-          padding: '8px 12px',
-          borderBottom: '1px solid #29292E',
-          background: '#1B1B1B',
-        }}
-      >
+      <div className="flex flex-wrap gap-1.5 p-3 border-b border-surface-raised bg-surface-base">
         <button
           onClick={() => insertSyntax('**', '**', 'bold')}
           title="Bold (Ctrl+B)"
-          style={{
-            padding: '6px 10px',
-            background: '#29292E',
-            color: '#FFFFFF',
-            border: 'none',
-            fontSize: '12px',
-            fontWeight: 700,
-            cursor: 'pointer',
-            transition: 'all 0.15s',
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.background = '#00BABC')}
-          onMouseLeave={(e) => (e.currentTarget.style.background = '#29292E')}
+          className="px-2.5 py-1.5 bg-surface-raised text-content-primary border-none text-xs font-bold cursor-pointer transition-all duration-150 hover:bg-accent-primary hover:text-surface-base"
         >
           B
         </button>
@@ -80,19 +52,7 @@ export function MDXEditor({ value, onChange, placeholder = 'Digite seu conteúdo
         <button
           onClick={() => insertSyntax('*', '*', 'italic')}
           title="Italic (Ctrl+I)"
-          style={{
-            padding: '6px 10px',
-            background: '#29292E',
-            color: '#FFFFFF',
-            border: 'none',
-            fontSize: '12px',
-            fontWeight: 700,
-            fontStyle: 'italic',
-            cursor: 'pointer',
-            transition: 'all 0.15s',
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.background = '#00BABC')}
-          onMouseLeave={(e) => (e.currentTarget.style.background = '#29292E')}
+          className="px-2.5 py-1.5 bg-surface-raised text-content-primary border-none text-xs font-bold italic cursor-pointer transition-all duration-150 hover:bg-accent-primary hover:text-surface-base"
         >
           I
         </button>
@@ -100,18 +60,7 @@ export function MDXEditor({ value, onChange, placeholder = 'Digite seu conteúdo
         <button
           onClick={() => insertSyntax('## ', '', 'heading')}
           title="Heading 2 (H2)"
-          style={{
-            padding: '6px 10px',
-            background: '#29292E',
-            color: '#FFFFFF',
-            border: 'none',
-            fontSize: '12px',
-            fontWeight: 700,
-            cursor: 'pointer',
-            transition: 'all 0.15s',
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.background = '#00BABC')}
-          onMouseLeave={(e) => (e.currentTarget.style.background = '#29292E')}
+          className="px-2.5 py-1.5 bg-surface-raised text-content-primary border-none text-xs font-bold cursor-pointer transition-all duration-150 hover:bg-accent-primary hover:text-surface-base"
         >
           H2
         </button>
@@ -119,18 +68,7 @@ export function MDXEditor({ value, onChange, placeholder = 'Digite seu conteúdo
         <button
           onClick={() => insertSyntax('[', '](https://)', 'link text')}
           title="Link"
-          style={{
-            padding: '6px 10px',
-            background: '#29292E',
-            color: '#FFFFFF',
-            border: 'none',
-            fontSize: '12px',
-            fontWeight: 700,
-            cursor: 'pointer',
-            transition: 'all 0.15s',
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.background = '#00BABC')}
-          onMouseLeave={(e) => (e.currentTarget.style.background = '#29292E')}
+          className="px-2.5 py-1.5 bg-surface-raised text-content-primary border-none text-xs font-bold cursor-pointer transition-all duration-150 hover:bg-accent-primary hover:text-surface-base"
         >
           Link
         </button>
@@ -138,19 +76,7 @@ export function MDXEditor({ value, onChange, placeholder = 'Digite seu conteúdo
         <button
           onClick={() => insertSyntax('`', '`', 'code')}
           title="Inline Code"
-          style={{
-            padding: '6px 10px',
-            background: '#29292E',
-            color: '#FFFFFF',
-            border: 'none',
-            fontSize: '12px',
-            fontWeight: 700,
-            fontFamily: '"Courier New", monospace',
-            cursor: 'pointer',
-            transition: 'all 0.15s',
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.background = '#00BABC')}
-          onMouseLeave={(e) => (e.currentTarget.style.background = '#29292E')}
+          className="px-2.5 py-1.5 bg-surface-raised text-content-primary border-none text-xs font-bold font-mono cursor-pointer transition-all duration-150 hover:bg-accent-primary hover:text-surface-base"
         >
           `
         </button>
@@ -158,19 +84,7 @@ export function MDXEditor({ value, onChange, placeholder = 'Digite seu conteúdo
         <button
           onClick={() => insertSyntax('```\n', '\n```', 'code block')}
           title="Code Block"
-          style={{
-            padding: '6px 10px',
-            background: '#29292E',
-            color: '#FFFFFF',
-            border: 'none',
-            fontSize: '12px',
-            fontWeight: 700,
-            fontFamily: '"Courier New", monospace',
-            cursor: 'pointer',
-            transition: 'all 0.15s',
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.background = '#00BABC')}
-          onMouseLeave={(e) => (e.currentTarget.style.background = '#29292E')}
+          className="px-2.5 py-1.5 bg-surface-raised text-content-primary border-none text-xs font-bold font-mono cursor-pointer transition-all duration-150 hover:bg-accent-primary hover:text-surface-base"
         >
           {'{'}'{'}'}
         </button>
@@ -178,30 +92,17 @@ export function MDXEditor({ value, onChange, placeholder = 'Digite seu conteúdo
         <button
           onClick={() => insertSyntax('![', '](https://)', 'alt text')}
           title="Image"
-          style={{
-            padding: '6px 10px',
-            background: '#29292E',
-            color: '#FFFFFF',
-            border: 'none',
-            fontSize: '12px',
-            fontWeight: 700,
-            cursor: 'pointer',
-            transition: 'all 0.15s',
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.background = '#00BABC')}
-          onMouseLeave={(e) => (e.currentTarget.style.background = '#29292E')}
+          className="px-2.5 py-1.5 bg-surface-raised text-content-primary border-none text-xs font-bold cursor-pointer transition-all duration-150 hover:bg-accent-primary hover:text-surface-base"
         >
           Img
         </button>
 
-        <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <div className="ml-auto flex items-center gap-3">
           {/* Character counter */}
           <span
-            style={{
-              fontSize: '11px',
-              color: isOverLimit ? '#EC3391' : '#5B5B60',
-              fontWeight: isOverLimit ? 700 : 400,
-            }}
+            className={`text-xs font-${isOverLimit ? 'bold' : 'normal'} ${
+              isOverLimit ? 'text-status-error' : 'text-content-muted'
+            }`}
           >
             {charCount} / 10000
           </span>
@@ -209,22 +110,11 @@ export function MDXEditor({ value, onChange, placeholder = 'Digite seu conteúdo
           {/* Preview toggle */}
           <button
             onClick={() => setShowPreview(!showPreview)}
-            style={{
-              padding: '6px 10px',
-              background: showPreview ? '#00BABC' : '#29292E',
-              color: showPreview ? '#1B1B1B' : '#FFFFFF',
-              border: 'none',
-              fontSize: '11px',
-              fontWeight: 700,
-              cursor: 'pointer',
-              transition: 'all 0.15s',
-            }}
-            onMouseEnter={(e) =>
-              !showPreview && (e.currentTarget.style.background = '#04809F')
-            }
-            onMouseLeave={(e) =>
-              !showPreview && (e.currentTarget.style.background = '#29292E')
-            }
+            className={`px-2.5 py-1.5 border-none text-xs font-bold cursor-pointer transition-all duration-150 ${
+              showPreview
+                ? 'bg-accent-primary text-surface-base'
+                : 'bg-surface-raised text-content-primary hover:bg-accent-cg-blue'
+            }`}
           >
             Preview
           </button>
@@ -247,34 +137,15 @@ export function MDXEditor({ value, onChange, placeholder = 'Digite seu conteúdo
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder}
           maxLength={10000}
+          className="bg-surface-base border border-surface-raised text-content-primary text-sm p-3 font-inherit leading-relaxed outline-none min-h-52 transition-colors duration-150 focus:border-accent-primary"
           style={{
-            background: '#1B1B1B',
-            border: '1px solid #29292E',
-            color: '#FFFFFF',
-            fontSize: '13px',
-            padding: '12px',
-            fontFamily: 'inherit',
-            lineHeight: '1.5',
             resize: isOverLimit ? 'none' : 'vertical',
-            outline: 'none',
-            minHeight: '200px',
-            transition: 'border-color 0.15s',
           }}
-          onFocus={(e) => (e.currentTarget.style.borderColor = '#00BABC')}
-          onBlur={(e) => (e.currentTarget.style.borderColor = '#29292E')}
         />
 
         {/* Preview */}
         {showPreview && (
-          <div
-            style={{
-              background: '#1B1B1B',
-              border: '1px solid #29292E',
-              padding: '12px',
-              overflowY: 'auto',
-              maxHeight: '300px',
-            }}
-          >
+          <div className="bg-surface-base border border-surface-raised p-3 overflow-y-auto max-h-80">
             <MDXRenderer content={value} />
           </div>
         )}

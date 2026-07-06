@@ -2,9 +2,12 @@ package ws
 
 import (
 	"context"
+	"database/sql"
 	"encoding/json"
 	"sync"
 	"time"
+
+	"42chat/internal/db/queries"
 )
 
 // GeneralChatID é a room padrão para o chat global (feature 100).
@@ -14,6 +17,7 @@ const GeneralChatID = "00000000-0000-7000-8000-000000000001"
 // Hub gerencia todas as conexões WebSocket ativas.
 // ADR-001: modelo híbrido — RWMutex no mapa + send chan por client.
 // ADR-105.3: usersIndex para notificação direcionada.
+// ADR-107.2: presença + typing + nudge com cooldown.
 type Hub struct {
 	clients       map[*Client]bool
 	rooms         map[string]map[*Client]bool // roomID -> (clients), protegido por mu
@@ -24,6 +28,9 @@ type Hub struct {
 	broadcast     chan []byte
 	statsDebounce map[int]*time.Timer
 	statsMu       sync.Mutex
+	DB            *sql.DB
+	lastNudge     map[string]time.Time // key: "userID:roomID", protegido por nudgeMu
+	nudgeMu       sync.Mutex
 }
 
 // NewHub cria e retorna um Hub pronto para uso.
@@ -36,6 +43,7 @@ func NewHub() *Hub {
 		unregister:    make(chan *Client, 16),
 		broadcast:     make(chan []byte, 256),
 		statsDebounce: make(map[int]*time.Timer),
+		lastNudge:     make(map[string]time.Time),
 	}
 }
 
@@ -46,6 +54,7 @@ func (h *Hub) Run(ctx context.Context) {
 		select {
 		case client := <-h.register:
 			h.mu.Lock()
+			isFirstConnection := len(h.usersIndex[client.userID]) == 0
 			h.clients[client] = true
 			// Lazy creation: adiciona cliente à room dele
 			if h.rooms[client.roomID] == nil {
@@ -58,6 +67,26 @@ func (h *Hub) Run(ctx context.Context) {
 			}
 			h.usersIndex[client.userID][client] = true
 			h.mu.Unlock()
+
+			// ADR-107.2: emitir presença na primeira conexão do usuário
+			if isFirstConnection && h.DB != nil {
+				statuses, err := queries.GetUserStatuses(h.DB, []int{client.userID})
+				if err == nil {
+					chosenStatus := statuses[client.userID]
+					if chosenStatus == "" {
+						chosenStatus = "online"
+					}
+					effectiveStatus := EffectiveStatus(chosenStatus, true)
+					if effectiveStatus != "offline" {
+						msg, _ := json.Marshal(map[string]any{
+							"type":    "presence",
+							"user_id": client.userID,
+							"status":  effectiveStatus,
+						})
+						h.Broadcast(msg)
+					}
+				}
+			}
 
 		case client := <-h.unregister:
 			h.mu.Lock()
@@ -73,15 +102,29 @@ func (h *Hub) Run(ctx context.Context) {
 					}
 				}
 				// ADR-105.3: remover do índice de usuários
+				isLastConnection := false
 				if userClients, ok := h.usersIndex[client.userID]; ok {
 					delete(userClients, client)
 					// GC: remove submapa se vazio
 					if len(userClients) == 0 {
 						delete(h.usersIndex, client.userID)
+						isLastConnection = true
 					}
 				}
+				h.mu.Unlock()
+
+				// ADR-107.2: emitir presença offline se foi a última conexão
+				if isLastConnection {
+					msg, _ := json.Marshal(map[string]any{
+						"type":    "presence",
+						"user_id": client.userID,
+						"status":  "offline",
+					})
+					h.Broadcast(msg)
+				}
+			} else {
+				h.mu.Unlock()
 			}
-			h.mu.Unlock()
 
 		case msg := <-h.broadcast:
 			h.mu.RLock()
@@ -164,6 +207,50 @@ func (h *Hub) Shutdown() {
 		}
 	}
 	h.mu.RUnlock()
+}
+
+// EffectiveStatus calcula o status efetivo (visível para outros usuários).
+// ADR-107.2: sem conexão → offline; escolhido ∈ {invisible, offline} → offline; senão escolhido.
+func EffectiveStatus(chosen string, connected bool) string {
+	if !connected {
+		return "offline"
+	}
+	if chosen == "invisible" || chosen == "offline" {
+		return "offline"
+	}
+	return chosen
+}
+
+// OnlineUserIDs retorna um snapshot dos usuários com pelo menos uma conexão ativa.
+// ADR-107.2: lista de IDs únicos (keys do usersIndex).
+func (h *Hub) OnlineUserIDs() []int {
+	h.mu.RLock()
+	defer h.mu.RUnlock()
+	var ids []int
+	for userID := range h.usersIndex {
+		ids = append(ids, userID)
+	}
+	return ids
+}
+
+// IsUserOnline verifica se um usuário tem pelo menos uma conexão ativa.
+func (h *Hub) IsUserOnline(userID int) bool {
+	h.mu.RLock()
+	defer h.mu.RUnlock()
+	return len(h.usersIndex[userID]) > 0
+}
+
+// BroadcastPresence envia um evento de presença após mudança do status escolhido.
+// ADR-107.2: calcula efetiva com base na conectividade atual e faz broadcast.
+func (h *Hub) BroadcastPresence(userID int, chosenStatus string) {
+	connected := h.IsUserOnline(userID)
+	effectiveStatus := EffectiveStatus(chosenStatus, connected)
+	msg, _ := json.Marshal(map[string]any{
+		"type":    "presence",
+		"user_id": userID,
+		"status":  effectiveStatus,
+	})
+	h.Broadcast(msg)
 }
 
 // ClientCount retorna o número de clients conectados.

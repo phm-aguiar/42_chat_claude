@@ -7,6 +7,7 @@
 - **Autor:** phm-aguiar
 - **Data:** 2026-06-21
 - **Revisão:** 2026-06-30 — discovery report retroativo, artifacts SDD completos
+- **Revisão:** 2026-07-05 — **superseded parcial pela feature 105 (ADR-105.4):** a "Auth Opcional" nos GETs do fórum foi revertida; todos os GETs de `/api/forum/*` exigem `AuthRequired` (decisão de produto: sem anonimato, sem leitura anônima)
 - **Stack:** Go, React + MDX, PostgreSQL (reuse), OAuth2 42
 - **Discovery Report:** `reports/102-42-forum-discovery.md`
 - **Referências:** [[004-jschan-forum-manager]] (modelo board/thread/post do jschan)

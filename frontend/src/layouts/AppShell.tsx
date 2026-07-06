@@ -2,13 +2,61 @@ import { useState, useEffect } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { getSavedUser } from '@/lib/auth';
 import { useChatStore } from '@/stores/chatStore';
+import { Avatar } from '@/components/ui/Avatar';
+import { Badge } from '@/components/ui/Badge';
+
+interface RailButtonProps {
+  active: boolean;
+  title: string;
+  onClick: () => void;
+  children: React.ReactNode;
+  badge?: number;
+}
+
+function RailButton({ active, title, onClick, children, badge }: RailButtonProps) {
+  return (
+    <div className="relative">
+      <button
+        onClick={onClick}
+        title={title}
+        className={`flex h-11 w-11 items-center justify-center font-mono font-bold text-xs transition-[border-radius] ${
+          active
+            ? 'rounded-[14px] bg-accent-primary text-content-onAccent'
+            : 'rounded-full bg-surface-raised text-content-primary/70 hover:text-content-secondary'
+        }`}
+      >
+        {children}
+      </button>
+      {badge !== undefined && badge > 0 && (
+        <Badge
+          variant="error"
+          count={badge}
+          className="absolute -right-1 -top-1"
+        />
+      )}
+    </div>
+  );
+}
+
+interface TrafficLightProps {
+  color: string;
+}
+
+function TrafficLight({ color }: TrafficLightProps) {
+  return (
+    <div
+      className="h-[11px] w-[11px] rounded-full"
+      style={{ backgroundColor: color }}
+    />
+  );
+}
 
 /**
- * AppShell é o layout autenticado com sidebar + header + conteúdo.
- * - Sidebar fixa à esquerda: links (Hub, Chat, Fórum) + avatar do usuário
- * - Badge com unread count no ícone Chat
- * - Header contextual no topo
- * - Outlet para o conteúdo
+ * AppShell v2 — MSN/Discord reskin
+ * Estrutura:
+ * - Title bar 44px (traffic lights, logo, sessão)
+ * - Rail 72px vertical (navegação Hub/Chat/Fórum, avatar embaixo)
+ * - Header contextual + Outlet
  */
 export function AppShell() {
   const navigate = useNavigate();
@@ -16,7 +64,7 @@ export function AppShell() {
   const user = getSavedUser();
   const chats = useChatStore((state) => state.chats);
 
-  // Calcular total de não-lidas (soma defensiva: unread_count ?? 0)
+  // Calcular total de não-lidas (soma defensiva)
   const totalUnread = chats.reduce((sum, chat) => {
     return sum + ((chat as any).unread_count ?? 0);
   }, 0);
@@ -28,197 +76,99 @@ export function AppShell() {
 
   const [pageTitle, setPageTitle] = useState('42 Chat');
 
-  // Permitir que páginas filhas atualizem o título via context ou localStorage
-  // (implementação simples: páginas podem usar um state global ou context)
   useEffect(() => {
-    // Padrão: detectar pela URL
     if (isHub) setPageTitle('Hub');
     else if (isChat) setPageTitle('Chat');
     else if (isForum) setPageTitle('Fórum');
   }, [location.pathname, isHub, isChat, isForum]);
 
+  const host = user?.current_host || '42sp';
+
   return (
-    <div style={{ display: 'flex', height: '100vh', background: 'var(--color-black)' }}>
-      {/* Sidebar */}
-      <aside
-        style={{
-          width: '64px',
-          background: 'var(--color-near-black)',
-          borderRight: '1px solid var(--color-dark-gray)',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          padding: '16px 0',
-          gap: '16px',
-          flexShrink: 0,
-        }}
-      >
-        {/* Navigation Links */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-          {/* Hub */}
-          <button
-            onClick={() => navigate('/')}
-            style={{
-              width: '48px',
-              height: '48px',
-              border: 'none',
-              background: isHub ? 'var(--color-teal)' : 'transparent',
-              color: isHub ? 'var(--color-black)' : 'var(--color-dark-gray)',
-              cursor: 'pointer',
-              fontSize: '20px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              transition: 'all 0.2s ease',
-              fontWeight: 'bold',
-            }}
-            title="Hub"
-          >
-            ⌂
-          </button>
-
-          {/* Chat with Badge */}
-          <div style={{ position: 'relative' }}>
-            <button
-              onClick={() => navigate('/chat')}
-              style={{
-                width: '48px',
-                height: '48px',
-                border: 'none',
-                background: isChat ? 'var(--color-teal)' : 'transparent',
-                color: isChat ? 'var(--color-black)' : 'var(--color-dark-gray)',
-                cursor: 'pointer',
-                fontSize: '20px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                transition: 'all 0.2s ease',
-                fontWeight: 'bold',
-              }}
-              title="Chat"
-            >
-              💬
-            </button>
-            {totalUnread > 0 && (
-              <div
-                style={{
-                  position: 'absolute',
-                  top: '-4px',
-                  right: '-4px',
-                  background: 'var(--color-pink)',
-                  color: 'var(--color-white)',
-                  width: '20px',
-                  height: '20px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '10px',
-                  fontWeight: '700',
-                  minWidth: '20px',
-                }}
-              >
-                {totalUnread > 99 ? '99+' : totalUnread}
-              </div>
-            )}
-          </div>
-
-          {/* Forum */}
-          <button
-            onClick={() => navigate('/forum')}
-            style={{
-              width: '48px',
-              height: '48px',
-              border: 'none',
-              background: isForum ? 'var(--color-teal)' : 'transparent',
-              color: isForum ? 'var(--color-black)' : 'var(--color-dark-gray)',
-              cursor: 'pointer',
-              fontSize: '20px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              transition: 'all 0.2s ease',
-              fontWeight: 'bold',
-            }}
-            title="Fórum"
-          >
-            📋
-          </button>
+    <div className="flex flex-col h-screen bg-surface-base">
+      {/* Title Bar 44px */}
+      <header className="h-11 shrink-0 flex items-center justify-between px-4 bg-gradient-to-b from-[#3a1f57] to-[#241335] border-b border-white/5">
+        {/* Traffic lights */}
+        <div className="flex gap-1.5">
+          <TrafficLight color="#ff5f57" />
+          <TrafficLight color="#febc2e" />
+          <TrafficLight color="#28c840" />
         </div>
 
-        {/* Spacer */}
-        <div style={{ flex: 1 }} />
+        {/* Logo */}
+        <div className="font-mono font-bold text-sm text-content-primary">
+          &lt;42_chat/&gt;
+        </div>
 
-        {/* User Avatar */}
-        {user && (
-          <div
-            style={{
-              width: '48px',
-              height: '48px',
-              background: 'var(--color-navy)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              cursor: 'pointer',
-              fontSize: '12px',
-              color: 'var(--color-teal)',
-              fontWeight: 'bold',
-              textAlign: 'center',
-              padding: '4px',
-              transition: 'background 0.2s ease',
-            }}
-            onMouseEnter={(e) =>
-              ((e.currentTarget as HTMLElement).style.background =
-                'var(--color-teal)')
-            }
-            onMouseLeave={(e) =>
-              ((e.currentTarget as HTMLElement).style.background =
-                'var(--color-navy)')
-            }
-            title={user.login}
-          >
-            {user.login.substring(0, 2).toUpperCase()}
+        {/* Sessão info */}
+        <div className="font-mono text-[11px] text-content-primary/50">
+          sessão :: {host} :: 42sp
+        </div>
+      </header>
+
+      {/* Main content flex row */}
+      <div className="flex flex-1 overflow-hidden">
+        {/* Rail 72px */}
+        <aside className="w-20 shrink-0 flex flex-col items-center justify-between py-3 px-2 bg-surface-deep border-r border-white/5">
+          {/* Top navigation */}
+          <div className="flex flex-col gap-3 items-center">
+            <RailButton
+              active={isHub}
+              title="Hub"
+              onClick={() => navigate('/')}
+            >
+              42
+            </RailButton>
+
+            <RailButton
+              active={isChat}
+              title="Chat"
+              onClick={() => navigate('/chat')}
+              badge={totalUnread}
+            >
+              CH
+            </RailButton>
+
+            <RailButton
+              active={isForum}
+              title="Fórum"
+              onClick={() => navigate('/forum')}
+            >
+              FR
+            </RailButton>
           </div>
-        )}
-      </aside>
 
-      {/* Main Content */}
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-        {/* Header */}
-        <header
-          style={{
-            background: 'var(--color-near-black)',
-            borderBottom: '1px solid var(--color-dark-gray)',
-            padding: '0 20px',
-            height: '48px',
-            display: 'flex',
-            alignItems: 'center',
-            flexShrink: 0,
-          }}
-        >
-          <h1
-            style={{
-              margin: 0,
-              fontSize: '14px',
-              fontWeight: '400',
-              color: 'var(--color-dark-gray)',
-              textTransform: 'uppercase',
-              letterSpacing: '0.5px',
-            }}
+          {/* Divisória */}
+          <div className="w-8 h-px bg-white/5" />
+
+          {/* Plus button (desabilitado) */}
+          <button
+            disabled
+            title="canais — em breve"
+            className="flex h-11 w-11 items-center justify-center rounded-full bg-surface-raised text-content-primary/50 cursor-not-allowed"
           >
-            {pageTitle}
-          </h1>
-        </header>
+            +
+          </button>
 
-        {/* Content Area */}
-        <div
-          style={{
-            flex: 1,
-            overflow: 'hidden',
-            background: 'var(--color-black)',
-            position: 'relative',
-          }}
-        >
-          <Outlet context={{ setPageTitle }} />
+          {/* Avatar do usuário */}
+          {user && (
+            <Avatar login={user.login} imageUrl={user.image_url} size="sm" />
+          )}
+        </aside>
+
+        {/* Main content area */}
+        <div className="flex flex-1 flex-col overflow-hidden">
+          {/* Contextual header */}
+          <header className="h-12 shrink-0 flex items-center border-b border-white/5 bg-surface-chat px-5">
+            <h1 className="m-0 text-xs font-mono uppercase tracking-wide text-content-secondary">
+              {pageTitle}
+            </h1>
+          </header>
+
+          {/* Content */}
+          <div className="relative flex-1 overflow-hidden">
+            <Outlet context={{ setPageTitle }} />
+          </div>
         </div>
       </div>
     </div>

@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useOutletContext } from 'react-router-dom';
 import { useForumStore } from '@/stores/forumStore';
 import { ThreadRow } from '@/components/forum/ThreadRow';
+import { EmptyState } from '@/components/ui/EmptyState';
+import { Button } from '@/components/ui/Button';
 
 interface BoardViewProps {
   slug: string;
@@ -9,12 +11,20 @@ interface BoardViewProps {
 
 export function BoardView({ slug }: BoardViewProps) {
   const navigate = useNavigate();
+  const { setPageTitle } = useOutletContext<{ setPageTitle: (title: string) => void }>();
   const { currentBoard, threads, loading, error, fetchThreads, clearError } = useForumStore();
 
   // Fetch threads when slug changes
   useEffect(() => {
     fetchThreads(slug);
   }, [slug, fetchThreads]);
+
+  // Update page title when board loads
+  useEffect(() => {
+    if (currentBoard) {
+      setPageTitle(currentBoard.name);
+    }
+  }, [currentBoard, setPageTitle]);
 
   function handleThreadClick(threadId: string) {
     navigate(`/forum/${slug}/thread/${threadId}`);
@@ -25,167 +35,59 @@ export function BoardView({ slug }: BoardViewProps) {
   }
 
   return (
-    <div
-      style={{
-        height: '100dvh',
-        display: 'flex',
-        flexDirection: 'column',
-        background: '#1B1B1B',
-        fontFamily: '"Futura PT", ui-sans-serif, system-ui',
-        backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px)',
-        backgroundSize: '24px 24px',
-      }}
-    >
-      {/* Header */}
-      <header
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          padding: '0 20px',
-          height: '48px',
-          background: '#202026',
-          borderBottom: '1px solid #29292E',
-          flexShrink: 0,
-          gap: '16px',
-        }}
-      >
-        {/* Back button */}
-        <button
-          onClick={() => navigate('/forum')}
-          style={{
-            background: 'transparent',
-            border: 'none',
-            color: '#29292E',
-            fontSize: '12px',
-            letterSpacing: '0.15em',
-            textTransform: 'uppercase',
-            cursor: 'pointer',
-            transition: 'all 0.15s',
-            padding: '0',
-            fontFamily: '"Futura PT", ui-sans-serif, system-ui',
-            fontWeight: 400,
-          }}
-          onMouseEnter={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.color = '#FFFFFF';
-          }}
-          onMouseLeave={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.color = '#29292E';
-          }}
-        >
-          ← Boards
-        </button>
+    <div className="flex flex-col h-screen bg-surface-base">
+      {/* Error message */}
+      {error && (
+        <div className="bg-status-error text-content-primary px-5 py-3 text-xs flex items-center justify-between gap-4 flex-shrink-0">
+          <span>{error}</span>
+          <button
+            onClick={clearError}
+            className="bg-transparent border-0 text-content-primary cursor-pointer text-sm p-0 ml-auto hover:opacity-80"
+          >
+            ✕
+          </button>
+        </div>
+      )}
 
-        <span style={{ color: '#29292E', fontSize: '11px' }}>—</span>
-
-        {/* Board name */}
-        <span
-          style={{
-            color: '#FFFFFF',
-            fontWeight: 400,
-            fontSize: '13px',
-            letterSpacing: '0.05em',
-            textTransform: 'uppercase',
-          }}
-        >
-          {currentBoard?.name || 'Carregando...'}
-        </span>
-
-        {/* New Thread button */}
-        <button
+      {/* Sticky toolbar */}
+      <div className="bg-surface-panel border-b border-surface-raised px-5 py-3 flex items-center justify-between gap-3 flex-shrink-0">
+        <div className="flex items-center gap-3">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => navigate('/forum')}
+            className="text-content-muted hover:text-content-primary"
+          >
+            ← Voltar
+          </Button>
+          <span className="text-content-muted text-xs">—</span>
+          <span className="text-content-primary text-sm font-normal uppercase tracking-tight">
+            {currentBoard?.name || 'Carregando...'}
+          </span>
+        </div>
+        <Button
+          variant="secondary"
+          size="sm"
           onClick={handleNewThread}
-          style={{
-            marginLeft: 'auto',
-            background: 'transparent',
-            border: '1px solid #29292E',
-            color: '#29292E',
-            fontSize: '10px',
-            padding: '4px 10px',
-            letterSpacing: '0.15em',
-            textTransform: 'uppercase',
-            cursor: 'pointer',
-            transition: 'all 0.15s',
-            fontFamily: '"Futura PT", ui-sans-serif, system-ui',
-            fontWeight: 400,
-          }}
-          onMouseEnter={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.borderColor = '#00BABC';
-            (e.currentTarget as HTMLButtonElement).style.color = '#00BABC';
-          }}
-          onMouseLeave={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.borderColor = '#29292E';
-            (e.currentTarget as HTMLButtonElement).style.color = '#29292E';
-          }}
         >
           Nova Thread
-        </button>
-      </header>
+        </Button>
+      </div>
 
       {/* Main Content */}
-      <div
-        style={{
-          flex: 1,
-          overflow: 'auto',
-          padding: '20px',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '12px',
-        }}
-      >
-        {/* Error message */}
-        {error && (
-          <div
-            style={{
-              backgroundColor: '#EC3391',
-              color: '#FFFFFF',
-              padding: '12px 16px',
-              marginBottom: '16px',
-              fontSize: '12px',
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}
-          >
-            <span>{error}</span>
-            <button
-              onClick={clearError}
-              style={{
-                background: 'transparent',
-                border: 'none',
-                color: '#FFFFFF',
-                cursor: 'pointer',
-                fontSize: '16px',
-                padding: '0',
-                marginLeft: '16px',
-              }}
-            >
-              ✕
-            </button>
-          </div>
-        )}
-
+      <div className="flex-1 overflow-auto p-5">
         {/* Loading state */}
         {loading && !threads.length && (
-          <div
-            style={{
-              color: '#29292E',
-              fontSize: '14px',
-              textAlign: 'center',
-              padding: '40px 20px',
-            }}
-          >
-            Carregando threads...
-          </div>
+          <EmptyState
+            icon="⏳"
+            title="Carregando threads..."
+            description="Aguarde um momento"
+          />
         )}
 
         {/* Threads List */}
         {!loading && threads.length > 0 && (
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '12px',
-            }}
-          >
+          <div className="flex flex-col gap-3 max-w-4xl">
             {threads.map((thread) => (
               <ThreadRow
                 key={thread.id}
@@ -198,16 +100,11 @@ export function BoardView({ slug }: BoardViewProps) {
 
         {/* Empty state */}
         {!loading && threads.length === 0 && !error && (
-          <div
-            style={{
-              color: '#29292E',
-              fontSize: '14px',
-              textAlign: 'center',
-              padding: '40px 20px',
-            }}
-          >
-            Nenhuma thread ainda — seja o primeiro a criar uma!
-          </div>
+          <EmptyState
+            icon="💬"
+            title="Nenhuma thread ainda"
+            description="Seja o primeiro a criar uma thread neste board"
+          />
         )}
       </div>
     </div>

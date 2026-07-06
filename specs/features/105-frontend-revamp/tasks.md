@@ -9,6 +9,8 @@ plan: specs/features/105-frontend-revamp/plan.md
 
 # tasks.md: Feature 105 — Frontend Revamp
 
+> **Status: CONCLUÍDA (2026-07-05)** — 18/18 tasks fechadas via LATTE. Portões: `go build`/`go vet`/`go test ./...` (live DB) PASS, `npm run build` PASS, smoke fórum 12/12 em ambiente recriado do zero (`docker compose down -v && up --build`, migrations 001–004). Roteiro E2E manual em `acceptance/e2e-roteiro.md`. Complemento T014b (tokens em MDXRenderer/MDXEditor/TagInput/ModControls) executado além do DAG original.
+
 ## Fase 0: Descoberta
 
 - [x] **T001:** Mapear router/App.tsx atual, inventário de estilos inline por tela, montagem de auth headers em forumApi/chatApi, e resolução de autor nos stores/handlers do fórum
@@ -111,7 +113,7 @@ plan: specs/features/105-frontend-revamp/plan.md
 
 ## Fase 3: Páginas
 
-- [ ] **T012:** `pages/Hub.tsx` — saudação (login/avatar/level), atalhos Chat/Fórum, threads recentes, online agora, chats recentes com badge; EmptyStates
+- [x] **T012:** `pages/Hub.tsx` — saudação (login/avatar/level), atalhos Chat/Fórum, threads recentes, online agora, chats recentes com badge; EmptyStates
   - **Papel:** executor
   - **agent:** executor2
   - **depends_on:** [T011, T007]
@@ -119,7 +121,7 @@ plan: specs/features/105-frontend-revamp/plan.md
   - **Arquivos:** `frontend/src/pages/Hub.tsx`
   - **Wiki-Keywords:** hub, atividade, threads-recentes, online, EmptyState
 
-- [ ] **T013:** Chat redesign — Chat.tsx + ChatList unificados no shell (DT-02), badges de não-lidas + mark-read ao abrir, evento `chat_activity` no hook, typing por identidade do JWT (DT-06), estados vazios
+- [x] **T013:** Chat redesign — Chat.tsx + ChatList unificados no shell (DT-02), badges de não-lidas + mark-read ao abrir, evento `chat_activity` no hook, typing por identidade do JWT (DT-06), estados vazios
   - **Papel:** executor
   - **agent:** executor1
   - **depends_on:** [T011, T008]
@@ -127,7 +129,8 @@ plan: specs/features/105-frontend-revamp/plan.md
   - **Arquivos:** `frontend/src/pages/Chat.tsx`, `frontend/src/pages/chat/ChatList.tsx`, `frontend/src/stores/chatStore.ts`, `frontend/src/hooks/useWebSocket.ts`, `frontend/src/components/chat/MessageList.tsx`, `frontend/src/components/chat/MessageInput.tsx`, `frontend/src/components/chat/TypingIndicator.tsx`, `frontend/src/components/chat/OnlineSidebar.tsx`
   - **Wiki-Keywords:** unread-badge, mark-read, chat_activity, typing, JWT-identity
 
-- [ ] **T014:** Fórum redesign — ForumList/BoardView/ThreadView/NewThread no design system + autores reais com Avatar (DT-04)
+- [x] **T014:** Fórum redesign — ForumList/BoardView/ThreadView/NewThread no design system + autores reais com Avatar (DT-04)
+  - **Nota (2026-07-05):** complemento T014b executado na sequência — tokens em MDXRenderer/MDXEditor/TagInput/ModControls (hex inline residual fora do contrato original)
   - **Papel:** executor
   - **agent:** executor2
   - **depends_on:** [T011, T007]
@@ -135,7 +138,7 @@ plan: specs/features/105-frontend-revamp/plan.md
   - **Arquivos:** `frontend/src/pages/forum/ForumList.tsx`, `frontend/src/pages/forum/BoardView.tsx`, `frontend/src/pages/forum/ThreadView.tsx`, `frontend/src/pages/forum/NewThread.tsx`, `frontend/src/components/forum/BoardCard.tsx`, `frontend/src/components/forum/ThreadRow.tsx`, `frontend/src/components/forum/PostCard.tsx`, `frontend/src/stores/forumStore.ts`
   - **Wiki-Keywords:** forum, autor, Avatar, design-system, redesign
 
-- [ ] **T015:** LoginPage/CallbackPage redesign + botão dev-login quando `VITE_DEV_MODE=true` + alinhar env com backend (DT-07)
+- [x] **T015:** LoginPage/CallbackPage redesign + botão dev-login quando `VITE_DEV_MODE=true` + alinhar env com backend (DT-07)
   - **Papel:** executor
   - **agent:** executor1
   - **depends_on:** [T011]
@@ -147,7 +150,7 @@ plan: specs/features/105-frontend-revamp/plan.md
 
 ## Fase 4: Validação
 
-- [ ] **T016:** Testes Go — `go test -race ./internal/ws/...` (usersIndex/NotifyUsers) + store live `reads_test.go` (upsert, unread com general e soft-deleted)
+- [x] **T016:** Testes Go — `go test -race ./internal/ws/...` (usersIndex/NotifyUsers) + store live `reads_test.go` (upsert, unread com general e soft-deleted)
   - **Papel:** executor
   - **agent:** executor2
   - **depends_on:** [T008]
@@ -155,7 +158,7 @@ plan: specs/features/105-frontend-revamp/plan.md
   - **Arquivos:** `internal/chat/store/reads_test.go`
   - **Wiki-Keywords:** go-test, race, live-DB, ensureTestUsers, unread
 
-- [ ] **T017:** Regressão + acceptance — smoke fórum atualizado verde (12 casos), roteiro E2E manual do fluxo completo (login → hub → badge cross-room → fórum autenticado) em `acceptance/e2e-roteiro.md`, validação `docker compose down -v && up --build`
+- [x] **T017:** Regressão + acceptance — smoke fórum atualizado verde (12 casos), roteiro E2E manual do fluxo completo (login → hub → badge cross-room → fórum autenticado) em `acceptance/e2e-roteiro.md`, validação `docker compose down -v && up --build`
   - **Papel:** executor
   - **agent:** executor1
   - **depends_on:** [T012, T013, T014, T015, T016]
@@ -163,7 +166,7 @@ plan: specs/features/105-frontend-revamp/plan.md
   - **Arquivos:** `tests/forum_smoke_test.sh`, `specs/features/105-frontend-revamp/acceptance/e2e-roteiro.md`
   - **Wiki-Keywords:** smoke-test, regressão, E2E, migration-limpa, badge
 
-- [ ] **T018:** Build final: `go build ./...`, `go vet ./...`, `go test ./...`, `cd frontend && npm run build` + fechamento do tasks.md
+- [x] **T018:** Build final: `go build ./...`, `go vet ./...`, `go test ./...`, `cd frontend && npm run build` + fechamento do tasks.md
   - **Papel:** executor
   - **agent:** Lead
   - **depends_on:** [T017]

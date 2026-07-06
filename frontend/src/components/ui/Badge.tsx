@@ -17,13 +17,13 @@ export function Badge({
   let variantStyles = '';
   switch (variant) {
     case 'default':
-      variantStyles = 'bg-surface-raised text-text-content-primary';
+      variantStyles = 'bg-surface-raised text-content-primary';
       break;
     case 'accent':
-      variantStyles = 'bg-accent-teal text-42-black';
+      variantStyles = 'bg-accent-primary text-surface-base';
       break;
     case 'error':
-      variantStyles = 'bg-status-error text-42-white';
+      variantStyles = 'bg-status-error text-content-primary';
       break;
   }
 
@@ -32,7 +32,7 @@ export function Badge({
   // If count is provided, render as a compact badge (numeric)
   if (count !== undefined) {
     const displayCount = count > 99 ? '99+' : String(count);
-    const countSizeStyles = 'h-5 w-5 text-xs';
+    const countSizeStyles = 'h-5 w-5 text-xs rounded-full';
     const finalClassName = `${baseStyles} ${countSizeStyles} ${variantStyles} ${className}`.trim();
 
     return (

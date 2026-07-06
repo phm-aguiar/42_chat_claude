@@ -23,37 +23,18 @@ export function UserSignature({ userID }: UserSignatureProps) {
   const tierLabel = TIER_MAP[tier].label;
 
   return (
-    <div
-      style={{
-        height: '64px',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '8px',
-        padding: '0 4px',
-        fontSize: '11px',
-        color: 'rgba(255,255,255,0.6)',
-      }}
-    >
+    <div className="flex h-16 items-center gap-2 px-1 text-[11px] text-content-secondary">
       {/* Tier badge + message count (avatar + login removed to avoid duplication with MessageList header) */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-        {/* Tier badge */}
+      <div className="flex items-center gap-1.5">
+        {/* Cor do tier vem de TIER_MAP em runtime — única exceção permitida de estilo inline */}
         <span
-          style={{
-            padding: '2px 6px',
-            borderRadius: 0,
-            backgroundColor: tierColor,
-            color: '#1B1B1B',
-            fontSize: '9px',
-            fontWeight: 700,
-            textTransform: 'uppercase',
-            letterSpacing: '0.06em',
-          }}
+          className="px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-surface-base"
+          style={{ backgroundColor: tierColor }}
         >
           {tierLabel}
         </span>
 
-        {/* Message count */}
-        <span style={{ fontSize: '9px', color: 'rgba(255,255,255,0.5)' }}>
+        <span className="text-[9px] text-content-muted">
           {stats?.total_messages || 0} mensagens
         </span>
       </div>

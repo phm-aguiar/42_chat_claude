@@ -50,16 +50,7 @@ export function TypingIndicator({ chatId }: { chatId: string }) {
       : `${logins} estão digitando...`;
 
   return (
-    <div
-      style={{
-        padding: '8px 16px',
-        color: '#00BABC',
-        fontSize: '12px',
-        fontStyle: 'italic',
-        minHeight: '20px',
-        fontFamily: '"Futura PT", ui-sans-serif, system-ui',
-      }}
-    >
+    <div className="px-5 py-2 text-accent-primary text-sm italic min-h-5">
       {text}
     </div>
   );

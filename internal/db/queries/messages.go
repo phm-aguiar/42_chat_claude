@@ -14,18 +14,25 @@ type Message struct {
 	Login     string    `json:"login"`
 	ImageURL  string    `json:"image_url"`
 	Content   string    `json:"content"`
+	Kind      string    `json:"kind"`      // 'text' ou 'nudge'
 	CreatedAt time.Time `json:"created_at"`
 }
 
-// SaveMessage persiste uma mensagem e retorna o registro completo com dados do usuário.
-// Usa JOIN para popular login e image_url inline.
+// SaveMessage persiste uma mensagem com kind='text' e retorna o registro completo com dados do usuário.
+// Usa SaveMessageKind internamente para manter backward compatibility.
 func SaveMessage(db *sql.DB, userID int, chatID string, content string) (Message, error) {
+	return SaveMessageKind(db, userID, chatID, content, "text")
+}
+
+// SaveMessageKind persiste uma mensagem com kind específico e retorna o registro completo com dados do usuário.
+// Usa JOIN para popular login e image_url inline.
+func SaveMessageKind(db *sql.DB, userID int, chatID string, content string, kind string) (Message, error) {
 	var msg Message
 	err := db.QueryRow(`
-		INSERT INTO messages (user_id, chat_id, content)
-		VALUES ($1, $2, $3)
-		RETURNING id::text, user_id, chat_id::text, content, created_at
-	`, userID, chatID, content).Scan(&msg.ID, &msg.UserID, &msg.ChatID, &msg.Content, &msg.CreatedAt)
+		INSERT INTO messages (user_id, chat_id, content, kind)
+		VALUES ($1, $2, $3, $4)
+		RETURNING id::text, user_id, chat_id::text, content, kind, created_at
+	`, userID, chatID, content, kind).Scan(&msg.ID, &msg.UserID, &msg.ChatID, &msg.Content, &msg.Kind, &msg.CreatedAt)
 	if err != nil {
 		return Message{}, fmt.Errorf("save message: %w", err)
 	}
@@ -50,7 +57,7 @@ func GetMessages(db *sql.DB, before time.Time, limit int, chatID string) ([]Mess
 	}
 
 	rows, err := db.Query(`
-		SELECT m.id::text, m.user_id, m.chat_id::text, u.login, COALESCE(u.image_url, ''), m.content, m.created_at
+		SELECT m.id::text, m.user_id, m.chat_id::text, u.login, COALESCE(u.image_url, ''), m.content, m.kind, m.created_at
 		FROM messages m
 		JOIN users u ON u.id = m.user_id
 		WHERE m.created_at < $1::timestamptz
@@ -67,7 +74,7 @@ func GetMessages(db *sql.DB, before time.Time, limit int, chatID string) ([]Mess
 	var msgs []Message
 	for rows.Next() {
 		var msg Message
-		if err := rows.Scan(&msg.ID, &msg.UserID, &msg.ChatID, &msg.Login, &msg.ImageURL, &msg.Content, &msg.CreatedAt); err != nil {
+		if err := rows.Scan(&msg.ID, &msg.UserID, &msg.ChatID, &msg.Login, &msg.ImageURL, &msg.Content, &msg.Kind, &msg.CreatedAt); err != nil {
 			return nil, fmt.Errorf("scan message: %w", err)
 		}
 		msgs = append(msgs, msg)

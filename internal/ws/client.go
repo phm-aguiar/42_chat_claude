@@ -4,6 +4,7 @@ import (
 	"context"
 	"database/sql"
 	"encoding/json"
+	"fmt"
 	"log"
 	"time"
 
@@ -86,12 +87,103 @@ func (c *Client) readPump(ctx context.Context) {
 			continue
 		}
 
-		// Parseia e persiste — apenas mensagens de chat chegam aqui
+		// Parseia incoming message
 		var incoming struct {
 			Type    string `json:"type"`
 			Content string `json:"content"`
 		}
-		if err := json.Unmarshal(raw, &incoming); err != nil || incoming.Type != "message" || incoming.Content == "" {
+		if err := json.Unmarshal(raw, &incoming); err != nil {
+			continue
+		}
+
+		// ADR-107.3: typing relay
+		if incoming.Type == "typing" {
+			payload, _ := json.Marshal(map[string]string{
+				"type":    "typing",
+				"chat_id": c.roomID,
+				"login":   c.login,
+			})
+			c.hub.BroadcastToRoom(c.roomID, payload)
+			continue
+		}
+
+		// ADR-107.4: nudge
+		if incoming.Type == "nudge" {
+			// Rejeita se for general
+			if c.roomID == GeneralChatID {
+				payload, _ := json.Marshal(map[string]string{
+					"type": "error",
+					"code": "NUDGE_NOT_ALLOWED",
+				})
+				select {
+				case c.send <- payload:
+				default:
+				}
+				continue
+			}
+
+			// Verifica cooldown
+			c.hub.nudgeMu.Lock()
+			key := fmt.Sprintf("%d:%s", c.userID, c.roomID)
+			lastNudgeTime, exists := c.hub.lastNudge[key]
+			now := time.Now()
+			if exists && now.Sub(lastNudgeTime) < 10*time.Second {
+				c.hub.nudgeMu.Unlock()
+				// Envia erro apenas ao remetente
+				payload, _ := json.Marshal(map[string]string{
+					"type": "error",
+					"code": "NUDGE_COOLDOWN",
+				})
+				select {
+				case c.send <- payload:
+				default:
+				}
+				continue
+			}
+			c.hub.lastNudge[key] = now
+			c.hub.nudgeMu.Unlock()
+
+			// Persiste nudge
+			msg, err := queries.SaveMessageKind(c.db, c.userID, c.roomID, "👋", "nudge")
+			if err != nil {
+				log.Printf("ws save nudge: %v", err)
+				continue
+			}
+
+			// Enriquece payload
+			msgMap := make(map[string]any)
+			msgBytes, _ := json.Marshal(msg)
+			json.Unmarshal(msgBytes, &msgMap)
+
+			nudgePayload, _ := json.Marshal(map[string]any{
+				"type":          "nudge",
+				"chat_id":       c.roomID,
+				"from_user_id":  c.userID,
+				"from_login":    c.login,
+				"message":       msgMap,
+			})
+			c.hub.BroadcastToRoom(c.roomID, nudgePayload)
+
+			// Notificar outros membros
+			if c.roomID != GeneralChatID {
+				memberIDs, err := queries.GetChatMemberIDs(c.db, c.roomID)
+				if err == nil && len(memberIDs) > 0 {
+					var targetIDs []int
+					for _, id := range memberIDs {
+						if id != c.userID {
+							targetIDs = append(targetIDs, id)
+						}
+					}
+					if len(targetIDs) > 0 {
+						c.hub.NotifyUsers(targetIDs, nudgePayload)
+					}
+				}
+			}
+			continue
+		}
+
+		// Apenas mensagens de chat normais
+		if incoming.Type != "message" || incoming.Content == "" {
 			continue
 		}
 

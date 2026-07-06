@@ -14,7 +14,7 @@ export function Input({
 }: InputProps) {
   const inputId = id || `input-${Math.random().toString(36).substr(2, 9)}`;
 
-  const baseInputStyles = 'w-full bg-surface-base text-text-content-primary border border-surface-raised px-3 py-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-teal focus-visible:ring-offset-0 focus-visible:border-accent-teal disabled:opacity-50 disabled:cursor-not-allowed';
+  const baseInputStyles = 'w-full bg-surface-raised text-content-primary border border-white/10 rounded-lg font-mono text-sm placeholder:text-content-muted px-3 py-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary focus-visible:ring-offset-0 focus-visible:border-accent-primary disabled:opacity-50 disabled:cursor-not-allowed';
 
   const errorInputStyles = error ? 'border-status-error' : '';
 
@@ -23,7 +23,7 @@ export function Input({
   return (
     <div className="flex flex-col gap-1">
       {label && (
-        <label htmlFor={inputId} className="text-text-content-primary text-sm font-medium">
+        <label htmlFor={inputId} className="text-content-primary text-sm font-medium">
           {label}
         </label>
       )}

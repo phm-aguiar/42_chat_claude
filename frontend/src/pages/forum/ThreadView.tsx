@@ -1,8 +1,12 @@
 import { useState, useEffect, useMemo } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useOutletContext } from 'react-router-dom';
 import { useForumStore } from '@/stores/forumStore';
+import { Avatar } from '@/components/ui/Avatar';
 import { PostCard } from '@/components/forum/PostCard';
 import { MDXEditor } from '@/components/forum/MDXEditor';
+import { MDXRenderer } from '@/components/forum/MDXRenderer';
+import { EmptyState } from '@/components/ui/EmptyState';
+import { Button } from '@/components/ui/Button';
 import type { Post } from '@/lib/forumApi';
 
 /**
@@ -11,6 +15,8 @@ import type { Post } from '@/lib/forumApi';
  * Route: /forum/{slug}/thread/{id}
  */
 export function ThreadView() {
+  const { setPageTitle } = useOutletContext<{ setPageTitle: (title: string) => void }>();
+
   // Extrair threadId da URL via react-router
   const { threadId } = useParams<{ threadId: string }>();
   const tid = threadId || '';
@@ -38,6 +44,13 @@ export function ThreadView() {
     fetchPosts(tid);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tid]);
+
+  // Update page title when thread loads
+  useEffect(() => {
+    if (currentThread) {
+      setPageTitle(currentThread.title);
+    }
+  }, [currentThread, setPageTitle]);
 
   /**
    * Constrói árvore de replies a partir de posts.
@@ -90,18 +103,11 @@ export function ThreadView() {
       <div key={post.id}>
         <PostCard
           post={post}
-          author={undefined} // TODO: enriquecer com dados do usuário
           isOP={false}
           onReply={() => setReplyingTo(post.id)}
           children={
             canNest && children.length > 0 ? (
-              <div
-                style={{
-                  marginTop: '8px',
-                  borderLeft: '1px solid rgba(0, 186, 188, 0.2)',
-                  paddingLeft: '0px',
-                }}
-              >
+              <div className="mt-2 border-l border-accent-primary/20 pl-0">
                 {children.map((child) =>
                   renderPostTree(child, depth + 1, childrenMap)
                 )}
@@ -135,18 +141,7 @@ export function ThreadView() {
   // Loading state: thread não carregou ainda
   if (loading && !currentThread) {
     return (
-      <div
-        style={{
-          height: '100dvh',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          background: '#1B1B1B',
-          fontFamily: '"Futura PT", ui-sans-serif, system-ui',
-          color: '#29292E',
-          fontSize: '14px',
-        }}
-      >
+      <div className="flex items-center justify-center h-screen bg-surface-base text-content-muted text-sm">
         Carregando thread...
       </div>
     );
@@ -155,48 +150,20 @@ export function ThreadView() {
   // Not found state
   if (!currentThread) {
     return (
-      <div
-        style={{
-          height: '100dvh',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          background: '#1B1B1B',
-          fontFamily: '"Futura PT", ui-sans-serif, system-ui',
-          color: '#FFFFFF',
-          gap: '16px',
-        }}
-      >
-        <p style={{ color: '#29292E', fontSize: '14px' }}>
-          Thread não encontrada.
-        </p>
-        <button
-          onClick={() => window.history.back()}
-          style={{
-            background: 'transparent',
-            border: '1px solid #29292E',
-            color: '#29292E',
-            fontSize: '10px',
-            padding: '6px 12px',
-            letterSpacing: '0.15em',
-            textTransform: 'uppercase',
-            cursor: 'pointer',
-            transition: 'all 0.15s',
-          }}
-          onMouseEnter={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.borderColor =
-              '#FFFFFF';
-            (e.currentTarget as HTMLButtonElement).style.color = '#FFFFFF';
-          }}
-          onMouseLeave={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.borderColor =
-              '#29292E';
-            (e.currentTarget as HTMLButtonElement).style.color = '#29292E';
-          }}
+      <div className="flex flex-col items-center justify-center h-screen bg-surface-base gap-4">
+        <EmptyState
+          icon="❌"
+          title="Thread não encontrada"
+          description="A thread que você está procurando não existe ou foi removida"
         >
-          Voltar
-        </button>
+          <Button
+            variant="secondary"
+            size="sm"
+            onClick={() => window.history.back()}
+          >
+            Voltar
+          </Button>
+        </EmptyState>
       </div>
     );
   }
@@ -204,361 +171,128 @@ export function ThreadView() {
   const { rootPosts, childrenMap } = buildTree;
 
   return (
-    <div
-      style={{
-        height: '100dvh',
-        display: 'flex',
-        flexDirection: 'column',
-        background: '#1B1B1B',
-        fontFamily: '"Futura PT", ui-sans-serif, system-ui',
-        backgroundImage:
-          'radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px)',
-        backgroundSize: '24px 24px',
-      }}
-    >
-      {/* Header */}
-      <header
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          padding: '0 20px',
-          height: '48px',
-          background: '#202026',
-          borderBottom: '1px solid #29292E',
-          flexShrink: 0,
-          gap: '16px',
-        }}
-      >
-        <span
-          style={{
-            color: '#00BABC',
-            fontWeight: 700,
-            fontSize: '13px',
-            letterSpacing: '0.2em',
-            textTransform: 'uppercase',
-          }}
-        >
-          42 Forum
-        </span>
-        <span style={{ color: '#29292E', fontSize: '11px' }}>—</span>
-        <span
-          style={{
-            color: '#29292E',
-            fontSize: '11px',
-            letterSpacing: '0.1em',
-            textTransform: 'uppercase',
-            flex: 1,
-            whiteSpace: 'nowrap',
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-          }}
-        >
-          {currentThread.title}
-        </span>
-        <button
-          onClick={() => window.history.back()}
-          style={{
-            marginLeft: 'auto',
-            background: 'transparent',
-            border: '1px solid #29292E',
-            color: '#29292E',
-            fontSize: '10px',
-            padding: '4px 10px',
-            letterSpacing: '0.15em',
-            textTransform: 'uppercase',
-            cursor: 'pointer',
-            transition: 'all 0.15s',
-          }}
-          onMouseEnter={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.borderColor =
-              '#FFFFFF';
-            (e.currentTarget as HTMLButtonElement).style.color = '#FFFFFF';
-          }}
-          onMouseLeave={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.borderColor =
-              '#29292E';
-            (e.currentTarget as HTMLButtonElement).style.color = '#29292E';
-          }}
-        >
-          Voltar
-        </button>
-      </header>
+    <div className="flex flex-col h-screen bg-surface-base">
+      {/* Error banner */}
+      {error && (
+        <div className="bg-status-error text-content-primary px-5 py-3 text-xs flex items-center justify-between gap-4 flex-shrink-0">
+          <span>{error}</span>
+          <button
+            onClick={clearError}
+            className="bg-transparent border-0 text-content-primary cursor-pointer text-sm p-0 ml-auto hover:opacity-80"
+          >
+            ✕
+          </button>
+        </div>
+      )}
 
       {/* Main content area */}
-      <div
-        style={{
-          flex: 1,
-          overflow: 'auto',
-          padding: '32px 20px',
-        }}
-      >
-        {/* Error banner */}
-        {error && (
-          <div
-            style={{
-              backgroundColor: '#EC3391',
-              color: '#FFFFFF',
-              padding: '12px 16px',
-              marginBottom: '16px',
-              fontSize: '12px',
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}
-          >
-            <span>{error}</span>
-            <button
-              onClick={clearError}
-              style={{
-                background: 'transparent',
-                border: 'none',
-                color: '#FFFFFF',
-                cursor: 'pointer',
-                fontSize: '16px',
-                padding: '0',
-                marginLeft: '16px',
-              }}
-            >
-              ✕
-            </button>
-          </div>
-        )}
-
-        {/* Thread metadata */}
-        <div
-          style={{
-            marginBottom: '24px',
-            paddingBottom: '16px',
-            borderBottom: '1px solid #29292E',
-          }}
-        >
-          <h1
-            style={{
-              color: '#FFFFFF',
-              fontSize: '24px',
-              fontWeight: 700,
-              margin: '0 0 8px 0',
-            }}
-          >
-            {currentThread.title}
-          </h1>
-          <div
-            style={{
-              display: 'flex',
-              gap: '16px',
-              fontSize: '11px',
-              color: 'rgba(255,255,255,0.5)',
-            }}
-          >
-            <span>{currentThread.post_count} respostas</span>
-            <span>
-              {new Date(currentThread.created_at).toLocaleDateString('pt-BR')}
-            </span>
-            {currentThread.is_pinned && (
-              <span
-                style={{
-                  color: '#00BABC',
-                  textTransform: 'uppercase',
-                  fontWeight: 700,
-                }}
-              >
-                Fixado
+      <div className="flex-1 overflow-auto p-8">
+        <div className="max-w-3xl mx-auto">
+          {/* Thread metadata */}
+          <div className="mb-6 pb-4 border-b border-surface-raised">
+            <h1 className="text-content-primary text-2xl font-bold m-0 mb-2">
+              {currentThread.title}
+            </h1>
+            <div className="flex items-center gap-4 text-content-secondary text-xs">
+              <span>{currentThread.post_count} respostas</span>
+              <span>
+                {new Date(currentThread.created_at).toLocaleDateString('pt-BR')}
               </span>
-            )}
-            {currentThread.is_locked && (
-              <span
-                style={{
-                  color: '#EC3391',
-                  textTransform: 'uppercase',
-                  fontWeight: 700,
-                }}
-              >
-                Trancado
-              </span>
-            )}
-          </div>
-        </div>
-
-        {/* OP (Original Post) */}
-        <div
-          style={{
-            marginBottom: '32px',
-            background: 'rgba(0, 186, 188, 0.05)',
-            border: '1px solid rgba(0, 186, 188, 0.1)',
-          }}
-        >
-          <PostCard
-            post={{
-              id: currentThread.id,
-              thread_id: currentThread.id,
-              author_id: currentThread.author_id,
-              content: currentThread.content,
-              created_at: currentThread.created_at,
-              reply_to: null,
-            } as Post}
-            author={undefined}
-            isOP={true}
-          />
-        </div>
-
-        {/* Respostas (tree view) */}
-        {rootPosts.length > 0 ? (
-          <div
-            style={{
-              marginBottom: '32px',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '0px',
-            }}
-          >
-            {rootPosts.map((post) =>
-              renderPostTree(post, 0, childrenMap)
-            )}
-          </div>
-        ) : (
-          <div
-            style={{
-              color: '#29292E',
-              fontSize: '12px',
-              textAlign: 'center',
-              padding: '40px 20px',
-              marginBottom: '32px',
-            }}
-          >
-            Nenhuma resposta ainda. Seja o primeiro!
-          </div>
-        )}
-
-        {/* Reply form */}
-        {!currentThread.is_locked ? (
-          <div
-            style={{
-              marginTop: '32px',
-              paddingTop: '16px',
-              borderTop: '1px solid #29292E',
-            }}
-          >
-            {/* Responder a indicator */}
-            {replyingTo && (
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '12px',
-                  marginBottom: '12px',
-                  padding: '8px 12px',
-                  background: 'rgba(0, 186, 188, 0.1)',
-                  border: '1px solid rgba(0, 186, 188, 0.2)',
-                  fontSize: '11px',
-                  color: '#00BABC',
-                }}
-              >
-                <span>
-                  Respondendo a {replyingTo.substring(0, 8)}...
+              {currentThread.is_pinned && (
+                <span className="text-accent-primary uppercase font-bold tracking-wider">
+                  Fixado
                 </span>
-                <button
-                  onClick={() => setReplyingTo(null)}
-                  style={{
-                    marginLeft: 'auto',
-                    background: 'transparent',
-                    border: 'none',
-                    color: '#00BABC',
-                    cursor: 'pointer',
-                    fontSize: '12px',
-                    padding: '0',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.06em',
-                    fontWeight: 700,
-                    transition: 'color 0.15s',
-                  }}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.color = '#EC3391')
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.color = '#00BABC')
-                  }
-                >
-                  Cancelar
-                </button>
-              </div>
-            )}
-
-            {/* MDXEditor */}
-            <MDXEditor
-              value={editorContent}
-              onChange={setEditorContent}
-              placeholder="Sua resposta aqui..."
-            />
-
-            {/* Submit button */}
-            <div
-              style={{
-                marginTop: '12px',
-                display: 'flex',
-                gap: '8px',
-              }}
-            >
-              <button
-                onClick={handleSubmitReply}
-                disabled={isSubmitting || !editorContent.trim()}
-                style={{
-                  padding: '8px 16px',
-                  background:
-                    isSubmitting || !editorContent.trim()
-                      ? '#29292E'
-                      : '#00BABC',
-                  color:
-                    isSubmitting || !editorContent.trim()
-                      ? '#5B5B60'
-                      : '#1B1B1B',
-                  border: 'none',
-                  fontSize: '11px',
-                  fontWeight: 700,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.06em',
-                  cursor:
-                    isSubmitting || !editorContent.trim()
-                      ? 'not-allowed'
-                      : 'pointer',
-                  transition: 'all 0.15s',
-                }}
-                onMouseEnter={(e) => {
-                  if (!isSubmitting && editorContent.trim()) {
-                    (e.currentTarget as HTMLButtonElement).style.background =
-                      '#04809F';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (!isSubmitting && editorContent.trim()) {
-                    (e.currentTarget as HTMLButtonElement).style.background =
-                      '#00BABC';
-                  }
-                }}
-              >
-                {isSubmitting ? 'Enviando...' : 'Responder'}
-              </button>
+              )}
+              {currentThread.is_locked && (
+                <span className="text-status-error uppercase font-bold tracking-wider">
+                  Trancado
+                </span>
+              )}
             </div>
           </div>
-        ) : (
-          <div
-            style={{
-              marginTop: '32px',
-              paddingTop: '16px',
-              borderTop: '1px solid #29292E',
-              padding: '16px',
-              background: 'rgba(236, 51, 145, 0.08)',
-              border: '1px solid rgba(236, 51, 145, 0.2)',
-              color: '#EC3391',
-              fontSize: '12px',
-              textAlign: 'center',
-              fontWeight: 700,
-              textTransform: 'uppercase',
-              letterSpacing: '0.06em',
-            }}
-          >
-            Thread trancada. Sem novas respostas permitidas.
+
+          {/* OP (Original Post) */}
+          <div className="mb-8 border border-accent-primary/20 bg-accent-primary/5">
+            {/* OP Header */}
+            <div className="flex items-center gap-3 p-5 border-b border-accent-primary/20 pb-4">
+              <Avatar
+                login={currentThread.author_login}
+                imageUrl={currentThread.author_image_url}
+                size="md"
+              />
+              <div>
+                <div className="text-accent-primary text-sm font-bold uppercase tracking-widest">
+                  {currentThread.author_login}
+                </div>
+                <div className="text-content-muted text-xs">
+                  {new Date(currentThread.created_at).toLocaleDateString('pt-BR')}
+                </div>
+              </div>
+            </div>
+
+            {/* OP Content */}
+            <div className="p-5">
+              <MDXRenderer content={currentThread.content} />
+            </div>
           </div>
-        )}
+
+          {/* Respostas (tree view) */}
+          {rootPosts.length > 0 ? (
+            <div className="mb-8 flex flex-col gap-0">
+              {rootPosts.map((post) =>
+                renderPostTree(post, 0, childrenMap)
+              )}
+            </div>
+          ) : (
+            <EmptyState
+              icon="💭"
+              title="Nenhuma resposta ainda"
+              description="Seja o primeiro a responder esta thread"
+            />
+          )}
+
+          {/* Reply form */}
+          {!currentThread.is_locked ? (
+            <div className="mt-8 pt-4 border-t border-surface-raised">
+              {/* Responder a indicator */}
+              {replyingTo && (
+                <div className="flex items-center gap-3 mb-3 p-3 bg-accent-primary/10 border border-accent-primary/30 text-accent-primary text-xs rounded-none">
+                  <span>Respondendo a {replyingTo.substring(0, 8)}...</span>
+                  <button
+                    onClick={() => setReplyingTo(null)}
+                    className="ml-auto bg-transparent border-0 text-accent-primary cursor-pointer text-xs p-0 uppercase font-bold tracking-wider hover:opacity-80 transition-opacity"
+                  >
+                    Cancelar
+                  </button>
+                </div>
+              )}
+
+              {/* MDXEditor */}
+              <MDXEditor
+                value={editorContent}
+                onChange={setEditorContent}
+                placeholder="Sua resposta aqui..."
+              />
+
+              {/* Submit button */}
+              <div className="mt-3 flex gap-2">
+                <Button
+                  variant="primary"
+                  size="sm"
+                  onClick={handleSubmitReply}
+                  disabled={isSubmitting || !editorContent.trim()}
+                  className="uppercase tracking-wider font-bold"
+                >
+                  {isSubmitting ? 'Enviando...' : 'Responder'}
+                </Button>
+              </div>
+            </div>
+          ) : (
+            <div className="mt-8 pt-4 border-t border-surface-raised p-4 bg-status-error/10 border border-status-error/20 text-status-error text-xs text-center font-bold uppercase tracking-wider">
+              Thread trancada. Sem novas respostas permitidas.
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

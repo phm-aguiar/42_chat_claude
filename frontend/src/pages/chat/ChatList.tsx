@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useChatStore } from '@/stores/chatStore';
+import { Badge } from '@/components/ui/Badge';
 import { GENERAL_CHAT_ID } from '@/lib/chatApi';
 
 interface NewChatForm {
@@ -53,92 +54,16 @@ export default function ChatList() {
   const groupChats = chats.filter((c) => c.type === 'group');
 
   return (
-    <div
-      style={{
-        height: '100dvh',
-        display: 'flex',
-        flexDirection: 'column',
-        background: '#1B1B1B',
-        fontFamily: '"Futura PT", ui-sans-serif, system-ui',
-        backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px)',
-        backgroundSize: '24px 24px',
-      }}
-    >
-      {/* Header */}
-      <header
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          padding: '0 20px',
-          height: '48px',
-          background: '#202026',
-          borderBottom: '1px solid #29292E',
-          flexShrink: 0,
-          gap: '16px',
-        }}
-      >
-        <span
-          style={{
-            color: '#00BABC',
-            fontWeight: 700,
-            fontSize: '13px',
-            letterSpacing: '0.2em',
-            textTransform: 'uppercase',
-          }}
-        >
-          42 Chat
-        </span>
-        <span style={{ color: '#29292E', fontSize: '11px' }}>—</span>
-        <span
-          style={{
-            color: '#29292E',
-            fontSize: '11px',
-            letterSpacing: '0.1em',
-            textTransform: 'uppercase',
-          }}
-        >
-          Conversations
-        </span>
-      </header>
-
+    <div className="flex flex-col h-full bg-surface-base">
       {/* Main content */}
-      <div
-        style={{
-          flex: 1,
-          overflow: 'auto',
-          padding: '16px 0',
-          display: 'flex',
-          flexDirection: 'column',
-        }}
-      >
+      <div className="flex-1 overflow-auto py-4 flex flex-col">
         {/* Error message */}
         {error && (
-          <div
-            style={{
-              backgroundColor: '#EC3391',
-              color: '#FFFFFF',
-              padding: '12px 16px',
-              marginBottom: '12px',
-              fontSize: '12px',
-              marginLeft: '16px',
-              marginRight: '16px',
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}
-          >
+          <div className="bg-status-error text-white px-4 py-3 mb-3 text-xs flex justify-between items-center mx-4">
             <span>{error}</span>
             <button
               onClick={clearError}
-              style={{
-                background: 'transparent',
-                border: 'none',
-                color: '#FFFFFF',
-                cursor: 'pointer',
-                fontSize: '16px',
-                padding: '0',
-                marginLeft: '16px',
-              }}
+              className="bg-transparent border-none text-white cursor-pointer text-base p-0 ml-4"
             >
               ✕
             </button>
@@ -146,120 +71,70 @@ export default function ChatList() {
         )}
 
         {/* Chats list */}
-        {(
-          <div style={{ flex: 1, overflow: 'auto' }}>
-            {/* General chat — always at top */}
-            {generalChat && (
-              <ChatItem
-                label="# general"
-                isActive={activeChat === generalChat.id}
-                onClick={() => setActiveChat(generalChat.id)}
-              />
-            )}
+        <div className="flex-1 overflow-auto">
+          {/* General chat — always at top */}
+          {generalChat && (
+            <ChatItem
+              label="# general"
+              isActive={activeChat === generalChat.id}
+              unreadCount={(generalChat as any).unread_count ?? 0}
+              onClick={() => setActiveChat(generalChat.id)}
+            />
+          )}
 
-            {/* OneOnOne chats */}
-            {oneOnOneChats.length > 0 && (
-              <div style={{ paddingTop: '8px' }}>
-                {oneOnOneChats.map((chat) => (
-                  <ChatItem
-                    key={chat.id}
-                    label={chat.topic || '💬 1:1'}
-                    isActive={activeChat === chat.id}
-                    onClick={() => setActiveChat(chat.id)}
-                  />
-                ))}
-              </div>
-            )}
+          {/* OneOnOne chats */}
+          {oneOnOneChats.length > 0 && (
+            <div className="pt-2">
+              {oneOnOneChats.map((chat) => (
+                <ChatItem
+                  key={chat.id}
+                  label={chat.topic || '💬 1:1'}
+                  isActive={activeChat === chat.id}
+                  unreadCount={(chat as any).unread_count ?? 0}
+                  onClick={() => setActiveChat(chat.id)}
+                />
+              ))}
+            </div>
+          )}
 
-            {/* Group chats */}
-            {groupChats.length > 0 && (
-              <div style={{ paddingTop: '8px' }}>
-                {groupChats.map((chat) => (
-                  <ChatItem
-                    key={chat.id}
-                    label={`👥 ${chat.topic || 'Grupo'}`}
-                    isActive={activeChat === chat.id}
-                    onClick={() => setActiveChat(chat.id)}
-                  />
-                ))}
-              </div>
-            )}
+          {/* Group chats */}
+          {groupChats.length > 0 && (
+            <div className="pt-2">
+              {groupChats.map((chat) => (
+                <ChatItem
+                  key={chat.id}
+                  label={`👥 ${chat.topic || 'Grupo'}`}
+                  isActive={activeChat === chat.id}
+                  unreadCount={(chat as any).unread_count ?? 0}
+                  onClick={() => setActiveChat(chat.id)}
+                />
+              ))}
+            </div>
+          )}
 
-            {/* Empty state */}
-            {chats.length === 0 && (
-              <div
-                style={{
-                  color: '#29292E',
-                  fontSize: '13px',
-                  textAlign: 'center',
-                  padding: '24px 20px',
-                }}
-              >
-                Nenhuma conversa disponível
-              </div>
-            )}
-          </div>
-        )}
+          {/* Empty state */}
+          {chats.length === 0 && (
+            <div className="text-content-muted text-sm text-center py-6 px-5">
+              Nenhuma conversa disponível
+            </div>
+          )}
+        </div>
       </div>
 
       {/* New Chat Button + Form */}
-      <div
-        style={{
-          padding: '16px',
-          borderTop: '1px solid #29292E',
-          flexShrink: 0,
-        }}
-      >
+      <div className="px-4 py-4 border-t border-surface-raised shrink-0">
         {!showForm ? (
           <button
             onClick={() => setShowForm(true)}
-            style={{
-              width: '100%',
-              backgroundColor: '#00BABC',
-              color: '#1B1B1B',
-              border: 'none',
-              padding: '10px 16px',
-              fontSize: '12px',
-              fontWeight: 700,
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              cursor: 'pointer',
-              transition: 'all 0.15s',
-              fontFamily: '"Futura PT", ui-sans-serif, system-ui',
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#04809F';
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#00BABC';
-            }}
+            className="w-full bg-accent-primary text-surface-base border-none py-2.5 px-4 text-xs font-bold tracking-widest uppercase cursor-pointer transition-colors hover:bg-accent-secondary"
           >
             + Nova Conversa
           </button>
         ) : (
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '12px',
-              padding: '12px',
-              backgroundColor: '#202026',
-              border: '1px solid #29292E',
-            }}
-          >
+          <div className="flex flex-col gap-3 p-3 bg-surface-panel border border-surface-raised">
             {/* Type selector */}
-            <div style={{ display: 'flex', gap: '8px' }}>
-              <label
-                style={{
-                  flex: 1,
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '6px',
-                  cursor: 'pointer',
-                  fontSize: '12px',
-                  color: '#E3E3E3',
-                }}
-              >
+            <div className="flex gap-2">
+              <label className="flex-1 flex items-center gap-1.5 cursor-pointer text-xs text-content-primary">
                 <input
                   type="radio"
                   value="oneOnOne"
@@ -270,21 +145,11 @@ export default function ChatList() {
                       type: e.target.value as 'oneOnOne' | 'group',
                     }))
                   }
-                  style={{ cursor: 'pointer' }}
+                  className="cursor-pointer"
                 />
                 1:1
               </label>
-              <label
-                style={{
-                  flex: 1,
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '6px',
-                  cursor: 'pointer',
-                  fontSize: '12px',
-                  color: '#E3E3E3',
-                }}
-              >
+              <label className="flex-1 flex items-center gap-1.5 cursor-pointer text-xs text-content-primary">
                 <input
                   type="radio"
                   value="group"
@@ -295,7 +160,7 @@ export default function ChatList() {
                       type: e.target.value as 'oneOnOne' | 'group',
                     }))
                   }
-                  style={{ cursor: 'pointer' }}
+                  className="cursor-pointer"
                 />
                 Grupo
               </label>
@@ -307,21 +172,7 @@ export default function ChatList() {
               placeholder="IDs de usuários (separados por vírgula)"
               value={form.members || ''}
               onChange={(e) => setForm((prev) => ({ ...prev, members: e.target.value }))}
-              style={{
-                padding: '8px 12px',
-                backgroundColor: '#1B1B1B',
-                border: '1px solid #29292E',
-                color: '#E3E3E3',
-                fontSize: '12px',
-                fontFamily: 'inherit',
-                transition: 'border-color 0.15s',
-              }}
-              onFocus={(e) => {
-                (e.currentTarget as HTMLInputElement).style.borderColor = '#00BABC';
-              }}
-              onBlur={(e) => {
-                (e.currentTarget as HTMLInputElement).style.borderColor = '#29292E';
-              }}
+              className="px-3 py-2 bg-surface-base border border-surface-raised text-content-primary text-xs focus:border-accent-primary focus:outline-none transition-colors"
             />
 
             {/* Topic input (only for groups) */}
@@ -331,53 +182,16 @@ export default function ChatList() {
                 placeholder="Tópico (opcional)"
                 value={form.topic || ''}
                 onChange={(e) => setForm((prev) => ({ ...prev, topic: e.target.value }))}
-                style={{
-                  padding: '8px 12px',
-                  backgroundColor: '#1B1B1B',
-                  border: '1px solid #29292E',
-                  color: '#E3E3E3',
-                  fontSize: '12px',
-                  fontFamily: 'inherit',
-                  transition: 'border-color 0.15s',
-                }}
-                onFocus={(e) => {
-                  (e.currentTarget as HTMLInputElement).style.borderColor = '#00BABC';
-                }}
-                onBlur={(e) => {
-                  (e.currentTarget as HTMLInputElement).style.borderColor = '#29292E';
-                }}
+                className="px-3 py-2 bg-surface-base border border-surface-raised text-content-primary text-xs focus:border-accent-primary focus:outline-none transition-colors"
               />
             )}
 
             {/* Actions */}
-            <div style={{ display: 'flex', gap: '8px' }}>
+            <div className="flex gap-2">
               <button
                 onClick={handleCreateChat}
                 disabled={creating}
-                style={{
-                  flex: 1,
-                  backgroundColor: '#2DD57A',
-                  color: '#1B1B1B',
-                  border: 'none',
-                  padding: '8px',
-                  fontSize: '11px',
-                  fontWeight: 700,
-                  textTransform: 'uppercase',
-                  cursor: creating ? 'not-allowed' : 'pointer',
-                  transition: 'all 0.15s',
-                  fontFamily: 'inherit',
-                  opacity: creating ? 0.6 : 1,
-                }}
-                onMouseEnter={(e) => {
-                  if (!creating) {
-                    (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#1fa050';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (!creating) {
-                    (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#2DD57A';
-                  }
-                }}
+                className="flex-1 bg-status-success text-surface-base border-none py-2 text-xs font-bold uppercase cursor-pointer transition-all disabled:opacity-60 disabled:cursor-not-allowed hover:enabled:bg-accent-secondary"
               >
                 {creating ? 'Criando...' : 'Criar'}
               </button>
@@ -386,27 +200,7 @@ export default function ChatList() {
                   setShowForm(false);
                   setForm({ type: 'oneOnOne' });
                 }}
-                style={{
-                  flex: 1,
-                  backgroundColor: '#29292E',
-                  color: '#E3E3E3',
-                  border: '1px solid #29292E',
-                  padding: '8px',
-                  fontSize: '11px',
-                  fontWeight: 700,
-                  textTransform: 'uppercase',
-                  cursor: 'pointer',
-                  transition: 'all 0.15s',
-                  fontFamily: 'inherit',
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLButtonElement).style.borderColor = '#00BABC';
-                  (e.currentTarget as HTMLButtonElement).style.color = '#00BABC';
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLButtonElement).style.borderColor = '#29292E';
-                  (e.currentTarget as HTMLButtonElement).style.color = '#E3E3E3';
-                }}
+                className="flex-1 bg-surface-raised text-content-primary border border-surface-raised py-2 text-xs font-bold uppercase cursor-pointer transition-colors hover:border-accent-primary hover:text-accent-primary"
               >
                 Cancelar
               </button>
@@ -419,45 +213,29 @@ export default function ChatList() {
 }
 
 /**
- * ChatItem — renderiza um item da lista de chats
+ * ChatItem — renderiza um item da lista de chats com badge de não lidas
  */
 interface ChatItemProps {
   label: string;
   isActive: boolean;
+  unreadCount: number;
   onClick: () => void;
 }
 
-function ChatItem({ label, isActive, onClick }: ChatItemProps) {
+function ChatItem({ label, isActive, unreadCount, onClick }: ChatItemProps) {
   return (
     <div
       onClick={onClick}
-      style={{
-        padding: '12px 16px',
-        cursor: 'pointer',
-        borderLeft: `3px solid ${isActive ? '#00BABC' : 'transparent'}`,
-        backgroundColor: isActive ? '#202026' : 'transparent',
-        color: isActive ? '#00BABC' : '#E3E3E3',
-        fontSize: '13px',
-        fontWeight: isActive ? 700 : 400,
-        transition: 'all 0.15s',
-        userSelect: 'none',
-      }}
-      onMouseEnter={(e) => {
-        const el = e.currentTarget as HTMLDivElement;
-        if (!isActive) {
-          el.style.backgroundColor = '#202026';
-          el.style.color = '#FFFFFF';
-        }
-      }}
-      onMouseLeave={(e) => {
-        const el = e.currentTarget as HTMLDivElement;
-        if (!isActive) {
-          el.style.backgroundColor = 'transparent';
-          el.style.color = '#E3E3E3';
-        }
-      }}
+      className={`relative flex items-center justify-between px-4 py-3 cursor-pointer border-l-[3px] transition-all select-none ${
+        isActive
+          ? 'border-l-accent-primary bg-surface-panel text-accent-primary font-bold'
+          : 'border-l-transparent bg-transparent text-content-primary font-normal hover:bg-surface-panel hover:text-content-secondary'
+      }`}
     >
-      {label}
+      <span className="text-sm truncate">{label}</span>
+      {unreadCount > 0 && (
+        <Badge variant="error" count={unreadCount} className="ml-2 shrink-0" />
+      )}
     </div>
   );
 }

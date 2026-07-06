@@ -29,40 +29,18 @@ export function ThreadRow({ thread, onClick }: ThreadRowProps) {
   return (
     <div
       onClick={onClick}
-      style={{
-        backgroundColor: '#202026',
-        border: '1px solid #29292E',
-        padding: '16px',
-        cursor: 'pointer',
-        transition: 'all 0.15s',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '12px',
-        minHeight: '56px',
-      }}
-      onMouseEnter={(e) => {
-        (e.currentTarget as HTMLDivElement).style.borderColor = '#00BABC';
-        (e.currentTarget as HTMLDivElement).style.backgroundColor = '#29292E';
-      }}
-      onMouseLeave={(e) => {
-        (e.currentTarget as HTMLDivElement).style.borderColor = '#29292E';
-        (e.currentTarget as HTMLDivElement).style.backgroundColor = '#202026';
-      }}
+      className="
+        bg-surface-panel border border-surface-raised p-4 cursor-pointer
+        transition-all hover:border-accent-primary hover:bg-surface-raised
+        flex items-center gap-3 min-h-14
+      "
     >
       {/* Pin / Lock indicators (left side) */}
-      <div
-        style={{
-          display: 'flex',
-          gap: '6px',
-          flexShrink: 0,
-        }}
-      >
+      <div className="flex gap-1.5 flex-shrink-0">
         {thread.is_pinned && (
           <div
+            className="w-3 h-3 bg-accent-primary flex-shrink-0"
             style={{
-              width: '12px',
-              height: '12px',
-              backgroundColor: '#00BABC',
               clipPath: 'polygon(50% 0%, 100% 38%, 82% 100%, 50% 75%, 18% 100%, 0% 38%)',
             }}
             title="Pinned"
@@ -70,10 +48,8 @@ export function ThreadRow({ thread, onClick }: ThreadRowProps) {
         )}
         {thread.is_locked && (
           <div
+            className="w-3 h-3 bg-status-error flex-shrink-0"
             style={{
-              width: '12px',
-              height: '12px',
-              backgroundColor: '#EC3391',
               clipPath: 'polygon(50% 0%, 100% 38%, 82% 100%, 50% 75%, 18% 100%, 0% 38%)',
             }}
             title="Locked"
@@ -82,98 +58,48 @@ export function ThreadRow({ thread, onClick }: ThreadRowProps) {
       </div>
 
       {/* Title and tags (flex: 1, middle) */}
-      <div
-        style={{
-          flex: 1,
-          minWidth: 0,
-        }}
-      >
+      <div className="flex-1 min-w-0">
         {/* Title */}
-        <h3
-          style={{
-            color: '#FFFFFF',
-            fontSize: '14px',
-            fontWeight: 400,
-            margin: '0 0 6px 0',
-            fontFamily: '"Futura PT", ui-sans-serif, system-ui',
-            whiteSpace: 'nowrap',
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-          }}
-        >
+        <h3 className="text-content-primary text-sm font-normal m-0 whitespace-nowrap overflow-hidden text-ellipsis mb-1.5">
           {thread.title}
         </h3>
 
-        {/* Tags */}
-        {thread.tags.length > 0 && (
-          <div
-            style={{
-              display: 'flex',
-              gap: '6px',
-              flexWrap: 'wrap',
-            }}
-          >
-            {thread.tags.slice(0, 3).map((tag) => (
-              <span
-                key={tag}
-                style={{
-                  backgroundColor: '#29292E',
-                  color: '#00BABC',
-                  fontSize: '10px',
-                  fontWeight: 400,
-                  padding: '2px 6px',
-                  fontFamily: '"Courier New", monospace',
-                  whiteSpace: 'nowrap',
-                }}
-              >
-                {tag}
-              </span>
-            ))}
-            {thread.tags.length > 3 && (
-              <span
-                style={{
-                  color: '#29292E',
-                  fontSize: '10px',
-                  fontWeight: 400,
-                  padding: '2px 6px',
-                }}
-              >
-                +{thread.tags.length - 3}
-              </span>
-            )}
-          </div>
-        )}
+        {/* Author + Tags */}
+        <div className="flex items-center gap-2 flex-wrap">
+          {/* Author login */}
+          {thread.author_login && (
+            <span className="text-content-muted text-xs font-normal whitespace-nowrap">
+              por {thread.author_login}
+            </span>
+          )}
+
+          {/* Tags */}
+          {thread.tags.length > 0 && (
+            <div className="flex gap-1.5">
+              {thread.tags.slice(0, 3).map((tag) => (
+                <span
+                  key={tag}
+                  className="bg-surface-raised text-accent-primary text-xs font-normal px-1.5 py-0.5 font-mono whitespace-nowrap"
+                >
+                  {tag}
+                </span>
+              ))}
+              {thread.tags.length > 3 && (
+                <span className="text-content-muted text-xs font-normal px-1.5 py-0.5">
+                  +{thread.tags.length - 3}
+                </span>
+              )}
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Right side: post_count + time */}
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '16px',
-          flexShrink: 0,
-          textAlign: 'right',
-        }}
-      >
-        <div
-          style={{
-            color: '#29292E',
-            fontSize: '11px',
-            fontWeight: 400,
-            fontFamily: '"Courier New", monospace',
-          }}
-        >
+      <div className="flex items-center gap-4 flex-shrink-0 text-right">
+        <div className="text-content-muted text-xs font-normal font-mono whitespace-nowrap">
           {thread.post_count} {thread.post_count === 1 ? 'post' : 'posts'}
         </div>
-        <div
-          style={{
-            color: '#29292E',
-            fontSize: '11px',
-            fontWeight: 400,
-            minWidth: '40px',
-            fontFamily: '"Courier New", monospace',
-          }}
-        >
+        <div className="text-content-muted text-xs font-normal font-mono min-w-10">
           {relativeTime}
         </div>
       </div>

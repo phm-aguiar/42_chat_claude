@@ -63,3 +63,42 @@ func UpdateTitleSkills(db *sql.DB, userID int, title string, skills []string) er
 	}
 	return nil
 }
+
+// UpdateUserStatus atualiza o status de presença de um usuário.
+// Status válido: 'online', 'away', 'busy', 'invisible', 'offline'.
+func UpdateUserStatus(db *sql.DB, userID int, status string) error {
+	_, err := db.Exec(`
+		UPDATE users
+		SET status = $2
+		WHERE id = $1
+	`, userID, status)
+	if err != nil {
+		return fmt.Errorf("update user status: %w", err)
+	}
+	return nil
+}
+
+// GetUserStatuses busca o status de presença de múltiplos usuários pelo ID.
+// Retorna um mapa id -> status. Usuários não encontrados são omitidos do mapa.
+func GetUserStatuses(db *sql.DB, ids []int) (map[int]string, error) {
+	rows, err := db.Query(`
+		SELECT id, status
+		FROM users
+		WHERE id = ANY($1)
+	`, pq.Array(ids))
+	if err != nil {
+		return nil, fmt.Errorf("get user statuses: %w", err)
+	}
+	defer rows.Close()
+
+	statuses := make(map[int]string)
+	for rows.Next() {
+		var id int
+		var status string
+		if err := rows.Scan(&id, &status); err != nil {
+			return nil, fmt.Errorf("scan user status: %w", err)
+		}
+		statuses[id] = status
+	}
+	return statuses, rows.Err()
+}

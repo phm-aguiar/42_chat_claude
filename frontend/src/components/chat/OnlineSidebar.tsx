@@ -10,84 +10,32 @@ export function OnlineSidebar() {
   ).slice(0, 12);
 
   return (
-    <aside
-      style={{
-        width: '164px',
-        flexShrink: 0,
-        background: '#202026',
-        borderRight: '1px solid #29292E',
-        display: 'flex',
-        flexDirection: 'column',
-        overflow: 'hidden',
-      }}
-    >
-      <div
-        style={{
-          padding: '14px 14px 8px',
-          borderBottom: '1px solid #29292E',
-        }}
-      >
-        <span
-          style={{
-            color: '#29292E',
-            fontSize: '9px',
-            letterSpacing: '0.2em',
-            textTransform: 'uppercase',
-            fontWeight: 700,
-          }}
-        >
+    <aside className="w-48 shrink-0 bg-surface-panel border-r border-surface-raised flex flex-col overflow-hidden">
+      <div className="px-3.5 py-3 border-b border-surface-raised">
+        <span className="text-content-muted text-xs tracking-widest uppercase font-bold">
           Online
         </span>
       </div>
 
-      <div style={{ flex: 1, overflowY: 'auto', padding: '8px 0' }}>
+      <div className="flex-1 overflow-y-auto py-2">
         {status === 'connected' && recentLogins.length > 0 ? (
           recentLogins.map((login) => (
-            <div
-              key={login}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '5px 14px',
-              }}
-            >
-              <span
-                style={{
-                  width: '6px',
-                  height: '6px',
-                  background: '#2DD57A',
-                  flexShrink: 0,
-                }}
-              />
-              <span
-                style={{
-                  color: 'rgba(255,255,255,0.6)',
-                  fontSize: '11px',
-                  letterSpacing: '0.04em',
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                  whiteSpace: 'nowrap',
-                }}
-              >
+            <div key={login} className="flex items-center gap-2 px-3.5 py-1.5">
+              <span className="w-1.5 h-1.5 bg-status-success shrink-0" />
+              <span className="text-content-secondary text-xs tracking-tight overflow-hidden text-ellipsis whitespace-nowrap">
                 {login}
               </span>
             </div>
           ))
         ) : (
-          <div style={{ padding: '8px 14px' }}>
-            <span style={{ color: '#29292E', fontSize: '10px' }}>—</span>
+          <div className="px-3.5 py-2">
+            <span className="text-content-muted text-xs">—</span>
           </div>
         )}
       </div>
 
-      <div
-        style={{
-          padding: '10px 14px',
-          borderTop: '1px solid #29292E',
-        }}
-      >
-        <span style={{ color: '#29292E', fontSize: '9px', letterSpacing: '0.1em' }}>
+      <div className="px-3.5 py-2.5 border-t border-surface-raised">
+        <span className="text-content-muted text-xs tracking-wider">
           {status === 'connected' ? `${recentLogins.length} recentes` : 'desconectado'}
         </span>
       </div>

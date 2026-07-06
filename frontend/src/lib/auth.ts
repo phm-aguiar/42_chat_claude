@@ -28,6 +28,7 @@ export interface AuthUser {
   id: number;
   login: string;
   image_url: string;
+  current_host?: string;
 }
 
 // Salva token e dados do usuário no localStorage.

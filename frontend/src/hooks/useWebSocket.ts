@@ -21,6 +21,7 @@ export function useWebSocket() {
     fetchHistory,
     activeChat,
     setTyping,
+    bumpUnread,
   } = useChatStore();
 
   /**
@@ -100,6 +101,14 @@ export function useWebSocket() {
           return;
         }
 
+        // Handle chat_activity event (Feature 105: mark unread if not viewing this chat)
+        if (msg.type === 'chat_activity') {
+          if (msg.chat_id && msg.chat_id !== activeChat) {
+            bumpUnread(msg.chat_id);
+          }
+          return;
+        }
+
         // Handle typing indicator (ADR-103.4)
         if (msg.type === 'typing') {
           // Ignore próprio usuário digitando (opcional, mas recomendado)
@@ -142,7 +151,7 @@ export function useWebSocket() {
         connect();
       }, delay);
     };
-  }, [activeChat, addMessage, setStatus, setError, fetchHistory, setTyping]);
+  }, [activeChat, addMessage, setStatus, setError, fetchHistory, setTyping, bumpUnread]);
 
   useEffect(() => {
     connect();

@@ -1,9 +1,9 @@
+import { Avatar } from '@/components/ui/Avatar';
 import { MDXRenderer } from './MDXRenderer';
 import type { Post } from '@/lib/forumApi';
 
 interface PostCardProps {
   post: Post;
-  author?: { login: string; image_url?: string; title?: string };
   isOP?: boolean;
   onReply?: (postId: string) => void;
   children?: React.ReactNode;
@@ -28,7 +28,6 @@ function formatRelativeTime(iso: string): string {
 
 export function PostCard({
   post,
-  author,
   isOP = false,
   onReply,
   children,
@@ -38,105 +37,30 @@ export function PostCard({
 
   return (
     <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        borderLeft: isOP ? '4px solid #00BABC' : 'none',
-        paddingLeft: isOP ? '16px' : '20px',
-        paddingRight: '20px',
-        paddingTop: '12px',
-        paddingBottom: '12px',
-        background: isOP ? 'rgba(0, 186, 188, 0.02)' : 'transparent',
-        transition: 'background 0.15s',
-      }}
-      onMouseEnter={(e) => {
-        if (!isOP) {
-          (e.currentTarget as HTMLDivElement).style.background =
-            'rgba(255,255,255,0.02)';
+      className={`
+        flex flex-col gap-3 py-3 px-5 transition-colors
+        ${isOP
+          ? 'border-l-4 border-accent-primary bg-accent-primary/5 pl-4'
+          : 'hover:bg-white/2'
         }
-      }}
-      onMouseLeave={(e) => {
-        if (!isOP) {
-          (e.currentTarget as HTMLDivElement).style.background = 'transparent';
-        }
-      }}
+      `}
     >
-      {/* Header: Avatar + Login + Title Badge + Timestamp */}
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '10px',
-          marginBottom: '8px',
-        }}
-      >
+      {/* Header: Avatar + Login + Timestamp */}
+      <div className="flex items-center gap-3 mb-1">
         {/* Avatar */}
-        {author && (
-          <img
-            src={author.image_url || '/assets/default-avatar.png'}
-            alt={author.login}
-            onError={(e) => {
-              (e.currentTarget as HTMLImageElement).src =
-                '/assets/default-avatar.png';
-            }}
-            style={{
-              width: '32px',
-              height: '32px',
-              flexShrink: 0,
-              objectFit: 'cover',
-              filter: 'grayscale(30%)',
-            }}
-          />
-        )}
+        <Avatar
+          login={post.author_login}
+          imageUrl={post.author_image_url}
+          size="sm"
+        />
 
-        {/* Login + Badge + Timestamp */}
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            flex: 1,
-            minWidth: 0,
-          }}
-        >
-          {/* Login */}
-          <span
-            style={{
-              color: '#00BABC',
-              fontSize: '12px',
-              fontWeight: 700,
-              letterSpacing: '0.08em',
-              textTransform: 'uppercase',
-            }}
-          >
-            {author?.login || 'unknown'}
+        {/* Login + Timestamp */}
+        <div className="flex items-center gap-3 flex-1 min-w-0">
+          <span className="text-accent-primary text-xs font-bold uppercase tracking-widest flex-shrink-0">
+            {post.author_login}
           </span>
 
-          {/* Title Badge */}
-          {author?.title && (
-            <span
-              style={{
-                padding: '2px 6px',
-                backgroundColor: '#00BABC',
-                color: '#1B1B1B',
-                fontSize: '9px',
-                fontWeight: 700,
-                textTransform: 'uppercase',
-                letterSpacing: '0.06em',
-              }}
-            >
-              {author.title}
-            </span>
-          )}
-
-          {/* Timestamp */}
-          <span
-            style={{
-              color: 'rgba(255,255,255,0.4)',
-              fontSize: '11px',
-              marginLeft: 'auto',
-            }}
-          >
+          <span className="text-content-secondary text-xs flex-shrink-0 ml-auto">
             {formatRelativeTime(post.created_at)}
           </span>
         </div>
@@ -144,61 +68,22 @@ export function PostCard({
 
       {/* Reply-to indicator */}
       {shortReplyId && (
-        <div
-          style={{
-            fontSize: '10px',
-            color: 'rgba(255,255,255,0.5)',
-            marginBottom: '6px',
-            paddingLeft: '42px',
-            fontStyle: 'italic',
-          }}
-        >
+        <div className="text-xs text-content-secondary/60 italic pl-10">
           em resposta a {shortReplyId}
         </div>
       )}
 
       {/* Content (MDXRenderer) */}
-      <div
-        style={{
-          paddingLeft: author ? '42px' : '0px',
-          marginBottom: children || onReply ? '10px' : '0px',
-        }}
-      >
+      <div className="pl-10">
         <MDXRenderer content={post.content} />
       </div>
 
       {/* Reply Button */}
       {onReply && (
-        <div
-          style={{
-            paddingLeft: author ? '42px' : '0px',
-            marginBottom: children ? '8px' : '0px',
-          }}
-        >
+        <div className="pl-10 pt-2">
           <button
             onClick={() => onReply(post.id)}
-            style={{
-              padding: '6px 12px',
-              background: 'transparent',
-              border: '1px solid #00BABC',
-              color: '#00BABC',
-              fontSize: '11px',
-              fontWeight: 700,
-              textTransform: 'uppercase',
-              cursor: 'pointer',
-              letterSpacing: '0.06em',
-              transition: 'all 0.15s',
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.background =
-                '#00BABC';
-              (e.currentTarget as HTMLButtonElement).style.color = '#1B1B1B';
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.background =
-                'transparent';
-              (e.currentTarget as HTMLButtonElement).style.color = '#00BABC';
-            }}
+            className="px-3 py-1.5 border border-accent-primary text-accent-primary text-xs font-bold uppercase tracking-wider transition-colors hover:bg-accent-primary hover:text-surface-base"
           >
             Responder
           </button>
@@ -207,11 +92,7 @@ export function PostCard({
 
       {/* Children (nested replies tree view) */}
       {children && (
-        <div
-          style={{
-            paddingLeft: author ? '42px' : '0px',
-          }}
-        >
+        <div className="pl-10 pt-2">
           {children}
         </div>
       )}
